@@ -1,0 +1,11 @@
+body {font-family: Verdana, serif;}
+.balance {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+.incrementButton {
+    font-size: 50px;
+    position: relative;
+    left: 100px;
+}
