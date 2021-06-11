@@ -1,10 +1,10 @@
 body {font-family: Verdana, serif;}
-.balance {
+span.balance {
     font-size: 25px;
     font-weight: bold;
     text-align: center;
 }
-.incrementButton {
+span.incrementButton {
     font-size: 50px;
     position: relative;
     left: 100px;
