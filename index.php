@@ -7,6 +7,6 @@
 </head>
 <body>
 <p>Hello!</p> 
-<a href="trianglecalc/index.html"><p>Triangle Calculator</p></a>
+<a href="trianglecalc/index.php"><p>Triangle Calculator</p></a>
 </body>
 </html>
