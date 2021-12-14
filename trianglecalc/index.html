@@ -6,6 +6,8 @@
     </head>
     
     <body>
+        Known?
+        <br>
         <input type="checkbox" id="side1">
         <label for="side1">side a</label>
         <br>
@@ -24,7 +26,8 @@
         <input type="checkbox" id="angle3">
         <label for="side1">angle C</label>
         <br>
-        <button onclick="findPage(document.getElementById('side1').value, document.getElementById('side2').value, document.getElementById('side3').value, document.getElementById('angle1').value, document.getElementById('angle2').value, document.getElementById('angle3').value)">Submit</button>
+        <button onclick="findPage(document.getElementById('side1').checked, document.getElementById('side2').checked, document.getElementById('side3').checked, document.getElementById('angle1').checked, document.getElementById('angle2').checked, document.getElementById('angle3').checked)">Submit</button>
         <script src="main.js"></script>
+        <img src="./abctriangle.png">
     </body>
 </html>
