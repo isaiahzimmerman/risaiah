@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<meta charset="UTF-8"> 
+<html lang="en-US">
+<head>
+<title>Moles Calc</title>
+</head>
+<body>
+
+<h1>Molar Mass and Concentration Calculator</h1>
+<p>Input is element symbols followed immediately by their subscripts. parentheses are not supported.</p>
+<p>Ex: H3PO4</p>
+    
+<input name="filename" id="filename" type="text">
+
+<button onclick="moleculeMass(document.getElementById('filename').value)">Click me</button>
+    
+<p id="demo"></p>
+    
+<script>
+function moleculeMass(input) {
+  var inputLength = input.length - input.replace(/[A-Z]/g, '').length;
+
+  function checkCase(ch) {
+   if (!isNaN(ch * 1)){
+     return 0;
+   }
+   else {
+      if (ch == ch.toUpperCase()) {
+        return 1;
+     }
+       if (ch == ch.toLowerCase()){
+          return 2;
+     }
+   }
+  }
+ 
+ // Determines the molar mass of a single element
+
+ function molarMass(input) {
+   var symbols = [
+     ['H','He','Li','Be','B','C','N','O','F','Ne','Na','Mg','Al','Si','P','S','Cl','Ar','K','Ca','Sc','Ti','V','Cr','Mn','Fe','Co','Ni','Cu','Zn','Ga','Ge','As','Se','Br','Kr','Rb','Sr','Y','Zr','Nb','Mo','Tc','Ru','Rh','Pd','Ag','Cd','In','Sn','Sb','Te','I','Xe','Cs','Ba','La','Ce','Pr','Nd','Pm','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu','Hf','Ta','W','Re','Os','Ir','Pt','Au','Hg','Tl','Pb','Bi','Po','At','Rn','Fr','Ra','Ac','Th','Pa','U','Np','Pu','Am','Cm','Bk','Cf','Es','Fm','Md','No','Lr','Rf','Db','Sg','Bh','Hs','Mt','Ds','Rg','Cn','Nh','Fl','Mc','Lv','Ts','Og'],
+     [1.008,4.0026,6.94,9.0122,10.81,12.011,14.007,15.999,18.998,20.180,22.990,24.305,26.982,28.085,30.974,32.06,35.45,39.948,39.098,40.078,44.956,47.867,50.942,51.996,54.938,55.845,58.933,58.693,63.546,65.38,69.723,72.630,74.922,78.971,79.904,83.798,85.468,87.62,88.906,91.224,92.906,95.95,98,101.07,102.91,106.42,107.87,112.41,114.82,118.71,121.76,127.60,126.90,131.29,132.91,137.33,138.91,140.12,140.91,144.24,145,150.36,151.96,157.25,158.93,162.50,164.93,167.26,168.93,173.05,174.97,178.49,180.95,183.84,186.21,190.23,192.22,195.08,196.97,200.59,204.38,207.2,208.98,209,210,222,223,226,227,232.04,231.04,238.03,237,244,243,247,247,251,252,257,258,259,266,267,268,269,270,277,278,281,282,285,286,289,290,293,294,294]
+     ]
+   var molMass = symbols[1][symbols[0].indexOf(input)]
+   return molMass
+ }
+ //Count # of unique elements by the num of capital letters
+ var numUpper = inputLength; 
+ var element;
+ var subscript;
+ var pos = 0;
+ var output = [];
+ var far;
+
+ while(numUpper > 0) {
+   if(checkCase(input.substr(pos, 1)) == 1) {
+     //if its Uppercase
+     if(input.length == pos + 1){
+       //its uppercase followed by nothing
+       element = input.substr(pos,1)
+       subscript = 1
+     } else {
+     switch(checkCase(input.substr(pos + 1, 1))){
+       
+       //if the uppercase is followed by a number, it is its subscript
+       case 0:
+       far = 1
+       while((checkCase(input.substr(far + pos,1)) == 0) && (input.length !== pos + far)){
+         far = far + 1
+       }
+       element = input.substr(pos,1)
+       subscript = input.substr(pos + 1,far-1)
+       pos = pos + far
+       break;
+
+       //if the uppercase is followed by another uppercase, the subscript is 1
+       case 1:
+       element = input.substr(pos,1)
+       subscript = 1
+       pos += 1
+       break;
+       
+       //if the uppercase is followed by a lowercase, the symbol is those two, now determine subscript
+       case 2:
+       element = input.substr(pos,2)
+       switch(checkCase(input.substr(pos+2, 1))){
+         case 0:
+         if(input.length !== pos + 2){
+         //its uppercase followed by lowercase followed by a number
+         far = 1
+         while(checkCase(input.substr(far + pos + 1,1)) == 0 && (input.length !== pos + far + 1)){
+           far = far + 1
+         }
+         subscript = input.substr(pos+2,far-1)
+         pos = pos + far + 1
+         } else {
+           subscript = 1
+         }
+         break;
+         case 1:
+         subscript = 1
+         pos += 2
+         break;
+       }
+       break;
+     }
+     }
+     //if its lowercase
+   }
+   //adds the element and its subscript to the array
+   output.push([element,subscript])
+   numUpper = numUpper - 1
+ }
+ 
+ var finalarray = [[],[],[]];
+ var ja = 0;
+ var totalMass = 0;
+ var sah;
+ 
+ while(inputLength - ja > 0){
+   sah = molarMass(output[ja][0]) * output[ja][1]
+   finalarray[0].push(" mass of "+output[ja][0]+" is "+ sah)
+   ja = ja + 1
+   totalMass += sah
+ }
+
+ ja = 0
+
+ while(inputLength - ja > 0){
+   sah = molarMass(output[ja][0]) * output[ja][1]
+   finalarray[1].push(" concentration of "+output[ja][0]+" is "+ 100 * (sah / totalMass)+"%")
+   ja = ja + 1
+ }
+ 
+ finalarray[2].push(" Total Molar Mass: "+ totalMass+".")
+    
+ document.getElementById("demo").innerHTML = finalarray;
+ return(finalarray)
+}
+</script>
+
+</body>
+</html>
