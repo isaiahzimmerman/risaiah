@@ -9,21 +9,24 @@ function solveTriangle(side1, angle3, side2, places, degreeInput, degreeOutput) 
         return radians * 180 / Math.PI;
     }
 
-    sideA = parseInt(side1)
-    sideB = parseInt(side2)
+    sideA = side1
+    sideB = side2
+    console.log(sideB)
     if(degreeInput){
-        angleC = Math.radians(parseInt(angle3))
+        angleC = Math.radians(angle3)
     }else{
-        angleC = parseInt(angle3)
+        angleC = angle3
     }
 
-    decPlaces = parseInt(places)
+    decPlaces = places
     
-    sideC = rounder(Math.sqrt(sideA**2 + sideB**2 - 2*sideA*sideB*Math.cos(angleC)), decPlaces)
+    sideC = Math.sqrt(sideA**2 + sideB**2 - 2*sideA*sideB*Math.cos(angleC))
     
     angleA = (Math.asin((sideA * Math.sin(angleC)) / sideC))
+    console.log(angleA)
     
     angleB = (Math.asin((sideB * Math.sin(angleC)) / sideC))
+    console.log(angleB)
     
     if(degreeOutput) {
         angleA_output = 'Angle A: ' + rounder(Math.degrees(angleA), decPlaces).toString()
@@ -32,7 +35,7 @@ function solveTriangle(side1, angle3, side2, places, degreeInput, degreeOutput) 
         angleA_output = 'Angle A: ' + rounder(angleA, decPlaces).toString() + ' (or '+rounder(angleA/Math.PI, decPlaces).toString()+'π)'
         angleB_output = 'Angle B: ' + rounder(angleB, decPlaces).toString() + ' (or '+rounder(angleB/Math.PI, decPlaces).toString()+'π)'
     }
-    document.getElementById("sideC").innerHTML = 'Side C: ' + sideC.toString()
+    document.getElementById("sideC").innerHTML = 'Side C: ' + rounder(sideC, decPlaces).toString()
     document.getElementById("angleA").innerHTML = angleA_output
     document.getElementById("angleB").innerHTML = angleB_output
     //document.getElementById("angleB").innerHTML = 'Angle B: ' + 'h'
