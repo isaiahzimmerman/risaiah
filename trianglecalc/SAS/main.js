@@ -1,5 +1,5 @@
 function solveTriangle(side1, angle3, side2, places, degreeInput, degreeOutput) {
-    function rounder(value, places) {
+    Math.rounder = function(value, places) {
         return Math.round((value + Number.EPSILON) * (10 ** places)) / (10 ** places)
     }
     Math.radians = function(degrees) {
@@ -11,7 +11,6 @@ function solveTriangle(side1, angle3, side2, places, degreeInput, degreeOutput) 
 
     sideA = side1
     sideB = side2
-    console.log(sideB)
     if(degreeInput){
         angleC = Math.radians(angle3)
     }else{
@@ -29,14 +28,13 @@ function solveTriangle(side1, angle3, side2, places, degreeInput, degreeOutput) 
     console.log(angleB)
     
     if(degreeOutput) {
-        angleA_output = 'Angle A: ' + rounder(Math.degrees(angleA), decPlaces).toString()
-        angleB_output = 'Angle B: ' + rounder(Math.degrees(angleB), decPlaces).toString()
+        angleA_output = 'Angle A: ' + Math.rounder(Math.degrees(angleA), decPlaces).toString()
+        angleB_output = 'Angle B: ' + Math.rounder(Math.degrees(angleB), decPlaces).toString()
     }else{
-        angleA_output = 'Angle A: ' + rounder(angleA, decPlaces).toString() + ' (or '+rounder(angleA/Math.PI, decPlaces).toString()+'π)'
-        angleB_output = 'Angle B: ' + rounder(angleB, decPlaces).toString() + ' (or '+rounder(angleB/Math.PI, decPlaces).toString()+'π)'
+        angleA_output = 'Angle A: ' + Math.rounder(angleA, decPlaces).toString() + ' (or '+Math.rounder(angleA/Math.PI, decPlaces).toString()+'π)'
+        angleB_output = 'Angle B: ' + Math.rounder(angleB, decPlaces).toString() + ' (or '+Math.rounder(angleB/Math.PI, decPlaces).toString()+'π)'
     }
-    document.getElementById("sideC").innerHTML = 'Side C: ' + rounder(sideC, decPlaces).toString()
+    document.getElementById("sideC").innerHTML = 'Side C: ' + Math.rounder(sideC, decPlaces).toString()
     document.getElementById("angleA").innerHTML = angleA_output
     document.getElementById("angleB").innerHTML = angleB_output
-    //document.getElementById("angleB").innerHTML = 'Angle B: ' + 'h'
 }

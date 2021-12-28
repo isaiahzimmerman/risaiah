@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Angle-Angle-Angle triangle</title>
+        <script src="./main.js"></script>
+    </head>
+    <body>
+        <a href="../../"><h1>Home</h1></a>
+        <h1>Angle-Angle-Angle Calculator</h1>
+        <p>Since only angles are known, the side length is impossible to know. However, it is possible to know the lengths in relation to each other. Therefore, if perimeter is known, it can be used with the ratios to determine side length.</p>
+        
+        <input type="text" id="angle1">
+        <label for="angle1">Angle A</label>
+        <br>
+        <input type="text" id="angle2">
+        <label for="angle2">Angle B</label>
+        <br>
+        <input type="text" id="angle3">
+        <label for="angle3">Angle C</label>
+        <br>
+        <input type="checkbox" id='perimeterKnown'>
+        <label for='perimeterKnown'>Perimeter is known?</label>
+        <br>
+        <input type="text" id="perimeter">
+        <label for="perimeter">Perimeter (ignore if not known)</label>
+        <br>
+        <input type="checkbox" id='degreeinput'>
+        <label for='degreeinput'>Input in Degrees?</label>
+        <br>
+        <input type="text" id="places">
+        <label for="places">Round to how many Decimal Places?</label>
+        <br>
+        <br>
+        <button onclick="solveTriangle(document.getElementById('angle1').value, document.getElementById('angle2').value, document.getElementById('angle3').value, document.getElementById('perimeterKnown').checked, document.getElementById('perimeter').value, document.getElementById('places').value, document.getElementById('degreeinput').checked)">Solve</button>
+        <br><br>
+        
+        <p id="sideA"></p>
+        <p id="sideB"></p>
+        <p id="sideC"></p>
+    </body>
+</html>
