@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Side-Angle-Side triangle</title>
+        <script src="./main.js"></script>
+    </head>
+    <body>
+        <a href="../../"><h1>Home</h1></a>
+        <h1>Side-Angle-Side Calculator</h1>
+        <input type="text" id="side1">
+        <label for="side1">Side A</label>
+        <br>
+        <input type="text" id="angle3">
+        <label for="angle3">Angle C</label>
+        <br>
+        <input type="text" id="side2">
+        <label for="side2">Side B</label>
+        <br>
+        <input type="checkbox" id='degreeinput'>
+        <label for='degreeinput'>Input in Degrees?</label>
+        <br>
+        <input type="checkbox" id='degreeoutput'>
+        <label for='degreeoutput'>Output in Degrees?</label>
+        <br>
+        <input type="text" id="places">
+        <label for="places">Round to how many Decimal Places?</label>
+        <br>
+        <br>
+        <button onclick="solveTriangle(document.getElementById('side1').value, document.getElementById('angle3').value, document.getElementById('side2').value, document.getElementById('places').value, document.getElementById('degreeinput').checked, document.getElementById('degreeoutput').checked)">Solve</button>
+        <br><br>
+        
+        <p id="sideC"></p>
+        <p id="angleA"></p>
+        <p id="angleB"></p>
+    </body>
+</html>

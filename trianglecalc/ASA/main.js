@@ -17,6 +17,15 @@ function solveTriangle(angle1,angle2,side3,places, degreeInput, degreeOutput){
         angleA = angle1
         angleB = angle2
     }
+    angleC = Math.PI - (angleA + angleB)
     
+    sideA = (sideC * Math.sin(angleA)) / Math.sin(angleC)
+    sideB = (sideC * Math.sin(angleB)) / Math.sin(angleC)
     
+    document.getElementById("sideA").innerHTML = sideA_output
+    console.log(sideA_output)
+    document.getElementById("sideB").innerHTML = sideB_output
+    console.log(sideB_output)
+    document.getElementById("sideC").innerHTML = sideC_output
+    console.log(sideC_output)
 }
