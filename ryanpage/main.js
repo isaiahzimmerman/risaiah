@@ -1,4 +1,4 @@
-const canvas= document.getElementById(ryancanvas);
+const canvas= document.getElementById('ryancanvas');
 const ctx = canvas.getContext('2d');
 function drawLine(x1,y1,x2,y2){
   ctx.beginPath();
@@ -16,4 +16,4 @@ ctx.beginPath();
 ctx.strokeStyle= 'purple';
 ctx.moveTo(70,70);
 ctx.lineTo(111,120);
-ctx.stroke()
+ctx.stroke();
