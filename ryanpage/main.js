@@ -10,10 +10,8 @@ function drawLine(x1,y1,x2,y2){
 
 drawLine(50,50,50,350);
 drawLine(150,50,150,350);
-drawLine(50,100,150,100);
+drawLine(50,250,150,250);
 
-ctx.beginPath();
-ctx.strokeStyle= 'purple';
-ctx.moveTo(70,70);
-ctx.lineTo(111,120);
-ctx.stroke();
+drawLine(300,50,300,350);
+drawLine(200,50,400,50);
+drawLine(200,350,400,350);
