@@ -11,3 +11,9 @@ function drawLine(x1,y1,x2,y2){
 drawLine(50,50,50,350);
 drawLine(150,50,150,350);
 drawLine(50,100,150,100);
+
+ctx.beginPath();
+ctx.strokeStyle= 'purple';
+ctx.moveTo(70,70);
+ctx.lineTo(111,120);
+ctx.stroke()
