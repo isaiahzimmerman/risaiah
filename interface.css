@@ -1,16 +1,32 @@
-body {
-    background-image: url('skateboarder.jpg');
-    text-align: center;
-}
-
 h1 {
-    color: azure;
+    font-size: 50;
+    text-align: center;
+    
 }
 
-h3 {
-    color: azure;
+div.item {
+    /* To correctly align image, regardless of content height: */
+    vertical-align: top;
+    display: inline-block;
+    /* To horizontally center images and caption */
+    text-align: center;
+    /* The width of the container also implies margin around the images. */
+    width: 30%;
+}
+img {
+    width: 100%;
+    height: auto;
+    background-color: grey;
+    align-content: center;
+}
+.caption {
+    /* Make the caption a block so it occupies its own line. */
+    display: block;
 }
 
-p {
-    color: azure;
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
 }
