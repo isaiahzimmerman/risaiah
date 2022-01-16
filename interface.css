@@ -17,14 +17,17 @@ div.item {
     /* The width of the container also implies margin around the images. */
     width: 30%;
 }
+
 img {
     width: 100%;
     height: auto;
     align-content: center;
 }
+
 .caption {
     /* Make the caption a block so it occupies its own line. */
     display: block;
+    font-size: 25;
 }
 
 .container {
@@ -33,3 +36,5 @@ img {
     padding-left: 5%;
     padding-right: 5%;
 }
+
+/* implement this: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/  */
