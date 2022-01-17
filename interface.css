@@ -2,16 +2,14 @@ body {
     background-color: aquamarine;
 }
 
-/*
 @font-face {
-  font-family: myFirstFont;
-  src: url(sansation_light.woff);
+  font-family: isaiahFont;
+  src: url(./assets/Isaiahfont-Regular.otf);
 }
-*/
 
 h1 {
     font-size: 50;
-    /*font-family: myFirstFont*/
+    font-family: myFirstFont
     text-align: center;
 }
 
