@@ -8,8 +8,8 @@ body {
 }
 
 h1 {
-    font-size: 50;
-    font-family: myFirstFont
+    font-size: 60;
+    font-family: isaiahFont;
     text-align: center;
 }
 
@@ -33,6 +33,7 @@ img {
     /* Make the caption a block so it occupies its own line. */
     display: block;
     font-size: 25;
+    font-family: isaiahFont;
 }
 
 .container {
