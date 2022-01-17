@@ -33,8 +33,10 @@ img {
 .container {
     display: flex;
     justify-content: space-between;
+    padding-top: 3%;
+
     padding-left: 5%;
-    padding-right: 5%;
+    padding-right: 5%
 }
 
 /* implement this: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/  */
