@@ -1,16 +1,41 @@
 body {
-    background-image: url('skateboarder.jpg');
-    text-align: center;
+    background-color: aquamarine;
 }
 
 h1 {
-    color: azure;
+    font-size: 50;
+    text-align: center;
+    
 }
 
-h3 {
-    color: azure;
+div.item {
+    /* To correctly align image, regardless of content height: */
+    vertical-align: top;
+    display: inline-block;
+    /* To horizontally center images and caption */
+    text-align: center;
+    /* The width of the container also implies margin around the images. */
+    width: 30%;
 }
 
-p {
-    color: azure;
+img {
+    width: 100%;
+    height: auto;
+    align-content: center;
 }
+
+.caption {
+    /* Make the caption a block so it occupies its own line. */
+    display: block;
+    font-size: 25;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3%;
+    padding-left: 5%;
+    padding-right: 5%
+}
+
+/* implement this: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/  */
