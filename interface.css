@@ -2,10 +2,17 @@ body {
     background-color: aquamarine;
 }
 
+/*
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
+}
+*/
+
 h1 {
     font-size: 50;
+    /*font-family: myFirstFont*/
     text-align: center;
-    
 }
 
 div.item {
