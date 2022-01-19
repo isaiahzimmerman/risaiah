@@ -1,11 +1,17 @@
 body {
-    background-color: aquamarine;
+    background-color: #e6d1f2;
+    padding-top: 3%;
+}
+
+@font-face {
+  font-family: isaiahFont;
+  src: url(./assets/Isaiahfont-Regular.otf);
 }
 
 h1 {
-    font-size: 50;
+    font-size: 60;
+    font-family: isaiahFont;
     text-align: center;
-    
 }
 
 div.item {
@@ -27,13 +33,14 @@ img {
 .caption {
     /* Make the caption a block so it occupies its own line. */
     display: block;
-    font-size: 25;
+    font-size: 35;
+    font-family: isaiahFont;
 }
 
 .container {
     display: flex;
     justify-content: space-between;
-    padding-top: 3%;
+    padding-bottom: 3%;
     padding-left: 5%;
     padding-right: 5%
 }

@@ -1,4 +1,6 @@
-
+function rounder(value,places){
+    return Math.round((value + Number.EPSILON)* (10**places))/(10**places);
+} 
 function myFunction() {
     let people= document.getElementById("textBox").value;
     if(isNaN(people)) {
@@ -12,6 +14,6 @@ function myFunction() {
     }
     else {
         let result= ((1-((364/365)**((people*(people-1))/2)))*100);
-        document.getElementById("percentage").innerHTML=result + '%';
+        document.getElementById("percentage").innerHTML=rounder(result,6) + '%';
     }
     }
