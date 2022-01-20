@@ -4,6 +4,8 @@ mainNumber = [
 
 filledSpaces = 0
 answer = 0
+level = 1
+score = 0
 
 document.addEventListener('keydown', function (event) {
     console.log(event.key)
@@ -42,9 +44,25 @@ function updateField(key, type) {
                 console.log('cottrfct!')
                 mainNumber = ['_','_','_','_']
                 filledSpaces = 0;
-                play()
+                
+                score+=1
+                if(score==10){
+                    level+=1
+                    score = 0
+                }
+                play(level)
+                
+                document.getElementById("level").innerHTML = 'Level: ' + level.toString()
+                document.getElementById("score").innerHTML = 'Score: ' + score.toString() + '/10'
             }else{
                 console.log('rong')
+                mainNumber = ['_','_','_','_']
+                filledSpaces = 0
+                score=0
+                level=1
+                
+                document.getElementById("level").innerHTML = 'Level: ' + level.toString()
+                document.getElementById("score").innerHTML = 'Score: ' + score.toString() + '/10'
             }
         } else if(key === 'Backspace'){
             mainNumber[0] = mainNumber[1]
@@ -62,7 +80,7 @@ function updateField(key, type) {
 }
 
 function play(level) {
-    problem = getRandomInt(8) + 2;
+    problem = getRandomInt(8) + 2 + 10* (level-1);
     answer = problem ** 2
     document.getElementById("puzzle").innerHTML = (problem.toString()+'²');
 }
