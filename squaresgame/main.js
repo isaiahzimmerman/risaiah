@@ -6,6 +6,8 @@ filledSpaces = 0
 answer = 0
 level = 1
 score = 0
+oldproblem = 0
+problem = 1
 
 document.addEventListener('keydown', function (event) {
     console.log(event.key)
@@ -61,6 +63,10 @@ function updateField(key, type) {
                 score=0
                 level=1
                 
+                window.alert("That's wrong! Correct answer is "+answer.toString()+".")
+                
+                play(1)
+                
                 document.getElementById("level").innerHTML = 'Level: ' + level.toString()
                 document.getElementById("score").innerHTML = 'Score: ' + score.toString() + '/10'
             }
@@ -80,7 +86,10 @@ function updateField(key, type) {
 }
 
 function play(level) {
-    problem = getRandomInt(8) + 2 + 10* (level-1);
+    oldproblem = problem
+    while(problem == oldproblem) {
+        problem = getRandomInt(10) + 1 + 10*(level-1);
+    }
     answer = problem ** 2
     document.getElementById("puzzle").innerHTML = (problem.toString()+'²');
 }
