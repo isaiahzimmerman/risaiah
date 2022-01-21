@@ -39,3 +39,14 @@ p {
     float: right;
     font-size: 50px;
 }
+
+.keyboard {
+    margin: 10% 10% 10% 10%;
+}
+
+.key {
+    text-align: center;
+    width: 8%;
+    float: left;
+    font-size: 20;
+}
