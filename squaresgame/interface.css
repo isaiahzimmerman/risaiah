@@ -20,7 +20,6 @@ body {
 .child {
     text-align: center;
     width: 15%;
-    background-color: aqua;
     float: left;
     font-size: 100px;
 }
