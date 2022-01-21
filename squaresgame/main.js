@@ -10,7 +10,9 @@ oldproblem = 0
 problem = 1
 
 //cookie
-document.cookie = "highScore=0; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+if(document.cookie == ''){
+    document.cookie = "highScore=0; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+}
 let highScore = document.cookie;
 let highScoreValue = parseInt(highScore.substring(10), 10)
 
@@ -66,7 +68,7 @@ function updateField(key, type) {
                 play(level)
                 if(highScoreValue < ((level-1)*10+score)){
                   highScoreValue = (level-1)*10+score
-                  document.cookie = 'highScore='+highScoreValue.toString()
+                  document.cookie = 'highScore='+highScoreValue.toString()+'; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;'
                 }
                 
                 document.getElementById("level").innerHTML = 'Level: ' + level.toString()
