@@ -9,6 +9,17 @@ score = 0
 oldproblem = 0
 problem = 1
 
+//cookie
+document.cookie = "highScore=0; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+let highScore = document.cookie;
+let highScoreValue = parseInt(highScore.substring(10), 10)
+
+if(highScoreValue == 0){
+  console.log('lol')
+} else {
+  console.log('noo')
+}
+
 document.addEventListener('keydown', function (event) {
     console.log(event.key)
     if(!isNaN(event.key/1)) {
@@ -53,6 +64,10 @@ function updateField(key, type) {
                     score = 0
                 }
                 play(level)
+                if(highScoreValue < ((level-1)*10+score)){
+                  highScoreValue = (level-1)*10+score
+                  document.cookie = 'highScore='+highScoreValue.toString()
+                }
                 
                 document.getElementById("level").innerHTML = 'Level: ' + level.toString()
                 document.getElementById("score").innerHTML = 'Score: ' + score.toString() + '/10'
