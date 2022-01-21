@@ -10,7 +10,7 @@ oldproblem = 0
 problem = 1
 
 //cookie
-document.cookie = "highScore=0; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+document.cookie = "highScore=0; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
 let highScore = document.cookie;
 let highScoreValue = parseInt(highScore.substring(10), 10)
 
