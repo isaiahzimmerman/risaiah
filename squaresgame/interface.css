@@ -24,3 +24,8 @@ body {
     float: left;
     font-size: 100px;
 }
+
+p {
+    margin: 0;
+    padding: 0;
+}
