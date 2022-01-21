@@ -69,6 +69,7 @@ function updateField(key, type) {
                 if(highScoreValue < ((level-1)*10+score)){
                   highScoreValue = (level-1)*10+score
                   document.cookie = 'highScore='+highScoreValue.toString()+'; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;'
+                    document.getElementById("highScore").innerHTML = 'High Score: ' + highScoreValue
                 }
                 
                 document.getElementById("level").innerHTML = 'Level: ' + level.toString()
@@ -103,6 +104,7 @@ function updateField(key, type) {
 }
 
 function play(level) {
+    document.getElementById("highScore").innerHTML = 'High Score: ' + highScoreValue
     oldproblem = problem
     while(problem == oldproblem) {
         problem = getRandomInt(10) + 1 + 10*(level-1);
