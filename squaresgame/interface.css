@@ -41,12 +41,16 @@ p {
 }
 
 .keyboard {
-    margin: 10% 10% 10% 10%;
+    padding-top: 5%;
 }
 
 .key {
+    margin: 0;
+    padding: 0;
     text-align: center;
+    display: inline-block;
     width: 8%;
+    height: auto;
     float: left;
     font-size: 40px;
 }

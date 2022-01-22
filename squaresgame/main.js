@@ -24,7 +24,7 @@ if(highScoreValue == 0){
 
 document.addEventListener('keydown', function (event) {
     console.log(event.key)
-    if(!isNaN(event.key/1)) {
+    if(!isNaN(event.key/1) and event.key != '') {
         updateField(event.key, 'num')
     } else if(event.key === 'Enter' || event.key === 'Backspace') {
         updateField(event.key, 'not')
