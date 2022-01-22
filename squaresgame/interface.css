@@ -16,6 +16,7 @@ body {
 .puzzle {
     font-size:  125px;
     text-align: center;
+    padding-top: 5%
     
 }
 
@@ -40,17 +41,23 @@ p {
     font-size: 50px;
 }
 
-.keyboard {
+.keyboard1 {
+    padding-top: 10%;
+    padding-left: 6%;
+    padding-right: 6%
+}
+
+.keyboard2 {
     padding-top: 5%;
+    padding-left: 6%;
+    padding-right: 6%;
 }
 
 .key {
     margin: 0;
     padding: 0;
     text-align: center;
-    display: inline-block;
-    width: 8%;
-    height: auto;
+    width: 16.6%;
     float: left;
-    font-size: 40px;
+    font-size: 65px;
 }
