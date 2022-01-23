@@ -11,10 +11,10 @@ problem = 1
 
 //cookie
 if(document.cookie == ''){
-    document.cookie = "highScore=0; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/squaresgame;";
+    document.cookie = "highScore01=0; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/squaresgame;";
 }
 let highScore = document.cookie;
-let highScoreValue = parseInt(highScore.substring(10), 10)
+let highScoreValue = parseInt(highScore.substring(12), 10)
 
 if(highScoreValue == 0){
   console.log('lol')
@@ -68,7 +68,7 @@ function updateField(key, type) {
                 play(level)
                 if(highScoreValue < ((level-1)*10+score)){
                   highScoreValue = (level-1)*10+score
-                  document.cookie = 'highScore='+highScoreValue.toString()+'; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/squaresgame;'
+                  document.cookie = 'highScore01='+highScoreValue.toString()+'; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/squaresgame;'
                     document.getElementById("highScore").innerHTML = 'High Score: ' + highScoreValue
                 }
                 
