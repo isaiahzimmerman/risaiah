@@ -1,0 +1,23 @@
+.titl {
+    font-size: 50px;
+    text-align: center;
+
+}
+
+.scoreContainer{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 25px;
+}
+
+.answer {
+    text-align: center
+}
+
+.problem {
+    text-align: center;
+    font-size: 100px;
+}

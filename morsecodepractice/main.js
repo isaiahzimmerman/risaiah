@@ -1,0 +1,49 @@
+score=0
+
+if(document.cookie == ''){
+    document.cookie = "highScore=0; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+}
+let highScore = document.cookie;
+let highScoreValue = parseInt(highScore.substring(10), 10)
+
+function updateHighScore() {
+    document.getElementById('highScore').innerHTML = 'High Score: '+highScoreValue
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+document.addEventListener('keydown', function (event) {
+    console.log(event.key)
+    if(event.key == 'Enter') {
+        guess(document.getElementById('textBox').value)
+    }
+});
+
+let morseAlphabet = [['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],['.-','-...','-.-.','-..','.','..-.','--.','....','..','.---','-.-','.-..','--','-.','---','.--.','--.-','.-.','...','-','..-','...-','.--','-..-','-.--','--..']]
+
+letter = 0
+
+function newLetter() {
+    letter = getRandomInt(26)
+    document.getElementById('problem').innerHTML = morseAlphabet[0][letter]
+    document.getElementById('textBox').value = ''
+}
+
+function guess(value) {
+    console.log('guess '+value+', correct '+morseAlphabet[1][letter])
+    if(value == morseAlphabet[1][letter]){
+        score+=1
+        document.getElementById('score').innerHTML = 'Score: '+score.toString()
+        newLetter()
+        if(score>highScoreValue){
+            highScoreValue = score
+            document.cookie = "highScore="+highScoreValue+"; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;"
+            updateHighScore()
+        }
+        console.log('u right')
+    } else {
+        console.log('u rong')
+    }
+}

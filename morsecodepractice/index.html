@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="main.js"></script>
+        <title>Morse</title>
+    </head>
+    <body onload="newLetter();
+                  updateHighScore();">
+        <div class='titl'>Morse Code Practice</div>
+        <br>
+        <div class='scoreContainer'>
+            <div class='score' id='score'>Score: 0</div>
+            <div class="highScore" id='highScore'>High Score: 0</div>
+        </div>
+        <br>
+        <div id='problem' class='problem'>r</div>
+        <br>
+        <div class='answer'>
+            <input type='text' id='textBox' placeholder='Answer Here'>
+            <button onclick="guess(document.getElementById('textBox').value)">Go</button>
+        </div>
+    </body>
+</html>
