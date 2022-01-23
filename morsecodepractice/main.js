@@ -1,7 +1,7 @@
 score=0
 
 if(document.cookie == ''){
-    document.cookie = "highScore=0; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+    document.cookie = "highScore=0; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/morsecodepractice;";
 }
 let highScore = document.cookie;
 let highScoreValue = parseInt(highScore.substring(10), 10)
@@ -39,7 +39,7 @@ function guess(value) {
         newLetter()
         if(score>highScoreValue){
             highScoreValue = score
-            document.cookie = "highScore="+highScoreValue+"; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;"
+            document.cookie = "highScore="+highScoreValue+"; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/morsecodepractice;"
             updateHighScore()
         }
         console.log('u right')
