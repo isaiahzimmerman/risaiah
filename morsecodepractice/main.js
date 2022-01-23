@@ -44,6 +44,9 @@ function guess(value) {
         }
         console.log('u right')
     } else {
+        score=0
+        newLetter()
+        window.alert("Sorry, that's wrong. Correct answer is '"+morseAlphabet[1][letter]+"'")
         console.log('u rong')
     }
 }
