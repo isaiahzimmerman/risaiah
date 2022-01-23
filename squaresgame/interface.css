@@ -8,6 +8,10 @@ body {
     
 }
 
+.topBar {
+    padding: 3% 3% 0% 3%;
+}
+
 .score {
     font-size: 50px;
     text-align:center;
