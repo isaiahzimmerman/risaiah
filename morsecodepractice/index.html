@@ -20,5 +20,12 @@
             <input type='text' id='textBox' placeholder='Answer Here'>
             <button onclick="guess(document.getElementById('textBox').value)">Go</button>
         </div>
+        <br>
+        <label for="input-type">Choose mode:</label>
+        <select name="input-type" id="input-type">
+            <option value='standard'>Standard to Morse</option>
+            <option value='morse'>Morse to Standard</option>
+        </select>
+        <button onclick="updateMode()">Switch</button>
     </body>
 </html>
