@@ -35,7 +35,6 @@ function guess(value) {
     console.log('guess '+value+', correct '+morseAlphabet[1][letter])
     if(value == morseAlphabet[1][letter]){
         score+=1
-        document.getElementById('score').innerHTML = 'Score: '+score.toString()
         newLetter()
         if(score>highScoreValue){
             highScoreValue = score
@@ -49,4 +48,5 @@ function guess(value) {
         window.alert("Sorry, that's wrong. Correct answer is '"+morseAlphabet[1][letter]+"'")
         console.log('u rong')
     }
+    document.getElementById('score').innerHTML = 'Score: '+score.toString()
 }
