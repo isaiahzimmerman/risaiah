@@ -15,17 +15,17 @@ body{
 .calendar{
     display: grid;
     grid-template-columns: [col-start] repeat(7, minmax(0,1fr));
-    grid-template-rows: [row-start] 10% [row-start] 80% [row-start] 1fr;
     padding: 3% 5% 5% 5%
 }
 
 .item {
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;
     height: 100%;
     background-color: azure;
-    font-size: 25px;
+    font-size: 1.35rem;
     height: 6.5rem;
     padding: 5% 5% 5% 5%
 }
