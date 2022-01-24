@@ -63,7 +63,7 @@ function guess(value) {
             updateHighScore()
         }
         console.log('u right')
-    } else {
+    } else if(value != '') {
         score=0
         window.alert("Sorry, that's wrong. Correct answer is '"+morseAlphabet[mode[1]][letter]+"'")
         newLetter()
