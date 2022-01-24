@@ -15,9 +15,12 @@ h1 {
 }
 
 div.item {
+    /* To correctly align image, regardless of content height: */
     vertical-align: top;
     display: inline-block;
+    /* To horizontally center images and caption */
     text-align: center;
+    /* The width of the container also implies margin around the images. */
     width: 30%;
 }
 
