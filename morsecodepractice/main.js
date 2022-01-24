@@ -8,6 +8,7 @@ let highScoreValue = parseInt(highScore.substring(12), 10)
 
 morseMode = true
 mode = [0,1]
+oldLetter = ''
 
 function updateMode() {
     if(document.getElementById('input-type').value == 'standard') {
@@ -48,6 +49,10 @@ letter = 0
 
 function newLetter() {
     letter = getRandomInt(26)
+    while (letter == oldLetter){
+        letter = getRandomInt(26)
+    }
+    oldLetter = letter
     document.getElementById('problem').innerHTML = morseAlphabet[mode[0]][letter]
     document.getElementById('textBox').value = ''
 }
