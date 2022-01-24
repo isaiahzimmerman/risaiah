@@ -29,3 +29,16 @@ body{
     height: 6.5rem;
     padding: 5% 5% 5% 5%
 }
+
+.dummy {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: azure;
+    font-size: 1.35rem;
+    height: 6.5rem;
+    padding: 5% 5% 5% 5%;
+    color: #777777;
+}
