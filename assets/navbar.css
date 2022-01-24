@@ -1,0 +1,24 @@
+.navbar {
+    display: grid;
+    grid-template-columns: [col-start] 10% minmax(0, 1fr) [col-start];
+    padding-bottom: 3%;
+}
+
+.navlogo {
+    vertical-align: top;
+    height: auto;
+    width: auto;
+    background-color: antiquewhite;
+}
+
+.navitem {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+    padding: 20px 0;
+}
+
+img {
+    width: 100%
+}
