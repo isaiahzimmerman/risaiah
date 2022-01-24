@@ -95,6 +95,9 @@ function updateField(key, type) {
             mainNumber[3] = '_'
             
             filledSpaces -= 1
+            if (filledSpaces<0){
+              filledSpaces=0
+            }
         }
     }
     document.getElementById("input1").innerHTML = mainNumber[3];
