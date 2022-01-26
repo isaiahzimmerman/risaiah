@@ -1,5 +1,7 @@
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="main.js"></script>
     </head>
     <body>
         <div class='title'>
@@ -8,13 +10,14 @@
             <span class='description'>
             </span>
             <div class='input'>
-                <input type='text' placeholder='1'>
-                <input type='text' placeholder='2'>
+                <input type='text' placeholder='1' id='inputNum'>
+                <input type='text' placeholder='2' id='inputDen'>
             </div>
             <div class='output'>
-                <input type='text' placeholder='3'>
-                <input type='text' placeholder='4'>
+                <input type='text' placeholder='3' id='outputNum'>
+                <input type='text' placeholder='4' id='outputDen'>
             </div>
+            <button onclick="analyze(document.getElementById('inputNum').value, document.getElementById('inputDen').value, document.getElementById('outputNum').value, document.getElementById('outputDen').value)">Go</button>
         </div>
     </body>
 </html>

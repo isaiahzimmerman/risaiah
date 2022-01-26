@@ -1,0 +1,5 @@
+.content {
+    display: grid;
+    grid-template-columns: [col-start] 1fr [col-start] 1fr [col-start] 1fr [col-start] 1fr;
+    grid-template-rows: ;
+}
