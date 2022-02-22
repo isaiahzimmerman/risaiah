@@ -1,0 +1,18 @@
+top row
+    draw pile, card from pile, 4 spots for aces
+next row
+    7 columns of cards
+    each column is an array that stores data
+        card is flipped = bool value
+        card = number value(1-13)
+            1-10 : card value, 11 = jack, 12=queen, 13=king.
+        suit = int
+            0=diamonds
+            1=spades
+            2=hearts
+            3=clubs
+
+use innerhtml to edit each div when drawing columns of cards
+
+use something like this for the cards
+document.getElementById('image2').style.transform = 'translate(-50%, +250%)'

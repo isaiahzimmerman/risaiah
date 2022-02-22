@@ -1,23 +1,24 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="main.js"></script>
+        <script src="changeContent.js"></script>
     </head>
     <body>
         <div class='title'>
         </div>
-        <div class='content'>
-            <span class='description'>
-            </span>
-            <div class='input'>
-                <input type='text' placeholder='1' id='inputNum'>
-                <input type='text' placeholder='2' id='inputDen'>
-            </div>
-            <div class='output'>
-                <input type='text' placeholder='3' id='outputNum'>
-                <input type='text' placeholder='4' id='outputDen'>
-            </div>
-            <button onclick="analyze(document.getElementById('inputNum').value, document.getElementById('inputDen').value, document.getElementById('outputNum').value, document.getElementById('outputDen').value)">Go</button>
+        
+        <!-- switches type of calculator -->
+        <label for="input-type">Choose mode:</label>
+        <select name="input-type" id="input-type">
+            <option value='standard'>Standard to Morse</option>
+            <option value='morse'>Morse to Standard</option>
+        </select>
+        <button onclick="updateMode(document.getElementById('input-type').value)">Switch</button>
+        
+        <div class='content' id='content'>
+            
         </div>
     </body>
 </html>

@@ -1,0 +1,26 @@
+.gameContainer{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.row1{
+    display: grid;
+    grid-template-columns: repeat(9, 11.1%);
+    height: fit-content;
+}
+
+.row2{
+    display: grid;
+    grid-template-columns: repeat(9, 11.1%);
+}
+
+.cardStack{
+    position: relative;
+    width: 100%;
+}
+
+.card{
+    width: 100%;
+    position: absolute;
+    left: 0%;
+}
