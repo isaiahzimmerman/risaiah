@@ -29,7 +29,7 @@ function randomCard(){
             break;
 
     }
-    return [suit, (Math.randInt(13)+1), true]
+    return [suit, (Math.randInt(13)+1), false]
 }
 
 board = [
@@ -73,18 +73,29 @@ function randomBoard(){
     board[3].push(randomCard())
     board[3].push(randomCard())
     board[3].push(randomCard())
+    board[4] = []
+    board[4].push(randomCard())
+    board[4].push(randomCard())
+    board[4].push(randomCard())
+    board[4].push(randomCard())
+    board[4].push(randomCard())
+    board[5] = []
+    board[5].push(randomCard())
+    board[5].push(randomCard())
+    board[5].push(randomCard())
+    board[5].push(randomCard())
+    board[5].push(randomCard())
+    board[5].push(randomCard())
+    board[6] = []
+    board[6].push(randomCard())
+    board[6].push(randomCard())
+    board[6].push(randomCard())
+    board[6].push(randomCard())
+    board[6].push(randomCard())
+    board[6].push(randomCard())
+    board[6].push(randomCard())
 
     drawBoard()
-}
-
-function test(){
-    randomCard('play1')
-    randomCard('play2')
-    randomCard('play3')
-    randomCard('play4')
-    randomCard('play5')
-    randomCard('play6')
-    randomCard('play7')
 }
 
 function drawBoard(){
@@ -92,7 +103,10 @@ function drawBoard(){
         newValue = ''
         topIndex = index
         item.forEach(function (item, index){
-            console.log(item[2])
+            //flips top card
+            if(!item[2] && (board[topIndex].length == (index+1))){
+                item[2] = true
+            }
 
             //determines if card face is visible
             if(item[2]){
@@ -109,8 +123,10 @@ function drawBoard(){
         })
         document.getElementById('play'+index).innerHTML = newValue
         
-        item.forEach(function (index){
+        item.forEach(function (item, index){
+            console.log('play'+topIndex+"_"+index)
             document.getElementById('play'+topIndex+"_"+index).style.top = (index*18 + '%')
+            
         })
     });
 }
