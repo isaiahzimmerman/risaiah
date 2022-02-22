@@ -1,3 +1,5 @@
+selected = [false]
+
 function drawStack() {}
 
 const deckOfCards = [
@@ -104,29 +106,61 @@ function drawBoard(){
         topIndex = index
         item.forEach(function (item, index){
             //flips top card
-            if(!item[2] && (board[topIndex].length == (index+1))){
-                item[2] = true
+            if(item != undefined){
+                if(!item[2] && (board[topIndex].length == (index+1))){
+                    item[2] = true
+                }
+
+                //determines if card face is visible
+                if(item[2]){
+                    source = "./cards/"+item[0]+'_'+item[1]+".svg"
+                }else{
+                    source = "./cards/back.svg"
+                }
+
+                newValue += "<img class='card' onclick='select("+topIndex+","+index+")' id='play"+topIndex+"_"+index+"' src="+source+">"
             }
-
-            //determines if card face is visible
-            if(item[2]){
-                source = "./cards/"+item[0]+'_'+item[1]+".svg"
-            }else{
-                source = "./cards/back.svg"
-            }
-
-
-            newValue += "<img class='card' id='play"+topIndex+"_"+index+"' src="+source+">"
-            
-            console.log("topIndex "+topIndex+", index "+index)
-            console.log(newValue)
         })
         document.getElementById('play'+index).innerHTML = newValue
+        if(item[0] == undefined){
+            document.getElementById('play'+index).innerHTML = "<img class='card' onclick='select("+index+",0)' id='play"+index+"_0' src='./cards/blank.svg'>"
+        }
         
         item.forEach(function (item, index){
-            console.log('play'+topIndex+"_"+index)
-            document.getElementById('play'+topIndex+"_"+index).style.top = (index*18 + '%')
+            if(item!=undefined){
+                document.getElementById('play'+topIndex+"_"+index).style.top = (index*18 + '%')
+            }
             
         })
+        
+
     });
+}
+
+function moveStack(move1, move2, target1, target2){
+    board[target1].push(board[move1][move2])
+    board[move1].pop()
+    drawBoard()
+}
+
+function select(index1, index2){
+    console.log(board[index1][board[index1].length - 1])
+    if(selected[0]){
+        selected[0] = !selected[0]
+        if(board[index1][board[index1].length - 1] == undefined){
+            console.log(board[selected[1]][board[selected[1]].length - 1][1])
+            if(board[selected[1]][board[selected[1]].length - 1][1]==13){
+                moveStack(selected[1], selected[2], index1, index2)
+            }
+        }else{
+            moveStack(selected[1], selected[2], index1, index2)
+        }
+    }else{
+        if(board[index1][board[index1].length - 1] != undefined){
+            selected[1] = index1
+            selected[2] = index2
+            selected[0] = !selected[0]
+        }
+    }
+    
 }
