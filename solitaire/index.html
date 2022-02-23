@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
 </head>
-<body onload="randomBoard()">
+<body onload="createBoard()">
     <h1 id="these">Solitaire</h1>
     <div class="gameContainer">
         <div class="row1">
             <div></div>
-            <img class='cardStack' id="deck1"  src="./cards/back.svg">
-            <img class='cardStack' id="deck2" src="./cards/blank.svg">
+            <img class='cardStack' onclick="drawCard()" id="deck0"  src="./cards/back.svg">
+            <img class='cardStack' onclick="fromDrawPile()" id="deck1" src="./cards/blank.svg">
             <div></div>
             <img class='cardStack' id="pile0" onclick="placeOnDeck(0)" src="./cards/blank.svg">
             <img class='cardStack' id="pile1" onclick="placeOnDeck(1)" src="./cards/blank.svg">
