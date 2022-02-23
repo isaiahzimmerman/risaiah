@@ -164,6 +164,16 @@ function drawBoard(){
     }else{
         document.getElementById('deck1').src = "./cards/blank.svg"
     }
+
+    if(checkWin()){
+        window.location.href = "./youwin"
+    }
+}
+
+function checkWin(){
+    if(solvePile[0][1] == solvePile[1][1] == solvePile[2][1] == solvePile[3][1] == 13){
+        return true
+    }
 }
 
 function isValid(column1, row1, column2, row2) {
