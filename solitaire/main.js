@@ -271,21 +271,25 @@ function fromDrawPile(){
 }
 
 function placeOnDeck(deck){
-    console.log('SElected: '+board[selected[1]][selected[2]][1]+' target: '+solvePile[deck][1]+1)
+    console.log('SElected: '+board[selected[1]][selected[2]][1]+' target: '+ (solvePile[deck][1]+1))
     if(selected[0]){
-        if(solvePile[deck][1]+1 == board[selected[1]][selected[2]][1]){
-            console.log("./cards/"+board[selected[1]][selected[2]][0]+"_"+board[selected[1]][selected[2]][1])
-            document.getElementById('pile'+deck).src = "./cards/"+board[selected[1]][selected[2]][0]+"_"+board[selected[1]][selected[2]][1]+'.svg'
-            board[selected[1]].pop()
-            solvePile[deck][1]++
-            selected[0] = !selected[0]
+        if((solvePile[deck][1]+1) === board[selected[1]][selected[2]][1]){
+            if(solvePile[deck][1] == 0){
+                console.log('jaja')
+                solvePile[deck][0] = board[selected[1]][selected[2]][0]
+            }
+            if(solvePile[deck][0] == board[selected[1]][selected[2]][0]){
+                console.log("./cards/"+board[selected[1]][selected[2]][0]+"_"+board[selected[1]][selected[2]][1])
+                document.getElementById('pile'+deck).src = "./cards/"+board[selected[1]][selected[2]][0]+"_"+board[selected[1]][selected[2]][1]+'.svg'
+                board[selected[1]].pop()
+                solvePile[deck][1]++
+                selected[0] = !selected[0]
+                if(selected[1] == 7){
+                    drawPile.splice(currentDrawnCard, 1)
+                    currentDrawnCard-=1
+                }
+            }
         }
-
-        if(selected[1] == 7){
-            drawPile.splice(currentDrawnCard, 1)
-            currentDrawnCard-=1
-        }
-
         drawBoard()
     }
 }
