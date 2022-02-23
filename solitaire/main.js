@@ -124,6 +124,13 @@ function createBoard(){
     drawBoard()
 }
 
+function checkWin(){
+    if((solvePile[0][1] == solvePile[1][1]) && (solvePile[2][1] == solvePile[3][1]) && (solvePile [0][1] == 13)){
+        return true
+    }
+    return false
+}
+
 function drawBoard(){
     board.forEach(function (item, index) {
         if(index<7){
@@ -168,13 +175,6 @@ function drawBoard(){
     if(checkWin()){
         window.location.href = "./youwin"
     }
-}
-
-function checkWin(){
-    if(solvePile[0][1] == solvePile[1][1] == solvePile[2][1] == solvePile[3][1] == 13){
-        return true
-    }
-    return false
 }
 
 function isValid(column1, row1, column2, row2) {
