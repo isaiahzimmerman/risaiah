@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- header -->
+        <script src="/assets/header/header.js"></script>
+        <link rel="stylesheet" href="/assets/header/header.css">
+        <!-- header -->
+        <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="./interface.css" />
         <script src="./main.js"></script>
         <title>Squares Game</title>
     </head>
     <body onload="play(1)">
+        <!-- header -->
+        <div w3-include-html="/assets/header/header.html"></div>
+        <script>includeHTML()</script>
+        <!-- header -->
         <div class=‘gameContainer’>
             <div class='topBar'>
                 <p id='level' class='level'>Level: 1</p>

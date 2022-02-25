@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- header -->
+    <script src="/assets/header/header.js"></script>
+    <link rel="stylesheet" href="/assets/header/header.css">
+    <!-- header -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solitaire</title>
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
+
 </head>
 <body onload="createBoard()">
-    <h1 id="these">Solitaire</h1>
+    <!-- header -->
+    <div w3-include-html="/assets/header/header.html"></div>
+    <script>includeHTML()</script>
+    <!-- header -->
     <div class="gameContainer">
+        <div class="titleText">Solitaire</div>
         <div class="row1">
             <div></div>
             <img class='cardStack' onclick="drawCard()" id="deck0"  src="./cards/back.svg">
