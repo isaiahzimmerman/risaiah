@@ -46,7 +46,7 @@ function shuffle(array) {
     return array;
 }
 
-shuffledDeck = shuffle(deckOfCards)
+shuffledDeck = shuffle(shuffle(deckOfCards))
 
 Math.randInt = function(max) {
     return Math.floor(Math.random()*max)
