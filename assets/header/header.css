@@ -1,6 +1,12 @@
+@font-face {
+  font-family: isaiahFont;
+  src: url(/assets/IsaiahFont-Regular.otf);
+}
+
 .header_title {
     position: absolute;
     top: 2%;
     left: 2%;
     font-size: 1.5rem;
+    font-family: isaiahFont
 }
