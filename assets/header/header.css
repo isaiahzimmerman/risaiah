@@ -3,10 +3,16 @@
   src: url(/assets/IsaiahFont-Regular.otf);
 }
 
-.header_title {
-    position: absolute;
-    top: 2%;
-    left: 2%;
-    font-size: 1.5rem;
-    font-family: isaiahFont
+.header_container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 5fr;
+  background-color: lightgrey;
+}
+
+.header_element {
+  padding: 7% 0% 7% 0%;
+  font-size: 1.8rem;
+  font-family: isaiahFont;
+  display: flex;
+  justify-content: center;
 }
