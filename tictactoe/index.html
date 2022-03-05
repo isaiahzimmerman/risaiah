@@ -10,22 +10,30 @@
 <body>
     
     <div class="gamecontainer">
+        <div></div> 
+        <div onclick="restart()">
+            <h3 id="title">TicTacToe</h3>
+        </div>
+        
         <div></div>
-        <div><h3 id="title">TicTacToe</h3></div>
-        <div></div>
-
         <div></div>
         <div class="board">
             
-            <div class="box" id="one"></div>
-            <div class="box" id="two"></div>
-            <div class="box" id="three"></div>
-            <div class="box" id="four"></div>
-            <div class="box" id="five"></div>
-            <div class="box" id="six"></div>
-            <div class="box" id="seven"></div>
-            <div class="box" id="eight"></div>
-            <div class="box" id="nine"></div>
+            <div class="box" onclick="turn(0)"id="box0"></div>
+            <div class="box" onclick="turn(1)"id="box1"></div>
+            <div class="box" onclick="turn(2)"id="box2"></div>
+            <div class="box" onclick="turn(3)"id="box3"></div>
+            <div class="box" onclick="turn(4)"id="box4"></div>
+            <div class="box" onclick="turn(5)"id="box5"></div>
+            <div class="box" onclick="turn(6)"id="box6"></div>
+            <div class="box" onclick="turn(7)"id="box7"></div>
+            <div class="box" onclick="turn(8)"id="box8"></div>
+        </div>
+
+        <div></div>
+        <div></div>
+        <div>
+            <h2 id="winner"></h2>
         </div>
         <div></div>
         <div></div>

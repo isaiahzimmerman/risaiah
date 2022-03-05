@@ -3,34 +3,48 @@ body{
     background-color: #719DB1;
 }
 
+#winner{
+    margin-top: 7%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #2F2D2E;
+}
+
+
+
 .gamecontainer{
     display: grid;
-    grid-template-columns:1f 2f 1f;
-    grid-template-rows: auto 2f auto;
+    grid-template-columns:auto auto auto;
+    grid-template-rows: auto auto auto auto;
     justify-content: center;
+
 }
 .board{
     background-color: #628395;
     display:grid;
-    grid-template-columns: auto auto auto  ;
-    grid-template-rows: auto auto auto;
-    justify-content: center;
+    grid-template-columns:auto auto auto;
+    grid-template-rows:auto auto auto;
     gap: 0.8rem;
     border-radius: 1rem 1rem 1rem 1rem;
+    
 
 }
 .box{
     width: 6rem;
     height: 6rem;
     background-color: #719DB1;
-    text-align: center;
-
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1A2930;
     
 }
 #title{
-    position: relative;
+    
     color: #2F2D2E;
     text-align: center;
-    bottom: 1.5rem;
     font-size: 30px;
 }
+
+
