@@ -10,13 +10,13 @@
 
 .row1{
     display: grid;
-    grid-template-columns: repeat(9, 11.1%);
+    grid-template-columns: repeat(9, 1fr);
     height: fit-content;
 }
 
 .row2{
     display: grid;
-    grid-template-columns: repeat(9, 11.1%);
+    grid-template-columns: repeat(9, 1fr);
 }
 
 .cardStack{

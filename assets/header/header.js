@@ -25,3 +25,7 @@ function includeHTML() {
       }
     }
   };
+
+ function header_draw_back(){
+  document.getElementById('header_back_button').innerHTML="bacl"
+ }

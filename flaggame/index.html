@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Flag Game</title>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
+
     <!-- header -->
     <script src="/assets/header/header.js"></script>
     <link rel="stylesheet" href="/assets/header/header.css">
@@ -17,5 +18,11 @@
     <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
     <!-- header -->
+    <div class="title" id="title">Las Banderas de los paises que decir espanol</div>
+    <div class="mainContainer" id="mainContainer">
+        <div class="buttonChoice" onclick="playGame('matching')">Matching</div>
+        <div></div>
+        <div class="buttonChoice" onclick="playGame('typing')">Typing</div>
+    </div>
 </body>
 </html>
