@@ -8,11 +8,12 @@ body{
     margin-top: 7%;
     text-align: center;
     font-size: 1.5rem;
-    color: #2F2D2E;
+    color: #587586;
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
+    
 
 }
 
@@ -21,7 +22,7 @@ body{
 .gamecontainer{
     display: grid;
     grid-template-columns:auto auto auto;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto 10px 10px;
     justify-content: center;
 
 }

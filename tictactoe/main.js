@@ -42,17 +42,17 @@ function winCheck(){
         if(board[0]==="X"){
             winner.innerHTML="X Wins!"
             gameOver=true
-            boxZero.style.color="#B1717D"
-            boxOne.style.color="#B1717D"
-            boxTwo.style.color="#B1717D"
+            boxZero.style.color="#9DB171"
+            boxOne.style.color="#9DB171"
+            boxTwo.style.color="#9DB171"
             scoreX+=1
 
         }else if(board[0]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
-            boxZero.style.color="#B1717D"
-            boxOne.style.color="#B1717D"
-            boxTwo.style.color="#B1717D"
+            boxZero.style.color="#9DB171"
+            boxOne.style.color="#9DB171"
+            boxTwo.style.color="#9DB171"
             scoreY+=1
         }
         
@@ -62,16 +62,16 @@ function winCheck(){
         if(board[3]==="X"){
             winner.innerHTML="X Wins!"
             gameOver=true
-            boxThree.style.color="#B1717D"
-            boxFour.style.color="#B1717D"
-            boxFive.style.color="#B1717D"
+            boxThree.style.color="#9DB171"
+            boxFour.style.color="#9DB171"
+            boxFive.style.color="#9DB171"
             scoreX+=1
         }else if(board[3]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
-            boxThree.style.color="#B1717D"
-            boxFour.style.color="#B1717D"
-            boxFive.style.color="#B1717D"
+            boxThree.style.color="#9DB171"
+            boxFour.style.color="#9DB171"
+            boxFive.style.color="#9DB171"
             scoreY+=1
         }
 
@@ -81,16 +81,16 @@ function winCheck(){
         if(board[6]==="X"){
             winner.innerHTML="X Wins!"
             gameOver=true
-            boxSix.style.color="#B1717D"
-            boxSeven.style.color="#B1717D"
-            boxEight.style.color="#B1717D"
+            boxSix.style.color="#9DB171"
+            boxSeven.style.color="#9DB171"
+            boxEight.style.color="#v"
             scoreX+=1            
         }else if(board[6]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
-            boxSix.style.color="#B1717D"
-            boxSeven.style.color="#B1717D"
-            boxEight.style.color="#B1717D"
+            boxSix.style.color="#9DB171"
+            boxSeven.style.color="#9DB171"
+            boxEight.style.color="#9DB171"
             scoreY+=1         
         }
 
@@ -157,16 +157,16 @@ function winCheck(){
         if(board[0]==="X"){
             winner.innerHTML="X Wins!"
             gameOver=true
-            boxZero.style.color="#B1717D"
-            boxFour.style.color="#B1717D"
-            boxEight.style.color="#B1717D"
+            boxZero.style.color="#717DB1"
+            boxFour.style.color="#717DB1"
+            boxEight.style.color="#717DB1"
             scoreX+=1
         }else if(board[0]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
-            boxZero.style.color="#B1717D"
-            boxFour.style.color="#B1717D"
-            boxEight.style.color="#B1717D" 
+            boxZero.style.color="#717DB1"
+            boxFour.style.color="#717DB1"
+            boxEight.style.color="#717DB1" 
             scoreY+=1
         }
 
@@ -176,16 +176,16 @@ function winCheck(){
         if(board[2]==="X"){
             winner.innerHTML="X Wins!"
             gameOver=true
-            boxTwo.style.color="#B1717D"
-            boxFour.style.color="#B1717D"
-            boxSix.style.color="#B1717D" 
+            boxTwo.style.color="#717DB1"
+            boxFour.style.color="#717DB1"
+            boxSix.style.color="#717DB1" 
             scoreX+=1
         }else if(board[2]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
-            boxTwo.style.color="#B1717D"
-            boxFour.style.color="#B1717D"
-            boxSix.style.color="#B1717D"    
+            boxTwo.style.color="#717DB1"
+            boxFour.style.color="#717DB1"
+            boxSix.style.color="#717DB1"    
             scoreY+=1
         }
 
@@ -219,11 +219,11 @@ function turn(number){
     }
     //colors whose turn it is
     if(xturn){
-        colorX.style.color="#CBD6DD"
+        colorX.style.color="#BCC7CE"
         colorO.style.color="#628395"
     }
     if(xturn==false){
-        colorO.style.color="#CBD6DD"
+        colorO.style.color="#BCC7CE"
         colorX.style.color="#628395"
     }
 
@@ -267,11 +267,11 @@ function restart(){
             xturn=false
         }
         if(xturn){
-            colorX.style.color="#CBD6DD"
+            colorX.style.color="#BCC7CE"
             colorO.style.color="#628395"
         }
         if(xturn==false){
-            colorO.style.color="#CBD6DD"
+            colorO.style.color="#BCC7CE"
             colorX.style.color="#628395"
         }
     
