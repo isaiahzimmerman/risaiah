@@ -3,11 +3,17 @@ body{
     background-color: #719DB1;
 }
 
+
 #winner{
     margin-top: 7%;
     text-align: center;
     font-size: 1.5rem;
     color: #2F2D2E;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+
 }
 
 
@@ -37,14 +43,32 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #1A2930;
+    color: #2F2D2E;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+
     
 }
 #title{
     
-    color: #2F2D2E;
+    color: #587586;
     text-align: center;
     font-size: 30px;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+
+
 }
 
-
+.scoreboard{
+    display: flex;
+    flex-direction: row;
+    text-decoration-line: underline;
+    justify-content: space-between;
+    font-size: 3rem;
+    color: #628395;
+}

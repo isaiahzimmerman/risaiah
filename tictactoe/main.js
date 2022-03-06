@@ -22,7 +22,21 @@ var boxSeven= document.getElementById("box7")
 var boxEight= document.getElementById("box8")
 
 
+
+var colorX= document.getElementById("scoreX")
+var colorO= document.getElementById("scoreO")
+
+
+
+
+
+let scoreX=0
+let scoreY=0
+
+
 function winCheck(){
+    
+    
     //Top Row Horizontal
     if((board[0]===board[1] && board[0]===board[2])){
         if(board[0]==="X"){
@@ -31,12 +45,15 @@ function winCheck(){
             boxZero.style.color="#B1717D"
             boxOne.style.color="#B1717D"
             boxTwo.style.color="#B1717D"
+            scoreX+=1
+
         }else if(board[0]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
             boxZero.style.color="#B1717D"
             boxOne.style.color="#B1717D"
             boxTwo.style.color="#B1717D"
+            scoreY+=1
         }
         
     }
@@ -48,12 +65,14 @@ function winCheck(){
             boxThree.style.color="#B1717D"
             boxFour.style.color="#B1717D"
             boxFive.style.color="#B1717D"
+            scoreX+=1
         }else if(board[3]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
             boxThree.style.color="#B1717D"
             boxFour.style.color="#B1717D"
             boxFive.style.color="#B1717D"
+            scoreY+=1
         }
 
     }
@@ -64,13 +83,15 @@ function winCheck(){
             gameOver=true
             boxSix.style.color="#B1717D"
             boxSeven.style.color="#B1717D"
-            boxEight.style.color="#B1717D"            
+            boxEight.style.color="#B1717D"
+            scoreX+=1            
         }else if(board[6]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
             boxSix.style.color="#B1717D"
             boxSeven.style.color="#B1717D"
-            boxEight.style.color="#B1717D"             
+            boxEight.style.color="#B1717D"
+            scoreY+=1         
         }
 
     }
@@ -81,13 +102,15 @@ function winCheck(){
             gameOver=true
             boxZero.style.color="#B1717D"
             boxThree.style.color="#B1717D"
-            boxSix.style.color="#B1717D"             
+            boxSix.style.color="#B1717D"  
+            scoreX+=1          
         }else if(board[0]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
             boxZero.style.color="#B1717D"
             boxThree.style.color="#B1717D"
-            boxSix.style.color="#B1717D"    
+            boxSix.style.color="#B1717D"  
+            scoreY+=1  
         }
 
     }
@@ -98,13 +121,15 @@ function winCheck(){
             gameOver=true
             boxOne.style.color="#B1717D"
             boxFour.style.color="#B1717D"
-            boxSeven.style.color="#B1717D"    
+            boxSeven.style.color="#B1717D" 
+            scoreX+=1   
         }else if(board[1]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
             boxOne.style.color="#B1717D"
             boxFour.style.color="#B1717D"
-            boxSeven.style.color="#B1717D"  
+            boxSeven.style.color="#B1717D" 
+            scoreY+=1 
         }
 
     }
@@ -116,12 +141,14 @@ function winCheck(){
             boxTwo.style.color="#B1717D"
             boxFive.style.color="#B1717D"
             boxEight.style.color="#B1717D"  
+            scoreX+=1
         }else if(board[2]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
             boxTwo.style.color="#B1717D"
             boxFive.style.color="#B1717D"
             boxEight.style.color="#B1717D"  
+            scoreY+=1
         }
 
     }
@@ -132,13 +159,15 @@ function winCheck(){
             gameOver=true
             boxZero.style.color="#B1717D"
             boxFour.style.color="#B1717D"
-            boxEight.style.color="#B1717D"  
+            boxEight.style.color="#B1717D"
+            scoreX+=1
         }else if(board[0]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
             boxZero.style.color="#B1717D"
             boxFour.style.color="#B1717D"
             boxEight.style.color="#B1717D" 
+            scoreY+=1
         }
 
     }
@@ -150,16 +179,23 @@ function winCheck(){
             boxTwo.style.color="#B1717D"
             boxFour.style.color="#B1717D"
             boxSix.style.color="#B1717D" 
+            scoreX+=1
         }else if(board[2]==="O"){
             winner.innerHTML="O Wins!"
             gameOver=true
             boxTwo.style.color="#B1717D"
             boxFour.style.color="#B1717D"
             boxSix.style.color="#B1717D"    
+            scoreY+=1
         }
 
     }
-   
+   else if(board.includes("")==false){
+       winner.innerHTML="Draw"
+       gameOver=true
+   }
+   let valueX= document.getElementById("scoreX").innerHTML= "X: " + scoreX
+    let valueY= document.getElementById("scoreO").innerHTML= "O: " + scoreY 
 }
 function drawBoard(){
     for (let i=0; i<9; i++){
@@ -168,6 +204,7 @@ function drawBoard(){
     }
 }
 function turn(number){
+    //switches turns
     let boxnumber= document.getElementById("box"+number)
     if (boxnumber.innerHTML== "" && gameOver==false){
 
@@ -180,8 +217,19 @@ function turn(number){
         drawBoard()
         winCheck()
     }
+    //colors whose turn it is
+    if(xturn){
+        colorX.style.color="#CBD6DD"
+        colorO.style.color="#628395"
+    }
+    if(xturn==false){
+        colorO.style.color="#CBD6DD"
+        colorX.style.color="#628395"
+    }
+
 }
 function restart(){
+
     if(gameOver==true){
         //clears board
         board= [
@@ -208,8 +256,26 @@ function restart(){
         gameOver=false
 
         drawBoard()
+
+        //randomizes turn
+        let turnRandomizer= Math.floor(Math.random()*10)
+
+        if (turnRandomizer<=4){
+            xturn=true
+        }
+        if(turnRandomizer>=5){
+            xturn=false
+        }
+        if(xturn){
+            colorX.style.color="#CBD6DD"
+            colorO.style.color="#628395"
+        }
+        if(xturn==false){
+            colorO.style.color="#CBD6DD"
+            colorX.style.color="#628395"
+        }
+    
+
+
     }
-
-
-
 }
