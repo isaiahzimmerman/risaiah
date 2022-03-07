@@ -23,9 +23,16 @@ body {
 
 .flag{
     height: 17rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.matching{
+.matching_flag{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .matching_options{
@@ -46,6 +53,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.matching_text{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    padding-top: 10%;
 }
 
 .typing{
