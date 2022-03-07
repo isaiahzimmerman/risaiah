@@ -83,7 +83,7 @@ function winCheck(){
             gameOver=true
             boxSix.style.color="#9DB171"
             boxSeven.style.color="#9DB171"
-            boxEight.style.color="#v"
+            boxEight.style.color="#9DB171"
             scoreX+=1            
         }else if(board[6]==="O"){
             winner.innerHTML="O Wins!"
