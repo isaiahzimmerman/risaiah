@@ -45,6 +45,7 @@ function gameOver() {
     ajax.open("GET", "gameOver.htm", false);
     ajax.send();
     document.getElementById('mainContainer').innerHTML = ajax.responseText
+    document.getElementById('gameover_score').innerHTML = '32'
 }
 
 //both
@@ -103,6 +104,7 @@ function matchingDrawOptions(){
 function nextFlag(){
     changeFlag(gameOrder[currentFlagIndex][0])
     matchingDrawOptions()
+    currentFlagIndex += 1
 }
 
 function matchingGuessFlag(guess){
@@ -122,7 +124,6 @@ function matchingGuessFlag(guess){
         }
         document.getElementById("matching_score").innerHTML = "Score: "+score+'/'+(currentFlagIndex)
         nextFlag()
-        currentFlagIndex += 1
     }
 }
 //typing
