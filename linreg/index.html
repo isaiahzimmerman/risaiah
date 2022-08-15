@@ -14,14 +14,27 @@
     <link rel="stylesheet" href="/assets/header/header.css">
     <!-- header -->
 </head>
-<body>
+<body onload="loadChart(); refreshData()">
     <!-- header -->
     <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
     <!-- header -->
     <div class="container">
-        <div>
-            hi
+        <div class="inputs">
+            <div id="chartData"></div>
+            <div class="inputBoxes">
+                <span class="textByBoxes">x =</span>
+                <input id="xData" type="text">
+                <span class="textByBoxes">y =</span>
+                <input id="yData" type="text">
+                <button onClick="addData(parseFloat(document.getElementById('xData').value, 10), parseFloat(document.getElementById('yData').value, 10))">add data</button>
+            </div>
+            <div>
+                <button onclick="calculateResults(xyValues)">calculate</button>
+                <button onclick="graphResults()">graph result</button>
+            </div>
+            <div id ="results">
+            </div>
         </div>
         <div>
             <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
