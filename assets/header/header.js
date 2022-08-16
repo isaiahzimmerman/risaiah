@@ -1,4 +1,14 @@
+function pollDOM() {
+  const el = document.getElementById('header_back_button');
+  if (el != null) {
+    header_draw_back()
+  } else {
+    setTimeout(pollDOM, 300); // try again in 300 milliseconds
+  }
+}
+
 function includeHTML() {
+  pollDOM()
     var z, i, elmnt, file, xhttp;
     /*loop through a collection of all HTML elements:*/
     z = document.getElementsByTagName("*");
@@ -24,8 +34,11 @@ function includeHTML() {
         return;
       }
     }
-  };
+};
 
- function header_draw_back(){
-   document.getElementById('header_back_button').innerHTML="bacl"
- }
+function header_draw_back(){
+  if(window.location.pathname.split('/').length > 3){
+    document.getElementById('header_back_button').innerHTML="Back"
+  }
+}
+
