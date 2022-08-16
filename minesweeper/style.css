@@ -1,0 +1,17 @@
+div.gameContainer {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    padding-left: 30%;
+    padding-top: 3%;
+    padding-right: 30%;
+}
+
+.cell {
+    aspect-ratio: 1;
+    background-color: gray;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
