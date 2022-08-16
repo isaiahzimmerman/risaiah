@@ -167,6 +167,6 @@ function calculateResults(dataSet){
 
 function graphResults(){
     answer = calculateResults(xyValues)
-    generateData(parseFloat(output[0], 10), parseFloat(output[1], 10), Xmin, Xmax, 5)
+    generateData(parseFloat(output[0], 10), parseFloat(output[1], 10), Xmin, Xmax, (Xmax-Xmin)/20)
     loadChart()
 }
