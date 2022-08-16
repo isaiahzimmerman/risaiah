@@ -9,13 +9,14 @@ var siteList = [
     {title: 'Squares Game', path: '/squaresgame/', icon: '/assets/square.png'},
     {title: 'Morse Code Practice', path: '/morsecodepractice/', icon: '/assets/imposter.png'},
     {title: 'Birthday Calculator', path: '/birthdaycalculator/', icon: '/assets/cake.png'},
+    {title: 'Linear Regression Calculator', path: '/linreg/', icon: '/assets/chart.png'},
 ]
 
 bodyHTML = ""
 
 function loadSite(){
     siteList.forEach(function(currentValue, index){
-        if(index%3==0){
+        if(index%4==0){
             bodyHTML+=`<div class="container">`
         }
 
@@ -27,7 +28,7 @@ function loadSite(){
             </a>
         </div>`
 
-        if(index%3==2){
+        if(index%4==3){
             bodyHTML+=`</div>`
         }
     })

@@ -21,7 +21,9 @@ div.item {
     /* To horizontally center images and caption */
     text-align: center;
     /* The width of the container also implies margin around the images. */
-    width: 30%;
+    width: 21%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 img {
@@ -39,7 +41,7 @@ img {
 
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     padding-bottom: 3%;
     padding-left: 5%;
     padding-right: 5%
