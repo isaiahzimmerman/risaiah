@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="/assets/mathfunctions/math.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -19,22 +20,34 @@
     <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
     <!-- header -->
+    <h1>Linear Regression Calculator</h1>
     <div class="container">
         <div class="inputs">
             <div id="chartData"></div>
             <div class="inputBoxes">
-                <span class="textByBoxes">x =</span>
-                <input id="xData" type="text">
-                <span class="textByBoxes">y =</span>
-                <input id="yData" type="text">
-                <button onClick="addData(parseFloat(document.getElementById('xData').value, 10), parseFloat(document.getElementById('yData').value, 10))">add data</button>
+                <div>
+                    <label for="xData">x =</label>
+                    <input id="xData" name="xData" type="text">
+                </div>
+                <div>
+                    <label for="yData">y =</label>
+                    <input id="yData" name="yData" type="text">
+                </div>
+                <button onClick="addData(document.getElementById('xData').value, document.getElementById('yData').value, 10)">add data</button>
             </div>
             <div>
                 <button onclick="calculateResults(xyValues)">calculate</button>
                 <button onclick="graphResults()">graph result</button>
+                <button onclick="clearList()">clear all</button>
+                <label for="nerdMode">activate nerd mode</label>
+                <input type="checkbox" id="nerdMode" name="nerdMode">
             </div>
-            <div id ="results">
+            <div>
+                <div id="slopeIntercept"></div>
+                <div id="radius"></div>
+                <div id="rSquared"></div>
             </div>
+            <div id="extraInfo"></div>
         </div>
         <div>
             <canvas id="myChart" style="width:100%;max-width:700px"></canvas>

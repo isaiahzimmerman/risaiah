@@ -19,6 +19,7 @@ var xyValues = [
 
 var linRegValues = []
 
+
 function linReg(dataSet){
     var sumX = 0
     var sumY = 0
@@ -41,19 +42,15 @@ function linReg(dataSet){
     var slope = (SSxy/SSxx).toPrecision(4)
     var yIntercept = (avgY - slope * avgX).toPrecision(4)
 
-    return[slope, yIntercept]
-
+    return {slope: slope, yIntercept: yIntercept, avgX: avgX, avgY: avgY, SSxx: SSxx, SSxy: SSxy, sumX: sumX, sumY: sumY}
 }
 
 function generateData(slope, yIntercept, xMin, xMax, step) {
-    console.log([slope, yIntercept, xMin, xMax, step])
-    linRegValues = []
-    for (let xVal = xMin; xVal <= xMax; xVal += step){
-        console.log(xVal+" "+(slope * xVal + yIntercept))
-        linRegValues.push({x: xVal, y: (slope * xVal + yIntercept)})
-    }
+
+    linRegValues.push({x: xMin, y: (slope * xMin + yIntercept)})
+    linRegValues.push({x: xMax, y: (slope * xMax + yIntercept)})
     
-    console.log("aorking")
+    //console.log("aorking")
 }
 
 function loadChart(){
@@ -65,14 +62,14 @@ function loadChart(){
 
     if(xyValues!={}){
         xyValues.forEach(function(currentValue, index){
-            console.log(index)
+            //console.log(index)
             if(index==0){
                 Xmin=currentValue.x
                 Xmax=currentValue.x
                 Ymax=currentValue.y
                 Ymin=currentValue.y
 
-                console.log(Xmin+" "+Xmax+" "+Ymin+" "+Ymax)
+                //console.log(Xmin+" "+Xmax+" "+Ymin+" "+Ymax)
             }else{
                 if(currentValue.x < Xmin){
                     Xmin = currentValue.x
@@ -85,7 +82,7 @@ function loadChart(){
                 }else if(currentValue.y > Ymax){
                     Ymax = currentValue.y
                 }
-                console.log(Xmin+" "+Xmax+" "+Ymin+" "+Ymax)
+                //console.log(Xmin+" "+Xmax+" "+Ymin+" "+Ymax)
             }
         })
     }
@@ -95,19 +92,21 @@ function loadChart(){
     Ymin=Ymin-1
     Ymax=Ymax+1
 
-    console.log(Xmin+" "+Xmax+" "+Ymin+" "+Ymax)
+    //console.log(Xmin+" "+Xmax+" "+Ymin+" "+Ymax)
     
     new Chart("myChart", {
         type: "scatter",
         data: {
           datasets: [{
-            pointRadius: 4,
+            pointRadius: 3,
             pointBackgroundColor: "rgb(0,0,255)",
             data: xyValues
           },
           {
-            pointRadius: 4,
-            pointBackgroundColor: "red",
+            type: "line",
+            pointRadius: 0,
+            fill: false,
+            borderColor: "red",
             data: linRegValues
           }
         ]
@@ -127,7 +126,7 @@ function refreshData(){
 
     if(xyValues!={}){
         xyValues.forEach(function(currentValue, index){
-            console.log("x="+currentValue.x+", y="+currentValue.y+", "+index)
+            //console.log("x="+currentValue.x+", y="+currentValue.y+", "+index)
             dataBody+=`
                 <div id="chartData`+index+`">
                     <span>x = `+currentValue.x+`</span>
@@ -148,25 +147,83 @@ function deleteDataPoint(index){
 
 function addData(newX, newY){
     console.log(newX+" is x and y is "+newY)
-    if(!isNaN(newX) && !isNaN(newY)){
-        xyValues.push({x: newX, y: newY})
+    if(true){
+        newXYs = [[],[]]
+        newXYs[0] = newX.split(',')
+        newXYs[1] = newY.split(',')
+
+        console.log(newXYs)
+
+        newXYs[0].forEach(function(value, index){
+            xyValues.push({x: parseFloat(newXYs[0][index], 10), y: parseFloat(newXYs[1][index], 10)})
+        })
     }
     loadChart()
     refreshData()
+
+    document.getElementById('xData').value = ""
+    document.getElementById('yData').value = ""
 }
 
 function calculateResults(dataSet){
     if(dataSet.length < 2){
-        document.getElementById("results").innerHTML = "too short, need more values"
+        document.getElementById("slopeIntercept").innerHTML = "too short, need more values"
+        document.getElementById("radius").innerHTML = ""
+        document.getElementById("rSquared").innerHTML = ""
+        document.getElementById("extraInfo").innerHTML=""
+
     }else{
         output = linReg(dataSet)
-        document.getElementById("results").innerHTML = "y = "+output[0]+"x + "+output[1]
+
+        var seperated = [[],[]]
+
+        //calculates the summation of the (differences between each individual x value with average x) * (differences between each individual y value with average y)
+        sumProdDiffs = 0
+        xyValues.forEach(function(currentValue){
+            seperated[0].push(currentValue.x)
+            seperated[1].push(currentValue.y)
+
+            sumProdDiffs += (currentValue.x - output.avgX) * (currentValue.y - output.avgY)
+        })
+
+        standardDeviationX = Math.standardDeviation(seperated[0])
+        standardDeviationY = Math.standardDeviation(seperated[1])
+
+        var radius = (sumProdDiffs/(standardDeviationX * standardDeviationY * xyValues.length))
+
+        document.getElementById("slopeIntercept").innerHTML = "y = "+output.slope+"x + "+output.yIntercept
+        document.getElementById("radius").innerHTML = "r = "+radius.toPrecision(4)
+        document.getElementById("rSquared").innerHTML = "r^2 = "+Math.pow(radius, 2).toPrecision(4)
+
+        //nerd Mode
+        if(document.getElementById("nerdMode").checked){
+            document.getElementById("extraInfo").innerHTML=
+            `
+            <br>
+            Extra Information:<br>
+            sum of x values = `+(output.sumX.toPrecision(6)*1)+`<br>
+            sum of y values = `+(output.sumY.toPrecision(6)*1)+`<br>
+            avg of x values = `+(output.avgX.toPrecision(6)*1)+`<br>
+            avg of y values = `+(output.avgY.toPrecision(6)*1)+`<br>
+            SSxx = `+(output.SSxx.toPrecision(6)*1)+`<br>
+            SSxy = `+(output.SSxy.toPrecision(6)*1)
+            //<div class="boxedInfo"></div> can be used if updated with boxed information
+        }else{
+            document.getElementById("extraInfo").innerHTML=""
+        }
+
         return output
     }
 }
 
 function graphResults(){
     answer = calculateResults(xyValues)
-    generateData(parseFloat(output[0], 10), parseFloat(output[1], 10), Xmin, Xmax, (Xmax-Xmin)/20)
+    generateData(parseFloat(output.slope, 10), parseFloat(output.yIntercept, 10), Xmin, Xmax, (Xmax-Xmin)/2)
+    loadChart()
+}
+
+function clearList(){
+    xyValues.splice(0)
+    refreshData()
     loadChart()
 }

@@ -1,12 +1,12 @@
 .container {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 3fr;
+    padding: 2% 2% 2% 2%;
 }
 
 .inputBoxes {
     display: grid;
-    grid-template-columns: 14% 29% 14% 29% 14%;
-
+    grid-template-columns: 43% 43% 14%;
 
 }
 
@@ -15,4 +15,16 @@
     height: 100%;
     width: 100%;
     
+}
+
+body{
+    font-family: isaiahFont;
+}
+
+h1{
+    text-align: center;
+}
+
+.boxedInfo{
+    border: 1px black solid;
 }
