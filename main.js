@@ -12,7 +12,7 @@ var siteList = [
     {title: 'Linear Regression Calculator', path: '/linreg/', icon: '/assets/chart.png'},
     
     //keep last
-    {title: 'About Rysaiah', path: '/about/', icon: '/assets/thinking.png'},
+    {title: 'About', path: '/about/', icon: '/assets/thinking.png'},
 ]
 
 bodyHTML = ""
