@@ -1,8 +1,16 @@
 <html>
     <head>
         <title>Fruit Tier List</title>
+        <!-- header -->
+        <script src="/assets/header/header.js"></script>
+        <link rel="stylesheet" href="/assets/header/header.css">
+        <!-- header -->
     </head>
-    <body>
+    <body onload="loadChart(); refreshData()">
+        <!-- header -->
+        <div w3-include-html="/assets/header/header.html"></div>
+        <script>includeHTML()</script>
+        <!-- header -->
         <a href="../../index.html"><h1>Home</h1></a>
         <img src='./fruitTierListNuts.png' >
     </body>
