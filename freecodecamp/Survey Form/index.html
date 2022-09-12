@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="surveyContainer">
+        <h1 id="title">Gaming Survey</h1>
+        <p id="description">Let me know what your favorites are!</p>
+        <form id="survey-form">
+            <section>
+                <label id="name-label" for="name">
+                    Enter Your Name
+                    <input id="name" type="text" required placeholder="John Doe">
+                </label>
+                <label id="email-label" for="email">
+                    Enter Your Email
+                    <input id="email" type="email" required placeholder="john@example.com">
+                </label>
+            </section>
+            <hr>
+            <section>
+                <label id="number-label" for="number">
+                    Hours spent gaming per day:
+                    <input id="number" type="number" required min=0 max=24 placeholder="0-24">
+                </label>
+                <label for="dropdown">
+                    Favorite Game?
+                    <select id="dropdown">
+                        <option>(select one)</option>
+                        <option>Fortnite</option>
+                        <option>Among Us</option>
+                        <option>Minecraft</option>
+                        <option>Call of Duty</option>
+                        <option>Cookie Clicker</option>
+                    </select>
+                </label>
+            </section>
+            <hr>
+            <section>
+                <p>Which of these snacks is the best?</p>
+                <label>
+                    <input type="radio" name="radio1" value="doritos">
+                    Doritos
+                </label>
+                <label>
+                    <input type="radio" name="radio1" value="takis">
+                    Takis
+                </label>
+                <label>
+                    <input type="radio" name="radio1" value="oreos">
+                    Oreos
+                </label>
+                <label>
+                    <input type="radio" name="radio1" value="gfuel">
+                    G Fuel
+                </label>
+                <label>
+                    <input type="radio" name="radio1" value="jerky">
+                    beef jerky
+                </label>
+                <p>Which of these do you like to do?</p>
+                <label for="sports">
+                    <input type="checkbox" name="sports" value="sports" id="sports">
+                    play sports
+                </label>
+                <label for="tv">
+                    <input type="checkbox" name="tv" value="tv" id="tv">
+                    watch TV
+                </label>
+                <label for="friends">
+                    <input type="checkbox" name="friends" value="friends" id="friends">
+                    hang out with friends
+                </label>
+                <label for="comments">
+                    Any comments?
+                    <textarea id="comments" placeholder="Suggestions, ideas, etc.">
+                    </textarea>
+                </label>
+            </section>
+            <hr>
+            <section>
+                <input id="submit" type="submit" value="Submit Survey">
+            </section>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+body{
+    background-image: url("https://cdn.gamer-network.net/2018/usgamer/fortnite-season-7-map-overview.jpg");
+}
+
+.surveyContainer {
+    width: 65%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: rgba(255,255,255, .85);
+    padding: 15px;
+}
+
+h1 {
+    text-align: center;
+}
+
+p[id="description"]{
+    text-align: center;
+    margin-top: -20px;
+    font-style: italic;
+}
+
+section{
+    margin: 20px 0;
+}
+
+hr{
+    border: 2px solid darkgray;
+}
+
+section:last-of-type{
+    border: 0;
+}
+
+label {
+    display: block;
+    margin: 5px 0;
+}
+
+input, select, textarea{
+    display:block
+}
+
+input[type="radio"], input[type="checkbox"]{
+    display: inline;
+}
+
+input[type="text"], input[type="email"], textarea{
+    width:100%
+}
+
+textarea{
+    max-width: 100%;
+}
