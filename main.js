@@ -10,6 +10,7 @@ var siteList = [
     {title: 'Morse Code Practice', path: '/morsecodepractice/', icon: '/assets/imposter.png'},
     {title: 'Birthday Calculator', path: '/birthdaycalculator/', icon: '/assets/cake.png'},
     {title: 'Linear Regression Calculator', path: '/linreg/', icon: '/assets/chart.png'},
+    {title: 'Compañeros Generator', path: '/companeros/', icon:'/assets/spainflag.png'},
     
     //keep last
     {title: 'About', path: '/about/', icon: '/assets/thinking.png'},
