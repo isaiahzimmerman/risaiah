@@ -36,6 +36,7 @@ function setCookie(){
             'Hannah ',
             'Caleb ',
             'Eli ',
+            'Sarah ',
         ]
     }else{
         console.log(eval(document.cookie))
