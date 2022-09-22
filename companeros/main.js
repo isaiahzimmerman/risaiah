@@ -88,11 +88,10 @@ function generateGroups(){
     for(i=0; i<numGroups; i++){
         z = 0
         if(extra/(numGroups-i)>1){
-            z+=Math.ceil(extra/(numGroups-i))
+            z = Math.ceil(extra/(numGroups-i))
             extra -= Math.ceil(extra/(numGroups-i))
-        }
-        if(extra>0){
-            z++
+        }else if(extra>0){
+            z = 1
             extra--
         }
         groupsList.push(namesList.splice(0, size+z))
