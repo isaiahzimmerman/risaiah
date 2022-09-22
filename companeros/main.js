@@ -34,7 +34,7 @@ function refreshCookie(){
     names.forEach(function(element){
         cookieAdd+=("'"+element+"',")
     })
-    cookieAdd+="]; SameSite=Strict; path=./; expires=Fri, 31 Dec 9999"
+    cookieAdd+="]; SameSite=Strict; path=/companero/; expires=Fri, 31 Dec 2500"
     document.cookie = cookieAdd
 }
 
