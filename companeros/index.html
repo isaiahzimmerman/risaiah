@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compañeros</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- header -->
+    <script src="/assets/header/header.js"></script>
+    <link rel="stylesheet" href="/assets/header/header.css">
+    <!-- header -->
+</head>
+<body onload="drawSite()">
+    <!-- header -->
+    <div w3-include-html="/assets/header/header.html"></div>
+    <script>includeHTML()</script>
+    <!-- header -->
+    <div class="container">
+        <div>
+            <div id="namesList"></div>
+            <div>
+                <input type="text" id="newName"><button onclick="nameButton()">add</button>
+            </div>
+            Group Size:<input type="text" id="groupSize">
+            <button onclick="generateGroups()">generate</button>
+        </div>
+        <div id="groups">hi</div>
+    </div>
+</body>
+</html>
