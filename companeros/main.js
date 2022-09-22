@@ -25,18 +25,18 @@ return x - Math.floor(x);
 function setCookie(){
     if(document.cookie == ""){
         names=[
-            'Isaiah ',
-            'Renee ',
-            'Ryan ',
-            'Lauren ',
-            'Zion ',
-            'David ',
-            'Chase ',
-            'Anthony ',
-            'Hannah ',
-            'Caleb ',
-            'Eli ',
-            'Sarah ',
+            'Isaiah',
+            'Renee',
+            'Ryan',
+            'Lauren',
+            'Zion',
+            'David',
+            'Chase',
+            'Anthony',
+            'Hannah',
+            'Caleb',
+            'Eli',
+            'Sarah',
         ]
     }else{
         console.log(eval(document.cookie))
