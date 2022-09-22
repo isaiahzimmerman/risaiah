@@ -26,6 +26,7 @@ function setCookie(){
     if(document.cookie == ""){
         names=[
             'Anthony',
+            'Brian',
             'Caleb',
             'Chase',
             'David',
