@@ -22,8 +22,6 @@ var x = Math.sin(seed++) * 10000;
 return x - Math.floor(x);
 }
 
-
-console.log(document.cookie)
 if(document.cookie == ""){
     names=[]
 }else{
@@ -78,9 +76,9 @@ function generateGroups(){
     namesList = shuffle(namesList, today.getDate())
     //shuffled = ''
     size = parseInt((document.getElementById('groupSize').value), 10)
-        if(size == 0){
-            size=2
-        }
+    if(isNaN(size)){
+        size=2
+    }
     extra = namesList.length%size
     numGroups = Math.floor(namesList.length/size)
     namesList.forEach(function(element){
