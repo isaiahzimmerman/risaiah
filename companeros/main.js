@@ -22,11 +22,25 @@ var x = Math.sin(seed++) * 10000;
 return x - Math.floor(x);
 }
 
-if(document.cookie == ""){
-    names=[]
-}else{
-    console.log(eval(document.cookie))
-    eval(document.cookie)
+function setCookie(){
+    if(document.cookie == ""){
+        names=[
+            'Isaiah ',
+            'Renee ',
+            'Ryan ',
+            'Lauren ',
+            'Zion ',
+            'David ',
+            'Chase ',
+            'Anthony ',
+            'Hannah ',
+            'Caleb ',
+            'Eli ',
+        ]
+    }else{
+        console.log(eval(document.cookie))
+        eval(document.cookie)
+    }
 }
 
 function refreshCookie(){
