@@ -1,3 +1,5 @@
+//stolen
+
 function shuffle(array, seed) {                // <-- ADDED ARGUMENT
     var m = array.length, t, i;
   
@@ -21,6 +23,8 @@ function random(seed) {
 var x = Math.sin(seed++) * 10000; 
 return x - Math.floor(x);
 }
+
+//stolen https://stackoverflow.com/questions/16801687/javascript-random-ordering-with-seed Ulf Aslak
 
 function setCookie(){
     if(document.cookie == ""){
