@@ -1,0 +1,31 @@
+body{
+    font-family: isaiahFont;
+}
+
+.mainContainer{
+    display: grid;
+    grid-template-rows: repeat(6, 6.5rem);
+}
+
+.tier{
+    display: grid;
+    grid-template-columns: 7rem auto;
+    margin: 5px 5px 5px 5px;
+}
+
+.tierTitle{
+    display: flex;
+    font-size: 3rem;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.tierItems{
+    display:block;
+    height: 6rem;
+}
+
+.tierItem{
+    height: 100%;
+}

@@ -24,6 +24,7 @@ div.item {
     width: 21%;
     padding-left: 2%;
     padding-right: 2%;
+    position: relative;
 }
 
 img {
@@ -45,6 +46,27 @@ img {
     padding-bottom: 3%;
     padding-left: 5%;
     padding-right: 5%
+}
+
+.image-cropper {
+    width: 5vw;
+    height: 5vw;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 50%;
+    top: 15vw;
+    right: 0;
+  }
+  
+.image-cropper img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+
+.image-cropper:hover{
+    
 }
 
 /* implement this: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/  */

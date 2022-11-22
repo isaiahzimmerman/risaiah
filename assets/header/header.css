@@ -11,7 +11,7 @@
 
 .header_element {
   padding: 7% 0% 7% 0%;
-  font-size: 3.2vw;
+  font-size: min(3.2vw, 2rem);
   font-family: isaiahFont;
   display: flex;
   justify-content: center;
