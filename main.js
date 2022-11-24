@@ -33,7 +33,7 @@ function loadSite(){
             </a>`
         for(i=0; i<currentValue.author.length; i++){
             bodyHTML += `<a href="`+currentValue.author[i]+`">
-                <div class="image-cropper" style="right: `+3.5*i+`vw">
+                <div class="image-cropper" style="right: `+4.5*i+`vw">
                     <img src="/assets/`+currentValue.author[i]+`.jpg" class="rounded" />
                 </div>
             </a>`
