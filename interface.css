@@ -36,7 +36,7 @@ div.item {
 .caption {
     /* Make the caption a block so it occupies its own line. */
     display: block;
-    font-size: 3.4vw;
+    font-size: 3.5vw;
     font-family: isaiahFont;
 }
 
@@ -54,7 +54,7 @@ div.item {
     position: absolute;
     overflow: hidden;
     border-radius: 50%;
-    top: 22vw;
+    top: 20vw;
     right: 0;
   }
   
