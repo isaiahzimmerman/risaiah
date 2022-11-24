@@ -1,0 +1,26 @@
+.container {
+    display:flex;
+    height:100px;
+    flex-wrap:wrap;
+    overflow-y:hidden;
+    color:white;
+  }
+  
+  .container > div {
+    flex: 1 1 100px;
+    height:100px;
+    padding:20px;
+    margin-right:10px;
+  }
+  
+  .container > div:last-child {
+    margin-right:0;
+  }
+  
+  .container > div:nth-child(even) {
+    background:red;
+  }
+  
+  .container > div:nth-child(odd) {
+    background:blue;
+  }
