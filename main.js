@@ -8,19 +8,20 @@ var siteList = [
     {title: 'Fruit Tier List', path: '/tierlists/fruit/', icon: '/assets/apple.png', author: ['isaiah']},
     {title: 'Squares Game', path: '/squaresgame/', icon: '/assets/square.png', author: ['isaiah']},
     {title: 'Morse Code Practice', path: '/morsecodepractice/', icon: '/assets/imposter.png', author: ['isaiah']},
-    {title: 'Birthday Calculator', path: '/birthdaycalculator/', icon: '/assets/cake.png', author: ['isaiah']},
+    {title: 'Birthday Calculator', path: '/birthdaycalculator/', icon: '/assets/cake.png', author: ['ryan']},
     {title: 'Linear Regression Calculator', path: '/linreg/', icon: '/assets/chart.png', author: ['isaiah']},
     {title: 'Compañeros Generator', path: '/companeros/', icon:'/assets/spainflag.png', author: ['isaiah']},
     
     //keep last
-    {title: 'About', path: '/about/', icon: '/assets/thinking.png', author: ['isaiah']},
+    {title: 'About', path: '/about/', icon: '/assets/thinking.png', author: []},
 ]
 
 bodyHTML = ""
+sitesPerRow = 3;
 
 function loadSite(){
     siteList.forEach(function(currentValue, index){
-        if(index%4==0){
+        if(index%sitesPerRow==0){
             bodyHTML+=`<div class="container">`
         }
 
@@ -32,7 +33,7 @@ function loadSite(){
             </a>`
         for(i=0; i<currentValue.author.length; i++){
             bodyHTML += `<a href="`+currentValue.author[i]+`">
-                <div class="image-cropper" style="right: `+2.5*i+`vw">
+                <div class="image-cropper" style="right: `+3.5*i+`vw">
                     <img src="/assets/`+currentValue.author[i]+`.jpg" class="rounded" />
                 </div>
             </a>`
@@ -41,7 +42,7 @@ function loadSite(){
             
         bodyHTML += `</div>`
 
-        if(index%4==3){
+        if(index%sitesPerRow==2){
             bodyHTML+=`</div>`
         }
     })

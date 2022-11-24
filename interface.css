@@ -21,7 +21,7 @@ div.item {
     /* To horizontally center images and caption */
     text-align: center;
     /* The width of the container also implies margin around the images. */
-    width: 21%;
+    width: 31%;
     padding-left: 2%;
     padding-right: 2%;
     position: relative;
@@ -36,7 +36,7 @@ img {
 .caption {
     /* Make the caption a block so it occupies its own line. */
     display: block;
-    font-size: 2.5vw;
+    font-size: 3.4vw;
     font-family: isaiahFont;
 }
 
@@ -54,7 +54,7 @@ img {
     position: absolute;
     overflow: hidden;
     border-radius: 50%;
-    top: 15vw;
+    top: 22vw;
     right: 0;
   }
   
@@ -69,4 +69,4 @@ img {
     
 }
 
-/* implement this: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/  */
+/* implement this: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/  *
