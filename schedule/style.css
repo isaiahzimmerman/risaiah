@@ -1,0 +1,8 @@
+.selectorButtons{
+    width: 100%;
+}
+
+.selectorButtons button{
+    margin: 0;
+    width: 10%;
+}

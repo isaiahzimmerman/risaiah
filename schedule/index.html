@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- header -->
+    <script src="/assets/header/header.js"></script>
+    <link rel="stylesheet" href="/assets/header/header.css">
+    <!-- header -->
+</head>
+<body>
+    <!-- header -->
+    <div w3-include-html="/assets/header/header.html"></div>
+    <script>includeHTML()</script>
+    <!-- header -->
+    <div class="selectorButtons">
+        <button onclick="view(0)">employees</button>
+        <button onclick="view(1)">availability</button>
+        <button onclick="view(2)">requests off</button>
+        <button onclick="view(3)">calendar</button>
+    </div>
+    <div class="view0" id="view0">
+        Employees:
+        <div class="employeesList0" id="employeesList0">
+            <div>isaiah</div>
+            <div>elijah</div>
+        </div>
+        <div>
+            <label for="employeeName0">
+                Add Employee
+                <input type="text" id="employeeName0" name="employeeName0">
+            </label>
+            <button onclick="addEmployee(document.getElementById('employeeName0').value)">Submit</button>
+        </div>
+    </div>
+    <div class="view1" id="view1" hidden>
+        1
+    </div>
+    <div class="view2" id="view2" hidden>
+        2
+    </div>
+    <div class="view3" id="view3" hidden>
+        3
+    </div>
+</body>
+</html>
