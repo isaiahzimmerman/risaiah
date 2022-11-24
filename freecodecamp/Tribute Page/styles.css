@@ -1,0 +1,12 @@
+main{
+    margin: 0 auto;
+    width: 60%;
+    background-color: bisque;
+}
+
+img{
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}

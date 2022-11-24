@@ -1,0 +1,36 @@
+given:
+poker hand
+number of people
+cards on board
+additional cards?
+
+find:
+odds that player's hand is the best at the table
+
+solution:
+use math to find the player's odds of winning
+compare player's with every other possible hand
+return amount of hands that player wins over total hands
+    pros: would theoretically work
+    cons: this needs to run through a lot of different possiblities
+
+example:
+    player cards = x, y
+    2 other players
+    leaving 50 possible cards in deck
+    nCr, n=50, r=2, leaves 1225 possible hands for opponents
+    additionally, 50 C 5, for the amount of cards which will be placed on the board is 2.11876 E+6
+    for each hypothetical hand, (2 cards * amt. players), there would be:
+    ((50 - 2 * amt of players) C 5) * (50 C (amount of players * 2)), or every combination of 5 cards having to be compared to every possible hand that any player could have
+    amt of other players = x
+    (50-2x)C(5) * (50)C(2x)
+    for 2 others:
+        3.157 E 11 comparisons
+    for 3 others:
+        1.726 E 13 comparisons
+    for 4 others:
+        4.567 E 14 comparisons
+    capping out at 11 others:
+        8.722 E 18 comparisons
+            assuming a million comparisons per second, this leaves the time for computation at 275 years
+    even with only 2 people and assuming the unrealistic speed of a million comparisons per second, it would still take upwards of 3 days to compute.
