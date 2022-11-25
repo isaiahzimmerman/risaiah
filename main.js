@@ -2,9 +2,9 @@ var siteList = [
     {title: 'Solitaire', path: '/solitaire/', icon: ['/assets/icons/joker.svg', '/assets/icons/darkjoker.svg'], author: ['isaiah', 'ryan']},
     {title: 'Tic-Tac-Toe', path: '/tictactoe/', icon: ['/assets/icons/tictactoe.svg', '/assets/icons/darktictactoe.svg'], author: ['ryan']},
     {title: 'Triangle Calculator', path: '/trianglecalc/', icon: ['/assets/icons/protractor.svg', '/assets/icons/darkprotractor.svg'], author: ['isaiah']},
-    {title: 'Molar Mass Calculator', path: '/molarmass/', icon: ['/assets/balance.png'], author: ['isaiah']},
-    {title: 'Squid Game in Python', path: '/squidgame/', icon: ['/assets/squid.png'], author: ['isaiah']},
-    {title: 'Fruit Tier List', path: '/tierlists/fruit/', icon: ['/assets/apple.png'], author: ['isaiah']},
+    {title: 'Molar Mass Calculator', path: '/molarmass/', icon: ['/assets/icons/beaker.svg', '/assets/icons/darkbeaker.svg'], author: ['isaiah']},
+    {title: 'Squid Game in Python', path: '/squidgame/', icon: ['/assets/icons/squid.svg', '/assets/icons/darksquid.svg'], author: ['isaiah']},
+    {title: 'Fruit Tier List', path: '/tierlists/fruit/', icon: ['/assets/icons/apple.svg', '/assets/icons/darkapple.svg'], author: ['isaiah']},
     {title: 'Squares Game', path: '/squaresgame/', icon: ['/assets/square.png'], author: ['isaiah']},
     {title: 'Morse Code Practice', path: '/morsecodepractice/', icon: ['/assets/imposter.png'], author: ['isaiah']},
     {title: 'Birthday Calculator', path: '/birthdaycalculator/', icon: ['/assets/cake.png'], author: ['ryan']},
@@ -40,6 +40,7 @@ function setColorScheme(scheme) {
         $(".caption").css("color", "#E7F6F2")
         $("body").css("background-color", "#2C3333") 
         $("h1").css("color", "#A5C9CA")
+        $(".bottomMessage").css("color", "#E7F6F2")
         $(".iconIMG").each(function(index){
             var $img = $(this)
             $img.attr("src", siteList[index].icon[1])
@@ -50,6 +51,7 @@ function setColorScheme(scheme) {
         $(".caption").css("color", "#3A8891")
         $("body").css("background-color", "#FFEFD6") 
         $("h1").css("color", "#0E5E6F")
+        $(".bottomMessage").css("color", "#3A8891")
         $(".iconIMG").each(function(index){
             var $img = $(this)
             $img.attr("src", siteList[index].icon[0])

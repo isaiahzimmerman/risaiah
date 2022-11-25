@@ -4,10 +4,10 @@ body{
     background-color: #FFEFD6;
     font-size: 3vw;
     text-align: center;
+    font-family: 'Source Serif Pro', serif;
 }
 
 h1{
-    font-family: 'Source Serif Pro', serif;
     font-size: clamp(30px, 5vw, 60px);
     color: #0E5E6F;
 }
@@ -38,4 +38,9 @@ a{
     display: block;
     font-size: clamp(15px, 2.5vw, 30px);
     color:#0E5E6F;
+}
+
+.bottomMessage{
+    color: #0E5E6F;
+    font-size: clamp(10px, 1.5vw, 20px);
 }
