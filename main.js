@@ -1,6 +1,5 @@
-//lol
 var siteList = [
-    {title: 'Solitaire', path: '/solitaire/', icon: '/assets/joker.png', author: ['isaiah', 'ryan']},
+    {title: 'Solitaire', path: '/solitaire/', icon: '/assets/icons/joker.svg', author: ['isaiah', 'ryan']},
     {title: 'Tic-Tac-Toe', path: '/tictactoe/', icon: '/assets/x.png', author: ['ryan']},
     {title: 'Triangle Calculator', path: '/trianglecalc/', icon: '/assets/protractor.png', author: ['isaiah']},
     {title: 'Molar Mass Calculator', path: '/molarmass/', icon: '/assets/balance.png', author: ['isaiah']},
@@ -16,36 +15,19 @@ var siteList = [
     {title: 'About', path: '/about/', icon: '/assets/thinking.png', author: []},
 ]
 
-bodyHTML = ""
-sitesPerRow = 3;
-
 function loadSite(){
-    siteList.forEach(function(currentValue, index){
-        if(index%sitesPerRow==0){
-            bodyHTML+=`<div class="container">`
-        }
+    bodyHTML = ""
 
-        bodyHTML +=
-        `<div class="item">
-            <a href="`+currentValue.path+`"> 
-                <img src="`+currentValue.icon+`"/>
-                <span class="caption">`+currentValue.title+`</span>
-            </a>`
-        for(i=0; i<currentValue.author.length; i++){
-            bodyHTML += `<a href="`+currentValue.author[i]+`">
-                <div class="image-cropper" style="right: `+4.5*i+`vw">
-                    <img src="/assets/`+currentValue.author[i]+`.jpg" class="rounded" />
-                </div>
-            </a>`
-
-        }
-            
-        bodyHTML += `</div>`
-
-        if(index%sitesPerRow==2){
-            bodyHTML+=`</div>`
-        }
+    siteList.forEach(function(element, index){
+        bodyHTML+=`
+        <a href="`+element.path+`"
+            <div class="siteIcon">
+                <img class="iconIMG" src="`+element.icon+`">
+                <span class="caption">`+element.title+`</span>
+            </div>
+        </a>
+        `
     })
 
-    document.getElementById("bodyHTML").innerHTML = bodyHTML
+    document.getElementsByClassName("bodyHTML")[0].innerHTML = bodyHTML
 }

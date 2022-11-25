@@ -9,6 +9,7 @@ body{
 h1{
     font-family: 'Source Serif Pro', serif;
     font-size: clamp(30px, 5vw, 60px);
+    color: #0E5E6F;
 }
 
 .siteIcon{
@@ -20,6 +21,14 @@ h1{
     margin: 2vw;
 }
 
+a{
+    text-decoration: none;
+}
+
+.siteIcon:hover{
+    text-decoration: underline;
+}
+
 .iconIMG{
     width: inherit;
     height: inherit;
@@ -28,4 +37,5 @@ h1{
 .caption{
     display: block;
     font-size: clamp(15px, 2.5vw, 30px);
+    color:#0E5E6F;
 }
