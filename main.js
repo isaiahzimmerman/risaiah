@@ -7,7 +7,7 @@ var siteList = [
     {title: 'Fruit Tier List', path: '/tierlists/fruit/', icon: ['/assets/icons/apple.svg', '/assets/icons/darkapple.svg'], author: ['isaiah']},
     {title: 'Squares Game', path: '/squaresgame/', icon: ['/assets/icons/xsquared.svg', '/assets/icons/darkxsquared.svg'], author: ['isaiah']},
     {title: 'Morse Code Practice', path: '/morsecodepractice/', icon: ['/assets/icons/morse.svg', '/assets/icons/darkmorse.svg'], author: ['isaiah']},
-    {title: 'Birthday Calculator', path: '/birthdaycalculator/', icon: ['/assets/icons/cake.svg', '/assets/icons/darkcake.svg'], author: ['ryan']},
+    {title: 'Birthday Calculator', path: '/birthdaycalc/', icon: ['/assets/icons/cake.svg', '/assets/icons/darkcake.svg'], author: ['ryan']},
     {title: 'Linear Regression Calculator', path: '/linreg/', icon: ['/assets/icons/graph.svg', '/assets/icons/darkgraph.svg'], author: ['isaiah']},
     {title: 'Compañeros Generator', path: '/companeros/', icon:['/assets/icons/eslang.svg', '/assets/icons/darkeslang.svg'], author: ['isaiah']},
     
