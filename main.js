@@ -1,7 +1,7 @@
 var siteList = [
     {title: 'Solitaire', path: '/solitaire/', icon: ['/assets/icons/joker.svg', '/assets/icons/darkjoker.svg'], author: ['isaiah', 'ryan']},
-    {title: 'Tic-Tac-Toe', path: '/tictactoe/', icon: ['/assets/x.png'], author: ['ryan']},
-    {title: 'Triangle Calculator', path: '/trianglecalc/', icon: ['/assets/protractor.png'], author: ['isaiah']},
+    {title: 'Tic-Tac-Toe', path: '/tictactoe/', icon: ['/assets/icons/tictactoe.svg', '/assets/icons/darktictactoe.svg'], author: ['ryan']},
+    {title: 'Triangle Calculator', path: '/trianglecalc/', icon: ['/assets/icons/protractor.svg', '/assets/icons/darkprotractor.svg'], author: ['isaiah']},
     {title: 'Molar Mass Calculator', path: '/molarmass/', icon: ['/assets/balance.png'], author: ['isaiah']},
     {title: 'Squid Game in Python', path: '/squidgame/', icon: ['/assets/squid.png'], author: ['isaiah']},
     {title: 'Fruit Tier List', path: '/tierlists/fruit/', icon: ['/assets/apple.png'], author: ['isaiah']},
