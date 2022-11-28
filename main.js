@@ -17,7 +17,6 @@ var siteList = [
 
 function loadSite(){
     console.log("site is being loaded")
-    cacheSiteImages()
     bodyHTML = ""
 
     siteList.forEach(function(element, index){
@@ -79,6 +78,7 @@ if(window.matchMedia){
     colorSchemeQuery.addEventListener('change', setColorScheme(getPreferredColorScheme()));
 }
 
+/*
 function cacheImages(array)
 {
     console.log("caching")
@@ -111,8 +111,10 @@ function cacheSiteImages(){
     }) 
     cacheImages(imgsList)
 }
+*/
 
 function waitToLoadSite(){
+    //cacheSiteImages()
     loadSite()
     setTimeout(() => {loadSite()}, 1000);
 }
