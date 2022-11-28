@@ -77,6 +77,6 @@ button {
     background-color: rgb(216, 216, 216);
     border-radius: min(1vw, 9px);
     margin: min(0.25vw, 2.25px);
-    padding: 0 min(1vw, 9px);
+    padding: min(0.25vw, 2.25px) min(1vw, 9px);
     color: black;
 }
