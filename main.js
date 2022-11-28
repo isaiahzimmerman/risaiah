@@ -31,7 +31,6 @@ function loadSite(){
 
     document.getElementsByClassName("bodyHTML")[0].innerHTML = bodyHTML
     setColorScheme(getPreferredColorScheme())
-    cacheSiteImages();
 }
 
 function setColorScheme(scheme) {
@@ -61,33 +60,21 @@ function setColorScheme(scheme) {
         })
     }
 }
-    
+  
 function getPreferredColorScheme() {
     if (window.matchMedia) {
-        if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-            return 'dark';
-        } else {
-            return 'light';
-        }
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+        return 'dark';
+    } else {
+        return 'light';
+    }
     }
     return 'light';
 }
-/*  
-  if(window.matchMedia){
+  
+if(window.matchMedia){
     var colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
     colorSchemeQuery.addEventListener('change', setColorScheme(getPreferredColorScheme()));
-  }
-}
-*/
-
-function cacheSiteImages(){
-    imgsList = []
-    siteList.forEach(function(element, index){
-        element.icon.forEach(function(element2, index2){
-            imgsList.push(element2);
-        })
-    }) 
-    cacheImages(imgsList)
 }
 
 function cacheImages(array)
@@ -109,4 +96,14 @@ function cacheImages(array)
         list.push(img);
         img.src = array[i];
     }
+}
+
+function cacheSiteImages(){
+    imgsList = []
+    siteList.forEach(function(element, index){
+        element.icon.forEach(function(element2, index2){
+            imgsList.push(element2);
+        })
+    }) 
+    cacheImages(imgsList)
 }
