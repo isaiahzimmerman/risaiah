@@ -215,7 +215,7 @@ function generateGroups(){
             })
             nameDoc+=`<div>`+addItem+`</div>`
         })
-        console.log('groups'+ind)
+        nameDoc += "<div>(Generated with seed "+today.getDate()+")</div>"
         document.getElementById('groups'+ind).innerHTML = nameDoc
     })
 }
