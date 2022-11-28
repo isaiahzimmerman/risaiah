@@ -26,6 +26,8 @@ h1{
 
 .studentName{
     width: 25%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .student button {
