@@ -72,3 +72,8 @@ br{
 .groupItem{
     padding: 0 min(2vw, 18px);
 }
+
+button {
+    background-color: rgb(216, 216, 216);
+    border-radius: min(1vw, 9px);
+}
