@@ -114,5 +114,5 @@ function cacheSiteImages(){
 
 function waitToLoadSite(){
     loadSite()
-    setTimeout(() => {loadSite()}, 10);
+    setTimeout(() => {loadSite()}, 1000);
 }
