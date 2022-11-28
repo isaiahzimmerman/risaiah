@@ -58,7 +58,6 @@ br{
     font-family: isaiahFont;
     height: fit-content;
     font-size: min(2.5vw, 22.5px);
-    padding: 0 min(1vw, 9px);
 }
 
 .groups{
@@ -78,5 +77,6 @@ button {
     background-color: rgb(216, 216, 216);
     border-radius: min(1vw, 9px);
     margin: min(0.25vw, 2.25px);
-    padding: 0;
+    padding: 0 min(1vw, 9px);
+    color: black;
 }
