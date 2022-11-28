@@ -35,12 +35,23 @@ function genGame(){
     showElement("gameArea")
 }
 
+function retry(){
+    currentWord = 0
+    correct = 0
+    gameStarted = true
+    updateWord()
+    document.getElementById("results").innerHTML = ""
+    hideElement("results")
+    hideElement("startField")
+    showElement("gameArea")
+}
+
 function finishGame(){
     gameStarted = false
     console.log('done!')
     hideElement("gameArea")
     showElement("results")
-    document.getElementById("results").innerHTML += "<span>("+correct+"/"+(currentWord-1)+" correct)</span> "
+    document.getElementById("results").innerHTML += "<span>("+correct+"/"+(currentWord-1)+" correct)</span> <button onclick='retry()'>Retry</button>"
 }
 
 function pressKey(key){
