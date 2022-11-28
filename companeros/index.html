@@ -12,22 +12,15 @@
     <link rel="stylesheet" href="/assets/header/header.css">
     <!-- header -->
 </head>
-<body onload="setCookie(); drawSite()">
+<body onload="onSiteLoad()">
     <!-- header -->
     <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
     <!-- header -->
-    <h1>Compañeros Generator</h1>
-    <div class="container">
-        <div>
-            <div id="namesList"></div>
-            <div>
-                <input type="text" id="newName"><button onclick="nameButton()">add</button>
-            </div>
-            Group Size: <input type="text" id="groupSize">
-            <button onclick="generateGroups()">generate</button>
-        </div>
-        <div id="groups">Click "generate" to create groups.</div>
+    <div class="siteContents">
+        <h1>Compañeros Generator</h1>
+        <div class="selectorButtons" id="selectorButtons"></div>
+        <div class="outerContainer" id="outerContainer"></div>
     </div>
 </body>
 </html>

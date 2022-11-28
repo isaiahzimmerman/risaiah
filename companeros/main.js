@@ -26,6 +26,7 @@ return x - Math.floor(x);
 
 //stolen https://stackoverflow.com/questions/16801687/javascript-random-ordering-with-seed Ulf Aslak
 
+/*
 function setCookie(){
     if(document.cookie == ""){
         names=[
@@ -57,80 +58,164 @@ function refreshCookie(){
     cookieAdd+="]; SameSite=Strict; path=/companero/; expires=Fri, 31 Dec 2500"
     document.cookie = cookieAdd
 }
+*/
+
+names=[
+    {
+        title: "CHS",
+        namesList: [
+            'Anthony',
+            'Brian',
+            'Caleb',
+            'Chase',
+            'David',
+            'Eli',
+            'Hannah',
+            'Isaiah',
+            'Lauren',
+            'Renee',
+            'Ryan',
+            'Sarah',
+            'Zion',
+        ]
+    },
+    {
+        title: "Spanish IV",
+        namesList: [
+            'StudentA',
+            'StudentB',
+            'StudentC',
+            'StudentD',
+        ]
+    }
+]
+
+currentSite = 0;
+
+function setSite(val){
+    currentSite = val
+    for(i = 0; i<names.length; i++){
+        console.log( (i==val))
+        document.getElementById('hider'+i).hidden = !(i==val)
+    }
+}
 
 function drawSite(){
-    docAdd = ""
-    names.forEach(function(element,index){
-        docAdd += `<div>`+element+`<button onclick='removeName(`+index+`)'>remove</button>Absent?<input type='checkbox' id='absent`+index+`'></div>`
+    names.forEach(function(e1, i1){
+        docAdd = ""
+        e1.namesList.forEach(function(e2,i2){
+            docAdd += `
+            <div class="student">
+                <div class="studentName textItem">`+e2+`</div>
+                <button class="textItem" onclick='removeName(`+i2+`)'>Remove</button>
+                <div class="textItem">Absent?</div>
+                <input type='checkbox' class='checkbox' id='absent`+i1+`_`+i2+`'>
+            </div>
+            `
+        })
+        document.getElementById('namesList'+i1).innerHTML = docAdd
     })
-    document.getElementById('namesList').innerHTML = docAdd
+}
+
+function onSiteLoad(){
+    buildButtons = ''
+    buildSite = ''
+    names.forEach(function(element, index){
+        buildButtons += "<button onclick='setSite("+index+")'>"+element.title+"</button>"
+        console.log(index)
+        buildSite+=`
+        <div id="hider`+index+`" hidden>
+            <div class="container" id="container`+index+`">
+                <div class="nameContainer">
+                    <div id="namesList`+index+`"></div>
+                    <div class="divider"></div>
+                    <div class="textItem">Add Student:</div>
+                    <div class="textItem">
+                        <input type="text" class="textItem" id="newName`+index+`" class="textItem"><button onclick="nameButton()" class="textItem">add</button>
+                    </div>
+                    <div class="textItem">Group Size:</div><input type="text" class="textItem" id="groupSize`+index+`"><button onclick="generateGroups()" class="textItem">generate</button>
+                </div>
+                <div class="groups textItem" id="groups`+index+`">Click "generate" to create groups.</div>
+            </div>
+        </div>
+        `
+    })
+    document.getElementById('selectorButtons').innerHTML = buildButtons
+    document.getElementById('outerContainer').innerHTML = buildSite
+    drawSite();
+    setSite(0);
 }
 
 function addName(input){
-    names.push(input)
-    refreshCookie()
+    names[currentSite].namesList.push(input)
+    //refreshCookie()
     drawSite()
 }
 
 function removeName(index){
-    names.splice(index, 1)
-    refreshCookie()
+    names[currentSite].namesList.splice(index, 1)
+    //refreshCookie()
     drawSite()
 }
 
 function nameButton(){
-    if(document.getElementById('newName').value != ''){
-        addName(document.getElementById('newName').value)
-        document.getElementById('newName').value=''
-    }
+    names.forEach(function(el,ind){
+        if(document.getElementById('newName'+ind).value != ''){
+            addName(document.getElementById('newName'+ind).value)
+            document.getElementById('newName'+ind).value=''
+        }
+    })
 }
 
 function generateGroups(){
-    namesList = []
-    names.forEach(function(element, index){
-        if(!document.getElementById('absent'+index).checked){
-            namesList.push(element)
-        }
-    })
-    var today = new Date()
-    namesList = shuffle(namesList, today.getDate())
-    //shuffled = ''
-    size = parseInt((document.getElementById('groupSize').value), 10)
-    if(isNaN(size)){
-        size=2
-    }
-    extra = namesList.length%size
-    numGroups = Math.floor(namesList.length/size)
-    namesList.forEach(function(element){
-        
-    })
-    groupsList=[]
-    for(i=0; i<numGroups; i++){
-        z = 0
-        if(extra/(numGroups-i)>1){
-            z = Math.ceil(extra/(numGroups-i))
-            extra -= Math.ceil(extra/(numGroups-i))
-        }else if(extra>0){
-            z = 1
-            extra--
-        }
-        groupsList.push(namesList.splice(0, size+z))
-    }
-
-    nameDoc = ''
-    groupsList.forEach(function(element, index){
-        addItem = 'Group '+(index+1)+': '
-        element.forEach(function(element2, index2){
-            addItem+=element2
-            if(element.length>index2+2){
-                addItem+=", "
-            }else if(element.length>index2+1){
-                addItem+=' and '
-            }else{
-                addItem+="."
+    names.forEach(function(el,ind){
+        namesList = []
+        el.namesList.forEach(function(element, index){
+            if(!document.getElementById('absent'+ind+'_'+index).checked){
+                namesList.push(element)
             }
         })
-        nameDoc+=`<div>`+addItem+`</div>`
+        var today = new Date()
+        namesList = shuffle(namesList, today.getDate())
+        //shuffled = ''
+        size = parseInt((document.getElementById('groupSize'+ind).value), 10)
+        if(isNaN(size)){
+            size=2
+        }
+        extra = namesList.length%size
+        numGroups = Math.floor(namesList.length/size)
+        namesList.forEach(function(element){
+            
+        })
+        groupsList=[]
+        for(i=0; i<numGroups; i++){
+            z = 0
+            if(extra/(numGroups-i)>1){
+                z = Math.ceil(extra/(numGroups-i))
+                extra -= Math.ceil(extra/(numGroups-i))
+            }else if(extra>0){
+                z = 1
+                extra--
+            }
+            groupsList.push(namesList.splice(0, size+z))
+        }
+
+        nameDoc = ''
+        groupsList.forEach(function(element, index){
+            addItem = 'Group '+(index+1)+': '
+            element.forEach(function(element2, index2){
+                addItem+=element2
+                if(element.length>index2+2){
+                    addItem+=", "
+                }else if(element.length>index2+1){
+                    addItem+=' and '
+                }else{
+                    addItem+="."
+                }
+            })
+            nameDoc+=`<div>`+addItem+`</div>`
+        })
+        console.log('groups'+ind)
+        document.getElementById('groups'+ind).innerHTML = nameDoc
     })
-    document.getElementById('groups').innerHTML = nameDoc
 }

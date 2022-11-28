@@ -1,10 +1,65 @@
+.siteContents{
+    font-family: isaiahFont;
+    max-width: 900px;
+    margin: min(2vw, 18px) auto;
+    background-color: antiquewhite;
+    padding: min(2vw, 18px) min(4vw, 36px);
+    border: 3px solid black;
+    box-shadow: min(2vw, 18px) min(2vw, 18px) black;
+}
+
 h1{
     text-align: center;
+    font-size: min(5vw, 45px);
 }
 
 .container{
     display:grid;
     grid-template-columns: 50% 50%;
-    margin-left: 2%;
-    margin-right: 2%;
+    margin: 2%;
+}
+
+.student{
+    display: flex;
+    align-items: center;
+}
+
+.studentName{
+    width: 25%;
+}
+
+.student button {
+    width: 25%;
+    margin-right: 5%;
+}
+
+.checkbox{
+    color: aquamarine;
+    width: min(2.5vw, 22.5px);
+    height: min(2.5vw, 22.5px);
+}
+
+.textItem {
+    font-family: isaiahFont;
+    font-size: min(2.5vw, 22.5px);
+}
+
+br{
+    border: 1px;
+}
+
+.divider{
+    height: 0;
+    border-bottom: min(0.25vw, 2.25px) dashed black;
+    margin: min(1.25vw, 12.25px) 0;
+}
+
+.selectorButtons button{
+    font-family: isaiahFont;
+    font-size: min(2.5vw, 22.5px);
+}
+
+.groups{
+    border-left: min(0.25vw, 2.25px) dashed black;
+    padding: 0 min(2vw, 18px);
 }
