@@ -95,7 +95,6 @@ currentSite = 0;
 function setSite(val){
     currentSite = val
     for(i = 0; i<names.length; i++){
-        console.log( (i==val))
         document.getElementById('hider'+i).hidden = !(i==val)
     }
 }
@@ -122,7 +121,6 @@ function onSiteLoad(){
     buildSite = ''
     names.forEach(function(element, index){
         buildButtons += "<button onclick='setSite("+index+")'>"+element.title+"</button>"
-        console.log(index)
         buildSite+=`
         <div id="hider`+index+`" hidden>
             <div class="container" id="container`+index+`">
@@ -133,9 +131,17 @@ function onSiteLoad(){
                     <div class="textItem">
                         <input type="text" class="textItem" id="newName`+index+`" class="textItem"><button onclick="nameButton()" class="textItem">add</button>
                     </div>
-                    <div class="textItem">Group Size:</div><input type="text" class="textItem" id="groupSize`+index+`"><button onclick="generateGroups()" class="textItem">generate</button>
+                    <div class="divider"></div>
+                    <div class="textItem">Custom Seed:</div>
+                    <input type="text" class="textItem" id="customSeed`+index+`">
+                    <div class="textItem">Group Size:</div>
+                    <input type="text" class="textItem" id="groupSize`+index+`"><button onclick="generateGroups()" class="textItem">generate</button>
                 </div>
-                <div class="groups textItem" id="groups`+index+`">Click "generate" to create groups.</div>
+                <div class="groups textItem" id="groups`+index+`">
+                    <div class="groupItem">
+                        Click "generate" to create groups.
+                    </div>
+                </div>
             </div>
         </div>
         `
@@ -169,14 +175,16 @@ function nameButton(){
 
 function generateGroups(){
     names.forEach(function(el,ind){
+        var today = new Date()
+        customSeed = parseInt(document.getElementById("customSeed"+ind).value)
+        seed = (isNaN(customSeed) ? today.getDate() : customSeed)
         namesList = []
         el.namesList.forEach(function(element, index){
             if(!document.getElementById('absent'+ind+'_'+index).checked){
                 namesList.push(element)
             }
         })
-        var today = new Date()
-        namesList = shuffle(namesList, today.getDate())
+        namesList = shuffle(namesList, seed)
         //shuffled = ''
         size = parseInt((document.getElementById('groupSize'+ind).value), 10)
         if(isNaN(size)){
@@ -213,9 +221,9 @@ function generateGroups(){
                     addItem+="."
                 }
             })
-            nameDoc+=`<div>`+addItem+`</div>`
+            nameDoc+=`<div class="groupItem">`+addItem+`</div>`
         })
-        nameDoc += "<div>(Generated with seed "+today.getDate()+")</div>"
+        nameDoc += "<div class='divider'></div><div class='groupItem'>(Generated with seed "+seed+")</div>"
         document.getElementById('groups'+ind).innerHTML = nameDoc
     })
 }

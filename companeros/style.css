@@ -5,7 +5,7 @@
     background-color: antiquewhite;
     padding: min(2vw, 18px) min(4vw, 36px);
     border: 3px solid black;
-    box-shadow: min(2vw, 18px) min(2vw, 18px) black;
+    box-shadow: min(1vw, 9px) min(1vw, 9px) black;
 }
 
 h1{
@@ -61,5 +61,13 @@ br{
 
 .groups{
     border-left: min(0.25vw, 2.25px) dashed black;
+}
+
+.bottomText{
+    font-size: min(2vw, 18px);
+    border-top: min(0.25vw, 2.25px) dashed black;
+}
+
+.groupItem{
     padding: 0 min(2vw, 18px);
 }
