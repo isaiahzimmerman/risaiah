@@ -16,6 +16,7 @@ var siteList = [
 ]
 
 function loadSite(){
+    cacheSiteImages()
     bodyHTML = ""
 
     siteList.forEach(function(element, index){
@@ -48,6 +49,7 @@ function setColorScheme(scheme) {
         })
     }else{
         // Default
+        console.log('default')
         $(".caption").css("color", "#3A8891")
         $("body").css("background-color", "#FFEFD6") 
         $("h1").css("color", "#0E5E6F")
@@ -56,7 +58,6 @@ function setColorScheme(scheme) {
             var $img = $(this)
             $img.attr("src", siteList[index].icon[0])
             console.log(index)
-        console.log('default')
         })
     }
 }
@@ -79,6 +80,7 @@ if(window.matchMedia){
 
 function cacheImages(array)
 {
+    console.log("caching")
     if (!cacheImages.list) {
         cacheImages.list = [];
     }
@@ -103,6 +105,7 @@ function cacheSiteImages(){
     siteList.forEach(function(element, index){
         element.icon.forEach(function(element2, index2){
             imgsList.push(element2);
+            console.log(element2);
         })
     }) 
     cacheImages(imgsList)
