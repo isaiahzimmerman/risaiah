@@ -20,7 +20,7 @@ function loadSite(){
 
     siteList.forEach(function(element, index){
         bodyHTML+=`
-        <a href="`+element.path+`"
+        <a href="`+element.path+`">
             <div class="siteIcon">
                 <img class="iconIMG" src="`+element.icon[0]+`">
                 <span class="caption">`+element.title+`</span>
