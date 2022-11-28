@@ -4,7 +4,7 @@
     margin: min(2vw, 18px) auto;
     background-color: antiquewhite;
     padding: min(2vw, 18px) min(4vw, 36px);
-    border: 3px solid black;
+    border: min(0.4vw, 3.6px) solid black;
     box-shadow: min(1vw, 9px) min(1vw, 9px) black;
 }
 
