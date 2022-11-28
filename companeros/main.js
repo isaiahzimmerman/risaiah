@@ -107,7 +107,7 @@ function drawSite(){
             <div class="student">
                 <div class="studentName textItem">`+e2+`</div>
                 <button class="textItem" onclick='removeName(`+i2+`)'>Remove</button>
-                <div class="textItem">Absent?</div>
+                <div class="textItem isAbsent">Absent?</div>
                 <input type='checkbox' class='checkbox' id='absent`+i1+`_`+i2+`'>
             </div>
             `
