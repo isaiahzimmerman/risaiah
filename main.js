@@ -16,6 +16,7 @@ var siteList = [
 ]
 
 function loadSite(){
+    console.log("site is being loaded")
     cacheSiteImages()
     bodyHTML = ""
 
@@ -109,4 +110,9 @@ function cacheSiteImages(){
         })
     }) 
     cacheImages(imgsList)
+}
+
+function waitToLoadSite(){
+    loadSite()
+    setTimeout(() => {loadSite()}, 10);
 }
