@@ -1,6 +1,7 @@
 function pollDOM() {
-  const el = document.getElementById('header_back_button');
-  if (el != null) {
+  const el = document.getElementById('header_container');
+  const el2 = document.getElementById('header_back_button');
+  if (el != null && el2 == null) {
     header_draw_back()
   } else {
     setTimeout(pollDOM, 300); // try again in 300 milliseconds
@@ -38,7 +39,12 @@ function includeHTML() {
 
 function header_draw_back(){
   if(window.location.pathname.split('/').length > 3){
-    document.getElementById('header_back_button').innerHTML="Back"
+    document.getElementById('header_container').innerHTML+=
+    `
+    <div class="header_element">
+      <a href="../" id="header_back_button">Back</a>
+    </div>
+    `
   }
 }
 

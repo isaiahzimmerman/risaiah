@@ -16,14 +16,13 @@ var siteList = [
 ]
 
 function loadSite(){
-    console.log("site is being loaded")
     bodyHTML = ""
 
     siteList.forEach(function(element, index){
         bodyHTML+=`
         <a href="`+element.path+`">
             <div class="siteIcon">
-                <img class="iconIMG" src="`+element.icon[0]+`">
+                <img class="iconIMG lightIMG" src="`+element.icon[0]+`"><img class="iconIMG darkIMG" src="`+element.icon[1]+`">
                 <span class="caption">`+element.title+`</span>
             </div>
         </a>
@@ -31,9 +30,9 @@ function loadSite(){
     })
 
     document.getElementsByClassName("bodyHTML")[0].innerHTML = bodyHTML
-    setColorScheme(getPreferredColorScheme())
 }
 
+/*
 function setColorScheme(scheme) {
     if(scheme == 'dark'){
         // Dark
@@ -77,6 +76,7 @@ if(window.matchMedia){
     var colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
     colorSchemeQuery.addEventListener('change', setColorScheme(getPreferredColorScheme()));
 }
+*/
 
 /*
 function cacheImages(array)
@@ -113,8 +113,10 @@ function cacheSiteImages(){
 }
 */
 
+/*
 function waitToLoadSite(){
     //cacheSiteImages()
     loadSite()
     setTimeout(() => {loadSite()}, 1000);
 }
+*/

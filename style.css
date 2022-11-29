@@ -1,7 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
 
+@media (prefers-color-scheme: dark) {
+    .lightIMG{
+        width: 0;
+        height: 0;
+    }
+    .darkIMG{
+        width: inherit;
+        height: inherit;
+    }
+}
+  
+@media (prefers-color-scheme: light) {
+    .darkIMG{
+        width: 0;
+        height: 0;
+    }
+    .lightIMG{
+        width: inherit;
+        height: inherit;
+    }
+}
+
 body{
-    background-color: #FFEFD6;
+    background-color: var(--theme-color-1);
     font-size: 3vw;
     text-align: center;
     font-family: 'Source Serif Pro', serif;
@@ -9,7 +31,7 @@ body{
 
 h1{
     font-size: clamp(30px, 5vw, 60px);
-    color: #0E5E6F;
+    color: var(--theme-color-2);
 }
 
 .siteIcon{
@@ -30,17 +52,16 @@ a{
 }
 
 .iconIMG{
-    width: inherit;
-    height: inherit;
+    
 }
 
 .caption{
     display: block;
     font-size: clamp(15px, 2.5vw, 30px);
-    color:#0E5E6F;
+    color: var(--theme-color-2);
 }
 
 .bottomMessage{
-    color: #0E5E6F;
+    color: var(--theme-color-2);
     font-size: clamp(10px, 1.5vw, 20px);
 }

@@ -4,9 +4,16 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="main.js"></script>
         <title>Morse</title>
+        <!-- header -->
+        <script src="/assets/header/header.js"></script>
+        <link rel="stylesheet" href="/assets/header/header.css">
+        <!-- header -->
     </head>
-    <body onload="newLetter();
-                  updateHighScore();">
+    <body onload="newLetter(); updateHighScore();">
+        <!-- header -->
+        <div w3-include-html="/assets/header/header.html"></div>
+        <script>includeHTML()</script>
+        <!-- header -->
         <div class='titl'>Morse Code Practice</div>
         <br>
         <div class='scoreContainer'>

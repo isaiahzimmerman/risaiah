@@ -1,3 +1,10 @@
-body {
-    text-align: center
+body{
+    font-family: isaiahFont;
+    background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
+    text-align: center;
+}
+
+h1{
+    text-align: center;
 }

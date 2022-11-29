@@ -1,16 +1,26 @@
+:root{
+    --site-scale-width: max(300px, min(100vw, 900px));
+    --pss: calc(0.01 * var(--site-scale-width));
+}
+
+body{
+    background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
+}
+
 .siteContents{
     font-family: isaiahFont;
-    max-width: 900px;
-    margin: min(2vw, 18px) auto;
-    background-color: antiquewhite;
-    padding: min(2vw, 18px) min(4vw, 36px);
-    border: min(0.4vw, 3.6px) solid black;
-    box-shadow: min(1vw, 9px) min(1vw, 9px) black;
+    max-width: calc(var(--pss)*100);
+    margin: calc(var(--pss)*2) auto;
+    background-color: var(--theme-color-1);
+    padding: calc(var(--pss)*2) calc(var(--pss)*4);
+    border: calc(var(--pss)*0.4) solid var(--theme-bw-1);
+    box-shadow: calc(var(--pss)*1) calc(var(--pss)*1) calc(var(--pss)*0.3) black;
 }
 
 h1{
     text-align: center;
-    font-size: min(5vw, 45px);
+    font-size: calc(var(--pss)*5);
 }
 
 .container{
@@ -36,14 +46,13 @@ h1{
 }
 
 .checkbox{
-    color: aquamarine;
-    width: min(2.5vw, 22.5px);
-    height: min(2.5vw, 22.5px);
+    width: calc(var(--pss)*2.5);
+    height: calc(var(--pss)*2.5);
 }
 
 .textItem {
     font-family: isaiahFont;
-    font-size: min(3vw, 27px);
+    font-size: calc(var(--pss)*3);
 }
 
 br{
@@ -52,33 +61,33 @@ br{
 
 .divider{
     height: 0;
-    border-bottom: min(0.25vw, 2.25px) dashed black;
-    margin: min(1.25vw, 12.25px) 0;
+    border-bottom: calc(var(--pss)*0.25) dashed var(--theme-bw-1);
+    margin: calc(var(--pss)*1.25) 0;
 }
 
 .selectorButtons button{
     font-family: isaiahFont;
     height: fit-content;
-    font-size: min(3vw, 27px);
+    font-size: calc(var(--pss)*3);
 }
 
 .groups{
-    border-left: min(0.25vw, 2.25px) dashed black;
+    border-left: calc(var(--pss)*0.25) dashed var(--theme-bw-1);
 }
 
 .bottomText{
-    font-size: min(2vw, 18px);
-    border-top: min(0.25vw, 2.25px) dashed black;
+    font-size: calc(var(--pss)*2);
+    border-top: calc(var(--pss)*0.25) dashed var(--theme-bw-1);
 }
 
 .groupItem{
-    padding: 0 min(2vw, 18px);
+    padding: 0 calc(var(--pss)*2);
 }
 
 button {
-    background-color: rgb(216, 216, 216);
-    border-radius: min(1vw, 9px);
-    margin: min(0.25vw, 2.25px);
-    padding: min(0.25vw, 2.25px) min(1vw, 9px);
-    color: black;
+    background-color: var(--theme-gr-0);
+    border-radius:calc(var(--pss)*1);
+    margin: calc(var(--pss)*0.25);
+    padding: calc(var(--pss)*0.25) calc(var(--pss)*1);
+    color: var(--theme-bw-1);
 }
