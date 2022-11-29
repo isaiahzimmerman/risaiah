@@ -2,7 +2,7 @@
 
 function shuffle(array, seed) {                // <-- ADDED ARGUMENT
     var m = array.length, t, i;
-  
+    seed *= 10
     // While there remain elements to shuffle…
     while (m) {
   
