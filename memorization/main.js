@@ -47,6 +47,7 @@ function retry(){
 }
 
 function restart(){
+    document.getElementById("results").innerHTML = ""
     gameStarted = false
     currentWord = 0;
     words=[]
