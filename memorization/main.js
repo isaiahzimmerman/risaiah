@@ -93,7 +93,7 @@ function readTextFile(file)
 function replaceText(input){
     newText = ''
     switch(input){
-        case 'canterbury.txt':
+        case 'CTPrologue.txt':
         newText = `Whan that Aprille with his shoures soote,
 The droghte of March hath perced to the roote,
 And bathed every veyne in swich licóur
