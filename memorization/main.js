@@ -104,7 +104,7 @@ Inspired hath in every holt and heeth
 The tendre croppes, and the yonge sonne
 Hath in the Ram his halfe cours y-ronne,
 And smale foweles maken melodye,
-That slepen al the nyght with open ye,
+That slepen al the nyght with open eye,
 So priketh hem Natúre in hir corages,
 Thanne longen folk to goon on pilgrimages,
 And palmeres for to seken straunge strondes,
