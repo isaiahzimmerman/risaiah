@@ -1,5 +1,6 @@
 body {
-    background-color: blanchedalmond;
+    background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
 }
 
 .level {
@@ -14,7 +15,7 @@ body {
 
 .score {
     font-size: 50px;
-    text-align:center;
+    text-align: center;
 }
 
 .puzzle {
@@ -43,6 +44,11 @@ p {
 .highScore {
     float: right;
     font-size: 50px;
+}
+
+button{
+    background-color: var(--theme-gr-0);
+    color: var(--theme-bw-1);
 }
 
 .keyboard1 {

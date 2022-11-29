@@ -8,7 +8,7 @@
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
     <!-- header -->
-    <script src="/assets/header/header.js"></script>
+    <script type="text/javascript" src="/assets/header/header.js"></script>
     <link rel="stylesheet" href="/assets/header/header.css">
     <!-- header -->
 </head>
@@ -18,6 +18,8 @@
     <script>includeHTML()</script>
     <!-- header -->
     <div class="startField" id="startField">
+        <span>Load Content:</span>
+        <button onclick="replaceText('CTPrologue.txt')">CT Prologue</button>
         <div>
             <textarea id="toMemorize">Enter your text here!</textarea>
         </div>
@@ -29,6 +31,7 @@
         <div>
             <span class="currentWord" id="currentWord">currentWord</span>
         </div>
+        <button onclick="finishGame()">End Now</button>
     </div>
     <div class="results" id="results" hidden>
 
