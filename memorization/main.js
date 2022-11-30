@@ -66,6 +66,7 @@ function finishGame(){
 }
 
 function pressKey(key){
+    key = key.toLowerCase()
     if(currentWord < words.length){
         if(key==words[currentWord].toLowerCase().substring(0,1)){
             document.getElementById("currentWord").style.color = "green"
@@ -117,4 +118,26 @@ That hem hath holpen whan that they were seeke.`
     }
     document.getElementById("toMemorize").value = newText
 
+}
+
+function drawKeyboard(){
+    document.getElementById('showKeyboard').checked = false
+    keyboardDiv = ''
+    keys = [
+        ['Q','W','E','R','T','Y','U','I','O','P'],
+        ['A','S','D','F','G','H','J','K','L'],
+        ['Z','X','C','V','B','N','M']
+    ]
+    keys.forEach(function(element, index){
+        keyboardDiv += '<div>'
+        element.forEach(function (element2, index2) {
+            keyboardDiv += `<div class="key" onclick="pressKey('`+element2+`')">`+element2+`</div>`
+        })
+        keyboardDiv += '</div>'
+    })
+    document.getElementById('keyboard').innerHTML = keyboardDiv
+}
+
+function updateKeyboard(){
+    document.getElementById('keyboardHider').hidden = !document.getElementById('showKeyboard').checked
 }
