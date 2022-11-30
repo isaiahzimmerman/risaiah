@@ -1,3 +1,7 @@
+body{
+    background-color: var(--theme-softbg-0);
+}
+
 .green{
     color: green;
 }

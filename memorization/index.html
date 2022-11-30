@@ -17,23 +17,48 @@
     <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
     <!-- header -->
-    <div class="startField" id="startField">
-        <span>Load Content:</span>
-        <button onclick="replaceText('CTPrologue.txt')">CT Prologue</button>
+
+    <!-- Different Modes-->
+    <div class="modes">
+        <div>
+            <button onclick="hideElement('fullWrite'); showElement('firstLetter')" >First Letter</button>
+            <button onclick="hideElement('firstLetter'); showElement('fullWrite')" >Full Write </button>
+        </div>
+    </div>
+
+    <!-- Different Modes-->
+
+    <!-- First Letter Mode-->
+    <div class="firstLetter" id="firstLetter" hidden>
+        <div class="startField" id="startField">
+            <span>Load Content:</span>
+            <button onclick="replaceText('CTPrologue.txt')">CT Prologue</button>
+            <div>
+                <textarea class="toMemorize" id="toMemorize">Enter your text here!</textarea>
+            </div>
+            <div>
+                <button onclick="genGame()">Submit</button>
+            </div>
+        </div>
+        <div class="gameArea" id="gameArea" hidden>
+            <div>
+                <span class="currentWord" id="currentWord">currentWord</span>
+            </div>
+            <button onclick="finishGame()">End Now</button>
+        </div>
+        <div class="results" id="results" hidden>
+
+        </div>
+    </div>
+    <!-- First Letter Mode-->
+
+    <!-- Full Write Mode -->
+    <div class="fullWrite" id="fullWrite" hidden>
         <div>
             <textarea class="toMemorize" id="toMemorize">Enter your text here!</textarea>
         </div>
-        <div>
-            <button onclick="genGame()">Submit</button>
-        </div>
-    </div>
-    <div class="gameArea" id="gameArea" hidden>
-        <div>
-            <span class="currentWord" id="currentWord">currentWord</span>
-        </div>
-        <button onclick="finishGame()">End Now</button>
-    </div>
-    <div class="results" id="results" hidden>
+
+
 
     </div>
 </body>

@@ -1,8 +1,5 @@
-
-
 let xturn= true
 let gameOver= false
-
 
 let winner= document.getElementById("winner")
 let board= [
@@ -21,21 +18,14 @@ var boxSix= document.getElementById("box6")
 var boxSeven= document.getElementById("box7")
 var boxEight= document.getElementById("box8")
 
-
-
 var colorX= document.getElementById("scoreX")
 var colorO= document.getElementById("scoreO")
-
-
-
-
 
 let scoreX=0
 let scoreY=0
 
 
 function winCheck(){
-    
     
     //Top Row Horizontal
     if((board[0]===board[1] && board[0]===board[2])){
@@ -254,7 +244,6 @@ function restart(){
 
         //restarts game to make it playable
         gameOver=false
-
         drawBoard()
 
         //randomizes turn
@@ -274,8 +263,5 @@ function restart(){
             colorO.style.color="#BCC7CE"
             colorX.style.color="#628395"
         }
-    
-
-
     }
 }

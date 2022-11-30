@@ -1,0 +1,32 @@
+body{
+    background-color: #98A5C0;
+}
+a{
+    text-decoration: none;
+}
+.tabs{
+    color: #35383b;
+    text-align: center;
+    
+    
+    
+}
+.selection{
+    color: #35383b;
+    padding:10px;
+    display: inline-block;
+    
+}
+#enterTextTab{
+    color:#304FAF
+}
+#practiceTab{
+    color:#304FAF
+}
+.enterText{
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+
