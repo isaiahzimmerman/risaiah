@@ -54,8 +54,22 @@
 
     <!-- Full Write Mode -->
     <div class="fullWrite" id="fullWrite" hidden>
-        <div>
-            <textarea class="toMemorize" id="toMemorize">Enter your text here!</textarea>
+        <div class="startScreen" id="startScreen">
+            <div>
+                <textarea class="toMemorize" id="toMemorize" placeholder="Enter your text here!"></textarea>
+            </div>
+            <div>
+                <button onclick="getWords() ; hideElement('startScreen'); showElement('gameArea2')" >Save</button>
+            </div>
+        </div>
+        <div class="gameArea2" id="gameArea2" hidden>
+            <div>
+                <textarea class="gameBoxes" placeholder="Input Attempt Here!" ></textarea>
+                <textarea class="gameBoxes" ></textarea>
+            </div>
+            <div>
+                <button>Check</button>
+            </div>
         </div>
 
 

@@ -21,14 +21,17 @@ function updateWord(){
     document.getElementById("currentWord").innerHTML = words[currentWord]
     currentWord++
 }
-
-function genGame(){
+function getWords(){
     toMemorize = document.getElementById("toMemorize").value.replace(/(\r\n|\n|\r)/gm, " ");
     words = toMemorize.split(" ")
     words.unshift('?')
-    words = words.filter(element => {
+    return words.filter(element => {
         return element !== '';
     });
+}
+
+function genGame(){
+    words = getWords()
     gameStarted = true
     updateWord()
     hideElement("startField")

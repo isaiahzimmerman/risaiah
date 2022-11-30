@@ -2,6 +2,7 @@ body{
     background-color: var(--theme-softbg-0);
 }
 
+
 .green{
     color: green;
 }
@@ -13,3 +14,10 @@ body{
     width: 800px;
     height: 400px;
 }
+.gameBoxes{
+    text-align: center;
+    width: 40%;
+    height:400px;
+}
+
+
