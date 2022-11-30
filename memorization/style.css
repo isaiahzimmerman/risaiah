@@ -19,6 +19,10 @@ body{
     height: min(400px, max(100px, 30vh));
 }
 
+.results{
+    margin-bottom: calc(var(--pss)*30);
+}
+
 .gameArea{
     margin: calc(var(--pss)*15) 0;
     text-align: center;

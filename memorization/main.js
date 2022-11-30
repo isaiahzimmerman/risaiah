@@ -96,7 +96,7 @@ function replaceText(input){
     newText = ''
     switch(input){
         case 'CTPrologue.txt':
-        newText = `Whan that Aprille with his shoures soote,
+            newText = `Whan that Aprille with his shoures soote,
 The droghte of March hath perced to the roote,
 And bathed every veyne in swich licóur
 Of which vertú engendred is the flour;
@@ -115,6 +115,20 @@ Of Engelond, to Caunterbury they wende,
 The hooly blisful martir for to seke,
 That hem hath holpen whan that they were seeke.`
         break
+        case 'OCOCE1-2.txt':
+            newText = `O come, O come, Emmanuel,
+And ransom captive Israel;
+That mourns in lonely exile here,
+Until the Son of God appear.
+Rejoice! Rejoice! Emmanuel
+Shall come to thee, O Israel.
+
+O come, Thou Rod of Jesse, free
+Thine own from Satan's tyranny;
+From depths of hell Thy people save,
+And give them victory o'er the grave.
+Rejoice! Rejoice! Emmanuel
+Shall come to thee, O Israel.`
     }
     document.getElementById("toMemorize").value = newText
 
