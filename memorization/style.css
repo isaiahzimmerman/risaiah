@@ -1,3 +1,8 @@
+:root{
+    --site-scale-width: max(300px, min(96vw, 700px));
+    --pss: calc(0.01 * var(--site-scale-width));
+}
+
 body{
     background-color: var(--theme-softbg-0);
 }
@@ -11,8 +16,32 @@ body{
 }
 
 .toMemorize{
-    width: 800px;
-    height: 400px;
+    width: min(800px, 98%);
+    height: min(400px, max(100px, 30vh));
+}
+
+.results{
+    margin-bottom: calc(var(--pss)*30);
+}
+
+.gameArea{
+    margin: calc(var(--pss)*15) 0;
+    text-align: center;
+}
+
+.currentWord{
+    font-size: calc(var(--pss)*15);
+}
+
+.keyboard{
+    width: calc(var(--pss)*100);
+
+    bottom: 2vw;
+    margin: 0 auto;
+}
+
+.keyboard div{
+    text-align: center;
 }
 .gameBoxes{
     text-align: center;
@@ -21,3 +50,17 @@ body{
 }
 
 
+
+.key{
+    display: inline-block;
+    font-size: 100%;
+    width: calc(var(--pss)*9);
+    height: calc(var(--pss)*9);
+    font-size: calc(var(--pss)*7);
+    border: 1px solid black;
+    border-radius: calc(var(--pss)*1);
+    background-color: rgb(54, 54, 54);
+    text-align: center;
+    line-height: calc(var(--pss)*9);
+    color: white;
+}

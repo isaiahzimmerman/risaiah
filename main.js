@@ -10,6 +10,7 @@ var siteList = [
     {title: 'Birthday Calculator', path: '/birthdaycalc/', icon: ['/assets/icons/cake.svg', '/assets/icons/darkcake.svg'], author: ['ryan']},
     {title: 'Linear Regression Calculator', path: '/linreg/', icon: ['/assets/icons/graph.svg', '/assets/icons/darkgraph.svg'], author: ['isaiah']},
     {title: 'Compañeros Generator', path: '/companeros/', icon:['/assets/icons/eslang.svg', '/assets/icons/darkeslang.svg'], author: ['isaiah']},
+    {title: 'Memory Game', path: '/memorization/', icon:['/assets/icons/brain.svg', '/assets/icons/darkbrain.svg'], author: ['isaiah', 'ryan']},
     
     //keep last
     {title: 'About', path: '/about/', icon: ['/assets/icons/questionmark.svg', '/assets/icons/darkquestionmark.svg'], author: []},

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/assets/header/header.css">
     <!-- header -->
 </head>
-<body>
+<body onload="drawKeyboard()">
     <!-- header -->
     <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
@@ -22,17 +22,20 @@
     <div class="modes">
         <div>
             <button onclick="hideElement('fullWrite'); showElement('firstLetter')" >First Letter</button>
-            <button onclick="hideElement('firstLetter'); showElement('fullWrite')" >Full Write </button>
+            <button onclick="hideElement('firstLetter'); showElement('fullWrite')" >Whole Word</button>
+            <span>Show Keyboard?</span>
+            <input type="checkbox" id="showKeyboard" onclick="updateKeyboard()">
         </div>
     </div>
 
     <!-- Different Modes-->
 
     <!-- First Letter Mode-->
-    <div class="firstLetter" id="firstLetter" hidden>
+    <div class="firstLetter" id="firstLetter" >
         <div class="startField" id="startField">
             <span>Load Content:</span>
             <button onclick="replaceText('CTPrologue.txt')">CT Prologue</button>
+            <button onclick="replaceText('OCOCE1-2.txt')">OCOCE 1-2</button>
             <div>
                 <textarea class="toMemorize" id="toMemorize">Enter your text here!</textarea>
             </div>
@@ -71,9 +74,13 @@
                 <button>Check</button>
             </div>
         </div>
+    </div>
 
+    <!-- Keyboard for mobile -->
+    <div id="keyboardHider" class="keyboardHider" hidden>
+        <div class="keyboard" id="keyboard">
 
-
+        </div>
     </div>
 </body>
 </html>

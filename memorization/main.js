@@ -69,19 +69,23 @@ function finishGame(){
 }
 
 function pressKey(key){
-    if(currentWord < words.length){
-        if(key==words[currentWord].toLowerCase().substring(0,1)){
-            document.getElementById("currentWord").style.color = "green"
-            document.getElementById("results").innerHTML += "<span class='green'>"+words[currentWord]+"</span> "
-            correct++
-        }else{
-            document.getElementById("currentWord").style.color = "red"
-            document.getElementById("results").innerHTML += "<span class='red'>"+words[currentWord]+"</span> "
+    if(!document.getElementById('gameArea').hidden){
+        key = key.toLowerCase()
+        if(currentWord < words.length){
+            if(key==words[currentWord].toLowerCase().substring(0,1)){
+                document.getElementById("currentWord").style.color = "green"
+                document.getElementById("results").innerHTML += "<span class='green'>"+words[currentWord]+"</span> "
+                correct++
+            }else{
+                document.getElementById("currentWord").style.color = "red"
+                document.getElementById("results").innerHTML += "<span class='red'>"+words[currentWord]+"</span> "
+            }
+            updateWord()
         }
-        updateWord()
+        if(currentWord >= words.length)
+            finishGame()
     }
-    if(currentWord >= words.length)
-        finishGame()
+    
 }
 
 function readTextFile(file)
@@ -98,7 +102,7 @@ function replaceText(input){
     newText = ''
     switch(input){
         case 'CTPrologue.txt':
-        newText = `Whan that Aprille with his shoures soote,
+            newText = `Whan that Aprille with his shoures soote,
 The droghte of March hath perced to the roote,
 And bathed every veyne in swich licóur
 Of which vertú engendred is the flour;
@@ -117,7 +121,43 @@ Of Engelond, to Caunterbury they wende,
 The hooly blisful martir for to seke,
 That hem hath holpen whan that they were seeke.`
         break
+        case 'OCOCE1-2.txt':
+            newText = `O come, O come, Emmanuel,
+And ransom captive Israel;
+That mourns in lonely exile here,
+Until the Son of God appear.
+Rejoice! Rejoice! Emmanuel
+Shall come to thee, O Israel.
+
+O come, Thou Rod of Jesse, free
+Thine own from Satan's tyranny;
+From depths of hell Thy people save,
+And give them victory o'er the grave.
+Rejoice! Rejoice! Emmanuel
+Shall come to thee, O Israel.`
     }
     document.getElementById("toMemorize").value = newText
 
+}
+
+function drawKeyboard(){
+    document.getElementById('showKeyboard').checked = false
+    keyboardDiv = ''
+    keys = [
+        ['Q','W','E','R','T','Y','U','I','O','P'],
+        ['A','S','D','F','G','H','J','K','L'],
+        ['Z','X','C','V','B','N','M']
+    ]
+    keys.forEach(function(element, index){
+        keyboardDiv += '<div>'
+        element.forEach(function (element2, index2) {
+            keyboardDiv += `<div class="key" onclick="pressKey('`+element2+`')">`+element2+`</div>`
+        })
+        keyboardDiv += '</div>'
+    })
+    document.getElementById('keyboard').innerHTML = keyboardDiv
+}
+
+function updateKeyboard(){
+    document.getElementById('keyboardHider').hidden = !document.getElementById('showKeyboard').checked
 }
