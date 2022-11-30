@@ -66,20 +66,23 @@ function finishGame(){
 }
 
 function pressKey(key){
-    key = key.toLowerCase()
-    if(currentWord < words.length){
-        if(key==words[currentWord].toLowerCase().substring(0,1)){
-            document.getElementById("currentWord").style.color = "green"
-            document.getElementById("results").innerHTML += "<span class='green'>"+words[currentWord]+"</span> "
-            correct++
-        }else{
-            document.getElementById("currentWord").style.color = "red"
-            document.getElementById("results").innerHTML += "<span class='red'>"+words[currentWord]+"</span> "
+    if(!document.getElementById('gameArea').hidden){
+        key = key.toLowerCase()
+        if(currentWord < words.length){
+            if(key==words[currentWord].toLowerCase().substring(0,1)){
+                document.getElementById("currentWord").style.color = "green"
+                document.getElementById("results").innerHTML += "<span class='green'>"+words[currentWord]+"</span> "
+                correct++
+            }else{
+                document.getElementById("currentWord").style.color = "red"
+                document.getElementById("results").innerHTML += "<span class='red'>"+words[currentWord]+"</span> "
+            }
+            updateWord()
         }
-        updateWord()
+        if(currentWord >= words.length)
+            finishGame()
     }
-    if(currentWord >= words.length)
-        finishGame()
+    
 }
 
 function readTextFile(file)
