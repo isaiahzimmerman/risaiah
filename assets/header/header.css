@@ -1,5 +1,5 @@
 @media (prefers-color-scheme: dark) {
-  :root{
+  /* :root{
     --theme-color-0: #395B64;
     --theme-color-1: #2C3333;
     --theme-color-2: #E7F6F2;
@@ -8,6 +8,19 @@
     --theme-bw-0: black;
     --theme-bw-1: white;
     --theme-gr-0: rgb(126, 126, 126);
+    --theme-gr-0-0_7: rgba(126, 126, 126, 0.7);
+  } */
+  :root{
+    --theme-color-0: #87431D;
+    --theme-color-1: #643014;
+    --theme-color-2: #DBCBBD;
+    --theme-color-3: #C87941;
+    --theme-color-4: #290001;
+    --theme-softbg-0: #8e6345;
+    --theme-bw-0: black;
+    --theme-bw-1: white;
+    --theme-gr-0: rgb(126, 126, 126);
+    --theme-gr-0-0_7: rgba(126, 126, 126, 0.7);
   }
 }
 
@@ -21,6 +34,7 @@
     --theme-bw-0: white;
     --theme-bw-1: black;
     --theme-gr-0: rgb(216, 216, 216);
+    --theme-gr-0-0_7: rgba(216, 216, 216, 0.7);
   }
 }
 

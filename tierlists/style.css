@@ -27,6 +27,8 @@ body{
 .mainContainer{
     display: grid;
     grid-template-rows: repeat(6, calc(var(--pss) * 12));
+    max-width: calc(var(--pss) * 100);
+    margin: 0 auto;
 }
 
 .tier{

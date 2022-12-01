@@ -23,7 +23,7 @@
 }
 
 body{
-    background-color: var(--theme-color-1);
+    background-color: var(--theme-softbg-0);
     font-size: 3vw;
     text-align: center;
     font-family: 'Source Serif Pro', serif;
