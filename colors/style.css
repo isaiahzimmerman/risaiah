@@ -18,7 +18,7 @@ h1{
 
 .colors{
     border: 1px solid var(--theme-bw-1);
-    width: 50%;
+    width: 40%;
     margin: 0 auto;
 }
 
@@ -35,4 +35,8 @@ h1{
 
 .color:hover span{
     opacity: 100%;
+}
+
+.colorses{
+    display: flex;
 }

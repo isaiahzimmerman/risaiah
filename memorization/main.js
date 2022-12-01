@@ -8,6 +8,7 @@ gameStarted = false
 currentWord = 0;
 words=[]
 correct = 0
+results = ''
 
 function hideElement(id){
     document.getElementById(id).hidden = true
@@ -43,14 +44,14 @@ function retry(){
     correct = 0
     gameStarted = true
     updateWord()
-    document.getElementById("results").innerHTML = ""
+    results = ""
     hideElement("results")
     hideElement("startField")
     showElement("gameArea")
 }
 
 function restart(){
-    document.getElementById("results").innerHTML = ""
+    results = ""
     gameStarted = false
     currentWord = 0;
     words=[]
@@ -64,8 +65,9 @@ function finishGame(){
     console.log('done!')
     hideElement("gameArea")
     showElement("results")
-    document.getElementById("results").innerHTML += "<span>("+correct+"/"+(currentWord-1)+" correct)</span> <button onclick='retry()'>Retry</button> <button onclick='restart()'>Go Back</button>"
+    results += "<div>("+correct+"/"+(currentWord-1)+" correct) <button onclick='retry()'>Retry</button> <button onclick='restart()'>Go Back</button></div>"
     document.getElementById("currentWord").style.color = "black"
+    document.getElementById("results").innerHTML = results
 }
 
 function pressKey(key){
@@ -73,12 +75,12 @@ function pressKey(key){
         key = key.toLowerCase()
         if(currentWord < words.length){
             if(key==words[currentWord].toLowerCase().substring(0,1)){
-                document.getElementById("currentWord").style.color = "green"
-                document.getElementById("results").innerHTML += "<span class='green'>"+words[currentWord]+"</span> "
+                document.getElementById("currentWord").style.color = "var(--theme-green-0)"
+                results += "<span class='green'>"+words[currentWord]+"</span> "
                 correct++
             }else{
-                document.getElementById("currentWord").style.color = "red"
-                document.getElementById("results").innerHTML += "<span class='red'>"+words[currentWord]+"</span> "
+                document.getElementById("currentWord").style.color = "var(--theme-red-0)"
+                results += "<span class='red'>"+words[currentWord]+"</span> "
             }
             updateWord()
         }

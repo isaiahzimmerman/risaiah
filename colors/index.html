@@ -12,14 +12,15 @@
     <link rel="stylesheet" href="/assets/header/header.css">
     <!-- header -->
 </head>
-<body onload="drawSite()">
+<body onload="drawSite('colors0', 0); drawSite('colors1', 1)">
     <!-- header -->
     <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
     <!-- header -->
     <h1>Site Title</h1>
-    <div class="colors" id="colors">
-
+    <div class="colorses">
+        <div class="colors" id="colors0"></div>
+        <div class="colors" id="colors1"></div>
     </div>
 </body>
 </html>

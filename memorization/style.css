@@ -9,10 +9,10 @@ body{
 
 
 .green{
-    color: green;
+    color: var(--theme-green-0);
 }
 .red{
-    color: red;
+    color: var(--theme-red-0);
 }
 
 .toMemorize{
@@ -49,6 +49,10 @@ body{
     height:400px;
 }
 
+.results{
+    font-size: calc(var(--pss)*3.5);
+    margin: calc(var(--pss)*5) 0;
+}
 
 
 .key{
