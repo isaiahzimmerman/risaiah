@@ -121,7 +121,33 @@ To ferne halwes, kowthe in sondry londes;
 And specially, from every shires ende
 Of Engelond, to Caunterbury they wende,
 The hooly blisful martir for to seke,
-That hem hath holpen whan that they were seeke.`
+That hem hath holpen whan that they were seeke.
+
+Bifel that in that sesoun on a day
+In Southwerk at the Tabard, as I lay
+Redy to wenden on my pilgrymage
+To Caunterbury with ful devout corage,
+At nyght was come into that hostelrye
+Wel nyne- and- twenty in a compaignye
+Of sondry folk by aventure y-falle
+In felaweshipe, and pilgrymages were they alle
+That toward Caunterbury wolden ryde.
+The chambres and the stables weren wyde,
+And wel we weren esed atte beste;
+And shortly, whan the sonne was to reste,
+So hadde I spoken with hem evrichon
+That I was of hir felaweshipe anon;
+And made forward erly for to ryse
+To take oure wey ther as I yow devyse.
+
+But, nathelees, whil I have tyme and space,
+Er that I ferther in this tale pace,
+Me thynketh it acordant to resoun
+To telle yow al the condicioun
+Of ech of hem so as it semed me,
+And whiche they weren, and of what degree,
+And eek in what array they were inne;
+And at a kynght than wol I first bigynne.`
         break
         case 'OCOCE1-2.txt':
             newText = `O come, O come, Emmanuel,
