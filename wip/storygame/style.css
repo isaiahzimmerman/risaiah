@@ -1,0 +1,22 @@
+:root{
+    --site-scale-width: max(20rem, min(96vw, 100rem));
+    --pss: calc(0.01 * var(--site-scale-width));
+}
+
+body{
+    font-family: isaiahFont;
+    background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
+}
+
+h1{
+    text-align: center;
+}
+
+.gameContainer{
+    height: min(calc(var(--pss) * 75), 75vh);
+    width: calc(var(--pss) * 100);
+    max-width: calc(var(--pss) * 100);
+    background-color: aqua;
+    margin: 0 auto;
+}
