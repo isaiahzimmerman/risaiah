@@ -1,0 +1,152 @@
+:root{
+    --site-margin: 10px;
+}
+
+body{
+    padding: 0;
+    margin: var(--site-margin);
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    max-width: 1200px;
+}
+
+.content{
+    overflow: scroll;
+    height: calc(95vh - 2 * var(--site-margin));
+    width: auto;
+}
+
+.item{
+    /* width: fit-content; */
+    height: fit-content;
+    margin: 0.2vw;
+    display: flex;
+    padding: 0.3vw;
+}
+
+.task{
+    font-weight: bold;
+}
+
+.taskCheck{
+    justify-content: center;
+    align-items: center;
+    width: 8%;
+    padding-right: 5%;
+}
+
+.taskCheck input{
+    width: 100%;
+    aspect-ratio: 1;
+
+    border: none;
+}
+
+.taskInfo{
+    width: 100%;
+}
+
+.todoButtons{
+    height: 5vh;
+}
+
+.calendar{
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: 0 auto;
+    /* max-width: 600px; */
+}
+
+.rightColumn{
+    height: fit-content;
+}
+
+.calendarItem, .bigItem{
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(189, 189, 189);
+    border-radius: 2vw;
+    margin: 0.1vw;
+    /* box-shadow: 0.5vw 0.5vw 0.6vw black; */
+    font-size: 4.5vw;
+}
+
+.calendarItem:hover{
+    /* background-color: rgb(199, 199, 199); */
+    border: 0.3vw solid black;
+}
+
+.fullness0{
+    background-color: rgb(189, 189, 189);
+}
+.fullness1{
+    background-color: rgb(255, 171, 171);
+}
+.fullness2{
+    background-color: rgb(252, 107, 107);
+}
+.fullness3{
+    background-color: rgb(255, 80, 80);
+}
+.fullness4{
+    background-color: rgb(251, 45, 45);
+}
+.fullness5{
+    background-color: rgb(229, 0, 0);
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: 0 auto;
+}
+
+.bigItem{
+    border: 0.4vw solid black;
+    border-radius: 2vw;
+    /* box-shadow: 0.5vw 0.5vw 1.4vw black; */
+    font-size: 14.5vw;
+    margin: 1vw;
+    text-align: center;
+}
+
+.monthTitle{
+    text-align: center;
+    font-size: 7vw;
+}
+
+.item:hover{
+    background-color: rgb(212, 212, 212);
+}
+
+.dayView{
+    margin: 2vw;
+    /* display: grid;
+    grid-template-columns: 2fr 3fr; */
+    display: flex;
+    height: 23vw;
+}
+
+.dayTodos{
+    margin: 1vw;
+    overflow: scroll;
+    width: calc(100% - 25vw);
+}
+
+
+/* Labels */
+.label.Bible{
+    color: rgb(176, 179, 0);
+}
+.label.Spanish{
+    color: green;
+}
+.label.Calculus{
+    color: blue;
+}
+.label.Computer_Science{
+    color: orange;
+}

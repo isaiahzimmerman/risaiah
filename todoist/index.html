@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="todoist.js"></script>
+    <script src="main.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loadSite()">
+    <div>
+        <div class="content" id="content">Loading...</div>
+        <div class="bottomButtons">
+            <button onclick="assignLabels()">Assign Labels</button>
+            <button onclick="updateTasks()">Refresh</button>
+        </div>
+    </div>
+    <div class="rightColumn">
+        <div id="monthTitle" class="monthTitle">January...</div>
+        <div class="calendar" id="calendar">
+        </div>
+        <div class="dayView">
+            <div id="bigItem" class="bigItem"></div>
+            <div id="dayTodos" class="dayTodos">
+                <div class="item">
+                    <div class="taskInfo">
+                        <div class="task">Task Name</div>
+                        <div class="due">dueDate</div>
+                        <div class='label Spanish'>Spanish</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="taskInfo">
+                        <div class="task">Task Name</div>
+                        <div class="due">dueDate</div>
+                        <div class='label Calculus'>Calculus</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="taskInfo">
+                        <div class="task">Task Name</div>
+                        <div class="due">dueDate</div>
+                        <div class='label Bible'>Bible</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            QOTD: "This is a Quote" - Person
+        </div>
+        <div>
+            VOTD: "This is a Verse" - John 1:23
+        </div>
+    </div>
+</body>
+</html>
