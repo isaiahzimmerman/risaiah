@@ -55,7 +55,6 @@ function getDates(){
             offset = output.dates.length
             currentVal = firstDay + i - offset
         }
-        console.log({month})
 
         if(i == 13){
             output.lastDay = {month: month, day: currentVal, year: year}
