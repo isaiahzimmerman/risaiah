@@ -82,10 +82,24 @@ names=[
     {
         title: "Spanish IV",
         namesList: [
-            'StudentA',
-            'StudentB',
-            'StudentC',
-            'StudentD',
+            'Alex',
+            'Emma',
+            'Connor',
+            'Siya',
+            'Mira',
+            'Luke G',
+            'Luke K',
+            'Sophia',
+            'Vivian',
+            'Zachary',
+            'Zach',
+            'Jessie',
+            'Grayson',
+            'Kaiden',
+            'Jacob',
+            'Ben',
+            'Katie',
+            'Kaylee',
         ]
     }
 ]
