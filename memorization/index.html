@@ -21,8 +21,8 @@
     <!-- Different Modes-->
     <div class="modes">
         <div>
-            <button onclick="hideElement('fullWrite'); showElement('firstLetter')" >First Letter</button>
-            <button onclick="hideElement('firstLetter'); showElement('fullWrite')" >Whole Word</button>
+            <button onclick="hideElement('fullText'); showElement('firstLetter')" >First Letter</button>
+            <button onclick="hideElement('firstLetter'); showElement('fullText')" >Full Text</button>
             <span>Show Keyboard?</span>
             <input type="checkbox" id="showKeyboard" onclick="updateKeyboard()">
         </div>
@@ -56,23 +56,34 @@
     </div>
     <!-- First Letter Mode-->
 
-    <!-- Full Write Mode -->
-    <div class="fullWrite" id="fullWrite" hidden>
+    <!-- Full Text Mode -->
+    <div class="fullText" id="fullText" hidden>
         <div class="startScreen" id="startScreen">
+
+            <!-- Pre-Made Texts-->
+            <span>Load Content:</span>
+            <button onclick="replaceText('CTPrologue.txt')">CT Prologue</button>
+            <button onclick="replaceText('OCOCE1-2.txt')">OCOCE 1-2</button>
+            <button onclick="replaceText('James1ESV.txt')">James 1</button>
+            <!-- Pre-Made Texts-->
+
             <div>
-                <textarea class="toMemorize" id="toMemorize" placeholder="Enter your text here!"></textarea>
+                <textarea class="toMemorize" id="toMemorize2" placeholder="Enter your text here!"></textarea>
             </div>
             <div>
-                <button onclick="getWords() ; hideElement('startScreen'); showElement('gameArea2')" >Save</button>
+                <button onclick="genGame2()" >Save</button>
             </div>
         </div>
         <div class="gameArea2" id="gameArea2" hidden>
             <div>
-                <textarea class="gameBoxes" placeholder="Input Attempt Here!" ></textarea>
-                <textarea class="gameBoxes" readonly ></textarea>
+                <textarea class="gameBoxes" id="guessBox" placeholder="Input Attempt Here!" ></textarea>
+                <textarea class="gameBoxes" id="solutionBox" readonly hidden ></textarea>
             </div>
             <div>
-                <button>Check</button>
+                <button id="checkButton" onclick="showSolution()">Check</button>
+                <button id="retry2" onclick="retry();" hidden >Retry</button>
+                <button id="goBack2" onclick="restart2()" hidden >Go Back</button>
+                
             </div>
         </div>
     </div>

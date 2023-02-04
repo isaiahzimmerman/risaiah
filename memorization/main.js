@@ -7,6 +7,7 @@ document.addEventListener('keydown', function (event) {
 gameStarted = false
 currentWord = 0;
 words=[]
+words2=[]
 correct = 0
 results = ''
 
@@ -31,12 +32,28 @@ function getWords(){
     });
 }
 
+function getWords2(){
+    words2 = document.getElementById('toMemorize2').value;
+    return words2;
+    
+}
+
+
 function genGame(){
     words = getWords()
     gameStarted = true
     updateWord()
     hideElement("startField")
     showElement("gameArea")
+}
+
+function genGame2(){
+    words2 = getWords2();
+    hideElement("startScreen");
+    hideElement('retry2');
+    hideElement('goBack2');
+    showElement('checkButton');
+    showElement("gameArea2");
 }
 
 function retry(){
@@ -48,7 +65,17 @@ function retry(){
     hideElement("results")
     hideElement("startField")
     showElement("gameArea")
+
+    //full word stuff
+    hideElement("solutionBox");
+    hideElement('retry2');
+    hideElement('goBack2');
+    showElement('checkButton')
+    document.getElementById('guessBox').value="";
+
+
 }
+
 
 function restart(){
     results = ""
@@ -58,6 +85,15 @@ function restart(){
     correct = 0
     showElement("startField")
     hideElement("results")
+}
+
+function restart2(){
+    words2=[];
+    hideElement('gameArea2');
+    hideElement('solutionBox');
+    showElement("startScreen");
+    
+    
 }
 
 function finishGame(){
@@ -190,7 +226,8 @@ Count it all joy, my brothers, when you meet trials of various kinds, for you kn
 
 
     }
-    document.getElementById("toMemorize").value = newText
+    document.getElementById("toMemorize").value = newText;
+    document.getElementById("toMemorize2").value = newText
 
 }
 
@@ -214,4 +251,14 @@ function drawKeyboard(){
 
 function updateKeyboard(){
     document.getElementById('keyboardHider').hidden = !document.getElementById('showKeyboard').checked
+}
+
+function showSolution(){
+    
+    document.getElementById('solutionBox').value=words2;
+    showElement('solutionBox');
+    hideElement('checkButton');
+    showElement('retry2');
+    showElement('goBack2');
+
 }
