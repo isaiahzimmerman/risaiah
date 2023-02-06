@@ -66,16 +66,15 @@ function retry(){
     hideElement("startField")
     showElement("gameArea")
 
-    //full word stuff
+}
+function retry2(){
+   
     hideElement("solutionBox");
     hideElement('retry2');
     hideElement('goBack2');
     showElement('checkButton')
     document.getElementById('guessBox').value="";
-
-
 }
-
 
 function restart(){
     results = ""
