@@ -209,9 +209,9 @@ Greetings.
 
 Count it all joy, my brothers, when you meet trials of various kinds, for you know that the testing of your faith produces steadfastness. And let steadfastness have its full effect, that you may be perfect and complete, lacking in nothing.
 
-If any of you lacks wisdom, let him ask God, who gives generously to all without reproach, and it will be given him. But let him ask in faith, with no doubting, for the one who doubts is like a wave of the sea that is driven and tossed by the wind. For that person must not suppose that he will receive anything from the Lord; he is a double-minded man, unstable in all his ways.`
+If any of you lacks wisdom, let him ask God, who gives generously to all without reproach, and it will be given him. But let him ask in faith, with no doubting, for the one who doubts is like a wave of the sea that is driven and tossed by the wind. For that person must not suppose that he will receive anything from the Lord; he is a double-minded man, unstable in all his ways.
 
-// 9 Let the lowly brother boast in his exaltation, 10 and the rich in his humiliation, because like a flower of the grass[c] he will pass away. 11 For the sun rises with its scorching heat and withers the grass; its flower falls, and its beauty perishes. So also will the rich man fade away in the midst of his pursuits.
+Let the lowly brother boast in his exaltation, and the rich in his humiliation, because like a flower of the grass he will pass away. For the sun rises with its scorching heat and withers the grass; its flower falls, and its beauty perishes. So also will the rich man fade away in the midst of his pursuits.`
 
 // 12 Blessed is the man who remains steadfast under trial, for when he has stood the test he will receive the crown of life, which God has promised to those who love him. 13 Let no one say when he is tempted, “I am being tempted by God,” for God cannot be tempted with evil, and he himself tempts no one. 14 But each person is tempted when he is lured and enticed by his own desire. 15 Then desire when it has conceived gives birth to sin, and sin when it is fully grown brings forth death.
 
