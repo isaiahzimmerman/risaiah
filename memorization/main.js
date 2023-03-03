@@ -213,9 +213,9 @@ If any of you lacks wisdom, let him ask God, who gives generously to all without
 
 Let the lowly brother boast in his exaltation, and the rich in his humiliation, because like a flower of the grass he will pass away. For the sun rises with its scorching heat and withers the grass; its flower falls, and its beauty perishes. So also will the rich man fade away in the midst of his pursuits.
 
-Blessed is the man who remains steadfast under trial, for when he has stood the test he will receive the crown of life, which God has promised to those who love him. Let no one say when he is tempted, “I am being tempted by God,” for God cannot be tempted with evil, and he himself tempts no one.` 
+Blessed is the man who remains steadfast under trial, for when he has stood the test he will receive the crown of life, which God has promised to those who love him. Let no one say when he is tempted, “I am being tempted by God,” for God cannot be tempted with evil, and he himself tempts no one.
 
-//14 But each person is tempted when he is lured and enticed by his own desire. 15 Then desire when it has conceived gives birth to sin, and sin when it is fully grown brings forth death.
+But each person is tempted when he is lured and enticed by his own desire. Then desire when it has conceived gives birth to sin, and sin when it is fully grown brings forth death.`
 
 // Do not be deceived, my beloved brothers. 17 Every good gift and every perfect gift is from above, coming down from the Father of lights, with whom there is no variation or shadow due to change.[d] 18 Of his own will he brought us forth by the word of truth, that we should be a kind of firstfruits of his creatures.
 
