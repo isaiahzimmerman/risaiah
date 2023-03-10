@@ -215,9 +215,9 @@ Let the lowly brother boast in his exaltation, and the rich in his humiliation, 
 
 Blessed is the man who remains steadfast under trial, for when he has stood the test he will receive the crown of life, which God has promised to those who love him. Let no one say when he is tempted, “I am being tempted by God,” for God cannot be tempted with evil, and he himself tempts no one.
 
-But each person is tempted when he is lured and enticed by his own desire. Then desire when it has conceived gives birth to sin, and sin when it is fully grown brings forth death.`
+But each person is tempted when he is lured and enticed by his own desire. Then desire when it has conceived gives birth to sin, and sin when it is fully grown brings forth death.
 
-// Do not be deceived, my beloved brothers. 17 Every good gift and every perfect gift is from above, coming down from the Father of lights, with whom there is no variation or shadow due to change.[d] 18 Of his own will he brought us forth by the word of truth, that we should be a kind of firstfruits of his creatures.
+Do not be deceived, my beloved brothers. Every good gift and every perfect gift is from above, coming down from the Father of lights, with whom there is no variation or shadow due to change.Of his own will he brought us forth by the word of truth, that we should be a kind of firstfruits of his creatures.`
 
 //Know this, my beloved brothers: let every person be quick to hear, slow to speak, slow to anger; for the anger of man does not produce the righteousness of God. Therefore put away all filthiness and rampant wickedness and receive with meekness the implanted word, which is able to save your souls.
 
