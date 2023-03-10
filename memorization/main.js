@@ -217,7 +217,7 @@ Blessed is the man who remains steadfast under trial, for when he has stood the 
 
 But each person is tempted when he is lured and enticed by his own desire. Then desire when it has conceived gives birth to sin, and sin when it is fully grown brings forth death.
 
-Do not be deceived, my beloved brothers. Every good gift and every perfect gift is from above, coming down from the Father of lights, with whom there is no variation or shadow due to change.Of his own will he brought us forth by the word of truth, that we should be a kind of firstfruits of his creatures.`
+Do not be deceived, my beloved brothers. Every good gift and every perfect gift is from above, coming down from the Father of lights, with whom there is no variation or shadow due to change. Of his own will he brought us forth by the word of truth, that we should be a kind of firstfruits of his creatures.`
 
 //Know this, my beloved brothers: let every person be quick to hear, slow to speak, slow to anger; for the anger of man does not produce the righteousness of God. Therefore put away all filthiness and rampant wickedness and receive with meekness the implanted word, which is able to save your souls.
 
