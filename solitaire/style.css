@@ -5,6 +5,7 @@ body{
 .titleText{
     text-align: center;
     font-size: 2rem;
+    font-family: isaiahFont;
 }
 
 .gameContainer{
