@@ -117,9 +117,9 @@ function checkWin(player)
     
 
     //check horizontal wins
-    for(i=0; i<7; i++)
+    for(i=0; i<6; i++)
     {
-        for(j=0;j<2;j++)
+        for(j=0;j<4;j++)
         {
             if(boardState[j][i] == player && boardState[j+1][i] == player && boardState[j+2][i] == player && boardState[j+3][i] == player)
             {
