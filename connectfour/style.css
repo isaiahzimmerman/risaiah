@@ -1,0 +1,27 @@
+body{
+    font-family: isaiahFont;
+    background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
+}
+
+h1{
+    text-align: center;
+}
+
+.row{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.col{
+    outline: solid 1px black;
+    height: 100px;
+}
+
+.information{
+    font-size: xx-large
+}
+
+.main{
+    width: 50;
+}
