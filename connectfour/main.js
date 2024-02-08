@@ -7,7 +7,6 @@ boardState = new Array(7)
 //console.log(boardState)
 
 function drawBoard(){
-
     gameBoard = ""
     for(i=0; i<6; i++)
     {
@@ -89,6 +88,12 @@ function placePiece(column)
         {
             //console.log(document.getElementById("information"))
             document.getElementById("information").innerHTML = `${oppPlayer[2]} has won! <span onclick="newGame()" class="retry"><img src="retry.svg"></span>`
+            gameOver = true;
+        }
+
+        if(isFull())
+        {
+            document.getElementById("information").innerHTML = `It's a draw! <span onclick="newGame()" class="retry"><img src="retry.svg"></span>`
             gameOver = true;
         }
     }
@@ -177,4 +182,19 @@ function newGame()
 
     //draws board
     drawBoard()
+}
+
+function isFull()
+{
+    for(i=0; i<6; i++)
+    {
+        for(j=0; j<7; j++)
+        {
+            if(boardState[j][i] == "")
+            {
+                return false
+            }
+        }
+    }
+    return true
 }
