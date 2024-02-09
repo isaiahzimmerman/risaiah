@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Randall Pyramid</title>
+    <title>Document</title>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
     <!-- header -->
@@ -12,19 +12,17 @@
     <link rel="stylesheet" href="/assets/header/header.css">
     <!-- header -->
 </head>
-<body onload="drawPyramid(6)">
+<body onload="dragElement(document.getElementById('mydiv'));">
     <!-- header -->
     <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
     <!-- header -->
-    <h1>The Great Randall Pyramid</h1>
-    <div id="main">
-        <div class="tier">
-            <div class="box"></div>
-        </div>
-        <div class="tier">
-            <div class="box"></div><div class="box"></div>
-        </div>
-    </div> 
+    <h1>Site Title</h1>
+    <div id="mydiv">
+        <div id="mydivheader">Click here to move</div>
+        <p>Move</p>
+        <p>this</p>
+        <p>DIV</p>
+    </div>
 </body>
 </html>
