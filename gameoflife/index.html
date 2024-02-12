@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Life</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style id="numCols"></style>
+    <!-- header -->
+    <script src="/assets/header/header.js"></script>
+    <link rel="stylesheet" href="/assets/header/header.css">
+    <!-- header -->
+</head>
+<body onload="initializeBoard(20,20)">
+    <!-- header -->
+    <div w3-include-html="/assets/header/header.html"></div>
+    <script>includeHTML()</script>
+    <!-- header -->
+    <h1>Conway's Game of Life</h1>
+    <div class="buttonContainer">
+
+        <button onclick="takeStep()">move 1 step forward</button>
+        <button onclick="stopPlaying()">stop playing</button>
+        <button onclick="startPlaying()">start playing</button>
+    </div>
+    <div class="gameContainer">
+        <div id="gameGrid" class="gameGrid"></div>
+    </div>
+</body>
+</html>

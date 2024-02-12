@@ -1,0 +1,31 @@
+body{
+    font-family: isaiahFont;
+    background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
+}
+
+h1{
+    text-align: center;
+}
+
+.gameRow {
+    display: grid;
+}
+
+.cell{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.gameContainer
+{
+    display: flex;
+    justify-content: center;
+}
+
+.buttonContainer
+{
+    display: flex;
+    justify-content: center;
+}
