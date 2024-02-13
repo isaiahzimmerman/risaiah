@@ -29,3 +29,11 @@ h1{
     display: flex;
     justify-content: center;
 }
+
+.playButton{
+    height: 30px;
+}
+
+.playContainer :hover{
+    filter: drop-shadow(0 0 3.5px var(--theme-color-2))
+}

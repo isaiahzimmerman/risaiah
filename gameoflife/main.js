@@ -5,7 +5,7 @@ let playing = false
 function initializeBoard(numRows, numCols) {
     boardSize = {rows: numRows, cols: numCols}
     createGameBoard(numRows, numCols)
-    drawGrid(numRows, numCols)
+    drawGrid()
 }
 
 function createBooleanArray(numRows, numCols)
@@ -32,16 +32,27 @@ function drawGrid()
         gameGrid += `<div class = "gameRow">`
         for(j=0; j< boardSize.cols; j++)
         {
-            gameGrid += `<div class = "cell" onclick="switchColor(${i},${j})" style="background-color: ${(gameBoard[i][j] ? "black" : "none")};"></div>`
+            gameGrid += `<div class = "cell" onclick="switchColor(${i},${j})" id="cell${i},${j}"></div>`
         }
         gameGrid += `</div>`
     }
     document.getElementById("gameGrid").innerHTML = gameGrid
 }
 
+function updateGrid()
+{
+    for(i = 0; i<boardSize.rows; i++)
+    {
+        for(j=0; j< boardSize.cols; j++)
+        {
+            document.getElementById(`cell${i},${j}`).style.backgroundColor = (gameBoard[i][j] ? "black" : "transparent")
+        }
+    }
+}
+
 function switchColor(xPos, yPos){
     gameBoard[xPos][yPos] = !gameBoard[xPos][yPos]
-    drawGrid()
+    updateGrid()
 }
 
 function takeStep()
@@ -60,7 +71,7 @@ function takeStep()
                     if(
                         !(i2 == 0 && j2 == 0) &&
                         i+i2 >= 0 && i+i2 < boardSize.rows &&
-                        j+j2 >= 0 && j+j2 < boardSize.rows &&
+                        j+j2 >= 0 && j+j2 < boardSize.cols &&
                         gameBoard[i+i2][j+j2]
                     )
                     {
@@ -81,7 +92,7 @@ function takeStep()
         }
     }
     gameBoard = newBoard
-    drawGrid()
+    updateGrid()
 }
 
 function play() {
@@ -103,4 +114,17 @@ function startPlaying(){
 function stopPlaying()
 {
     playing = false
+}
+
+function togglePlay()
+{
+    if(playing){
+        document.getElementById("playButton").src = "play.svg"
+        stopPlaying()
+    }
+    else
+    {
+        document.getElementById("playButton").src = "pause.svg"
+        startPlaying()
+    }
 }

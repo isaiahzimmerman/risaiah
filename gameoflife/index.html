@@ -13,17 +13,15 @@
     <link rel="stylesheet" href="/assets/header/header.css">
     <!-- header -->
 </head>
-<body onload="initializeBoard(20,20)">
+<body onload="initializeBoard(30,40)">
     <!-- header -->
     <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
     <!-- header -->
     <h1>Conway's Game of Life</h1>
     <div class="buttonContainer">
-
-        <button onclick="takeStep()">move 1 step forward</button>
-        <button onclick="stopPlaying()">stop playing</button>
-        <button onclick="startPlaying()">start playing</button>
+        <div class="playContainer" onclick="takeStep()"><img src="forward.svg" class="playButton"></div>
+        <div class="playContainer"><img src="play.svg" id="playButton" class="playButton" onclick="togglePlay()"></div>
     </div>
     <div class="gameContainer">
         <div id="gameGrid" class="gameGrid"></div>
