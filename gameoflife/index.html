@@ -20,9 +20,11 @@
     <!-- header -->
     <h1>Conway's Game of Life</h1>
     <div class="buttonContainer">
-        <div class="playContainer" onclick="takeStep()"><img src="forward.svg" class="playButton"></div>
-        <div class="playContainer"><img src="play.svg" id="playButton" class="playButton" onclick="togglePlay()"></div>
+        <div class="playContainer" onclick="takeStep()"><img src="icons/forward.svg" class="playButton"></div>
+        <div class="playContainer"><img src="icons/play.svg" id="playButton" class="playButton" onclick="togglePlay()"></div>
+        <div class="playContainer"><img src="icons/clear.svg" class="playButton" onclick="clearBoard()"></div>
     </div>
+    <br>
     <div class="gameContainer">
         <div id="gameGrid" class="gameGrid"></div>
     </div>

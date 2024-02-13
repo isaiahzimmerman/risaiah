@@ -1,5 +1,6 @@
 body{
     background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
 }
 
 .titleText{

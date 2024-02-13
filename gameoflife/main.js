@@ -24,6 +24,14 @@ function createGameBoard(numRows, numCols)
     document.getElementById("numCols").innerHTML = `.gameRow {grid-template-columns: repeat(${numCols}, 20px);}`
 }
 
+function clearBoard()
+{
+    stopPlaying()
+    document.getElementById("playButton").src = "icons/play.svg"
+    gameBoard = createBooleanArray(boardSize.rows, boardSize.cols)
+    updateGrid()
+}
+
 function drawGrid()
 {
     gameGrid = ""
@@ -51,8 +59,14 @@ function updateGrid()
 }
 
 function switchColor(xPos, yPos){
+    if(playing){return}
     gameBoard[xPos][yPos] = !gameBoard[xPos][yPos]
-    updateGrid()
+    updateCell(xPos,yPos)
+}
+
+function updateCell(xPos,yPos)
+{
+    document.getElementById(`cell${xPos},${yPos}`).style.backgroundColor = (gameBoard[xPos][yPos] ? "black" : "transparent")
 }
 
 function takeStep()
@@ -119,12 +133,14 @@ function stopPlaying()
 function togglePlay()
 {
     if(playing){
-        document.getElementById("playButton").src = "play.svg"
         stopPlaying()
+        document.getElementById("playButton").src = "icons/play.svg"
+        
     }
     else
     {
-        document.getElementById("playButton").src = "pause.svg"
         startPlaying()
+        document.getElementById("playButton").src = "icons/pause.svg"
+        
     }
 }
