@@ -1,6 +1,7 @@
 var siteList = [
     {title: 'Solitaire', path: '/solitaire/', icon: ['/assets/icons/joker.svg', '/assets/icons/darkjoker.svg'], author: ['isaiah', 'ryan']},
     {title: 'Connect Four', path: '/connectfour/', icon: ['/assets/icons/connectfour.svg', '/assets/icons/darkconnectfour.svg'], author: ['isaiah']},
+    {title: "Conway's Game of Life", path: '/gameoflife/', icon: ['/assets/icons/glider.svg', '/assets/icons/darkglider.svg'], author: ['isaiah']},
     {title: 'Tic-Tac-Toe', path: '/tictactoe/', icon: ['/assets/icons/tictactoe.svg', '/assets/icons/darktictactoe.svg'], author: ['ryan']},
     {title: 'Triangle Calculator', path: '/trianglecalc/', icon: ['/assets/icons/protractor.svg', '/assets/icons/darkprotractor.svg'], author: ['isaiah']},
     {title: 'Molar Mass Calculator', path: '/molarmass/', icon: ['/assets/icons/beaker.svg', '/assets/icons/darkbeaker.svg'], author: ['isaiah']},

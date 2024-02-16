@@ -21,7 +21,7 @@ function createBooleanArray(numRows, numCols)
 function createGameBoard(numRows, numCols)
 {
     gameBoard = createBooleanArray(numRows, numCols)
-    document.getElementById("numCols").innerHTML = `.gameRow {grid-template-columns: repeat(${numCols}, 20px);}`
+    document.getElementById("numCols").innerHTML = `.gameRow {grid-template-columns: repeat(${numCols}, 15px);}`
 }
 
 function clearBoard()
