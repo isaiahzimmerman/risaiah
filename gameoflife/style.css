@@ -10,6 +10,7 @@ h1{
 
 .gameRow {
     display: grid;
+
 }
 
 .cell{
@@ -21,7 +22,14 @@ h1{
 .gameContainer
 {
     display: flex;
+    justify-self: center;
+    overflow: scroll;
     justify-content: center;
+    width: min(max-content,95vw);
+}
+
+.gameGrid{
+    width: fit-content;
 }
 
 .buttonContainer
