@@ -1,10 +1,10 @@
 list = [
-    ['apple'],
-    ['grapes', 'watermelon', 'pineapple', 'mango', 'blueberries'],
-    ['banana', 'cherries', 'strawberry', 'orange', 'peach'],
-    ['pomegranate', 'razzberries', 'blackberries', 'bloodOrange'],
-    ['avocado', 'cantaloupe'],
-    []
+    ['razzberries','peach'],
+    ['cherries','mango','strawberry'],
+    ['watermelon','pineapple','blackberries'],
+    ['pomegranate','grapes','blueberries','apple'],
+    [],
+    ['cantaloupe']
 ]
 
 function loadPage(){

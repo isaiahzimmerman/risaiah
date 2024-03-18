@@ -21,41 +21,18 @@
     <div class="gameContainer">
         <div class="gameBoard" id="gameBoard"></div>
         <div class="possessions" id="possessions">
-            <div class="playerIndicator">
+            <div class="playerIndicator" id="playerIndicator">
                 Player 1
             </div>
             <div class="moneyContainer">
-                <div class="moneyCount">Money: $5722332</div>
-                <img class="money" src="assets/money1.svg">
+                <div class="moneyCount" id="moneyCount">Money: $5722332</div>
+                <img class="money" id="money" src="assets/money1.svg">
             </div>
-            <div class="ownedProperties">
+            <div class="ownedProperties" id="ownedProperties">
                 <div class="cardRow">
                     <img class="propertyCard" src="./assets/property-template.svg" onclick="viewCard('./assets/property-template.svg')">
                     <div class="propertyCard">hey</div>
                     <div class="propertyCard">hey</div>
-                </div>
-            
-            
-                <div class="cardRow">
-                    <div class="propertyCard">hey</div>
-                    <div class="propertyCard">hey</div>
-                    <div class="propertyCard">hey</div>
-                    
-                </div>
-        
-            
-                <div class="cardRow">
-                    <div class="propertyCard">hey</div>
-                    <div class="propertyCard">hey</div>
-                    <div class="propertyCard">hey</div>
-                    
-                </div>
-            
-            
-                <div class="cardRow">
-                    <div class="propertyCard">hey</div>
-                    <div class="propertyCard">hey</div>
-                    <div class="fillerCard"></div>
                 </div>
                 
             
@@ -74,7 +51,7 @@
             </div>
             <div class="actionButtons">
                 <div onclick="rollDice()">Roll Dice</div>
-                <div>Next Player</div>
+                <div onclick="drawPossessions(players[0])">Next Player</div>
             </div>
         </div>
         <div class="dice">

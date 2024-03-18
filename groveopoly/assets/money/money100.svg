@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="200mm"
-   height="400mm"
-   viewBox="0 0 200 400"
+   width="400mm"
+   height="200mm"
+   viewBox="0 0 400 200"
    version="1.1"
    id="svg1"
    inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
@@ -26,7 +26,7 @@
      inkscape:zoom="0.5"
      inkscape:cx="420"
      inkscape:cy="680"
-     inkscape:window-width="1255"
+     inkscape:window-width="1957"
      inkscape:window-height="1417"
      inkscape:window-x="114"
      inkscape:window-y="7"
@@ -39,24 +39,24 @@
      id="layer2"
      inkscape:label="Layer 2">
     <rect
-       style="fill:#00d22d;stroke:#ffffff;stroke-width:0;paint-order:stroke fill markers;fill-opacity:1"
+       style="fill:#00d22d;fill-opacity:1;stroke:#ffffff;stroke-width:0;paint-order:stroke fill markers"
        id="rect1"
        width="200"
        height="400"
-       x="0"
-       y="0" />
+       x="-200"
+       y="-1.4210855e-14"
+       transform="rotate(-90)" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:105.697px;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.64242"
        x="134.42967"
-       y="-68.647011"
-       id="text2"
-       transform="rotate(90)"><tspan
+       y="131.353"
+       id="text2"><tspan
          sodipodi:role="line"
          id="tspan2"
          style="stroke-width:2.64242"
          x="134.42967"
-         y="-68.647011">$5</tspan></text>
+         y="131.353">$100</tspan></text>
   </g>
   <g
      inkscape:label="Layer 1"

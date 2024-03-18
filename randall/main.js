@@ -10,7 +10,11 @@ function drawPyramid(tiers)
         for(j=i; j<= tiers; j++)
         {
             personCount ++
-            pyramidHTML += `<div class="box">text ${personCount}</div>`
+            if(i==tiers){
+                pyramidHTML += `<div class="box">Livy</div>`
+            }else{
+                pyramidHTML += `<div class="box">text ${personCount}</div>`
+            }
         }
         pyramidHTML += `</div>`
     }

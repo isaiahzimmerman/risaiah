@@ -1,7 +1,7 @@
 money: crimson cash
 
 Set 1
-    Property 1
+    Property 1 - Ketler
     Property 2
 
 Set 2
@@ -38,7 +38,7 @@ Set 8
     Property 1 - TMX Towers
     Property 2 - McNulty Mansion
 
-Jail - Map Basement? Campo Dungeon?
+Jail - Map Basement? Campus Security Office?
 
 Railroads (Tunnels):
     Harbison Tunnel
