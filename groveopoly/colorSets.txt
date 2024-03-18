@@ -1,0 +1,47 @@
+money: crimson cash
+
+Set 1
+    Property 1
+    Property 2
+
+Set 2
+    Property 1
+    Property 2
+    Property 3
+
+Set 3
+    Property 1
+    Property 2
+    Property 3
+
+Set 4
+    Property 1
+    Property 2
+    Property 3
+
+Set 5
+    Property 1
+    Property 2
+    Property 3
+
+Set 6
+    Property 1 - Elvin Citadel
+    Property 2 - Autumn's house
+    Property 3
+
+Set 7
+    Property 1
+    Property 2
+    Property 3
+
+Set 8
+    Property 1 - TMX Towers
+    Property 2 - McNulty Mansion
+
+Jail - Map Basement? Campo Dungeon?
+
+Railroads (Tunnels):
+    Harbison Tunnel
+    McNulty Tunnel
+    HAL Tunnel
+    SAC Tunnel

@@ -1,0 +1,10 @@
+list of actions that can be done in a turn of monopoly:
+    1. roll dice
+
+
+todos
+    TODO: implement action when landing on a space
+    TODO: implement sound (howler.js)
+    TODO: implement triple double jail rule
+    TODO: implement jail
+    TODO: get out of jail free card and paying

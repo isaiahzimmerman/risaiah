@@ -1,0 +1,320 @@
+:root{
+    --pss: max(min(.9vh, .9vw), 4px, min(.9vw, 1vh));
+}
+
+body{
+    font-family: isaiahFont;
+    background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
+}
+
+h1{
+    text-align: center;
+}
+
+.gameBoard{
+    width: calc(var(--pss)*80);
+    height: calc(var(--pss)*80);
+    background-color: white;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(11,1fr);
+    min-height: 0;
+    min-width: 0;
+}
+
+.tile{
+    background-color: rgb(213, 255, 249);
+    outline: calc(var(--pss)*0.25) solid black;
+    width: calc(var(--pss)*6.8);
+    height: calc(var(--pss)*9.4);
+    min-width: 0;
+    min-height: 0;
+    font-size: calc(var(--pss)*1.2);
+    text-align: center;
+}
+
+.corner{
+    height: calc(var(--pss)*9.4);
+    width: calc(var(--pss)*9.4);
+    font-size: calc(var(--pss)*2.5);
+}
+
+.colorOfSet{
+    height: calc(var(--pss)*2.82);
+    width: calc(var(--pss)*6.8);
+    background-color: pink;
+    border-bottom: calc(var(--pss)*0.25) solid black;
+}
+.tileInfo{
+    height: calc(var(--pss)*6.58);
+    position: relative;
+    
+    /* background-color: black; */
+    /* opacity: 0.3; */
+}
+
+.sideways{
+    justify-self: center;
+    align-self: center;
+}
+
+.left {
+    rotate: 90deg;
+}
+
+.right{
+    rotate: 270deg;
+}
+
+.price{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 8%;
+    width: 100%;
+}
+
+.tile img{
+    width: 60%;
+}
+
+.set1{background-color: brown;}
+.set2{background-color: lightblue;}
+.set3{background-color: magenta;}
+.set4{background-color: orange;}
+.set5{background-color: red;}
+.set6{background-color: yellow;}
+.set7{background-color: lime;}
+.set8{background-color: blue;}
+.set9{background-color: black;}
+
+.top{
+    rotate: 180deg;
+}
+
+.em{
+    align-self: center;
+    justify-self: center;
+    rotate: -45deg;
+    font-size: calc(var(--pss)*4);
+    
+}
+
+.gameContainer{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.possessions{
+    height: calc(var(--pss)*81);
+    width: calc(var(--pss)*80/3);
+    background-color: white;
+    justify-self: left;
+}
+
+.gameBoard {
+    background-color: white;
+    margin: 0 auto;
+    display: grid;
+    height: calc(var(--pss)*80);
+    width: calc(var(--pss)*80);
+    position: relative;
+    /* grid-template-columns: calc(var(--pss)*9.4) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*9.4); */
+    grid-template-columns: 11.75% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 11.75%;
+    /* grid-template-rows: calc(var(--pss)*9.4) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*9.4); */
+    grid-template-rows: 11.75% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 11.75%;
+    /* gap: 0px 0px; */
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+    grid-auto-flow: row;
+    border: calc(var(--pss)*0.5) solid black;
+    grid-template-areas:
+        "c2 t0 t1 t2 t3 t4 t5 t6 t7 t8 c3"
+        "l8 em em em em em em em em em r0"
+        "l7 em em em em em em em em em r1"
+        "l6 em em em em em em em em em r2"
+        "l5 em em em em em em em em em r3"
+        "l4 em em em em em em em em em r4"
+        "l3 em em em em em em em em em r5"
+        "l2 em em em em em em em em em r6"
+        "l1 em em em em em em em em em r7"
+        "l0 em em em em em em em em em r8"
+        "c1 b8 b7 b6 b5 b4 b3 b2 b1 b0 c0";
+}
+
+.gameBoard:hover{
+    cursor: default;
+}
+
+.dice{
+    position: relative;
+    left: calc(var(--pss)*29);
+    top: calc(var(--pss)*-47);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    aspect-ratio: 1;
+    width: calc(var(--pss)*8);
+    gap: calc(var(--pss)*2.5);
+    font-size: calc(var(--pss)*1.5);
+    
+}
+
+.die{
+    background-color: beige;
+    height: 100%;
+    width: 100%;
+    border: calc(var(--pss)*.2) solid black;
+    border-radius: calc(var(--pss)*.4);
+    text-align: center;
+    opacity: 0;
+    /* box-shadow:0 0 calc(var(--pss)*.3) black; */
+}
+
+.playerIndicator{
+    width: 100%;
+    text-align: center;
+    margin: calc(var(--pss)*1.5) 0;
+    font-size: calc(var(--pss)*3);
+}
+
+.moneyContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.money{
+    width: 50%;
+    padding: 3%;
+}
+
+.moneyCount{
+    margin: auto;
+    text-align: center;
+    font-size: calc(var(--pss)*2);
+}
+
+.ownedProperties{
+    height: 75%;
+    overflow-y: scroll;
+}
+
+.cardRow{
+    width: calc(var(--pss)*80/3);
+    display: flex;
+    margin-top: 3%;
+}
+
+.propertyCard{
+    background-color: rgb(246, 246, 246);
+    width: 30%;
+    min-width: 30%;
+    margin: 0 auto;
+    aspect-ratio: 2/3;
+    box-shadow:calc(var(--pss)*.2) calc(var(--pss)*.2) calc(var(--pss)*.2) black;
+
+    /* inside of card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fillerCard{
+    width: 30%;
+    min-width: 30%;
+    margin: 0 auto;
+    aspect-ratio: 2/3;
+}
+
+.propertyCard:hover{
+    cursor: pointer;
+}
+
+/* keep in mind that game board can be rotated for ease of viewing */
+.gameBoard{
+    /* rotate: 90deg; */
+}
+
+.cardOverlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 2;
+    
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.cardOverlayImage{
+    opacity: 2.5;
+    height: 60%;
+}
+
+.actionButtons{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: calc(var(--pss)*1.5);
+    font-size: calc(var(--pss)*1.5);
+}
+
+.actionButtons div{
+    width: 40%;
+    background-color: yellow;
+    text-align: center;
+    transition: all .2s;
+}
+
+.actionButtons div:hover{
+    background-color: aqua;
+    cursor: pointer;
+}
+
+  
+.c0 { grid-area: c0; }
+.t0 { grid-area: t0; }
+.t1 { grid-area: t1; }
+.t2 { grid-area: t2; }
+.t3 { grid-area: t3; }
+.t4 { grid-area: t4; }
+.t5 { grid-area: t5; }
+.t6 { grid-area: t6; }
+.t7 { grid-area: t7; }
+.t8 { grid-area: t8; }
+.c1 { grid-area: c1; }
+.em { grid-area: em; }
+.l0 { grid-area: l0; }
+.l1 { grid-area: l1; }
+.l2 { grid-area: l2; }
+.l3 { grid-area: l3; }
+.l4 { grid-area: l4; }
+.l5 { grid-area: l5; }
+.l6 { grid-area: l6; }
+.l7 { grid-area: l7; }
+.l8 { grid-area: l8; }
+.r0 { grid-area: r0; }
+.r1 { grid-area: r1; }
+.r2 { grid-area: r2; }
+.r3 { grid-area: r3; }
+.r4 { grid-area: r4; }
+.r5 { grid-area: r5; }
+.r6 { grid-area: r6; }
+.r7 { grid-area: r7; }
+.r8 { grid-area: r8; }
+.c2 { grid-area: c2; }
+.c3 { grid-area: c3; }
+.b0 { grid-area: b0; }
+.b1 { grid-area: b1; }
+.b2 { grid-area: b2; }
+.b3 { grid-area: b3; }
+.b4 { grid-area: b4; }
+.b5 { grid-area: b5; }
+.b6 { grid-area: b6; }
+.b7 { grid-area: b7; }
+.b8 { grid-area: b8; }
