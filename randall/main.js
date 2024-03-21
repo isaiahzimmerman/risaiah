@@ -1,20 +1,27 @@
-
+people = [
+    "Livy",
+    "Isaiah",
+    "Jonathan",
+    "Alex",
+    "Juan Carlos",
+    "Ruby",
+    "Autumn",
+    "Katie",
+    "Lauren",
+    "Erin"
+]
 
 function drawPyramid(tiers)
 {
     pyramidHTML = ""
-    personCount = 0
+    personCount = -1
     for(i=tiers;i>=1;i--)
     {
         pyramidHTML += `<div class="tier">`
         for(j=i; j<= tiers; j++)
         {
             personCount ++
-            if(i==tiers){
-                pyramidHTML += `<div class="box">Livy</div>`
-            }else{
-                pyramidHTML += `<div class="box">text ${personCount}</div>`
-            }
+            pyramidHTML += `<div class="box">${(personCount < people.length ? people[personCount] : "person "+(personCount+1))}</div>`
         }
         pyramidHTML += `</div>`
     }

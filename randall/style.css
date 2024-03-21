@@ -9,6 +9,7 @@ h1{
 }
 
 .tier{
+    min-width: 100%;
     display: flex;
     margin: 0 auto;
     justify-content: center;
@@ -16,10 +17,15 @@ h1{
 
 .box{
     background-color: var(--theme-color-1);
-    width: 100px;
-    height: 70px;
+    width:90px;
+    min-width: 50px;
+    aspect-ratio: 10/7;
     outline: 2px solid var(--theme-color-2);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.main{
+    width: 100%;
 }
