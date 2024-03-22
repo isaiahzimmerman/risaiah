@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="300mm"
+   height="200mm"
+   viewBox="0 0 300 200"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="chance-template.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.0841681"
+     inkscape:cx="552.49736"
+     inkscape:cy="317.75516"
+     inkscape:window-width="2400"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#1a1a1a;stroke-width:1.90289;paint-order:markers fill stroke"
+       id="rect1"
+       width="272.19217"
+       height="172.50493"
+       x="13.903917"
+       y="13.747534" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.262px;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.456551"
+       x="158.11786"
+       y="35.619358"
+       id="text1"
+       transform="scale(0.9494358,1.0532571)"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.262px;font-family:Sans;-inkscape-font-specification:'Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;stroke-width:0.456551"
+         x="158.11786"
+         y="35.619358">CHANCE</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="95.936295"
+       y="87.855377"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="95.936295"
+         y="87.855377">ADVANCE TO</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="95.936295"
+         y="101.0845"
+         id="tspan4">ST. CHARLES PLACE.</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="95.936295"
+         y="114.31363"
+         id="tspan5">IF YOU PASS GO,</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="95.936295"
+         y="127.54275"
+         id="tspan6">COLLECT $200.</tspan></text>
+  </g>
+</svg>

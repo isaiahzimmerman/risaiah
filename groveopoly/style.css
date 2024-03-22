@@ -25,7 +25,8 @@ h1{
 }
 
 .tile{
-    background-color: rgb(213, 255, 249);
+    background-color: inherit;
+    /* background-color: rgb(213, 255, 249); */
     outline: calc(var(--pss)*0.25) solid black;
     width: calc(var(--pss)*6.8);
     height: calc(var(--pss)*9.4);
@@ -33,24 +34,26 @@ h1{
     min-height: 0;
     font-size: calc(var(--pss)*1.2);
     text-align: center;
+    position: relative;
 }
 
 .corner{
     height: calc(var(--pss)*9.4);
     width: calc(var(--pss)*9.4);
     font-size: calc(var(--pss)*2.5);
+    z-index: 2;
 }
 
 .colorOfSet{
-    height: calc(var(--pss)*2.82);
+    height: calc(var(--pss)*2.32);
     width: calc(var(--pss)*6.8);
     background-color: pink;
     border-bottom: calc(var(--pss)*0.25) solid black;
+    
 }
 .tileInfo{
-    height: calc(var(--pss)*6.58);
+    height: calc(var(--pss)*6.88);
     position: relative;
-    
     /* background-color: black; */
     /* opacity: 0.3; */
 }
@@ -71,15 +74,19 @@ h1{
 .price{
     position: absolute;
     bottom: 0;
-    margin-bottom: 8%;
+    margin-bottom: calc(var(--pss)*0.30);
     width: 100%;
+}
+
+.railroad.price{
+    margin-bottom: calc(var(--pss)*0.2);
 }
 
 .tile img{
     width: 60%;
 }
 
-.set1{background-color: brown;}
+.set1{background-color: saddlebrown;}
 .set2{background-color: lightblue;}
 .set3{background-color: magenta;}
 .set4{background-color: orange;}
@@ -96,9 +103,15 @@ h1{
 .em{
     align-self: center;
     justify-self: center;
-    rotate: -45deg;
     font-size: calc(var(--pss)*4);
-    
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.em img{
+    width: 100%;
+    height: 100%;
 }
 
 .gameContainer{
@@ -113,15 +126,16 @@ h1{
     width: calc(var(--pss)*80/3);
     /* background-color: white; */
     justify-self: left;
+    margin-left: 2%;
 }
 
 .gameBoard {
-    background-color: white;
     margin: 0 auto;
     display: grid;
     height: calc(var(--pss)*80);
     width: calc(var(--pss)*80);
     position: relative;
+    background-color: rgb(235, 243, 253);
     /* grid-template-columns: calc(var(--pss)*9.4) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*9.4); */
     grid-template-columns: 11.75% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 8.5% 11.75%;
     /* grid-template-rows: calc(var(--pss)*9.4) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*6.8) calc(var(--pss)*9.4); */
@@ -200,7 +214,7 @@ h1{
 }
 
 .ownedProperties{
-    height: 74%;
+    height: 70%;
     overflow-y: scroll;
     padding: 0 0 5% 0;
 }
@@ -225,6 +239,35 @@ h1{
     align-items: center;
 }
 
+.players{
+    position:absolute;
+    bottom: 13%;
+    width: calc(var(--pss)*6.7);
+    aspect-ratio: 1;
+    left: 2.5%;
+    z-index: 3;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.corner .players{
+    left: 12%;
+}
+
+.player{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+.player img{
+    width: 100%;
+}
+
 .fillerCard{
     width: 30%;
     min-width: 30%;
@@ -241,34 +284,49 @@ h1{
     /* rotate: 90deg; */
 }
 
-.cardOverlay{
+.overlay{
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, .4);
-    z-index: 2;
+    z-index: 4;
     
     justify-content: center;
     align-items: center;
     display: none;
 }
 
-.cardOverlayImage{
+.cardOverlay{
     opacity: 2.5;
     height: 60%;
 }
+
+.chanceOverlay{
+    height: 40%;
+    background-color: white;
+    aspect-ratio: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chanceOverlay img{
+    height: 100%;
+}
+
+
 
 .actionButtons{
     display: flex;
     justify-content: space-evenly;
     margin-top: calc(var(--pss)*1.5);
-    font-size: calc(var(--pss)*1.5);
+    font-size: calc(var(--pss)*4);
 }
 
 .actionButtons div{
-    width: 40%;
+    width: 90%;
     background-color: yellow;
     text-align: center;
     transition: all .2s;

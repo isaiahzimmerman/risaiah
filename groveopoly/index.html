@@ -26,11 +26,11 @@
             </div>
             <div class="moneyContainer">
                 <div class="moneyCount" id="moneyCount">Money: $5722332</div>
-                <img class="money" id="money" src="assets/money1.svg">
+                <img class="money" id="money" src="assets/money/money1.svg">
             </div>
             <div class="ownedProperties" id="ownedProperties">
                 <div class="cardRow">
-                    <img class="propertyCard" src="./assets/property-template.svg" onclick="viewCard('./assets/property-template.svg')">
+                    <img class="propertyCard" src="./assets/properties/property-template.svg" onclick="viewCard('./assets/properties/property-template.svg')">
                     <div class="propertyCard">hey</div>
                     <div class="propertyCard">hey</div>
                 </div>
@@ -50,19 +50,19 @@
                 </div>
             </div>
             <div class="actionButtons">
-                <div onclick="rollDice()">Roll Dice</div>
-                <div onclick="drawPossessions(players[0])">Next Player</div>
+                <div class="nextAction" id="nextAction" onclick="nextAction()">Next Action</div>
             </div>
         </div>
         <div class="dice">
-            <img src="./assets/dice1.svg" class="die" id="die0">
-            <img src="./assets/dice1.svg" class="die" id="die1">
-            <img src="./assets/dice1.svg" class="die" id="die2">
-            <img src="./assets/dice1.svg" class="die" id="die3">
+            <img src="./assets/dice/dice1.svg" class="die" id="die0">
+            <img src="./assets/dice/dice1.svg" class="die" id="die1">
+            <img src="./assets/dice/dice1.svg" class="die" id="die2">
+            <img src="./assets/dice/dice1.svg" class="die" id="die3">
         </div>
     </div>
-    <div class="cardOverlay" id="cardOverlay" onclick="hideCard()">
-        <img src="./assets/property-template.svg" alt="" srcset="" class="cardOverlayImage" id="cardOverlayImage">
+    <div class="overlay" id="overlay" onclick="hideCard()">
+        <img src="./assets/properties/property-template.svg" alt="" srcset="" class="cardOverlay" id="cardOverlay">
+        <div class="chanceOverlay" id="chanceOverlay"><img src="./assets/chance/chance-template.svg" alt="" srcset="" class="" id="chanceOverlayImage"></div>
     </div>
 </body>
 </html>
