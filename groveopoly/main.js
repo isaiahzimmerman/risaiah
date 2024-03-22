@@ -62,9 +62,9 @@ propertySets = [
 
 players = [
     {name: "player 1", position: "c0p0", money: 150, ownedProperties: {set1:["b0", "b2"], set2: ["b5","b7","b8"],set3:["l0","l2","l3"],set4:["l5","l7","l8"],set5:["t0","t2","t3"],set6:["t5","t6","t8"],set7:["r0","r1","r3"],set8:["r6","r8"],set9:[]}, piece: "num1.svg", playing: false, doubles: 0, getOutOfJail: [true, true]},
-    {name: "player 2", position: "c0p1", money: 323, ownedProperties: {set0:[], set1: [],set2:[],set3:[],set4:[],set5:[],set6:[],set7:[],set8:[],set9:[]}, piece: "num2.svg", playing: false, doubles: 0, getOutOfJail: [true, true]},
-    {name: "player 3", position: "c0p1", money: 500, ownedProperties: {set0:[], set1: [],set2:[],set3:[],set4:[],set5:[],set6:[],set7:[],set8:[],set9:[]}, piece: "num3.svg", playing: false, doubles: 0, getOutOfJail: [true, true]},
-    {name: "player 4", position: "c0p1", money: 323, ownedProperties: {set0:[], set1: [],set2:[],set3:[],set4:[],set5:[],set6:[],set7:[],set8:[],set9:[]}, piece: "num4.svg", playing: false, doubles: 0, getOutOfJail: [true, true]}
+    {name: "player 2", position: "c0p1", money: 323, ownedProperties: {set0:[], set1: [],set2:[],set3:[],set4:[],set5:[],set6:[],set7:[],set8:[],set9:[]}, piece: "num2.svg", playing: false, doubles: 0, getOutOfJail: [false, false]},
+    {name: "player 3", position: "c0p1", money: 500, ownedProperties: {set0:[], set1: [],set2:[],set3:[],set4:[],set5:[],set6:[],set7:[],set8:[],set9:[]}, piece: "num3.svg", playing: false, doubles: 0, getOutOfJail: [true, false]},
+    {name: "player 4", position: "c0p1", money: 323, ownedProperties: {set0:[], set1: [],set2:[],set3:[],set4:[],set5:[],set6:[],set7:[],set8:[],set9:[]}, piece: "num4.svg", playing: false, doubles: 0, getOutOfJail: [false, true]}
 ]
 
 currentPlayer = 0
@@ -86,7 +86,7 @@ function onLoad(){
         }else if(tile.cornerType == "jail"){
             boardHTML += `<div class='corner tile c${i}'>Jail`
         }else if(tile.cornerType == "parking"){
-            boardHTML += `<div class='corner tile c${i}'>Free Parking`
+            boardHTML += `<div class='corner tile c${i}'>Harbison Parking`
         }else if(tile.cornerType == "goToJail"){
             boardHTML += `<div class='corner tile c${i}'>Go To Jail`
         }
@@ -182,6 +182,7 @@ function showOverlay(args){
 
     //chance or chest overlay
     else if(args.type =="chance"){
+        document.getElementById("overlay").setAttribute( "onClick", "javascript: hideCard();")
         document.getElementById("chanceOverlayImage").src = args.path
         document.getElementById("chanceOverlay").style.display = "flex"
         
