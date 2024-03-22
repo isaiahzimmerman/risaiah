@@ -7,6 +7,7 @@ body{
     background-color: var(--theme-softbg-0);
     color: var(--theme-bw-1);
     overflow: hidden;
+    cursor: default;
 }
 
 h1{
@@ -160,10 +161,6 @@ h1{
         "c1 b8 b7 b6 b5 b4 b3 b2 b1 b0 c0";
 }
 
-.gameBoard:hover{
-    cursor: default;
-}
-
 .dice{
     position: relative;
     left: calc(var(--pss)*29);
@@ -237,6 +234,17 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+
+.getOutOfJail{
+    background-color: rgb(246, 246, 246);
+    width: 45%;
+    min-width: 45%;
+
+    box-shadow:calc(var(--pss)*.2) calc(var(--pss)*.2) calc(var(--pss)*.2) black;
+    margin: 0 auto;
+
 }
 
 .players{
@@ -247,6 +255,7 @@ h1{
     left: 2.5%;
     z-index: 3;
     display: grid;
+    gap: calc(var(--pss)*0.2);
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -296,10 +305,12 @@ h1{
     justify-content: center;
     align-items: center;
     display: none;
+
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .cardOverlay{
-    opacity: 2.5;
     height: 60%;
 }
 
@@ -316,6 +327,27 @@ h1{
     height: 100%;
 }
 
+.purchaseOverlay{
+    width: 40vh;
+    font-size: 3vh;
+    display: none;
+    justify-content: space-evenly;
+    margin: 1vh;
+}
+
+.purchaseButton{
+    width: 40%;
+    text-align: center;
+    background-color: white;
+    cursor: pointer;
+    padding: 0.4vh;
+    border: .3vh black solid;
+    border-radius: 2vh;
+}
+
+.purchaseButton:hover{
+    background-color: aqua;
+}
 
 
 .actionButtons{

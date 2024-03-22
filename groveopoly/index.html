@@ -60,9 +60,19 @@
             <img src="./assets/dice/dice1.svg" class="die" id="die3">
         </div>
     </div>
-    <div class="overlay" id="overlay" onclick="hideCard()">
+    <div class="overlay" id="overlay">
         <img src="./assets/properties/property-template.svg" alt="" srcset="" class="cardOverlay" id="cardOverlay">
         <div class="chanceOverlay" id="chanceOverlay"><img src="./assets/chance/chance-template.svg" alt="" srcset="" class="" id="chanceOverlayImage"></div>
+        <div id="purchaseOverlay" class="purchaseOverlay">
+            <div class="purchaseButton" onclick="purchaseProperty()">
+                <div>purchase</div>
+                <div id="purchasePrice">($0)</div>
+            </div>
+            <div class="purchaseButton">
+                <div>auction</div>
+                <div id="auctionPrice">($0)</div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
