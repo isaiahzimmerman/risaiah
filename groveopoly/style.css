@@ -79,12 +79,14 @@ h1{
     width: 100%;
 }
 
+/* .railroad{} */
+
 .railroad.price{
     margin-bottom: calc(var(--pss)*0.2);
 }
 
 .tile img{
-    width: 60%;
+    width: 40%;
 }
 
 .set1{background-color: saddlebrown;}
@@ -244,7 +246,10 @@ h1{
 
     box-shadow:calc(var(--pss)*.2) calc(var(--pss)*.2) calc(var(--pss)*.2) black;
     margin: 0 auto;
+}
 
+.getOutOfJail:hover{
+    cursor:pointer;
 }
 
 .players{
@@ -339,6 +344,17 @@ h1{
     display: none;
     justify-content: space-evenly;
     margin: 1vh;
+}
+
+.rentOverlay{
+    background-color: white;
+    width: 40vh;
+    aspect-ratio: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: .3vh black solid;
+    border-radius: 2vh;
 }
 
 .purchaseButton{

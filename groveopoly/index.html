@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monopoly</title>
+    <title>Groveopoly</title>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
     <!-- header -->
@@ -63,14 +63,32 @@
     <div class="overlay" id="overlay">
         <img src="./assets/properties/property-template.svg" alt="" srcset="" class="cardOverlay" id="cardOverlay">
         <div class="chanceOverlay" id="chanceOverlay"><img src="./assets/chance/chance-template.svg" alt="" srcset="" class="" id="chanceOverlayImage"></div>
+        <div id="chanceButtons" class="purchaseOverlay">
+            <div class="purchaseButton" id="chanceButton"></div>
+        </div>
         <div id="purchaseOverlay" class="purchaseOverlay">
-            <div class="purchaseButton" onclick="purchaseProperty()">
+            <div class="purchaseButton" id="purchaseButton">
                 <div>purchase</div>
                 <div id="purchasePrice">($0)</div>
             </div>
-            <div class="purchaseButton">
+            <div class="purchaseButton" id="raiseMoneyButton">
+                <div>raise funds</div>
+            </div>
+            <div class="purchaseButton" id="auctionButton">
                 <div>auction</div>
                 <div id="auctionPrice">($0)</div>
+            </div>
+        </div>
+        <div id="rentOverlay" class="rentOverlay">
+            Rent!
+        </div>
+        <div id="rentButtons" class="purchaseOverlay">
+            <div class="purchaseButton" id="rentButton">
+                <div>pay rent</div>
+                <div id="rentAmount">($0)</div>
+            </div>
+            <div class="purchaseButton" onclick="hideCard()">
+                <div>raise funds</div>
             </div>
         </div>
     </div>

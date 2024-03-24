@@ -1,6 +1,6 @@
 Set 1
-    Property 1 - Ketler
-    Property 2 
+    Property 1 - Zerbe
+    Property 2 - Siberia
 
 Set 2
     Property 1 - Hicks
@@ -8,29 +8,29 @@ Set 2
     Property 3 - The Garage
 
 Set 3
-    Property 1 
-    Property 2
-    Property 3
+    Property 1 - Ketler
+    Property 2 - Lincoln
+    Property 3 - Hopeman
 
 Set 4
-    Property 1
-    Property 2
-    Property 3
+    Property 1 - Cunningham Gristmill
+    Property 2 - Beans on Broad
+    Property 3 - Jin Sushi
 
 Set 5
-    Property 1
-    Property 2
-    Property 3
+    Property 1 - STEM
+    Property 2 - Rockwell
+    Property 3 - Hoyt
 
 Set 6
-    Property 1 - Elvin Citadel
-    Property 2 - Autumn's house
-    Property 3 - 
+    Property 1 - Rainbow Bridge
+    Property 2 - Rizzebo
+    Property 3 - South Lobby
 
 Set 7
-    Property 1
-    Property 2
-    Property 3
+    Property 1 - Elvin Citadel
+    Property 2 - Autumn's Forest
+    Property 3 - Murray Estates
 
 Set 8
     Property 1 - McNulty Manor
@@ -48,3 +48,6 @@ pieces:
     campo golf cart
     peter's bike
     jack's unicycle
+
+utilities:
+    
