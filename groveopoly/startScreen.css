@@ -1,0 +1,14 @@
+.startScreen{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.startLogo{
+    width: 50%;
+}
+
+.startButton{
+    width: 50%;
+}

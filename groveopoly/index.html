@@ -7,18 +7,24 @@
     <title>Groveopoly</title>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="startScreen.css">
     <!-- header -->
     <script src="/assets/header/header.js"></script>
     <link rel="stylesheet" href="/assets/header/header.css">
     <!-- header -->
 </head>
-<body onload="onLoad()">
+<!-- <body onload="initializeBoard()"> -->
+<body>
     <!-- header -->
     <!-- <div w3-include-html="/assets/header/header.html"></div> -->
     <script>includeHTML()</script>
     <!-- header -->
     <!-- <h1>Monopoly</h1> -->
-    <div class="gameContainer">
+    <div class="startScreen" id="startScreen">
+        <img src="./assets/logo.svg" class="startLogo" alt="">
+        <div class="customButton startButton" onclick="initializeBoard()">Start Game</div>
+    </div>
+    <div id="gameContainer" class="gameContainer">
         <div class="gameBoard" id="gameBoard"></div>
         <div class="possessions" id="possessions">
             <div class="playerIndicator" id="playerIndicator">
@@ -64,17 +70,17 @@
         <img src="./assets/properties/property-template.svg" alt="" srcset="" class="cardOverlay" id="cardOverlay">
         <div class="chanceOverlay" id="chanceOverlay"><img src="./assets/chance/chance-template.svg" alt="" srcset="" class="" id="chanceOverlayImage"></div>
         <div id="chanceButtons" class="purchaseOverlay">
-            <div class="purchaseButton" id="chanceButton"></div>
+            <div class="buttonClickable customButton" id="chanceButton"></div>
         </div>
         <div id="purchaseOverlay" class="purchaseOverlay">
-            <div class="purchaseButton" id="purchaseButton">
+            <div class="buttonClickable customButton" id="purchaseButton">
                 <div>purchase</div>
                 <div id="purchasePrice">($0)</div>
             </div>
-            <div class="purchaseButton" id="raiseMoneyButton">
+            <div class="buttonClickable customButton" id="raiseMoneyButton">
                 <div>raise funds</div>
             </div>
-            <div class="purchaseButton" id="auctionButton">
+            <div class="buttonClickable customButton" id="auctionButton">
                 <div>auction</div>
                 <div id="auctionPrice">($0)</div>
             </div>
@@ -83,11 +89,23 @@
             Rent!
         </div>
         <div id="rentButtons" class="purchaseOverlay">
-            <div class="purchaseButton" id="rentButton">
+            <div class="buttonClickable customButton" id="rentButton">
                 <div>pay rent</div>
                 <div id="rentAmount">($0)</div>
             </div>
-            <div class="purchaseButton" onclick="hideCard()">
+            <div class="buttonClickable customButton" onclick="hideCard()">
+                <div>raise funds</div>
+            </div>
+        </div>
+        <div id="taxOverlay" class="taxOverlay">
+            Rent!
+        </div>
+        <div id="taxButtons" class="purchaseOverlay">
+            <div class="buttonClickable customButton" id="taxButton">
+                <div>pay tax</div>
+                <div id="taxAmount">($0)</div>
+            </div>
+            <div class="buttonClickable customButton" onclick="hideCard()">
                 <div>raise funds</div>
             </div>
         </div>

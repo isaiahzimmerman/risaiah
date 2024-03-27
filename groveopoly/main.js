@@ -8,45 +8,47 @@ tilesList = {
     c2: {loc: "c2", type: "corner", cornerType: "parking"},
     c3: {loc: "c3", type: "corner", cornerType: "goToJail"},
 
-    b0: {loc: "b0", type: "property", location: "Zerbe", price: 60, set: 1, houses: 3, rent: [2, 10, 30, 90, 160, 250]},
+    b0: {loc: "b0", type: "property", location: "Zerbe", price: 60, set: 1, rent: [2, 4, 10, 30, 90, 160, 250], houseCost: 50},
     b1: {loc: "b1", type: "chest"},
-    b2: {loc: "b2", type: "property", location: "Sibera", price: 60, set: 1, houses: 2, rent: [4, 20, 60, 180, 320, 450]},
+    b2: {loc: "b2", type: "property", location: "Sibera", price: 60, set: 1, rent: [4, 8, 20, 60, 180, 320, 450], houseCost: 50},
     b3: {loc: "b3", type: "tax", taxType:"income"},
     b4: {loc: "b4", type: "railroad", set: 9, price: 200, name: "Crawford Tunnel", rent: [25, 50, 100, 200]},
-    b5: {loc: "b5", type: "property", location: "Hicks", price: 100, set: 2},
+    b5: {loc: "b5", type: "property", location: "Hicks", price: 100, set: 2, rent: [6, 12, 30, 90, 270, 400, 550], houseCost: 50},
     b6: {loc: "b6", type: "chance"},
-    b7: {loc: "b7", type: "property", location: "MAP", price: 100, set: 2},
-    b8: {loc: "b8", type: "property", location: "The Garage", price: 120, set: 2},
+    b7: {loc: "b7", type: "property", location: "MAP", price: 100, set: 2, rent: [6, 12, 30, 90, 270, 400, 550], houseCost: 50},
+    b8: {loc: "b8", type: "property", location: "The Garage", price: 120, set: 2, rent: [8, 16, 40, 100, 300, 450, 600], houseCost: 50},
     
-    l0: {loc: "l0", type: "property", location: "Ketler", price: 140, set: 3},
+    // , rent: [0, 0, 0, 0, 0, 0, 0], houseCost: 0
+
+    l0: {loc: "l0", type: "property", location: "Ketler", price: 140, set: 3, rent: [10, 20, 50, 150, 450, 625, 750], houseCost: 100},
     l1: {loc: "l1", type: "utility", utilityType: "electric", set: 9, price: 150},
-    l2: {loc: "l2", type: "property", location: "Lincoln", price: 140, set: 3},
-    l3: {loc: "l3", type: "property", location: "Hopeman", price: 160, set:3},
+    l2: {loc: "l2", type: "property", location: "Lincoln", price: 140, set: 3, rent: [10, 20, 50, 150, 450, 625, 750], houseCost: 100},
+    l3: {loc: "l3", type: "property", location: "Hopeman", price: 160, set:3, rent: [12, 24, 60, 180, 500, 700, 900], houseCost: 100},
     l4: {loc: "l4", type: "railroad", set: 9, price: 200, name: "SAC Tunnel", rent: [25, 50, 100, 200]},
-    l5: {loc: "l5", type: "property", location: "Cunningham Gristmill", price: 180, set: 4},
+    l5: {loc: "l5", type: "property", location: "Cunningham's Mill", price: 180, set: 4, rent: [14, 28, 70, 200, 550, 750, 950], houseCost: 100},
     l6: {loc: "l6", type: "chest"},
-    l7: {loc: "l7", type: "property", location: "Beans on Broad", price: 180, set: 4},
-    l8: {loc: "l8", type: "property", location: "Jin Sushi", price: 200, set: 4},
+    l7: {loc: "l7", type: "property", location: "Beans on Broad", price: 180, set: 4, rent: [14, 28, 70, 200, 550, 750, 950], houseCost: 100},
+    l8: {loc: "l8", type: "property", location: "Jin Sushi", price: 200, set: 4, rent: [16, 32, 80, 220, 600, 800, 1000], houseCost: 100},
 
-    t0: {loc: "t0", type: "property", location: "STEM", price: 220, set: 5},
+    t0: {loc: "t0", type: "property", location: "STEM", price: 220, set: 5, rent: [18, 36, 90, 250, 700, 875, 1050], houseCost: 150},
     t1: {loc: "t1", type: "chance", price: "800", set: 9},
-    t2: {loc: "t2", type: "property", location: "Rockwell", price: 220, set: 5},
-    t3: {loc: "t3", type: "property", location: "Hoyt", price: 240, set: 5},
+    t2: {loc: "t2", type: "property", location: "Rockwell", price: 220, set: 5, rent: [18, 36, 90, 250, 700, 875, 1050], houseCost: 150},
+    t3: {loc: "t3", type: "property", location: "Hoyt", price: 240, set: 5, rent: [20, 40, 100, 300, 750, 925, 1100], houseCost: 150},
     t4: {loc: "t4", type: "railroad", location: "elvin citadel", price: 200, set: 9, name: "McNulty's Tunnel", rent: [25, 50, 100, 200]},
-    t5: {loc: "t5", type: "property", location: "Rainbow Bridge", price: 260, set: 6},
-    t6: {loc: "t6", type: "property", location: "Rizzebo", price: 260, set: 6},
+    t5: {loc: "t5", type: "property", location: "Rainbow Bridge", price: 260, set: 6, rent: [22, 44, 110, 330, 800, 975, 1150], houseCost: 150},
+    t6: {loc: "t6", type: "property", location: "Rizzebo", price: 260, set: 6, rent: [22, 44, 110, 330, 800, 975, 1150], houseCost: 150},
     t7: {loc: "t7", type: "utility", utilityType: "water", set: 9},
-    t8: {loc: "t8", type: "property", location: "South Lobby", price: 280, set: 6},
+    t8: {loc: "t8", type: "property", location: "South Lobby", price: 280, set: 6, rent: [24, 48, 120, 360, 850, 1025, 1200], houseCost: 150},
 
-    r0: {loc: "r0", type: "property", location: "Elvin Citadel", price: 300, set: 7},
-    r1: {loc: "r1", type: "property", location: "Autumn's Forest", price: 300, set: 7},
+    r0: {loc: "r0", type: "property", location: "Elvin Citadel", price: 300, set: 7, rent: [26, 52, 130, 390, 900, 1100, 1275], houseCost: 200},
+    r1: {loc: "r1", type: "property", location: "Autumn's Forest", price: 300, set: 7, rent: [26, 52, 130, 390, 900, 1100, 1275], houseCost: 200},
     r2: {loc: "r2", type: "chest"},
-    r3: {loc: "r3", type: "property", location: "Murray Estates", price: 320, set: 7},
+    r3: {loc: "r3", type: "property", location: "Murray Estates", price: 320, set: 7, rent: [28, 56, 150, 450, 1000, 1200, 1400], houseCost: 200},
     r4: {loc: "r4", type: "railroad", price: 200, set: 9, name: "Harbison Tunnel", rent: [25, 50, 100, 200]},
     r5: {loc: "r5", type: "chance"},
-    r6: {loc: "r6", type: "property", location: "McNulty Manor", price: 350, set: 8},
+    r6: {loc: "r6", type: "property", location: "McNulty Manor", price: 350, set: 8, rent: [35, 70, 175, 500, 1100, 1300, 1500], houseCost: 200},
     r7: {loc: "r7", type: "tax", taxType:"luxury"},
-    r8: {loc: "r8", type: "property", location: "TMX Towers", price: 400, set: 8},
+    r8: {loc: "r8", type: "property", location: "TMX Towers", price: 400, set: 8, rent: [50, 100, 200, 600, 1400, 1700, 2000], houseCost: 200},
 }
 
 propertySets = [
@@ -81,18 +83,18 @@ pieces = [
 
 ]
 
-function onLoad(){
-    
+function initializeBoard(){
+    document.getElementById("startScreen").style.display = "none"
     boardHTML = ""
     side="c"
     for(i=0; i<4; i++){
         tile = tilesList[side+i]
         if(tile.cornerType == "go"){
-            boardHTML += `<div class='corner tile c${i}'>Pass Go`
+            boardHTML += `<div class='corner tile c${i}'>go`
         }else if(tile.cornerType == "jail"){
             boardHTML += `<div class='corner tile c${i}'>Jail`
         }else if(tile.cornerType == "parking"){
-            boardHTML += `<div class='corner tile c${i}'>Rathburn Parking`
+            boardHTML += `<div class='corner tile c${i}'><img class="cornerImg" src="./assets/corners/parking.svg">`
         }else if(tile.cornerType == "goToJail"){
             boardHTML += `<div class='corner tile c${i}'>Go To Jail`
         }
@@ -112,13 +114,13 @@ function onLoad(){
             `<div class='${side=="t" ? "top" : side=="b" ? "bottom" : side=="l" ? "left" : side=="r" ? "right" : ""} ${side=="l" || side=="r" ? "sideways" : ""} tile ${side+j}'>`
             tile = tilesList[side+j]
             if(tile.type == "property"){
-                boardHTML+=`<div class="${"set"+tile.set} colorOfSet"></div>
+                boardHTML+=`<div class="${"set"+tile.set} colorOfSet buttonClickable" onclick="showOverlay({type: 'propertyCard', path: './assets/properties/${tile.loc}.svg'})"></div>
                 <div class="tileInfo">
                     <div class="location">${tile.location}</div>
                     <div class="price">$${tile.price}</div>
                 </div>`
             }else if(tile.type == "railroad"){
-                boardHTML += `<div>${tile.name}</div><img src="./assets/tunnel.svg"><div class="railroad price">$${tile.price}</div>`
+                boardHTML += `<div>${tile.name}</div><img src="./assets/tunnel.svg" class="tileImg"><div class="railroad price">$${tile.price}</div>`
             }else if(tile.type == "chance"){
                 boardHTML += `<div>Chance?</div>`
             }else if(tile.type == "chest"){
@@ -166,6 +168,8 @@ function onLoad(){
     document.getElementById("gameBoard").innerHTML = boardHTML
 
     initializeGame()
+
+    document.getElementById("gameContainer").style.display = "grid"
 }
 
 function loadPieces(){
@@ -178,8 +182,15 @@ function showOverlay(args){
     document.getElementById("cardOverlay").style.display = "none"
     document.getElementById("rentOverlay").style.display = "none"
     document.getElementById("rentButtons").style.display = "none"
+    document.getElementById("taxOverlay").style.display = "none"
+    document.getElementById("taxButtons").style.display = "none"
+    document.getElementById("taxButton").style.display = "none"
+
+    document.getElementById("purchaseButton").style.display = "none"
+
     document.getElementById("chanceOverlay").style.display = "none"
     document.getElementById("chanceButtons").style.display = "none"
+
     document.getElementById("overlay").setAttribute( "onClick", "" )
 
     //card overlay
@@ -194,6 +205,18 @@ function showOverlay(args){
         document.getElementById("rentButton").setAttribute( "onClick", `javascript: payRent(${args.rentAmount}, ${args.recipient});`)
         document.getElementById("rentOverlay").style.display = "flex"
         document.getElementById("rentButtons").style.display = "flex"
+    }
+
+    else if(args.type == "tax"){
+        document.getElementById("taxAmount").innerHTML = `($${args.taxAmount})`
+        document.getElementById("taxButton").setAttribute( "onClick", `javascript: payTax(${args.taxAmount});`)
+        document.getElementById("taxOverlay").style.display = "flex"
+        document.getElementById("taxButtons").style.display = "flex"
+        if(canAfford(players[currentPlayer], args.taxAmount)){
+            document.getElementById("taxButton").style.display = "block"
+        }else{
+            document.getElementById("taxButton").style.display = "none"
+        }
     }
 
     else if(args.type == "stashedJail"){
@@ -214,9 +237,15 @@ function showOverlay(args){
 
     else if(args.type == "property"){
         document.getElementById("purchasePrice").innerHTML = `($${args.price})`
+        
         document.getElementById("auctionPrice").innerHTML = `($${(args.price/2)})`
         viewCard(args.path)
         document.getElementById("purchaseOverlay").style.display = "flex"
+        if(canAfford(players[currentPlayer], args.price)){
+            document.getElementById("purchaseButton").style.display = "block"
+        }else{
+            document.getElementById("purchaseButton").style.display = "none"
+        }
     }
 
     document.getElementById("overlay").style.display = "flex"
@@ -237,6 +266,7 @@ function viewCard(path){
 function hideCard(){
     document.getElementById("overlay").style.display = "none"
     document.getElementById("purchaseOverlay").style.display = "none"
+    updateNextActionButton()
 }
 
 function placePlayers(){
@@ -377,6 +407,15 @@ function payRent(price, recipient){
     }
 }
 
+function payTax(amount){
+    if(canAfford(players[currentPlayer], amount)){
+        players[currentPlayer].debts = []
+        players[currentPlayer].money -= amount
+        hideCard()
+        drawPossessions(players[currentPlayer])
+    }
+}
+
 function landOnSpace(space){
     console.log(space.type)
 
@@ -411,7 +450,13 @@ function landOnSpace(space){
         if(space.cornerType == "goToJail"){
             movePiece(players[currentPlayer], "c1")
         }
+    }else if(space.type == "tax"){
+        //TODO: get tax amounts
+        taxAmount = 1337
+        players[currentPlayer].debts.push({amount: taxAmount, owedTo: -1})
+        showOverlay({type:"tax", taxAmount: taxAmount})
     }
+    updateNextActionButton()
 }
 
 function raiseMoney(player, location){
@@ -424,12 +469,12 @@ function raiseMoney(player, location){
 function getRent(tile){
     if(tile.type == "property"){
         //TODO: check if color set is owned
-        return tile.rent[tile.houses]
+        // return tile.rent[tile.houses]
+        return tile.rent[0]
     }else if(tile.type == "railroad"){
         //TODO: check if multiple tunnels are owned
         return tile.rent[0]
     }else if(tile.type == "utility"){
-        //TODO: implement utility dice roll system
         return (4*rollDice().sum)
     }
     console.error("tile type not recognized "+tile.type);
@@ -488,7 +533,11 @@ function getChance(){
 function nextAction(){
     if(players[currentPlayer].debts.length > 0){
         debt = players[currentPlayer].debts[0]
-        showOverlay({type: "rent", rentAmount: debt.amount, recipient: debt.owedTo})
+        if(debt.owedTo == -1){
+            showOverlay({type: "tax", taxAmount: debt.amount})
+        }else{
+            showOverlay({type: "rent", rentAmount: debt.amount, recipient: debt.owedTo})
+        }
     }else if(players[currentPlayer].raisingFunds){
         propertyPurchase(players[currentPlayer].savingForProperty)
     }else if(players[currentPlayer].playing){
@@ -526,14 +575,9 @@ function updateNextActionButton(){
 }
 
 function canAfford(player, price){
-    tryingToBuy = true
-    // while(tryingToBuy){
-        if(player.money >= price){
-            return true
-        }
-        window.alert("not enough money!")
-        window.alert("mortgage properties? make deal?")
-    // }
+    if(player.money >= price){
+        return true
+    }
 }
 
 function purchaseProperty(player, location){
