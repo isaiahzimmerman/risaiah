@@ -21,8 +21,18 @@
     <!-- header -->
     <!-- <h1>Monopoly</h1> -->
     <div class="startScreen" id="startScreen">
-        <img src="./assets/logo.svg" class="startLogo" alt="">
-        <div class="customButton startButton" onclick="initializeBoard()">Start Game</div>
+        <div class="start0" id="start0">
+            <img src="./assets/logo.svg" class="startLogo" alt="">
+            <div class="customButton startButton" onclick="startProcess(1)">Start</div>
+        </div>
+        <div class="start1" id="start1">
+            <div class="startNames" id="startNames">
+                <div class="startName" id="startName0" onclick="editStartName(0)">Player 1</div>
+                <div class="startName" id="startName1" onclick="editStartName(1)">Player 2</div>
+                <div id="addNameButton">+</div>
+            </div>
+            <div class="customButton startButton" onclick="initializeBoard()">Start Game</div>
+        </div>
     </div>
     <div id="gameContainer" class="gameContainer">
         <div class="gameBoard" id="gameBoard"></div>
@@ -67,7 +77,10 @@
         </div>
     </div>
     <div class="overlay" id="overlay">
-        <img src="./assets/properties/property-template.svg" alt="" srcset="" class="cardOverlay" id="cardOverlay">
+        <div class="cardOverlayContainer" id="cardOverlayContainer">
+            <img src="./assets/properties/property-template.svg" alt="" srcset="" class="cardOverlay" id="cardOverlay">
+            <div class="ownershipInfo" id="propertyOwner">default</div>
+        </div>
         <div class="chanceOverlay" id="chanceOverlay"><img src="./assets/chance/chance-template.svg" alt="" srcset="" class="" id="chanceOverlayImage"></div>
         <div id="chanceButtons" class="purchaseOverlay">
             <div class="buttonClickable customButton" id="chanceButton"></div>

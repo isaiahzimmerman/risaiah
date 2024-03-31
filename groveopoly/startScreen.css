@@ -1,14 +1,71 @@
 .startScreen{
     display: flex;
+    width: 100%;
+    min-height: 97vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5vh;
+}
+
+.start0{
+    width: 50vh;
+    display: block;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .startLogo{
-    width: 50%;
+    width: 50vh;
 }
 
 .startButton{
-    width: 50%;
+    width: 25vh;
+    margin: 1vh auto;
+}
+
+.start1{
+    display: none;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 50vh;
+
+}
+
+.startNames{
+    width: unset;
+    height: unset;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    border: .3vh black solid;
+    border-radius: 2vh;
+    text-align: center;
+    padding: 2vh;
+}
+
+.startName{
+    padding: 0.5vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.startNameInput{
+    margin: 0.5vh;
+    width: 15vh;
+    height: 3vh;
+}
+
+.startNameButton{
+    height: 3vh;
+    margin: 0.5vh;
+}
+
+.startName:hover{
+    text-decoration: underline;
 }
