@@ -2,6 +2,34 @@ function randInt(max){
     return Math.floor(Math.random() * max)
 }
 
+//stolen
+
+function shuffle(array, seed) {                // <-- ADDED ARGUMENT
+    var m = array.length, t, i;
+    seed *= 10
+    // While there remain elements to shuffle…
+    while (m) {
+  
+      // Pick a remaining element…
+      i = Math.floor(random(seed) * m--);        // <-- MODIFIED LINE
+  
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+      ++seed                                     // <-- ADDED LINE
+    }
+  
+    return array;
+}
+
+function random(seed) {
+    var x = Math.sin(seed++) * 10000; 
+    return x - Math.floor(x);
+}
+
+//stolen https://stackoverflow.com/questions/16801687/javascript-random-ordering-with-seed Ulf Aslak
+
 tilesList = {
     c0: {loc: "c0", type: "corner", cornerType: "go", players: []},
     c1: {loc: "c1", type: "corner", cornerType: "jail"},
@@ -69,7 +97,8 @@ currentPlayer = 0
 boardOrder = []
 
 chanceCards = [
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: true},
+    //TODO: implement different types of chance and chest cards and actions going with them
+    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: true/*, chanceAction: {type: "gain"}*/},
     {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
     {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
     {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
@@ -305,6 +334,35 @@ function loadPieces(){
     pieces.push({playerNum: 1, name: "isaiah"})
 }
 
+function getMortgage(space){
+    return Math.round(space.price * 0.5)
+}
+
+function getRepayment(space){
+    return Math.round(1.1 * getMortgage(space))
+}
+
+function mortgageCard(location){
+    //TODO: this does not allow any player to mortgage on any turn
+    players[currentPlayer].mortgaged.push(location)
+    players[currentPlayer].money += getMortgage(tilesList[location])
+    drawPossessions(players[currentPlayer])
+}
+
+function unmortgageCard(location){
+    //TODO: this does not allow any player to mortgage on any turn
+    //TODO: fully implement mortgage functionality
+    if(canAfford(players[currentPlayer], getRepayment(tilesList[location]))){
+        players[currentPlayer].mortgaged.splice(players[currentPlayer].mortgaged.indexOf(location), 1)
+        players[currentPlayer].money -= getRepayment(tilesList[location])
+        drawPossessions(players[currentPlayer])
+    }
+}
+
+function isMortgaged(player, location){
+    return player.mortgaged.indexOf(location) >= 0
+}
+
 //TODO: change overlay system
 function showOverlay(args){
     document.getElementById("chanceOverlay").style.display = "none"
@@ -315,6 +373,8 @@ function showOverlay(args){
     document.getElementById("taxButtons").style.display = "none"
     document.getElementById("taxButton").style.display = "none"
     document.getElementById("cardOverlayContainer").style.display = "none"
+    document.getElementById("mortgageButton").style.display = "none"
+
 
     document.getElementById("purchaseButton").style.display = "none"
 
@@ -328,6 +388,14 @@ function showOverlay(args){
     {
         document.getElementById("overlay").setAttribute( "onClick", "javascript: hideCard();")
         viewCard(args.path, {showOwner: false})
+        if(!isMortgaged(players[currentPlayer], args.loc)){
+            document.getElementById("mortgageButton").innerHTML = `Mortgage ($${getMortgage(tilesList[args.loc])})`
+            document.getElementById("mortgageButton").setAttribute( "onClick", `javascript: mortgageCard('${args.loc}');`)
+        }else{
+            document.getElementById("mortgageButton").innerHTML = `Unmortgage ($${Math.round(1.1 * getMortgage(tilesList[args.loc]))})`
+            document.getElementById("mortgageButton").setAttribute( "onClick", `javascript: unmortgageCard('${args.loc}');`)
+        }
+        document.getElementById("mortgageButton").style.display = "flex"
     }
 
     else if(args.type == "propertyCardPreview")
@@ -485,10 +553,14 @@ function drawPossessions(player){
         if(amountInSet!=0){
             propertiesHTML+=`<div class="cardRow">`
             for(j=0;j<amountInSet;j++){
+                tile = tilesList[player.ownedProperties[`set${i}`][j]]
                 cardSource = `'./assets/properties/${player.ownedProperties[`set${i}`][j]}.svg'`
-
-                propertiesHTML += `
-                <img class="propertyCard" src=${cardSource} onclick="showOverlay({type: 'propertyCard', path: ${cardSource}})">`
+                if(player.mortgaged.indexOf(tile.loc) >= 0){
+                    propertiesHTML += `<div class="mortgagedCard propertyCard" onclick="showOverlay({type: 'propertyCard', path: ${cardSource}, loc: '${tile.loc}'})">Mortgaged property</div>`
+                }else{
+                    propertiesHTML += `
+                    <img class="propertyCard" src=${cardSource} onclick="showOverlay({type: 'propertyCard', path: ${cardSource}, loc: '${tile.loc}'})">`
+                }
             }
             for(j=0;j<(6-amountInSet)%3;j++){
                 propertiesHTML+=`<div class="fillerCard"></div>`
@@ -749,6 +821,8 @@ function initializeGame(){
     players[0].playing = true
     placePlayers()
     updateNextActionButton()
+    shuffle(chanceCards, Math.random())
+    shuffle(chestCards, Math.random())
 }
 
 function initializePlayers(names){
@@ -764,7 +838,8 @@ function initializePlayers(names){
             getOutOfJail: [false, false],
             raisingFunds: false,
             savingForProperty: null,
-            debts: []
+            debts: [],
+            mortgaged: [],
         })
     }
 }
@@ -850,6 +925,7 @@ function purchaseProperty(player, location){
 function auctionProperty(player, location){
     hideCard()
     //TODO: implement and fix this method
+    //Groveopoly: error when raise funds button is pressed, then auction button is pressed
 }
 
 function checkSet(location){
@@ -864,3 +940,5 @@ function addProperty(player, location){
 function removeProperty(player, location){
 
 }
+
+//TODO: lose condition

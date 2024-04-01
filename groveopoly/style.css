@@ -279,7 +279,15 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    text-align: center;
+}
+
+.mortgagedCard{
+    font-size: calc(var(--pss)*1.5);
+}
+
+.mortgageButton{
+    margin-top: calc(var(--pss)*1.5);
 }
 
 .getOutOfJail{
