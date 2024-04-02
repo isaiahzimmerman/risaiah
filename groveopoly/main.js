@@ -49,7 +49,7 @@ tilesList = {
     // , rent: [0, 0, 0, 0, 0, 0, 0], houseCost: 0
 
     l0: {loc: "l0", type: "property", location: "Ketler", price: 140, set: 3, rent: [10, 20, 50, 150, 450, 625, 750], houseCost: 100},
-    l1: {loc: "l1", type: "utility", utilityType: "electric", set: 9, price: 150},
+    l1: {loc: "l1", type: "utility", utilityType: "electric", set: 9, price: 150, name: "electric company change"},
     l2: {loc: "l2", type: "property", location: "Lincoln", price: 140, set: 3, rent: [10, 20, 50, 150, 450, 625, 750], houseCost: 100},
     l3: {loc: "l3", type: "property", location: "Hopeman", price: 160, set:3, rent: [12, 24, 60, 180, 500, 700, 900], houseCost: 100},
     l4: {loc: "l4", type: "railroad", set: 9, price: 200, name: "SAC Tunnel", rent: [25, 50, 100, 200]},
@@ -65,7 +65,7 @@ tilesList = {
     t4: {loc: "t4", type: "railroad", location: "elvin citadel", price: 200, set: 9, name: "McNulty's Tunnel", rent: [25, 50, 100, 200]},
     t5: {loc: "t5", type: "property", location: "Rainbow Bridge", price: 260, set: 6, rent: [22, 44, 110, 330, 800, 975, 1150], houseCost: 150},
     t6: {loc: "t6", type: "property", location: "Rizzebo", price: 260, set: 6, rent: [22, 44, 110, 330, 800, 975, 1150], houseCost: 150},
-    t7: {loc: "t7", type: "utility", utilityType: "water", set: 9},
+    t7: {loc: "t7", type: "utility", utilityType: "water", set: 9, name: "water company change"},
     t8: {loc: "t8", type: "property", location: "South Lobby", price: 280, set: 6, rent: [24, 48, 120, 360, 850, 1025, 1200], houseCost: 150},
 
     r0: {loc: "r0", type: "property", location: "Elvin Citadel", price: 300, set: 7, rent: [26, 52, 130, 390, 900, 1100, 1275], houseCost: 200},
@@ -334,6 +334,71 @@ function loadPieces(){
     pieces.push({playerNum: 1, name: "isaiah"})
 }
 
+function getColorSet(location){
+    for(i=0; i<propertySets.length; i++){
+        if(propertySets[i].indexOf(location) >= 0){
+            return propertySets[i]
+        }
+    }
+}
+
+function purchaseHouse(location){
+    tile = tilesList[location]
+    owner = whoOwns(tile)
+    if(owner == -1){
+        console.error("This property is unowned, house can not be bought")
+        return
+    }
+    if(tile.type != "property"){
+        console.error("houses cannot be purchased on tile with type "+tile.type)
+        return
+    }
+
+    
+
+    //player must own color set
+    if(!ownsColorSet(tile)){
+        console.log("color set not owned!")
+        return false
+    }
+
+    //houses must be within +- 1 of other properties in set
+    houseCounts = []
+    colorSet = getColorSet(location)
+    for(i=0; i<colorSet.length; i++){
+        currentSpace = colorSet[i]
+        //properties cannot be mortgaged
+        if(isMortgaged(currentSpace)){
+            console.log("houses cannot be placed on mortgaged sets!")
+            return false
+        }
+        if(currentSpace == location){
+            houseCounts.push(tilesList[currentSpace].houses + 1)
+        }else{
+            houseCounts.push(tilesList[currentSpace].houses)
+        }
+        
+    }
+    console.log(houseCounts)
+    if(Math.max.apply(Math, houseCounts) - Math.min.apply(Math, houseCounts) >= 2){
+        console.log("too many or too few houses in one of the properties in the set")
+        return false
+    }
+
+    //player must be able to afford a house
+    if(canAfford(players[owner], tile.houseCost)){
+        tile.houses ++
+        return
+    }
+    console.log("cannot afford!")
+    return false
+    //TODO: possibly limit amount of houses
+}
+
+function sellHouse(location){
+
+}
+
 function getMortgage(space){
     return Math.round(space.price * 0.5)
 }
@@ -342,25 +407,25 @@ function getRepayment(space){
     return Math.round(1.1 * getMortgage(space))
 }
 
-function mortgageCard(location){
-    //TODO: this does not allow any player to mortgage on any turn
-    players[currentPlayer].mortgaged.push(location)
-    players[currentPlayer].money += getMortgage(tilesList[location])
+function mortgageCard(playerNum, location){
+    players[playerNum].mortgaged.push(location)
+    players[playerNum].money += getMortgage(tilesList[location])
     drawPossessions(players[currentPlayer])
 }
 
-function unmortgageCard(location){
-    //TODO: this does not allow any player to mortgage on any turn
+function unmortgageCard(playerNum, location){
     //TODO: fully implement mortgage functionality
-    if(canAfford(players[currentPlayer], getRepayment(tilesList[location]))){
-        players[currentPlayer].mortgaged.splice(players[currentPlayer].mortgaged.indexOf(location), 1)
-        players[currentPlayer].money -= getRepayment(tilesList[location])
+    if(canAfford(players[playerNum], getRepayment(tilesList[location]))){
+        players[playerNum].mortgaged.splice(players[playerNum].mortgaged.indexOf(location), 1)
+        players[playerNum].money -= getRepayment(tilesList[location])
         drawPossessions(players[currentPlayer])
     }
 }
 
-function isMortgaged(player, location){
-    return player.mortgaged.indexOf(location) >= 0
+function isMortgaged(location){
+    owner = whoOwns(tilesList[location])
+    if (owner == -1){return false}
+    return players[owner].mortgaged.indexOf(location) >= 0
 }
 
 //TODO: change overlay system
@@ -374,6 +439,8 @@ function showOverlay(args){
     document.getElementById("taxButton").style.display = "none"
     document.getElementById("cardOverlayContainer").style.display = "none"
     document.getElementById("mortgageButton").style.display = "none"
+    document.getElementById("playerOverlay").style.display = "none"
+    document.getElementById("auctionOverlay").style.display = "none"
 
 
     document.getElementById("purchaseButton").style.display = "none"
@@ -388,20 +455,23 @@ function showOverlay(args){
     {
         document.getElementById("overlay").setAttribute( "onClick", "javascript: hideCard();")
         viewCard(args.path, {showOwner: false})
-        if(!isMortgaged(players[currentPlayer], args.loc)){
+        if(!isMortgaged(args.loc)){
             document.getElementById("mortgageButton").innerHTML = `Mortgage ($${getMortgage(tilesList[args.loc])})`
-            document.getElementById("mortgageButton").setAttribute( "onClick", `javascript: mortgageCard('${args.loc}');`)
+            document.getElementById("mortgageButton").setAttribute( "onClick", `javascript: mortgageCard(${currentPlayer}, '${args.loc}');`)
         }else{
             document.getElementById("mortgageButton").innerHTML = `Unmortgage ($${Math.round(1.1 * getMortgage(tilesList[args.loc]))})`
-            document.getElementById("mortgageButton").setAttribute( "onClick", `javascript: unmortgageCard('${args.loc}');`)
+            document.getElementById("mortgageButton").setAttribute( "onClick", `javascript: unmortgageCard(${currentPlayer}, '${args.loc}');`)
         }
         document.getElementById("mortgageButton").style.display = "flex"
     }
 
     else if(args.type == "propertyCardPreview")
     {
-        document.getElementById("overlay").setAttribute( "onClick", "javascript: hideCard();")
-        viewCard(args.path, {showOwner: true, owner: whoOwns(tilesList[args.loc])})
+        console.log(args.loc)
+        setTimeout(function() {
+            document.getElementById("overlay").setAttribute( "onClick", "javascript: hideCard();")
+            viewCard(args.path, {showOwner: true, owner: whoOwns(tilesList[args.loc])})
+        }, 10);
     }
 
     else if(args.type == "rent"){
@@ -472,6 +542,14 @@ function showOverlay(args){
         }else{
             document.getElementById("purchaseButton").style.display = "none"
         }
+    }
+
+    else if(args.type == "auction"){
+        document.getElementById("auctionOverlay").style.display = "flex"
+    }
+
+    else if(args.type == "player"){
+        document.getElementById("playerOverlay").style.display = "flex"
     }
 
     document.getElementById("overlay").style.display = "flex"
@@ -546,6 +624,11 @@ function rollDice(){
 }
 
 function drawPossessions(player){
+    document.getElementById("possessions").innerHTML = getPossessionsHTML(player, {showActionButtons: true,isOverlay:false})
+    updateNextActionButton()
+}
+
+function getPossessionsHTML(player, args){
     propertiesHTML = ""
 
     for(i=1;i<10;i++){
@@ -555,11 +638,17 @@ function drawPossessions(player){
             for(j=0;j<amountInSet;j++){
                 tile = tilesList[player.ownedProperties[`set${i}`][j]]
                 cardSource = `'./assets/properties/${player.ownedProperties[`set${i}`][j]}.svg'`
+                overlayZ = ""
+                overlayType = "propertyCard"
+                if(args.isOverlay){
+                    overlayZ = `style = "z-index: 5"`
+                    overlayType = "propertyCardPreview"
+                }
                 if(player.mortgaged.indexOf(tile.loc) >= 0){
-                    propertiesHTML += `<div class="mortgagedCard propertyCard" onclick="showOverlay({type: 'propertyCard', path: ${cardSource}, loc: '${tile.loc}'})">Mortgaged property</div>`
+                    propertiesHTML += `<div class="mortgagedCard propertyCard" ${overlayZ} onclick="showOverlay({type: '${overlayType}', path: ${cardSource}, loc: '${tile.loc}'})">${(tile.type=="property" ? tile.location : tile.name)} (Mortgaged)</div>`
                 }else{
                     propertiesHTML += `
-                    <img class="propertyCard" src=${cardSource} onclick="showOverlay({type: 'propertyCard', path: ${cardSource}, loc: '${tile.loc}'})">`
+                    <img class="propertyCard" ${overlayZ} src=${cardSource} onclick="showOverlay({type: '${overlayType}', path: ${cardSource}, loc: '${tile.loc}'})">`
                 }
             }
             for(j=0;j<(6-amountInSet)%3;j++){
@@ -582,8 +671,9 @@ function drawPossessions(player){
     
     billTypes = [500,100,50,20,10,5,1]
     billType = 0
+    moneySource = ""
     if(player.money<=0){
-        document.getElementById("money").src = "./assets/money/moneyBlank.svg"
+        moneySource = "./assets/money/moneyBlank.svg"
     }else{
         for(i=0;i<billTypes.length; i++){
             if(billTypes[i] <= player.money)
@@ -592,12 +682,20 @@ function drawPossessions(player){
                 break
             }
         }
-        document.getElementById("money").src = "./assets/money/money"+billType+".svg"
+        moneySource = "./assets/money/money"+billType+".svg"
     }
-    
-    document.getElementById("playerIndicator").innerHTML = player.name
-    document.getElementById("moneyCount").innerHTML = `Money: $${player.money}`
-    document.getElementById("ownedProperties").innerHTML = propertiesHTML
+
+    possessionsHTML = `<div class="playerIndicator" id="playerIndicator">${player.name}</div>
+    <div class="moneyContainer">
+        <div class="moneyCount" id="moneyCount">Money: $${player.money}</div>
+        <img class="money" id="money" src="${moneySource}">
+    </div>
+    <div class="ownedProperties" id="ownedProperties">${propertiesHTML}</div>`
+    if(args.showActionButtons){
+        possessionsHTML += `<div class="actionButtons">
+        <div class="nextAction" id="nextAction" onclick="nextAction()">Next Action</div></div>`
+    }
+    return possessionsHTML
 }
 
 function dumbDelete(){
@@ -630,13 +728,21 @@ function movePiece(player, position){
     player.position = newPos
 
     newSpot = document.getElementById(newPos)
-    newSpot.innerHTML = `<img src="./assets/pieces/${player.piece}">`
+    console.log(player)
+    newSpot.innerHTML = `<img onclick="showPlayer(${players.indexOf(player)})" src="./assets/pieces/${player.piece}">`
     newSpot.style.rotate = `${randInt(360)}deg`
     newSpot.style.opacity = 1
 
     console.log(`moved ${player.name} to ${newPos}`)
 
     landOnSpace(tilesList[position])
+}
+
+function showPlayer(playerNum){
+    playerOverlayHTML = ""
+    playerOverlayHTML = getPossessionsHTML(players[playerNum], {showActionButtons: false, isOverlay:true})
+    document.getElementById("playerPossessions").innerHTML = playerOverlayHTML
+    showOverlay({type: "player"})
 }
 
 function propertyPurchase(space){
@@ -684,9 +790,14 @@ function landOnSpace(space){
 
         //if property is owned by someone else
         else{
-            rentInfo = getRent(space)
-            players[currentPlayer].debts.push({amount: rentInfo, owedTo: owner})
-            showOverlay({type: "rent", rentAmount: rentInfo, recipient: owner, property: space})
+            if(isMortgaged(space.loc)){
+                //if property is mortgaged no rent is owed
+                console.log("property is mortgaged")
+            }else{
+                rentInfo = getRent(space)
+                players[currentPlayer].debts.push({amount: rentInfo, owedTo: owner})
+                showOverlay({type: "rent", rentAmount: rentInfo, recipient: owner, property: space})
+            }
         }
 
     }else if(space.type == "chance"){
@@ -922,8 +1033,62 @@ function purchaseProperty(player, location){
     }
 }
 
+currentAuction = {
+    auctionInProgress: false, // npt used
+    property: null,
+    currentBid: NaN,
+    currentPlayer: NaN,
+}
+
+function getBids(currentBid){
+    return [currentBid+5, 10*Math.ceil((currentBid+5)/10), 100*Math.ceil((currentBid+5)/100)]
+}
+
+function bidOnProperty(playerNum, price){
+    currentAuction.currentPlayer = playerNum
+    currentAuction.currentBid = price
+    drawAuctionPrices()
+}
+
+function endAuction(){
+    players[currentAuction.currentPlayer].money -= currentAuction.currentBid
+    addProperty(players[currentAuction.currentPlayer], currentAuction.property)
+    currentAuction = {auctionInProgress: false,property: null,currentBid: NaN,currentPlayer: NaN,}
+    drawPossessions[players[currentPlayer]]
+    hideCard()
+}
+
+function drawAuctionPrices(){
+    bidPrices = getBids(currentAuction.currentBid)
+    auctionHTML = ""
+    for(i=0; i<players.length; i++){
+        auctionHTML += `<div class="playerAuction"><div class="auctionName">${players[i].name}</div>`
+        for(j=0; j<3; j++){
+            if(canAfford(players[i], bidPrices[j])){
+                auctionHTML += `<div class="auctionPrice customButton buttonClickable" onclick="bidOnProperty(${i}, ${bidPrices[j]})">$${bidPrices[j]}</div>`
+            }else{
+                auctionHTML += `<div class="cannotAffordAuctionPrice">$${bidPrices[j]}</div>`
+            }
+        }
+        auctionHTML += `</div>`
+    }
+    if(!isNaN(currentAuction.currentPlayer)){
+        auctionHTML += `<div class="endAuctionContainer"><div class="buttonClickable customButton" onclick="endAuction()">End Auction</div></div>`
+    }
+    document.getElementById("auctionOverlay").innerHTML = auctionHTML
+}
+
 function auctionProperty(player, location){
     hideCard()
+    auctionHTML = ""
+    currentAuction.currentBid = 0
+    currentAuction.property = location
+    currentAuction.auctionInProgress = true
+    drawAuctionPrices()
+    showOverlay({type: "auction"})
+
+    //TODO: edge case: if nobody has $5
+    
     //TODO: implement and fix this method
     //Groveopoly: error when raise funds button is pressed, then auction button is pressed
 }

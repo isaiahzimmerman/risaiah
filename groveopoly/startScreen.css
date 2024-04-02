@@ -10,7 +10,7 @@
 .start0{
     width: 50vh;
     display: block;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
 }
