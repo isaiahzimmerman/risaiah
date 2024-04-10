@@ -292,10 +292,26 @@ h1{
     font-size: 3.5vh;
 }
 
+.currentHighestBidder{
+    background-color: white;
+    width: 60vh;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: .3vh black solid;
+    border-radius: 2vh;
+    text-align: center;
+    padding: .4vh;
+    font-size: 4vh;
+    margin: 0 auto;
+}
+
 .endAuctionContainer{
     width: 100%;
     display: flex;
     justify-content: center;
+    font-size: 2.5vh;
 }
 
 .auctionPrice{
@@ -331,6 +347,7 @@ h1{
     margin: 0 auto;
     aspect-ratio: 2/3;
     box-shadow:calc(var(--pss)*.2) calc(var(--pss)*.2) calc(var(--pss)*.2) black;
+    position: relative;
 
     /* inside of card */
     display: flex;
@@ -499,6 +516,16 @@ h1{
     text-align: center;
     padding: 2vh;
     font-size: 3.5vh;
+}
+
+#playerPossessions{
+    
+}
+
+.playerPossessions .ownedProperties{
+    min-height: 0;
+    height: fit-content;
+    max-height: 60%;
 }
 
 .ownershipInfo{

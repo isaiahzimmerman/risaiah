@@ -62,16 +62,16 @@ tilesList = {
     t1: {loc: "t1", type: "chance", price: "800", set: 9},
     t2: {loc: "t2", type: "property", location: "Rockwell", price: 220, set: 5, rent: [18, 36, 90, 250, 700, 875, 1050], houseCost: 150},
     t3: {loc: "t3", type: "property", location: "Hoyt", price: 240, set: 5, rent: [20, 40, 100, 300, 750, 925, 1100], houseCost: 150},
-    t4: {loc: "t4", type: "railroad", location: "elvin citadel", price: 200, set: 9, name: "McNulty's Tunnel", rent: [25, 50, 100, 200]},
+    t4: {loc: "t4", type: "railroad", price: 200, set: 9, name: "McNulty's Tunnel", rent: [25, 50, 100, 200]},
     t5: {loc: "t5", type: "property", location: "Rainbow Bridge", price: 260, set: 6, rent: [22, 44, 110, 330, 800, 975, 1150], houseCost: 150},
     t6: {loc: "t6", type: "property", location: "Rizzebo", price: 260, set: 6, rent: [22, 44, 110, 330, 800, 975, 1150], houseCost: 150},
-    t7: {loc: "t7", type: "utility", utilityType: "water", set: 9, name: "water company change"},
+    t7: {loc: "t7", type: "utility", utilityType: "water", set: 9, name: "water company change", price: 150},
     t8: {loc: "t8", type: "property", location: "South Lobby", price: 280, set: 6, rent: [24, 48, 120, 360, 850, 1025, 1200], houseCost: 150},
 
-    r0: {loc: "r0", type: "property", location: "Elvin Citadel", price: 300, set: 7, rent: [26, 52, 130, 390, 900, 1100, 1275], houseCost: 200},
-    r1: {loc: "r1", type: "property", location: "Autumn's Forest", price: 300, set: 7, rent: [26, 52, 130, 390, 900, 1100, 1275], houseCost: 200},
+    r0: {loc: "r0", type: "property", location: "Thorn Stadium", price: 300, set: 7, rent: [26, 52, 130, 390, 900, 1100, 1275], houseCost: 200},
+    r1: {loc: "r1", type: "property", location: "Don Lyle Field", price: 300, set: 7, rent: [26, 52, 130, 390, 900, 1100, 1275], houseCost: 200},
     r2: {loc: "r2", type: "chest"},
-    r3: {loc: "r3", type: "property", location: "Murray Estates", price: 320, set: 7, rent: [28, 56, 150, 450, 1000, 1200, 1400], houseCost: 200},
+    r3: {loc: "r3", type: "property", location: "Longnecker Pool", price: 320, set: 7, rent: [28, 56, 150, 450, 1000, 1200, 1400], houseCost: 200},
     r4: {loc: "r4", type: "railroad", price: 200, set: 9, name: "Harbison Tunnel", rent: [25, 50, 100, 200]},
     r5: {loc: "r5", type: "chance"},
     r6: {loc: "r6", type: "property", location: "McNulty Manor", price: 350, set: 8, rent: [35, 70, 175, 500, 1100, 1300, 1500], houseCost: 200},
@@ -354,8 +354,6 @@ function purchaseHouse(location){
         return
     }
 
-    
-
     //player must own color set
     if(!ownsColorSet(tile)){
         console.log("color set not owned!")
@@ -402,6 +400,9 @@ function sellHouse(location){
 function getMortgage(space){
     return Math.round(space.price * 0.5)
 }
+
+
+
 
 function getRepayment(space){
     return Math.round(1.1 * getMortgage(space))
@@ -479,6 +480,8 @@ function showOverlay(args){
             document.getElementById("rentOverlay").innerText = `${args.property.location} is owned by ${players[args.recipient].name}. Rent${args.rentAmount.rentText} is $${args.rentAmount.rent}.`
         }else if(args.rentAmount.rentType == "railroad"){
             document.getElementById("rentOverlay").innerText = `${args.property.name} is owned by ${players[args.recipient].name}. Rent with ${args.rentAmount.ownedTunnels} tunnel${(args.rentAmount.ownedTunnels > 1) ? "s" : ""} is $${args.rentAmount.rent}.`
+        }else if(args.rentAmount.rentType == "utility"){
+            document.getElementById("rentOverlay").innerText = `${args.property.name} is owned by ${players[args.recipient].name}. Rent with ${args.rentAmount.rentText} is ${args.rentAmount.multiplier} times a dice roll (rolled ${args.rentAmount.diceRoll}), which is $${args.rentAmount.rent}.`
         }else{
             throw new Error("rent type not recognized")
         }
@@ -533,8 +536,6 @@ function showOverlay(args){
 
     else if(args.type == "property"){
         document.getElementById("purchasePrice").innerHTML = `($${args.price})`
-        
-        document.getElementById("auctionPrice").innerHTML = `($${(args.price/2)})`
         viewCard(args.path, {showOwner: false})
         document.getElementById("purchaseOverlay").style.display = "flex"
         if(canAfford(players[currentPlayer], args.price)){
@@ -624,12 +625,13 @@ function rollDice(){
 }
 
 function drawPossessions(player){
-    document.getElementById("possessions").innerHTML = getPossessionsHTML(player, {showActionButtons: true,isOverlay:false})
+    document.getElementById("possessions").innerHTML = getPossessionsHTML(player, {showActionButtons: true,isOverlay:false, canTrade:false})
     updateNextActionButton()
 }
 
 function getPossessionsHTML(player, args){
     propertiesHTML = ""
+    playerNum = players.indexOf(player)
 
     for(i=1;i<10;i++){
         amountInSet = player.ownedProperties[`set${i}`].length
@@ -695,6 +697,9 @@ function getPossessionsHTML(player, args){
         possessionsHTML += `<div class="actionButtons">
         <div class="nextAction" id="nextAction" onclick="nextAction()">Next Action</div></div>`
     }
+    if(args.canTrade){
+        possessionsHTML += `<div class="startTradeButton" onclick="startTrade(${currentPlayer}, ${playerNum})">Trade</div>`
+    }
     return possessionsHTML
 }
 
@@ -740,7 +745,8 @@ function movePiece(player, position){
 
 function showPlayer(playerNum){
     playerOverlayHTML = ""
-    playerOverlayHTML = getPossessionsHTML(players[playerNum], {showActionButtons: false, isOverlay:true})
+    canTrade = currentPlayer != playerNum
+    playerOverlayHTML = getPossessionsHTML(players[playerNum], {showActionButtons: false, isOverlay:true, canTrade: canTrade})
     document.getElementById("playerPossessions").innerHTML = playerOverlayHTML
     showOverlay({type: "player"})
 }
@@ -869,6 +875,7 @@ function ownsColorSet(property){
 }
 
 function getRent(tile){
+    console.log(tile)
     if(tile.type == "property"){
         let rentText, rentAmount
         if(ownsColorSet(tile)){
@@ -901,9 +908,36 @@ function getRent(tile){
         return {rent: tunnelRents[tunnelCount-1], ownedTunnels: tunnelCount, rentType: "railroad"}
     //TODO: fix utility rent
     }else if(tile.type == "utility"){
-        return (4*rollDice().sum)
+        owner = whoOwns(tile)
+
+        utilityCount = 0
+
+        for(i=0; i<players[owner].ownedProperties.set9.length; i++){
+            if(tilesList[players[owner].ownedProperties.set9[i]].type == "utility"){
+                utilityCount++
+            }
+        }
+
+        sumOfTwoDice = rollDice().sum
+        multiplier = NaN
+        if(utilityCount == 1){
+            multiplier = 4
+            rentText = `one utility`
+        }else if(utilityCount == 2){
+            multiplier = 10
+            rentText = `both utilities`
+        }else{
+            console.error(`something went wrong here... utility count: ${utilityCount}, should be 1 or 2`)
+        }
+        
+        rentAmount = (multiplier*sumOfTwoDice)
+
+        return {rent: rentAmount, rentText: rentText, rentType: "utility", diceRoll: sumOfTwoDice, multiplier: multiplier}
+    }else{
+        console.log(tile)
+        console.log(tile.type)
+        console.error("tile type not recognized "+tile.type);
     }
-    console.error("tile type not recognized "+tile.type);
 }
 
 function whoOwns(tile){
@@ -1027,10 +1061,11 @@ function purchaseProperty(player, location){
         player.savingForProperty = null
         player.raisingFunds = false
         addProperty(player, location)
-        updateNextActionButton()
     }else{
         window.alert("not enough money!")
     }
+    drawPossessions(player)
+    updateNextActionButton()
 }
 
 currentAuction = {
@@ -1050,17 +1085,25 @@ function bidOnProperty(playerNum, price){
     drawAuctionPrices()
 }
 
+
+//TODO: fix bug if current player wins auction
 function endAuction(){
     players[currentAuction.currentPlayer].money -= currentAuction.currentBid
     addProperty(players[currentAuction.currentPlayer], currentAuction.property)
     currentAuction = {auctionInProgress: false,property: null,currentBid: NaN,currentPlayer: NaN,}
+    players[currentPlayer].savingForProperty = null
+    players[currentPlayer].raisingFunds = false
     drawPossessions[players[currentPlayer]]
+    updateNextActionButton()
     hideCard()
 }
 
 function drawAuctionPrices(){
     bidPrices = getBids(currentAuction.currentBid)
     auctionHTML = ""
+    if(!isNaN(currentAuction.currentPlayer)){
+        auctionHTML += `<div class="currentHighestBidder">Highest Bidder: ${players[currentAuction.currentPlayer].name} ($${currentAuction.currentBid})</div>`
+    }2
     for(i=0; i<players.length; i++){
         auctionHTML += `<div class="playerAuction"><div class="auctionName">${players[i].name}</div>`
         for(j=0; j<3; j++){
@@ -1098,12 +1141,13 @@ function checkSet(location){
 }
 
 function addProperty(player, location){
+    console.log("adding "+location+" to "+player.name)
     player.ownedProperties["set"+checkSet(location)].push(location)
-    drawPossessions(player)
 }
 
 function removeProperty(player, location){
-
+    console.log("removing "+location+" from "+player.name)
+    player.ownedProperties["set"+checkSet(location)].splice(player.ownedProperties["set"+checkSet(location)].indexOf(location), 1)
 }
 
 //TODO: lose condition

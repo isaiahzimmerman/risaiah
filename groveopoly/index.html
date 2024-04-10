@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groveopoly</title>
     <script src="main.js"></script>
+    <script src="trade.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="startScreen.css">
+    <link rel="stylesheet" href="trade.css">
     <!-- header -->
     <script src="/assets/header/header.js"></script>
     <link rel="stylesheet" href="/assets/header/header.css">
@@ -77,7 +79,6 @@
             </div>
             <div class="buttonClickable customButton" id="auctionButton">
                 <div>auction</div>
-                <div id="auctionPrice">($0)</div>
             </div>
         </div>
         <div id="rentOverlay" class="rentOverlay">
@@ -110,6 +111,25 @@
         <div class="playerOverlay" id="playerOverlay">
             <div class="possessions playerPossessions" id="playerPossessions"></div>
             <div class="hidePlayerPossessions customButton buttonClickable" id="hidePlayerPossessions" onclick="hideCard()">Hide</div>
+        </div>
+    </div>
+    <div id="tradeOverlay" class="tradeOverlay">
+        <div class="tradeContainer" id="tradeContainer">
+            <div id="player1Trade" class="playerTrade player1Trade">
+                <div class="tradeName">Player 1</div>
+                <div class="tradeMoney" id="tradeMoney1">$0</div>
+                <div class="tradeMoneySliderContainer">
+                    <input type="range" min="0" max="100" value="0" id="tradeMoneySlider1" class="tradeMoneySlider">
+                </div>
+                <div class="tradePossessions" id="tradePossessions1">
+
+                </div>
+                <div class="tradeButtons">
+                    <div class="exitTradeButton tradeButton customButton buttonClickable" onclick="endTrade()">Exit</div>
+                    <div class="acceptTradeButton tradeButton customButton buttonClickable">Accept</div>
+                </div>
+            </div>
+            <div id="player2Trade" class="playerTrade player2Trade"></div>
         </div>
     </div>
 </body>
