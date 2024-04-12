@@ -1069,7 +1069,7 @@ function purchaseProperty(player, location){
 }
 
 currentAuction = {
-    auctionInProgress: false, // npt used
+    auctionInProgress: false, // not used
     property: null,
     currentBid: NaN,
     currentPlayer: NaN,
@@ -1093,7 +1093,7 @@ function endAuction(){
     currentAuction = {auctionInProgress: false,property: null,currentBid: NaN,currentPlayer: NaN,}
     players[currentPlayer].savingForProperty = null
     players[currentPlayer].raisingFunds = false
-    drawPossessions[players[currentPlayer]]
+    drawPossessions(players[currentPlayer])
     updateNextActionButton()
     hideCard()
 }

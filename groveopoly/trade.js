@@ -14,13 +14,37 @@ function startTrade(playerNum1, playerNum2){
     tradeInfo.playerNums = [playerNum1, playerNum2]
 
     document.getElementById(`tradeMoneySlider${playerNum1}`).addEventListener('input', function (evt) {
-        document.getElementById("tradeMoney"+playerNum1).innerHTML="$"+(this.value);
+        document.getElementById("tradeMoney"+playerNum1).value=(this.value);
         tradeInfo.offers.money[getPlayerNum(playerNum1)] = this.value
         cancelAcceptance()
     });
+    document.getElementById(`tradeMoney${playerNum1}`).addEventListener('input', function (evt) {
+        this.value = Math.floor(this.value)
+        if(isNaN(this.value)){
+            this.value = 0
+        }
+        if(this.value>players[playerNum1].money){
+            this.value = players[playerNum1].money
+        }
+        document.getElementById("tradeMoneySlider"+playerNum1).value=(this.value=="" ? 0 : this.value);
+        tradeInfo.offers.money[getPlayerNum(playerNum1)] = (this.value=="" ? 0 : this.value)
+        cancelAcceptance()
+    });
     document.getElementById(`tradeMoneySlider${playerNum2}`).addEventListener('input', function (evt) {
-        document.getElementById("tradeMoney"+playerNum2).innerHTML="$"+(this.value);
+        document.getElementById("tradeMoney"+playerNum2).value=(this.value);
         tradeInfo.offers.money[getPlayerNum(playerNum2)] = this.value
+        cancelAcceptance()
+    });
+    document.getElementById(`tradeMoney${playerNum2}`).addEventListener('input', function (evt) {
+        this.value = Math.floor(this.value)
+        if(isNaN(this.value)){
+            this.value = 0
+        }
+        if(this.value>players[playerNum1].money){
+            this.value = players[playerNum1].money
+        }
+        document.getElementById("tradeMoneySlider"+playerNum2).value=(this.value=="" ? 0 : this.value);
+        tradeInfo.offers.money[getPlayerNum(playerNum2)] = (this.value=="" ? 0 : this.value)
         cancelAcceptance()
     });
 
@@ -124,7 +148,7 @@ function getTradePossessionsHTML(playerNum){
         }
     }
 
-    possessionsHTML = `<div class="tradeOwnedProperties" id="tradeOwnedProperties">${propertiesHTML}</div>`
+    possessionsHTML = `${propertiesHTML}`
     return possessionsHTML
 }
 
@@ -132,7 +156,7 @@ function getTradePlayerHTML(playerNum){
     //make money clickable and editable as a text box
     player = players[playerNum]
     tradePlayerHTML = `<div class="tradeName">${player.name}</div>
-    <div class="tradeMoney" id="tradeMoney${playerNum}">$0</div>
+    $<input type="number" min="0" max="${player.money}" value="0" class="tradeMoney" id="tradeMoney${playerNum}">
     <div class="tradeMoneySliderContainer">
         <input type="range" min="0" max="${player.money}" value="0" id="tradeMoneySlider${playerNum}" class="tradeMoneySlider">
     </div>

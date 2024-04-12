@@ -465,6 +465,7 @@ h1{
 #playerPossessions{
     padding: calc(var(--pss)*2);
     height: unset;
+    max-height: calc(var(--pss)*60);
     background-color: white;
     border: calc(var(--pss)*0.3) black solid;
     border-radius: calc(var(--pss)*2);

@@ -41,6 +41,8 @@
 
 .tradeMoney{
     font-size: 2vw;
+    width: 10vw;
+    font-family: isaiahFont;
 }
 
 .tradeMoneySliderContainer{
@@ -51,21 +53,23 @@
     width:75%;
 }
 
-.tradeOwnedProperties{
+.tradePossessions{
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
     height: 30vw;
+    /* height: calc(100% - 30vw); */
     padding: 2% 0;
+    background-color: #0d8d3e;
 }
 
-.tradeOwnedProperties .propertyCard{
+.tradePossessions .propertyCard{
     margin-bottom: 3%;
     width: 30%;
     height: fit-content;
 }
 
-.tradeOwnedProperties .mortgagedCard{
+.tradePossessions .mortgagedCard{
     font-size: 2vw;
 }
 
@@ -90,6 +94,8 @@
 .startTradeButton{
     width: 100%;
     text-align: center;
+    font-size: calc(var(--pss) * 4);
+    margin-top: 5%;
 }
 
 .startTradeButton:hover{
