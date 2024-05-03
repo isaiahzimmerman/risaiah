@@ -14,3 +14,33 @@ Receive $25 consultancy fee
 You are assessed for street repair. $40 per house. $115 per hotel
 You have won second prize in a beauty contest. Collect $10
 You inherit $100
+
+get out of jail
+
++200
++200
++100
++100
++100
++50
++25
++20
++10
+
+-100
+-50
+-50
+
++10 from every player
+
+-40 per house 115 per hotel
+
+go to jail
+
+categories:
+gain
+lose
+lose / house + hotel
+lose / player
+go to jail
+get out of jail

@@ -2,7 +2,7 @@ Advance to Boardwalk
 Advance to Go (Collect $200)
 Advance to Illinois Avenue. If you pass Go, collect $200
 Advance to St. Charles Place. If you pass Go, collect $200
-Advance to the nearest Railroad. If unowned, you may buy it from the Bank. If owned, pay wonder twice the rental to which they are otherwise entitled
+Advance to the nearest Railroad. If unowned, you may buy it from the Bank. If owned, pay owner twice the rental to which they are otherwise entitled
 Advance to the nearest Railroad. If unowned, you may buy it from the Bank. If owned, pay owner twice the rental to which they are otherwise entitled
 Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times amount thrown.
 Bank pays you dividend of $50
@@ -20,3 +20,27 @@ Ritenour requires you to buy his book for his class, -$25
 You got the Trustee Scholarship! Collect $200.
 You parked outside rathburn on a weekday. pay $10
 Professor makes error grading your exam in your favor 
+
+x move to boardwalk
+x move to go
+x move to illinois
+x move to st Charles
+x move to nearest Railroad, pay 2x rent
+x move to nearest utility, pay 10x multiplier
+x +50
+x get out of jail
+x move back 3 Spaces
+x go to jail
+x -25/house, 100/hotel
+x -15
+x move to reading Railroad
+x 50 to each player
+x +150
+
+types of card:
+* gain
+* lose
+* move (to location)
+* moveSpaces
+* payEachPlayer
+* payPerHouse

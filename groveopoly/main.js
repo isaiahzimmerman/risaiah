@@ -98,41 +98,57 @@ boardOrder = []
 
 chanceCards = [
     //TODO: implement different types of chance and chest cards and actions going with them
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: true/*, chanceAction: {type: "gain"}*/},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", isJail: false},
+    {path: "./assets/chance/chance-template.svg", buttonText: "stash", cardAction: {type: "jail"}},
+    {path: "./assets/chance/chance-template.svg", buttonText: "go to TMX", cardAction: {type: "move", loc: "r8"}},
+    {path: "./assets/chance/chance-template.svg", buttonText: "go to go", cardAction: {type: "move", loc: "c0"}},
+    {path: "./assets/chance/chance-template.svg", buttonText: "go to Hoyt", cardAction: {type: "move", loc: "t3"}},
+    {path: "./assets/chance/chance-template.svg", buttonText: "go to Ketler", cardAction: {type: "move", loc: "l0"}},
+
+    //move to nearest Railroad, pay 2x rent
+    {path: "./assets/chance/chance-template.svg", buttonText: "move to nearest tunnel", cardAction: {type: "move", loc: 0}},
+    
+    //move to nearest utility, pay 10x multiplier
+    {path: "./assets/chance/chance-template.svg", buttonText: "nearest utility", cardAction: {type: "gain", amount: 0}},
+    
+    {path: "./assets/chance/chance-template.svg", buttonText: "+50", cardAction: {type: "gain", amount: 50}},
+    {path: "./assets/chance/chance-template.svg", buttonText: "-15", cardAction: {type: "loss", amount: 0}},
+
+    //move back 3 Spaces
+    {path: "./assets/chance/chance-template.svg", buttonText: "back 3 spaces", cardAction: {type: "gain", amount: 0}},
+
+    //-25/house, 100/hotel
+    {path: "./assets/chance/chance-template.svg", buttonText: "lose money per house and hotel", cardAction: {type: "gain", amount: 0}},
+
+    {path: "./assets/chance/chance-template.svg", buttonText: "move to b4", cardAction: {type: "move", loc: "b4"}},
+
+    //50 to each player
+    {path: "./assets/chance/chance-template.svg", buttonText: "50 to each player", cardAction: {type: "gain", amount: 0}},
+
+    {path: "./assets/chance/chance-template.svg", buttonText: "+150", cardAction: {type: "gain", amount: 150}},
+
+    {path: "./assets/chance/chance-template.svg", buttonText: "go to jail", cardAction: {type: "move", loc: "jail"}},
+
+    //EXTRA CARD
+    {path: "./assets/chance/chance-template.svg", buttonText: "+0", cardAction: {type: "gain", amount: 0}},
 ]
 
 chestCards = [
-    {path: "./assets/chest/chest-template.svg", buttonText: "stash", isJail: true},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
-    {path: "./assets/chest/chest-template.svg", buttonText: "exit", isJail: false},
+    {path: "./assets/chest/chest-template.svg", buttonText: "stash", cardAction: {type: "jail"}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "+200", cardAction: {type: "gain", amount: 200}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "+200", cardAction: {type: "gain", amount: 200}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "+100", cardAction: {type: "gain", amount: 100}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "+100", cardAction: {type: "gain", amount: 100}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "+100", cardAction: {type: "gain", amount: 100}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "+50", cardAction: {type: "gain", amount: 50}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "+25", cardAction: {type: "gain", amount: 25}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "+20", cardAction: {type: "gain", amount: 20}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "+10", cardAction: {type: "gain", amount: 10}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "-100", cardAction: {type: "lose", amount: 100}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "-50", cardAction: {type: "lose", amount: 50}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "-50", cardAction: {type: "lose", amount: 50}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "go jail", cardAction: {type: "move", loc: "jail"}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "-10/p", cardAction: {type: "gainPerPlayer", amount: 10}},
+    {path: "./assets/chest/chest-template.svg", buttonText: "-40/h, 115/H", cardAction: {type: "losePerHouse", amounts: {house:40, hotel: 115}}},
 ]
 
 pieces = [
@@ -244,7 +260,7 @@ function initializeBoard(){
         boardHTML +=`<div class="players" id="players${tile.loc}">`
         
         for(j=0;j<9;j++){
-            boardHTML += `<div class="player" id="${tile.loc}p${j}"></div>`
+            boardHTML += `<div class="player p${j}" id="${tile.loc}p${j}"></div>`
         }
         boardHTML += `</div></div>`
     }
@@ -512,9 +528,15 @@ function showOverlay(args){
     }
 
     //chance or chest overlay
-    else if(args.type =="chance"){
+    else if(args.type =="chance" || args.type=="chest"){
         //TODO: change chance cards so they have different text
         document.getElementById("chanceOverlayImage").src = args.path
+
+        if(args.type=="chance"){
+            document.getElementById("chanceButton").setAttribute( "onClick", (args.isJail ? "javascript: addJail(0)" : "exitChanceOrChest()"))
+        }else if(args.type == "chest"){
+            document.getElementById("chanceButton").setAttribute( "onClick", (args.isJail ? "javascript: addJail(1)" : "exitChanceOrChest()"))
+        }
         
         document.getElementById("chanceButton").setAttribute( "onClick", (args.isJail ? "javascript: addJail(0)" : "exitChanceOrChest()"))
 
@@ -523,16 +545,16 @@ function showOverlay(args){
         document.getElementById("chanceOverlay").style.display = "flex"
     }
 
-    else if(args.type =="chest"){
-        //TODO: change chest cards so they have different text
-        document.getElementById("chanceOverlayImage").src = args.path
+    // else if(args.type =="chest"){
+    //     //TODO: change chest cards so they have different text
+    //     document.getElementById("chanceOverlayImage").src = args.path
         
-        document.getElementById("chanceButton").setAttribute( "onClick", (args.isJail ? "javascript: addJail(1)" : "exitChanceOrChest()"))
+    //     document.getElementById("chanceButton").setAttribute( "onClick", (args.isJail ? "javascript: addJail(1)" : "exitChanceOrChest()"))
         
-        document.getElementById("chanceButton").innerHTML = args.buttonText
-        document.getElementById("chanceButtons").style.display = "flex"
-        document.getElementById("chanceOverlay").style.display = "flex"
-    }
+    //     document.getElementById("chanceButton").innerHTML = args.buttonText
+    //     document.getElementById("chanceButtons").style.display = "flex"
+    //     document.getElementById("chanceOverlay").style.display = "flex"
+    // }
 
     else if(args.type == "property"){
         document.getElementById("purchasePrice").innerHTML = `($${args.price})`
@@ -720,7 +742,7 @@ function advancePiece(player, spaces){
 }
 
 function movePiece(player, position){
-    document.getElementById(player.position).style.opacity = 0
+    document.getElementById(player.position).style.display = "none"
 
     openSpaces = [0,1,2,3,4,5,6,7,8]
     for(i=0;i<players.length;i++){
@@ -736,7 +758,7 @@ function movePiece(player, position){
     console.log(player)
     newSpot.innerHTML = `<img onclick="showPlayer(${players.indexOf(player)})" src="./assets/pieces/${player.piece}">`
     newSpot.style.rotate = `${randInt(360)}deg`
-    newSpot.style.opacity = 1
+    newSpot.style.display = "flex"
 
     console.log(`moved ${player.name} to ${newPos}`)
 
@@ -806,14 +828,36 @@ function landOnSpace(space){
             }
         }
 
-    }else if(space.type == "chance"){
-        chanceCard = getChance()
-        showOverlay({type: "chance", path: chanceCard.path, buttonText: chanceCard.buttonText, isJail: chanceCard.isJail})
-        console.log("chance card")
-    }else if(space.type == "chest"){
-        chestCard = getChest()
-        showOverlay({type: "chest", path: chestCard.path, buttonText: chestCard.buttonText, isJail: chestCard.isJail})
-        console.log("chance card")
+    }else if(space.type == "chance" || space.type == "chest"){
+        let currentCard
+        if(space.type == "chance"){
+            currentCard = getChance()
+        }else if(space.type == "chest"){
+            currentCard = getChest()
+        }
+
+        //TODO: 4/18 where i left off
+        
+        clickAction = ""
+
+        console.log(space.type)
+
+        switch(currentCard.cardAction.type){
+            //gain money
+            case "gain":
+                clickAction = `players[currentPlayer].money += ${currentCard.cardAction.amount}`
+
+        }
+
+        clickAction += `; hideCard()`
+
+        showOverlay({type: space.type, path: currentCard.path, buttonText: currentCard.buttonText, isJail: currentCard.cardAction.type == "jail"})
+
+    // }else if(space.type == "chest"){
+    //     chestCard = getChest()
+    //     console.log(chestCard)
+    //     showOverlay({type: "chest", path: chestCard.path, buttonText: chestCard.buttonText, isJail: chestCard.cardAction.type == "jail"})
+    //     console.log("chance card")
     }else if(space.type == "corner"){
         if(space.cornerType == "goToJail"){
             movePiece(players[currentPlayer], "c1")
@@ -1000,7 +1044,9 @@ function getChance(){
 
 //TODO: complete this method
 function getChest(){
-    return chestCards[1]
+    topCard = chestCards.splice(0,1)[0]
+    chestCards.push(topCard)
+    return topCard
 }
 
 function nextAction(){
