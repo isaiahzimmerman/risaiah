@@ -12,17 +12,24 @@
     <link rel="stylesheet" href="/assets/header/header.css">
     <!-- header -->
 </head>
-<body onload="dragElement(document.getElementById('mydiv'));">
+<body onload="initializeGame()">
     <!-- header -->
     <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
     <!-- header -->
     <h1>Site Title</h1>
-    <div id="mydiv">
-        <div id="mydivheader">Click here to move</div>
+    <!-- <div id="mydiv">
+        <div class="mydivheader" onclick="dragElement(document.getElementById('mydiv'));">Click here to move</div>
         <p>Move</p>
         <p>this</p>
         <p>DIV</p>
     </div>
+    <div id="mydiv2">
+        <div class="mydivheader" onclick="dragElement(document.getElementById('mydiv2'));">Click here to move</div>
+        <p>Move</p>
+        <p>this</p>
+        <p>DIV</p>
+    </div> -->
+    <div class="board" id="board"></div>
 </body>
 </html>

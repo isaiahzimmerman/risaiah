@@ -37,11 +37,13 @@
 
 .tradeName{
     font-size: 4vw;
+    height: 5vw;
 }
 
 .tradeMoney{
     font-size: 2vw;
     width: 10vw;
+    height: 2vw;
     font-family: isaiahFont;
 }
 
@@ -57,10 +59,9 @@
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
-    height: 30vw;
-    /* height: calc(100% - 30vw); */
+    height: calc(100% - 19vmax);
     padding: 2% 0;
-    background-color: #0d8d3e;
+    /* background-color: #0d8d3e; */
 }
 
 .tradePossessions .propertyCard{

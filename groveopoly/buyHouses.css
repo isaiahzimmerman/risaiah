@@ -1,0 +1,45 @@
+#housesOverlay{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.buyHousesTitle{
+    background-color: white;
+    font-size: 5vh;
+    width: 25vh;
+    padding: 4%;
+    margin: 4%;
+    border-radius: 2vh;
+    border: 0.5vh solid black;
+}
+
+.buyHousesProperty{
+    background-color: white;
+    padding: 4%;
+    margin: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vh;
+    border: 0.3vh solid black;
+}
+
+.buyHousesPropertyName{
+    font-size: 2.5vh;
+    width: 25vh;
+    background-color: white;
+}
+
+.buyHousesAddHouseButton{
+    width: 4vh;
+    height: 100%;
+    margin: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 1vh;
+}
+
+.buyHousesAddHouseButton:hover{
+    cursor: pointer;
+}

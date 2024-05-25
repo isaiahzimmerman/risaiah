@@ -1,0 +1,51 @@
+.invcontainer{
+    display: grid;
+    background-color: rgb(180, 226, 255);
+    aspect-ratio: 3;
+    width: 500px; /*TODO*/
+    grid-template-columns: 2.2fr 1fr;
+    border-radius: 40px; /*TODO*/
+    border: 5px solid rgb(6, 27, 132);/*TODO*/
+}
+
+.invproperties{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-right: 5px dashed rgb(6, 27, 132);
+}
+
+.invproperty{
+    font-size: 38px; /*TODO*/
+    color: rgb(6, 27, 132);
+}
+
+.invunowned{
+    color: gray;
+}
+
+.invproperty:hover{
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+.invbuyhouses{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.invbuyhousebutton:hover{
+    cursor: pointer;
+    filter: brightness(75%);
+}
+
+.invbuyhousebutton{
+    transition: filter 0.2s;
+    width: 60%;
+}

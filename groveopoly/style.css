@@ -366,6 +366,10 @@ h1{
     font-size: 3vh;
 }
 
+#alertButton{
+    margin-top: 1.5vh;
+}
+
 .getOutOfJail{
     background-color: rgb(246, 246, 246);
     width: 45%;
@@ -377,6 +381,33 @@ h1{
 
 .getOutOfJail:hover{
     cursor:pointer;
+}
+
+.colorOfSet{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.house, .hotel{
+    outline: calc(var(--pss)*.2) solid black;
+}
+
+.house{
+    background-color: rgb(47, 158, 47);
+    width: 18%;
+    height: 70%;
+    display: none;
+    outline-color: green;
+}
+.hotel{
+    display: none;
+    position: relative;
+    width: 50%;
+    height: 70%;
+    outline-color: rgb(253, 86, 86);
+    background-color: red;
+    z-index: 3;
 }
 
 .players{
@@ -574,6 +605,10 @@ h1{
 
 .buttonClickable:hover{
     cursor: pointer;
+}
+
+#alertButton{
+    font-size: 3.5vh;
 }
 
 .actionButtons{

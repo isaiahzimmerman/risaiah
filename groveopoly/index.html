@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="startScreen.css">
     <link rel="stylesheet" href="trade.css">
+    <link rel="stylesheet" href="buyHouses.css">
     <!-- header -->
     <script src="/assets/header/header.js"></script>
     <link rel="stylesheet" href="/assets/header/header.css">
@@ -64,6 +65,7 @@
             <img src="./assets/properties/property-template.svg" alt="" srcset="" class="cardOverlay" id="cardOverlay">
             <div class="ownershipInfo" id="propertyOwner">default</div>
             <div class="buttonClickable customButton mortgageButton" id="mortgageButton">Mortgage</div>
+            <div class="buttonClickable customButton mortgageButton" id="buyHousesButton">Buy Houses</div>
         </div>
         <div class="chanceOverlay" id="chanceOverlay"><img src="./assets/chance/chance-template.svg" alt="" srcset="" class="" id="chanceOverlayImage"></div>
         <div id="chanceButtons" class="purchaseOverlay">
@@ -111,6 +113,20 @@
         <div class="playerOverlay" id="playerOverlay">
             <div class="possessions playerPossessions" id="playerPossessions"></div>
             <div class="hidePlayerPossessions customButton buttonClickable" id="hidePlayerPossessions" onclick="hideCard()">Hide</div>
+        </div>
+        <div class="alertOverlay rentOverlay" id="alertOverlay">
+        </div>
+        <div class="buttonClickable customButton" id="alertButton" onclick="hideCard()">Dismiss</div>
+        <div class="" id="housesOverlay">
+            buy houses
+        </div>
+        <div id="housesButtons" class="purchaseOverlay">
+            <div class="buttonClickable customButton" id="houseConfirm">
+                <div>Confirm</div>
+            </div>
+            <div class="buttonClickable customButton" onclick="hideCard(); gameInfo.houseOwnership = null">
+                <div>Cancel</div>
+            </div>
         </div>
     </div>
     <div id="tradeOverlay" class="tradeOverlay">
