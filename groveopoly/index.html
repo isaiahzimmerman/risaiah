@@ -7,17 +7,19 @@
     <title>Groveopoly</title>
     <script src="main.js"></script>
     <script src="trade.js"></script>
+    <script src="assets/imagePaths.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="startScreen.css">
     <link rel="stylesheet" href="trade.css">
     <link rel="stylesheet" href="buyHouses.css">
+    <link rel="stylesheet" href="propertyinventory.css">
     <!-- header -->
     <script src="/assets/header/header.js"></script>
     <link rel="stylesheet" href="/assets/header/header.css">
     <!-- header -->
 </head>
 <!-- <body onload="initializeBoard()"> -->
-<body>
+<body onload="preloadAllImages()">
     <!-- header -->
     <!-- <div w3-include-html="/assets/header/header.html"></div> -->
     <script>includeHTML()</script>
@@ -126,6 +128,21 @@
             </div>
             <div class="buttonClickable customButton" onclick="hideCard(); gameInfo.houseOwnership = null">
                 <div>Cancel</div>
+            </div>
+        </div>
+        <div id="escapeJailOverlay" class="rentOverlay">
+            Rent!
+        </div>
+        <div id="escapeJailButtons" class="purchaseOverlay">
+            <div class="buttonClickable customButton" id="useGetOutOfJail" onclick="useGetOutOfJail()">
+                <div>Use Card</div>
+            </div>
+            <div class="buttonClickable customButton" id="escapeJailButton" onclick="payForJailEscape()">
+                <div>Bribe</div>
+                <div>($50)</div>
+            </div>
+            <div class="buttonClickable customButton" onclick="rollForJailEscape()">
+                <div>Roll for Doubles</div>
             </div>
         </div>
     </div>

@@ -1,11 +1,49 @@
 .invcontainer{
     display: grid;
-    background-color: rgb(180, 226, 255);
-    aspect-ratio: 3;
-    width: 500px; /*TODO*/
+    aspect-ratio: 2.5;
+    width: 85%;
+    margin: 3% auto;
     grid-template-columns: 2.2fr 1fr;
-    border-radius: 40px; /*TODO*/
-    border: 5px solid rgb(6, 27, 132);/*TODO*/
+    border-radius: calc(var(--pss)*4.5);
+    border: calc(var(--pss)*0.35) solid black;
+    padding: 3%;
+}
+
+.invtunnels{
+    background-color: rgb(225, 225, 225);
+    grid-template-columns: 1.6fr 1fr 1.6fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "invtun0 invtuni invtun1"
+    "invtun2 invtuni invtun3";
+    grid-gap: 3%;
+}
+
+.invtunnels div{
+    font-size: calc(var(--pss)*2);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10% 5%;
+}
+
+.invtunnel0{grid-area: invtun0;}
+.invtunnel1{grid-area: invtun1;}
+.invtunnel2{grid-area: invtun2;}
+.invtunnel3{grid-area: invtun3;}
+
+.invtunnelindicator{
+    grid-area: invtuni;
+}
+
+.invtunnelindicator img{
+    width: 100%;
+}
+
+.invtunnel:hover{
+    text-decoration: underline;
+    cursor:pointer;
 }
 
 .invproperties{
@@ -15,12 +53,67 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    border-right: 5px dashed rgb(6, 27, 132);
+    /* border-right: calc(var(--pss)*0.5) dashed rgb(6, 27, 132); */
 }
 
 .invproperty{
-    font-size: 38px; /*TODO*/
+    font-size: calc(var(--pss)*2);
+}
+
+.invset1{
+    background-color: rgb(228, 205, 157);
+    border-color: rgb(78, 57, 10);
+    color: rgb(78, 57, 10);
+}
+
+.invset2{
+    background-color: rgb(180, 226, 255);
+    border-color: rgb(6, 27, 132);
     color: rgb(6, 27, 132);
+}
+
+.invset3{
+    background-color: rgb(255, 180, 233);
+    border-color: rgb(121, 7, 104);
+    color: rgb(121, 7, 104);
+}
+
+.invset4{
+    background-color: rgb(255, 233, 180);
+    border-color: rgb(150, 90, 0);
+    color: rgb(150, 90, 0);
+}
+
+.invset5{
+    background-color: rgb(255, 172, 170);
+    border-color: rgb(121, 7, 7);
+    color: rgb(121, 7, 7);
+}
+
+.invset6{
+    background-color: rgb(255, 252, 170);
+    border-color: rgb(105, 95, 0);
+    color: rgb(105, 95, 0);
+}
+
+.invset7{
+    background-color: rgb(219, 255, 180);
+    border-color: rgb(3, 111, 5);
+    color: rgb(3, 111, 5);
+}
+
+.invset8{
+    background-color: rgb(139, 203, 243);
+    border-color: rgb(0, 33, 197);
+    color: rgb(0, 33, 197);
+}
+
+.invmortgaged{
+    text-decoration: line-through;
+}
+
+div.invmortgaged:hover{
+    text-decoration: line-through;
 }
 
 .invunowned{
@@ -48,4 +141,16 @@
 .invbuyhousebutton{
     transition: filter 0.2s;
     width: 60%;
+}
+
+.invutilities{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: calc(var(--pss)*2);
+}
+
+.invutilities div:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
