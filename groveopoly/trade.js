@@ -40,8 +40,8 @@ function startTrade(playerNum1, playerNum2){
         if(isNaN(this.value)){
             this.value = 0
         }
-        if(this.value>players[playerNum1].money){
-            this.value = players[playerNum1].money
+        if(this.value>players[playerNum2].money){
+            this.value = players[playerNum2].money
         }
         document.getElementById("tradeMoneySlider"+playerNum2).value=(this.value=="" ? 0 : this.value);
         tradeInfo.offers.money[getPlayerNum(playerNum2)] = (this.value=="" ? 0 : this.value)

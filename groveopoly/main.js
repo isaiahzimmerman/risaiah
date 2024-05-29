@@ -49,7 +49,7 @@ tilesList = {
     // , rent: [0, 0, 0, 0, 0, 0, 0], houseCost: 0
 
     l0: {loc: "l0", type: "property", location: "Ketler", price: 140, set: 3, rent: [10, 20, 50, 150, 450, 625, 750], houseCost: 100, ownedHouses: 0},
-    l1: {loc: "l1", type: "utility", utilityType: "electric", set: 9, price: 150, name: "electric company change"},
+    l1: {loc: "l1", type: "utility", utilityType: "electric", set: 9, price: 150, name: "Parkhurst Dining"},
     l2: {loc: "l2", type: "property", location: "Lincoln", price: 140, set: 3, rent: [10, 20, 50, 150, 450, 625, 750], houseCost: 100, ownedHouses: 0},
     l3: {loc: "l3", type: "property", location: "Hopeman", price: 160, set:3, rent: [12, 24, 60, 180, 500, 700, 900], houseCost: 100, ownedHouses: 0},
     l4: {loc: "l4", type: "railroad", set: 9, price: 200, name: "SAC Tunnel", rent: [25, 50, 100, 200]},
@@ -65,7 +65,7 @@ tilesList = {
     t4: {loc: "t4", type: "railroad", price: 200, set: 9, name: "McNulty's Tunnel", rent: [25, 50, 100, 200]},
     t5: {loc: "t5", type: "property", location: "Rainbow Bridge", price: 260, set: 6, rent: [22, 44, 110, 330, 800, 975, 1150], houseCost: 150, ownedHouses: 0},
     t6: {loc: "t6", type: "property", location: "Rizzebo", price: 260, set: 6, rent: [22, 44, 110, 330, 800, 975, 1150], houseCost: 150, ownedHouses: 0},
-    t7: {loc: "t7", type: "utility", utilityType: "water", set: 9, name: "water company change", price: 150},
+    t7: {loc: "t7", type: "utility", utilityType: "water", set: 9, name: "Campus Security", price: 150},
     t8: {loc: "t8", type: "property", location: "South Lobby", price: 280, set: 6, rent: [24, 48, 120, 360, 850, 1025, 1200], houseCost: 150, ownedHouses: 0},
 
     r0: {loc: "r0", type: "property", location: "Thorn Stadium", price: 300, set: 7, rent: [26, 52, 130, 390, 900, 1100, 1275], houseCost: 200, ownedHouses: 0},
@@ -320,9 +320,9 @@ function initializeBoard(){
             }else if(tile.type == "utility"){
                 boardHTML += `<div class="utilityName buttonClickable" onclick="showOverlay({type: 'propertyCardPreview', loc: '${tile.loc}', path: './assets/properties/${tile.loc}.svg'})">`
                 if(tile.utilityType == "electric"){
-                    boardHTML += `Electric Company`
+                    boardHTML += `${tile.name}`
                 }else if(tile.utilityType == "water"){
-                    boardHTML += `Water Company`
+                    boardHTML += `${tile.name}`
                 }
                 boardHTML += `</div>`
             }
@@ -401,9 +401,9 @@ function getRepayment(space){
 }
 
 function mortgageCard(playerNum, location){
-    numHousesAndHotels = getHousesAndHotels(players[playerNum])
+    numHousesAndHotels = getHousesAndHotelsInSet(players[playerNum], tilesList[location].set)
     if(numHousesAndHotels.houses > 0 || numHousesAndHotels.hotels > 0){
-        showOverlay({type: "alert", alertMessage: "Mortgaged properties cannot have houses or hotels on their color set!"})
+        showOverlay({type: "alert", alertMessage: "Sell houses and hotels in color set before attempting to mortgage!"})
     }else{
         players[playerNum].mortgaged.push(location)
         players[playerNum].money += getMortgage(tilesList[location])
@@ -551,12 +551,15 @@ function showOverlay(args){
 
     else if(args.type == "property"){
         document.getElementById("purchasePrice").innerHTML = `($${args.price})`
+        document.getElementById("raiseFundsAmount").innerHTML =`$${args.price}`
         viewCard(args.path, {showOwner: false})
         document.getElementById("purchaseOverlay").style.display = "flex"
         if(canAfford(players[currentPlayer], args.price)){
-            document.getElementById("purchaseButton").style.display = "block"
+            document.getElementById("purchaseButton").style.display = "flex"
+            document.getElementById("raiseMoneyButton").style.display = "none"
         }else{
             document.getElementById("purchaseButton").style.display = "none"
+            document.getElementById("raiseMoneyButton").style.display ="flex"
         }
     }
 
@@ -790,9 +793,14 @@ function getPossessionsHTML(player, args){
                     }
 
                     propertiesHTML += `</div>`
+
+                    houseColor = 0
+                    if(ownsColorSet(tilesList[propertySets[i3-1][0]]) && !hasMortgagedInSet(i3)){
+                        houseColor = i3
+                    }
                         
                     propertiesHTML += `<div class="invbuyhouses">
-                            <img src="assets/houses/buyhouses.svg" class="invbuyhousebutton" onclick="buyHouses(${playerNum}, '${currentTileGP.loc}')">
+                            <img src="assets/houses/buyhouses${houseColor}.svg" class="invbuyhousebutton" onclick="buyHouses(${playerNum}, '${currentTileGP.loc}')">
                         </div>
                     </div>`
                 }else{
@@ -1164,15 +1172,36 @@ function hasMortgagedInSet(set){
 }
 
 function buyHouses(playerNum, loc){
-    if(hasMortgagedInSet(tilesList[loc].set)){
-        showOverlay({type: "alert", alertMessage: "All properties in set must be unmortgaged to purchase houses!"})
-        return
-    }
     if(!ownsColorSet(tilesList[loc])){
         showOverlay({type: "alert", alertMessage: "You must own color set to purchase houses!"})
         return
     }
+    if(hasMortgagedInSet(tilesList[loc].set)){
+        showOverlay({type: "alert", alertMessage: "All properties in set must be unmortgaged to purchase houses!"})
+        return
+    }
     showOverlay({type: "buyHouses", set: tilesList[loc].set})
+}
+
+function getHousesAndHotelsInSet(player, set){
+    if(set>=9){return {houses: 0, hotels: 0}}
+    //TODO: finish this and chance
+    houses = 0
+    hotels = 0
+    for(ind=0; ind<propertySets[set-1].length; ind++)
+    {
+        if(whoOwns(tilesList[propertySets[set-1][ind]]) == players.indexOf(player)){
+            numHouses = tilesList[propertySets[set-1][ind]].ownedHouses
+            if(!isNaN(numHouses)){
+                if(numHouses == 5){
+                    hotels ++
+                }else{
+                    houses += numHouses
+                }
+            }
+        }
+    }
+    return {houses: houses, hotels: hotels}
 }
 
 function getHousesAndHotels(player){
@@ -1477,7 +1506,7 @@ function updateNextActionButton(){
     if(players[currentPlayer].debts.length > 0){
         buttonText = "Pay Debt"
     }else if(players[currentPlayer].raisingFunds){
-        buttonText = "Raise Funds"
+        buttonText = "View Property"
     }else if(players[currentPlayer].isInJail && players[currentPlayer].playing){
         buttonText = "Break Out"
     }else if(players[currentPlayer].playing){
@@ -1532,7 +1561,7 @@ currentAuction = {
 }
 
 function getBids(currentBid){
-    return [currentBid+5, 10*Math.ceil((currentBid+5)/10), 100*Math.ceil((currentBid+5)/100)]
+    return [currentBid+5, 10*Math.ceil((currentBid+5)/10), 50*Math.ceil((currentBid+5)/50)]
 }
 
 function bidOnProperty(playerNum, price){
@@ -1561,7 +1590,9 @@ function drawAuctionPrices(){
         auctionHTML += `<div class="currentHighestBidder">Highest Bidder: ${players[currentAuction.currentPlayer].name} ($${currentAuction.currentBid})</div>`
     }
     for(i=0; i<players.length; i++){
+        bidPrices = getBids(currentAuction.currentBid)
         auctionHTML += `<div class="playerAuction"><div class="auctionName"><div>${players[i].name}</div><div>($${players[i].money})</div></div>`
+        if(!canAfford(players[i], bidPrices[0]) && players[i].money > currentAuction.currentBid){bidPrices[0]=players[i].money}
         for(j=0; j<3; j++){
             if(canAfford(players[i], bidPrices[j])){
                 auctionHTML += `<div class="auctionPrice customButton buttonClickable" onclick="bidOnProperty(${i}, ${bidPrices[j]})">$${bidPrices[j]}</div>`

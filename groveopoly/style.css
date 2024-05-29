@@ -312,7 +312,7 @@ h1{
     width: 100%;
     display: flex;
     justify-content: center;
-    font-size: 2.5vh;
+    font-size: 3.4vh;
 }
 
 .auctionPrice{
@@ -649,7 +649,14 @@ div.jailplayers{
     display: flex;
     justify-content: space-evenly;
     margin-top: calc(var(--pss)*1.5);
-    font-size: calc(var(--pss)*4);
+    font-size: calc(var(--pss)*3.5);
+    height: calc(var(--pss)*5);
+}
+
+.nextAction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .actionButtons div{
