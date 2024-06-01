@@ -9,8 +9,13 @@ function setOfficeLinks(){
     today = new Date();
 
     links.forEach(element => {
-        document.getElementById(element.id).setAttribute("href", `https://dailyoffice.app/office.php?date=${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}&hour=${element.time}`)
+        document.getElementById(element.id).setAttribute("href", `https://dailyoffice.app/office.php?date=${today.getFullYear()}-${pad(today.getMonth()+1, 2)}-${pad(today.getDate(),2)}&hour=${element.time}`)
     });
 
     document.getElementById("title").innerHTML = `Daily Office ${today.getMonth()+1}/${today.getDate()}/${today.getFullYear()}`
+}
+
+function pad(num, size) {
+    var s = "00" + num;
+    return s.substr(s.length-size);
 }
