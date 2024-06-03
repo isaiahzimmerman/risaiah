@@ -1,6 +1,7 @@
 .startScreen{
     display: flex;
     width: 100%;
+    height: 97vh;
     min-height: 97vh;
     justify-content: center;
     align-items: center;
@@ -30,13 +31,12 @@
     text-align: center;
     align-items: center;
     width: 50vh;
-
+    height: 100%;
+    flex-direction: column;
 }
 
 .startNames{
-    width: unset;
-    height: unset;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     background-color: white;
     justify-content: center;
@@ -45,20 +45,27 @@
     border-radius: 2vh;
     text-align: center;
     padding: 2vh;
+    width: 100%;
+    display: flex;
 }
 
 .startName{
     padding: 0.5vh 0;
     display: flex;
-    align-items: center;
     justify-content: center;
     align-items: center;
+    margin-left: 2.5vh;
 }
 
 .startNameInput{
-    margin: 0.5vh;
-    width: 15vh;
-    height: 3vh;
+    /* margin: 0.5vh; */
+    width: 14vh;
+    height: 4vh;
+    padding: 0;
+    font-size: 3.5vh;
+    font-family: isaiahFont;
+    border: none;
+    outline: none;
 }
 
 .startNameButton{
@@ -68,4 +75,75 @@
 
 .startName:hover{
     text-decoration: underline;
+}
+
+.startIcon{
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    outline: 0.3vh solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.startIcon:hover{
+    cursor: pointer;
+}
+
+.iconColorsContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    border: 0.4vh black solid;
+}
+
+.iconColors{
+    display: grid;
+    background-color: white;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: 20vh;
+    height: 20vh;
+    gap: 0.5vh;
+    padding: 0.5vh;
+    background-color: white;
+}
+
+.cancelIconColors{
+    width: 100%;
+    border-bottom: 0.4vh black solid;
+    background-color: #ffbebe;
+}
+
+.cancelIconColors:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.iconColor:hover{
+    cursor: pointer;
+}
+
+.iconColorTaken{
+    filter: grayscale();
+}
+
+.startNameContainer{
+    display: flex;
+    width: 80%;
+    margin: 1.5%;
+    height: 5.5vh;
+}
+
+div.startButtonLoading{
+    color: gray;
+    border-color: gray;
+}
+
+div.startButtonLoading:hover{
+    background-color: white;
 }

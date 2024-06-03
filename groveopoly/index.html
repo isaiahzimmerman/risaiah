@@ -8,6 +8,7 @@
     <script src="main.js"></script>
     <script src="trade.js"></script>
     <script src="assets/imagePaths.js"></script>
+    <script src="cards.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="startScreen.css">
     <link rel="stylesheet" href="trade.css">
@@ -19,7 +20,7 @@
     <!-- header -->
 </head>
 <!-- <body onload="initializeBoard()"> -->
-<body onload="preloadAllImages()">
+<body onload="siteLoad()">
     <!-- header -->
     <!-- <div w3-include-html="/assets/header/header.html"></div> -->
     <script>includeHTML()</script>
@@ -28,7 +29,7 @@
     <div class="startScreen" id="startScreen">
         <div class="start0" id="start0">
             <img src="./assets/logo.svg" class="startLogo" alt="">
-            <div class="customButton startButton" onclick="startProcess(1)">Start</div>
+            <div id="startGameButton" class="customButton startButton startButtonLoading">Loading</div>
         </div>
         <div class="start1" id="start1">
             <div class="startNames" id="startNames">
@@ -37,6 +38,7 @@
                 <div id="addNameButton">+</div>
             </div>
             <div class="customButton startButton" onclick="initializeBoard()">Start Game</div>
+            <div id="iconColorsContainer" class="iconColorsContainer"><div onclick="hideIconColors()" class="cancelIconColors">Cancel</div><div id="iconColors" class="iconColors"></div></div>
         </div>
     </div>
     <div id="gameContainer" class="gameContainer">
@@ -69,7 +71,13 @@
             <div class="buttonClickable customButton mortgageButton" id="mortgageButton">Mortgage</div>
             <div class="buttonClickable customButton mortgageButton" id="buyHousesButton">Buy Houses</div>
         </div>
-        <div class="chanceOverlay" id="chanceOverlay"><img src="./assets/chance/chance-template.svg" alt="" srcset="" class="" id="chanceOverlayImage"></div>
+        <div class="chanceOverlay" id="chanceOverlay">
+            <img src="./assets/chance/chance-template.svg" alt="" srcset="" class="chanceOverlayImage" id="chanceOverlayImage">
+            <div class="chanceInfo" id="chanceInfo">
+                <div class="chanceDesc" id="chanceDesc">dd</div>
+                <div class="chanceInfoImg" id="chanceInfoImg">dd</div>
+            </div>
+        </div>
         <div id="chanceButtons" class="purchaseOverlay">
             <div class="buttonClickable customButton" id="chanceButton"></div>
         </div>
@@ -164,6 +172,16 @@
                 </div>
             </div>
             <div id="player2Trade" class="playerTrade player2Trade"></div>
+        </div>
+    </div>
+    <div class="windowSizeWarning" id="windowSizeWarning">
+        <div class="aspectRatioWarning windowWarning" id="aspectRatioWarning">
+            <img class="windowWarningIcon" src="assets/warning.svg" alt="" srcset="">
+            Aspect ratio is too extreme! Please adjust your viewing window so it is between 1:1 and 2:1.
+        </div>
+        <div class="minimumResolutionWarning windowWarning" id="minimumResolutionWarning">
+            <img class="windowWarningIcon" src="assets/warning.svg" alt="" srcset="">
+            Resolution is too low! Minimum resolution is 500x500px
         </div>
     </div>
 </body>

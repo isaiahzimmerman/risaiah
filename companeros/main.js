@@ -1,14 +1,59 @@
+avgDeviation = 0
+mapLen = 0
+test = 0
+
+function testShuffling(){
+    g = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    var result = g.flatMap(
+        (v, i) => g.slice(i+1).map( w => v + ' ' + w )
+    );
+
+    mapLen = result.length
+
+    mappy = new Map()
+
+    result.forEach(element => {
+        mappy.set(element, 0)
+    });
+
+    for(i=1; i<365; i++){
+        g = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        shuffle(g, i)
+        shuffle(g, random(i))
+        shuffle(g, random(i*2))
+        shuffle(g, i)
+        for(j=0; j<g.length; j+=2){
+            val1 = Math.min(g[j], g[j+1])
+            val2 = Math.max(g[j], g[j+1])
+            mappy.set(`${val1} ${val2}`, mappy.get(`${val1} ${val2}`)+1)
+        }
+    }
+
+    for (const [key, value] of mappy) { // Using the default iterator (could be `map.entries()` instead)
+        avgDeviation += Math.abs(value-364/15)/(364/15)
+    }
+    console.log(avgDeviation/mapLen)
+}
+
 //stolen
+
+function mulberry32(a) {
+    let t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  }
+  
+  
 
 function shuffle(array, seed) {                // <-- ADDED ARGUMENT
     var m = array.length, t, i;
-    seed *= 10
+    // seed *= 10
     // While there remain elements to shuffle…
     while (m) {
   
       // Pick a remaining element…
-      i = Math.floor(random(seed) * m--);        // <-- MODIFIED LINE
-  
+      i = Math.floor(mulberry32(((seed/365)*2**32)>>>0) * m--);        // <-- MODIFIED LINE
       // And swap it with the current element.
       t = array[m];
       array[m] = array[i];
@@ -20,7 +65,7 @@ function shuffle(array, seed) {                // <-- ADDED ARGUMENT
 }
 
 function random(seed) {
-    var x = Math.sin(seed++) * 10000; 
+    var x = Math.sin(seed++) * 100000; 
     return x - Math.floor(x);
 }
 
@@ -201,17 +246,32 @@ function nameButton(){
     })
 }
 
+daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+var today = new Date()
+if(today.getFullYear()%4 == 0 && (today.getFullYear()%400 == 0 || today.getFullYear()%100 != 0)){
+    daysInMonths[1] += 1
+}
+
 function createOneGroup(el, ind){
     var today = new Date()
+    
+    daysSinceLastYear = 0
+    for(i=0; i<today.getMonth(); i++){
+        daysSinceLastYear += daysInMonths[i]
+    }
+    daysSinceLastYear += today.getDate()
     customSeed = parseInt(document.getElementById("customSeed"+ind).value)
-    seed = (isNaN(customSeed) ? today.getDate() : customSeed)
+    seed = (isNaN(customSeed) ? daysSinceLastYear : customSeed)
     namesList = []
     el.namesList.forEach(function(element, index){
         if(!document.getElementById('absent'+ind+'_'+index).checked){
             namesList.push(element)
         }
     })
-    namesList = shuffle(namesList, seed)
+    shuffle(namesList, seed)
+    shuffle(namesList, random(seed))
+    shuffle(namesList, random(seed*2))
+    shuffle(namesList, seed)
     //shuffled = ''
     size = parseInt((document.getElementById('groupSize'+ind).value))
     if(size<1){

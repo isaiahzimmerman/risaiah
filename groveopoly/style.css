@@ -38,6 +38,10 @@ h1{
     position: relative;
 }
 
+.location{
+    margin: 2% 5%;
+}
+
 .corner{
     height: calc(var(--pss)*9.4);
     width: calc(var(--pss)*9.4);
@@ -60,6 +64,7 @@ h1{
 
 .railroadName, .utilityName{
     transition: background-color 0.2s;
+    padding: calc(var(--pss)*0.2) 0;
 }
 
 .railroadName:hover, .utilityName:hover{
@@ -93,6 +98,17 @@ h1{
     width: 100%;
 }
 
+/* .spaceWithImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.spaceWithImg img{
+    width: 100%;
+    height: 100%;
+}
+
 /* .railroad{} */
 
 .railroad.price{
@@ -100,7 +116,7 @@ h1{
 }
 
 .tileImg{
-    width: 60%;
+    width: 50%;
 }
 
 .cornerImg{
@@ -156,8 +172,12 @@ h1{
 
 .chanceStackCard{
     position: absolute;
-    background-color: antiquewhite;
-    box-shadow: black 0 0 calc(var(--pss)*.3);
+    background-color: rgb(253, 248, 231);
+    
+}
+
+.chanceStackCard, .die, .gameBoard, .money, .player{
+    filter: drop-shadow(0 0 calc(var(--pss)*.25) #000000);
 }
 
 .gameContainer{
@@ -246,7 +266,6 @@ h1{
 .money{
     width: calc(var(--pss)*12);
     margin: 5% auto;
-    box-shadow:calc(var(--pss)*.2) calc(var(--pss)*.2) calc(var(--pss)*.2) black;
 }
 
 .moneyCount{
@@ -426,6 +445,7 @@ h1{
         "p0 p1 p2"
         "p3 p4 p5"
         "p6 p7 p8";
+    pointer-events: none;
 }
 
 div.jailplayers{
@@ -477,19 +497,29 @@ div.jailplayers{
 .player{
     width: 100%;
     height: 100%;
+    /* display: flex; */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+}
+
+.playerToken{
+    width: 90%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: calc(var(--pss) * 0.15) black solid;
+    transition: filter 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+    font-size: calc(var(--pss) * 1.5);
     display: flex;
-    /* display: none; */
+    text-align: center;
     justify-content: center;
     align-items: center;
 }
 
-.player img{
-    width: 100%;
-    transition: filter 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.player img:hover{
-    filter: drop-shadow(0 0 4px #2727ff);
+.playerToken:hover{
+    filter: drop-shadow(0 0 calc(var(--pss) * 0.45) #2727ff);
+    cursor: pointer;
     /* box-shadow:calc(var(--pss)*.2) calc(var(--pss)*.2) calc(var(--pss)*.2) black; */
 }
 
@@ -563,16 +593,64 @@ div.jailplayers{
 }
 
 .chanceOverlay{
-    height: 40%;
     background-color: white;
-    aspect-ratio: 1.5;
     display: none;
     justify-content: center;
     align-items: center;
+    width: 60vh;
+    aspect-ratio: 1.5;
+    position: relative;
+}
+
+.chanceOverlayImage{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.chanceInfo{
+    position: absolute;
+    justify-content: center;
+    position: relative;
+    width: 91%;
+    height: 70%;
+    top: 7.2%;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "chn1 chn2";
+    /* padding: 2.5vh; */
+}
+
+.chanceDesc, .chanceInfoImg{
+    width: 70%;
+    height: 100%;
+    margin-left: 10%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.chanceDesc{
+    font-size: 2vh;
+    font-family: sans-serif;
+}
+
+.chanceInfoImg img{
+    width: 100%;
 }
 
 .chanceOverlay img{
     height: 100%;
+}
+
+.chanceInfoImg{
+    margin: 0;
+    width: 100%;
 }
 
 .purchaseOverlay{
@@ -715,3 +793,37 @@ div.jailplayers{
 .b6 { grid-area: b6; }
 .b7 { grid-area: b7; }
 .b8 { grid-area: b8; }
+
+.windowSizeWarning{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: gray;
+    display: none;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.aspectRatioWarning{
+    display: none;
+}
+
+.minimumResolutionWarning{
+    display: none;
+}
+
+.windowWarning{
+    min-height: 15vmax;
+    margin: 1vmax;
+    align-items: center;
+    font-size: 5vmax;
+    border: 1vmax solid black;
+    padding: 1vmax;
+}
+
+.windowWarningIcon{
+    height: 10vmax;
+    margin-right: 2vmax;
+}

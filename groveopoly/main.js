@@ -23,6 +23,31 @@ function shuffle(array, seed) {                // <-- ADDED ARGUMENT
     return array;
 }
 
+function siteLoad(){
+    preloadAllImages(); checkAspectRatio(); onresize = checkAspectRatio
+}
+
+function checkAspectRatio(){
+    windowDisplayRatio = (window.innerWidth/window.innerHeight)
+    console.log(windowDisplayRatio)
+    if(windowDisplayRatio < 1 || windowDisplayRatio > 2 || window.innerWidth < 500 || window.innerHeight < 500){
+        if(windowDisplayRatio < 1 || windowDisplayRatio > 2){
+            document.getElementById("aspectRatioWarning").style.display = "flex"
+        }else{
+            document.getElementById("aspectRatioWarning").style.display = "none"
+        }
+        if(window.innerWidth < 500 || window.innerHeight < 500){
+            document.getElementById("minimumResolutionWarning").style.display = "flex"
+        }else{
+            document.getElementById("minimumResolutionWarning").style.display = "none"
+        }
+        document.getElementById("windowSizeWarning").style.display = "flex"
+    }else{
+        document.getElementById("windowSizeWarning").style.display = "none"
+    }
+    windowResizedIconColors()
+}
+
 function random(seed) {
     var x = Math.sin(seed++) * 10000; 
     return x - Math.floor(x);
@@ -65,7 +90,7 @@ tilesList = {
     t4: {loc: "t4", type: "railroad", price: 200, set: 9, name: "McNulty's Tunnel", rent: [25, 50, 100, 200]},
     t5: {loc: "t5", type: "property", location: "Rainbow Bridge", price: 260, set: 6, rent: [22, 44, 110, 330, 800, 975, 1150], houseCost: 150, ownedHouses: 0},
     t6: {loc: "t6", type: "property", location: "Rizzebo", price: 260, set: 6, rent: [22, 44, 110, 330, 800, 975, 1150], houseCost: 150, ownedHouses: 0},
-    t7: {loc: "t7", type: "utility", utilityType: "water", set: 9, name: "Campus Security", price: 150},
+    t7: {loc: "t7", type: "utility", utilityType: "water", set: 9, name: "Campus Safety", price: 150},
     t8: {loc: "t8", type: "property", location: "South Lobby", price: 280, set: 6, rent: [24, 48, 120, 360, 850, 1025, 1200], houseCost: 150, ownedHouses: 0},
 
     r0: {loc: "r0", type: "property", location: "Thorn Stadium", price: 300, set: 7, rent: [26, 52, 130, 390, 900, 1100, 1275], houseCost: 200, ownedHouses: 0},
@@ -100,60 +125,6 @@ currentPlayer = 0
 
 boardOrder = []
 
-chanceCards = [
-    //TODO: implement different types of chance and chest cards and actions going with them
-    {path: "./assets/chance/chance-template.svg", buttonText: "stash", cardAction: {type: "jail"}},
-    {path: "./assets/chance/chance-template.svg", buttonText: "go to TMX", cardAction: {type: "move", loc: "r8"}},
-    {path: "./assets/chance/chance-template.svg", buttonText: "go to go", cardAction: {type: "move", loc: "c0"}},
-    {path: "./assets/chance/chance-template.svg", buttonText: "go to Hoyt", cardAction: {type: "move", loc: "t3"}},
-    {path: "./assets/chance/chance-template.svg", buttonText: "go to Ketler", cardAction: {type: "move", loc: "l0"}},
-
-    //move to nearest Railroad, pay 2x rent
-    {path: "./assets/chance/chance-template.svg", buttonText: "move to nearest tunnel", cardAction: {type: "move", loc: 0}},
-    
-    //move to nearest utility, pay auto 10x multiplier
-    {path: "./assets/chance/chance-template.svg", buttonText: "nearest utility", cardAction: {type: "gain", amount: 0}},
-    
-    {path: "./assets/chance/chance-template.svg", buttonText: "+50", cardAction: {type: "gain", amount: 50}},
-    {path: "./assets/chance/chance-template.svg", buttonText: "-15", cardAction: {type: "loss", amount: 0}},
-
-    //move back 3 Spaces
-    {path: "./assets/chance/chance-template.svg", buttonText: "back 3 spaces", cardAction: {type: "gain", amount: 0}},
-
-    //-25/house, 100/hotel
-    {path: "./assets/chance/chance-template.svg", buttonText: "lose money per house and hotel", cardAction: {type: "lossPerHouseAndHotel", amounts: {house:25, hotel: 100}}},
-
-    {path: "./assets/chance/chance-template.svg", buttonText: "move to b4", cardAction: {type: "move", loc: "b4"}},
-
-    //50 to each player
-    {path: "./assets/chance/chance-template.svg", buttonText: "50 to each player", cardAction: {type: "gain", amount: 0}},
-
-    {path: "./assets/chance/chance-template.svg", buttonText: "+150", cardAction: {type: "gain", amount: 150}},
-
-    {path: "./assets/chance/chance-template.svg", buttonText: "go to jail", cardAction: {type: "move", loc: "jail"}},
-
-    //EXTRA CARD
-    {path: "./assets/chance/chance-template.svg", buttonText: "+0", cardAction: {type: "gain", amount: 0}},
-]
-
-chestCards = [
-    {path: "./assets/chest/chest-template.svg", buttonText: "stash", cardAction: {type: "jail"}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "+200", cardAction: {type: "gain", amount: 200}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "+200", cardAction: {type: "gain", amount: 200}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "+100", cardAction: {type: "gain", amount: 100}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "+100", cardAction: {type: "gain", amount: 100}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "+100", cardAction: {type: "gain", amount: 100}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "+50", cardAction: {type: "gain", amount: 50}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "+25", cardAction: {type: "gain", amount: 25}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "+20", cardAction: {type: "gain", amount: 20}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "+10", cardAction: {type: "gain", amount: 10}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "-100", cardAction: {type: "lose", amount: 100}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "-50", cardAction: {type: "lose", amount: 50}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "-50", cardAction: {type: "lose", amount: 50}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "go jail", cardAction: {type: "move", loc: "jail"}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "-10/p", cardAction: {type: "gainPerPlayer", amount: 10}},
-    {path: "./assets/chest/chest-template.svg", buttonText: "-40/h, 115/H", cardAction: {type: "losePerHouse", amounts: {house:40, hotel: 115}}},
-]
 
 pieces = [
 
@@ -172,7 +143,31 @@ function randomRotations(spread, amount){
 }
 
 gameInfo = {
-    playerNames: ["Player 1", "Player 2", "Player 3", "Player 4"],
+    iconColorList: [
+        {color: "#D50000", taken: false},
+        {color: "#FF5252", taken: false},
+        {color: "#FF6138", taken: false},
+        {color: "#FA9600", taken: false},
+        {color: "#FFBE00", taken: false},
+        {color: "#FFDE20", taken: false},
+        {color: "#BEDB39", taken: false},
+        {color: "#A8C545", taken: false},
+        {color: "#43A047", taken: false},
+        {color: "#289976", taken: false},
+        {color: "#04756F", taken: false},
+        {color: "#00305A", taken: false},
+        {color: "#2962FF", taken: false},
+        {color: "#9575CD", taken: false},
+        {color: "#360259", taken: false},
+        {color: "#9C27B0", taken: false},
+    ],
+    playerNames: [
+        {name: "Player 1", newName: null, editing: false, colorIndex: 0},
+        {name: "Player 2", newName: null, editing: false, colorIndex: 1},
+        {name: "Player 3", newName: null, editing: false, colorIndex: 2},
+        {name: "Player 4", newName: null, editing: false, colorIndex: 3}
+    ],
+    editingIconColor: -1,
     spread: 10,
     chanceRotations: randomRotations(10, 3),
     chestRotations: randomRotations(10, 3),
@@ -196,68 +191,176 @@ function startProcess(step){
         document.getElementById(`start${i}`).style.display = "none"
         if(step == 1){
             drawStartNames()
+            onclick = iconColorsOnClick
         }
     }
-    document.getElementById(`start${step}`).style.display = "block"
+    document.getElementById(`start${step}`).style.display = "flex"
 }
 
 function drawStartNames(){
     startNamesHTML = ""
     numPlayers = gameInfo.playerNames.length
     for(j=0; j<numPlayers; j++){
-        startNamesHTML += `<div class="startName" id="startName${j}" onclick="editStartName(${j})">${gameInfo.playerNames[j]}</div>`
+        startNamesHTML += `<div class="startNameContainer" id="startNameContainer${j}"><div class="startIcon" id="startIcon${j}" onclick="showIconColors(${j})" style="background-color: ${gameInfo.iconColorList[gameInfo.playerNames[j].colorIndex].color}">${j+1}</div><div class="startName" id="startName${j}" onclick="editStartName(${j})">${gameInfo.playerNames[j].name}</div></div>`
     }
     if(numPlayers <= 7){
-        newPlayerNum = 1
-        while(gameInfo.playerNames.indexOf("Player "+newPlayerNum) >= 0){
-            newPlayerNum ++
-        }
-        startNamesHTML += `<img src="./assets/gui/add.svg" id="addNameButton" class="startNameButton buttonClickable" onclick="addStartName(${newPlayerNum})">`
+        startNamesHTML += `<img src="./assets/gui/add.svg" id="addNameButton" class="startNameButton buttonClickable" onclick="addStartName()">`
     }
     document.getElementById("startNames").innerHTML = startNamesHTML
+    for(j=0; j<numPlayers; j++){
+        if(gameInfo.playerNames[j].editing){
+            editStartName(j)
+        }
+    }
+    generateIconColors()
 }
 
-function addStartName(num){
-    gameInfo.playerNames.push("Player "+num)
+function addStartName(){
+    newPlayerNum = 1
+    while(namesContains("Player "+newPlayerNum)){
+        newPlayerNum ++
+    }
+    newColorIndex = 0
+    while(gameInfo.iconColorList[newColorIndex].taken){
+        newColorIndex++
+    }
+    gameInfo.iconColorList[newColorIndex].taken = true
+    gameInfo.playerNames.push({name: "Player "+newPlayerNum, newName: null, editing: false, colorIndex: newColorIndex})
     drawStartNames()
+    moveIconColors()
 }
 
 function removeStartName(num){
+    numPlayers = gameInfo.playerNames.length
+    if(numPlayers<=2){return}
+    for(j=0; j<numPlayers; j++){
+        if(document.getElementById(`startNameInput${j}`) != null){
+            gameInfo.playerNames[j].newName = document.getElementById(`startNameInput${j}`).value
+        }
+    }
     gameInfo.playerNames.splice(num,1)
+    if(num==gameInfo.editingIconColor){
+        hideIconColors()
+    }else{
+        gameInfo.editingIconColor--
+        moveIconColors()
+    }
     drawStartNames()
 }
 
 function editStartName(playerNum){
+    gameInfo.playerNames[playerNum].editing = true
     document.getElementById("startName"+playerNum).innerHTML = `<input type='text' class='startNameInput' id='startNameInput${playerNum}' maxlength="10">
     <img src="./assets/gui/confirm.svg" class="startNameButton buttonClickable" onclick="setStartName(${playerNum})">
     <img src="./assets/gui/cancel.svg" class="startNameButton buttonClickable" onclick="cancelSetStartName(${playerNum})">
     <img src="./assets/gui/remove.svg" class="startNameButton buttonClickable" onclick="removeStartName(${playerNum})">`
-    document.getElementById(`startNameInput${playerNum}`).value = gameInfo.playerNames[playerNum]
+    document.getElementById(`startNameInput${playerNum}`).value = (gameInfo.playerNames[playerNum].newName == null ? gameInfo.playerNames[playerNum].name : gameInfo.playerNames[playerNum].newName)
     document.getElementById("startName"+playerNum).setAttribute( "onClick", "javascript: ;")
 }
 
+function showIconColors(playerNum){
+    document.getElementById("iconColorsContainer").style.display="flex"
+    gameInfo.editingIconColor = playerNum
+    moveIconColors()
+}
+
+function hideIconColors(){
+    document.getElementById("iconColorsContainer").style.display="none"
+    gameInfo.editingIconColor = -1
+}
+
+function moveIconColors(){
+    if(gameInfo.editingIconColor < 0){return}
+    iconColorsDiv = document.getElementById("iconColorsContainer")
+    containerBounds = document.getElementById(`startNameContainer${gameInfo.editingIconColor}`).getBoundingClientRect()
+    iconColorsBounds = iconColorsDiv.getBoundingClientRect()
+
+    iconColorsDiv.style.top = `${(containerBounds.top + containerBounds.bottom)/2 - iconColorsBounds.height/2}px`
+    iconColorsDiv.style.left = `${containerBounds.left-iconColorsBounds.width*1.1}px`
+    console.log("moved")
+}
+
+function updateColorAvailability(){
+    gameInfo.iconColorList.forEach(element => {
+        element.taken = false
+    });
+    gameInfo.playerNames.forEach(element => {
+        gameInfo.iconColorList[element.colorIndex].taken = true
+    });
+}
+
+function generateIconColors(){
+    updateColorAvailability()
+    iconColorsHTML = ""
+    gameInfo.iconColorList.forEach(function (element, index) {
+        iconColorsHTML += `<div class="iconColor ${element.taken ? "iconColorTaken" : ""}" style="background-color: ${element.color}" onclick = "setIconColor(${index})">${element.taken ? "X" : ""}</div>`
+    });
+    document.getElementById("iconColors").innerHTML = iconColorsHTML
+}
+
+function setIconColor(index){
+    if(gameInfo.iconColorList[index].taken == false){
+        gameInfo.playerNames[gameInfo.editingIconColor].colorIndex = index
+    }
+    hideIconColors()
+    updatePieceColors()
+    generateIconColors()
+}
+
+function windowResizedIconColors() {
+    if(gameInfo.editingIconColor >= 0){
+        moveIconColors()
+    }
+}
+
+function updatePieceColors(){
+    for(i=0; i<gameInfo.playerNames.length; i++){
+        document.getElementById(`startIcon${i}`).style.backgroundColor = gameInfo.iconColorList[gameInfo.playerNames[i].colorIndex].color
+    }
+}
+
+function iconColorsOnClick(e){
+    box = document.getElementById("iconColorsContainer").getBoundingClientRect()
+    if(box.left < e.clientX && e.clientX < box.right && box.bottom > e.clientY && e.clientY > box.top){
+        console.log(`mouse location = X: ${e.x}, Y: ${e.y}`)
+    }
+}
+
 function setStartName(playerNum){
+    gameInfo.playerNames[playerNum].editing = false
+    gameInfo.playerNames[playerNum].newName = null
     newName = document.getElementById(`startNameInput${playerNum}`).value
-    if(isWhitespaceString(newName) || gameInfo.playerNames.indexOf(newName) >= 0){
+    if(isWhitespaceString(newName) || namesContains(newName)){
         cancelSetStartName(playerNum)
         return
     }
-    gameInfo.playerNames[playerNum] = newName
-    document.getElementById("startName"+playerNum).outerHTML = `<div class="startName" id="startName${playerNum}" onclick="editStartName(${playerNum})">${gameInfo.playerNames[playerNum]}</div>`
+    gameInfo.playerNames[playerNum].name = newName
+    document.getElementById("startName"+playerNum).outerHTML = `<div class="startName" id="startName${playerNum}" onclick="editStartName(${playerNum})">${gameInfo.playerNames[playerNum].name}</div>`
 }
 
 function cancelSetStartName(playerNum){
-    document.getElementById("startName"+playerNum).outerHTML = `<div class="startName" id="startName${playerNum}" onclick="editStartName(${playerNum})">${gameInfo.playerNames[playerNum]}</div>`
+    gameInfo.playerNames[playerNum].editing = false
+    gameInfo.playerNames[playerNum].newName = null
+    document.getElementById("startName"+playerNum).outerHTML = `<div class="startName" id="startName${playerNum}" onclick="editStartName(${playerNum})">${gameInfo.playerNames[playerNum].name}</div>`
+}
+
+function namesContains(name){
+    containsName = false
+    gameInfo.playerNames.forEach(element => {
+        if(element.name == name){containsName = true}
+    });
+    return containsName
 }
 
 function initializeBoard(){
+    gameInfo.editingIconColor = -1
     document.getElementById("startScreen").style.display = "none"
     boardHTML = ""
     side="c"
     for(i=0; i<4; i++){
         tile = tilesList[side+i]
         if(tile.cornerType == "go"){
-            boardHTML += `<div class='corner tile c${i}'>go`
+            boardHTML += `<div class='corner tile c${i}'><img class="cornerImg" src="./assets/corners/go.svg">`
         }else if(tile.cornerType == "jail"){
             boardHTML += `<div class='corner tile c${i}'><img class="cornerImg" src="./assets/corners/jail.svg">`
             boardHTML +=`<div class="jailplayers" id="players${tile.loc}">`
@@ -274,7 +377,7 @@ function initializeBoard(){
         }else if(tile.cornerType == "parking"){
             boardHTML += `<div class='corner tile c${i}'><img class="cornerImg" src="./assets/corners/parking.svg">`
         }else if(tile.cornerType == "goToJail"){
-            boardHTML += `<div class='corner tile c${i}'>Go To Jail`
+            boardHTML += `<div class='corner tile c${i}'><img class="cornerImg" src="./assets/corners/goToJail.svg">`
         }
         
         if(tile.cornerType != "jail"){
@@ -308,27 +411,27 @@ function initializeBoard(){
             }else if(tile.type == "railroad"){
                 boardHTML += `<div class="railroadName buttonClickable" onclick="showOverlay({type: 'propertyCardPreview', loc: '${tile.loc}', path: './assets/properties/${tile.loc}.svg'})">${tile.name}</div><img src="./assets/tunnel.svg" class="tileImg"><div class="railroad price">$${tile.price}</div>`
             }else if(tile.type == "chance"){
-                boardHTML += `<div>Chance?</div>`
+                boardHTML += `<div class="spaceWithImg"><img src="assets/spaces/chance.svg"></div>`
             }else if(tile.type == "chest"){
-                boardHTML += `<div>Community Chest</div>`
+                boardHTML += `<div class="spaceWithImg"><img src="assets/spaces/chest.svg"></div>`
             }else if(tile.type == "tax"){
                 if(tile.taxType == "income"){
-                    boardHTML += `<div>Income Tax</div>`
+                    boardHTML += `<div class="spaceWithImg"><img src="assets/spaces/incometax.svg"></div>`
                 }else if(tile.taxType == "luxury"){
-                    boardHTML += `<div>Luxury Tax</div>`
+                    boardHTML += `<div class="spaceWithImg"><img src="assets/spaces/luxurytax.svg"></div>`
                 }
             }else if(tile.type == "utility"){
                 boardHTML += `<div class="utilityName buttonClickable" onclick="showOverlay({type: 'propertyCardPreview', loc: '${tile.loc}', path: './assets/properties/${tile.loc}.svg'})">`
                 if(tile.utilityType == "electric"){
-                    boardHTML += `${tile.name}`
+                    boardHTML += `<div class="spaceWithImg"><img src="assets/spaces/parkhurst.svg"></div>`
                 }else if(tile.utilityType == "water"){
-                    boardHTML += `${tile.name}`
+                    boardHTML += `<div class="spaceWithImg"><img src="assets/spaces/campo.svg"></div>`
                 }
                 boardHTML += `</div>`
             }
             boardHTML +=`<div class="players" id="players${tile.loc}">`
             for(k=0;k<9;k++){
-                boardHTML += `<div class="player" id="${tile.loc}p${k}"></div>`
+                boardHTML += `<div class="player p${k}" id="${tile.loc}p${k}"></div>`
             }
             boardHTML += `</div></div>`
         }
@@ -357,9 +460,9 @@ function initializeBoard(){
         <img src="./assets/chance/chance-back.svg" class="chanceStackCard" id="chanceStack0">
     </div>
     <div class="cardPile chestPile">
-        <img src="./assets/chance/chance-back.svg" class="chanceStackCard" id="chestStack2">
-        <img src="./assets/chance/chance-back.svg" class="chanceStackCard" id="chestStack1">
-        <img src="./assets/chance/chance-back.svg" class="chanceStackCard" id="chestStack0">
+        <img src="./assets/chest/chest-back.svg" class="chanceStackCard" id="chestStack2">
+        <img src="./assets/chest/chest-back.svg" class="chanceStackCard" id="chestStack1">
+        <img src="./assets/chest/chest-back.svg" class="chanceStackCard" id="chestStack0">
     </div>
     <img src="./assets/background.svg">
     </div>`
@@ -412,7 +515,6 @@ function mortgageCard(playerNum, location){
 }
 
 function unmortgageCard(playerNum, location){
-    //TODO: fully implement mortgage functionality
     if(canAfford(players[playerNum], getRepayment(tilesList[location]))){
         players[playerNum].mortgaged.splice(players[playerNum].mortgaged.indexOf(location), 1)
         players[playerNum].money -= getRepayment(tilesList[location])
@@ -426,7 +528,6 @@ function isMortgaged(location){
     return players[owner].mortgaged.indexOf(location) >= 0
 }
 
-//TODO: change overlay system
 function showOverlay(args){
     document.getElementById("chanceOverlay").style.display = "none"
     document.getElementById("cardOverlay").style.display = "none"
@@ -504,7 +605,7 @@ function showOverlay(args){
     else if(args.type == "tax"){
         document.getElementById("taxOverlay").innerHTML = `${args.taxDescription}`
         document.getElementById("taxAmount").innerHTML = `($${args.taxAmount})`
-        document.getElementById("taxButton").setAttribute( "onClick", `javascript: payTax(${args.taxAmount});`)
+        document.getElementById("taxButton").setAttribute( "onClick", `javascript: payTax(${args.taxAmount});${args.additionalAction}`)
         document.getElementById("taxOverlay").style.display = "flex"
         document.getElementById("taxButtons").style.display = "flex"
         if(canAfford(players[currentPlayer], args.taxAmount)){
@@ -523,7 +624,8 @@ function showOverlay(args){
     //chance or chest overlay
     else if(args.type =="chance" || args.type=="chest"){
         //TODO: change chance cards so they have different text
-        document.getElementById("chanceOverlayImage").src = args.path
+        document.getElementById("chanceDesc").innerHTML = args.cardText
+        document.getElementById("chanceInfoImg").innerHTML = `<img src="assets/chance/chance-images/chance-image-template.svg">`
 
         if(args.type=="chance"){
             document.getElementById("chanceButton").setAttribute( "onClick", (args.isJail ? "javascript: addJail(0)" : "exitChanceOrChest()"))
@@ -537,17 +639,6 @@ function showOverlay(args){
         document.getElementById("chanceButtons").style.display = "flex"
         document.getElementById("chanceOverlay").style.display = "flex"
     }
-
-    // else if(args.type =="chest"){
-    //     //TODO: change chest cards so they have different text
-    //     document.getElementById("chanceOverlayImage").src = args.path
-        
-    //     document.getElementById("chanceButton").setAttribute( "onClick", (args.isJail ? "javascript: addJail(1)" : "exitChanceOrChest()"))
-        
-    //     document.getElementById("chanceButton").innerHTML = args.buttonText
-    //     document.getElementById("chanceButtons").style.display = "flex"
-    //     document.getElementById("chanceOverlay").style.display = "flex"
-    // }
 
     else if(args.type == "property"){
         document.getElementById("purchasePrice").innerHTML = `($${args.price})`
@@ -760,9 +851,9 @@ function getPossessionsHTML(player, args){
         amountInSet = player.ownedProperties[`set${i3}`].length
 
         if(gameInfo.newinventorystyle){        
-            hasTunnel = whoOwns(tilesList["b4"])==playerNum || whoOwns(tilesList["l4"])==playerNum || whoOwns(tilesList["t4"])==playerNum || whoOwns(tilesList["r4"]) ==playerNum
-            hasUtility = whoOwns(tilesList["l1"])==playerNum || whoOwns(tilesList["t7"])==playerNum
-            if(amountInSet != 0 /*TODO: fix for railroads and utilities*/){
+            hasTunnel = (whoOwns(tilesList["b4"])==playerNum? 1 : 0) + (whoOwns(tilesList["l4"])==playerNum? 1 : 0) +(whoOwns(tilesList["t4"])==playerNum? 1 : 0)+ (whoOwns(tilesList["r4"]) ==playerNum? 1 : 0)
+            hasUtility = (whoOwns(tilesList["l1"])==playerNum ? 1 : 0) + (whoOwns(tilesList["t7"])==playerNum ? 1 : 0)
+            if(amountInSet != 0){
                 if(i3 != 9){
                     propertiesHTML+=`<div class="invcontainer invset${i3}"><div class="invproperties">`
 
@@ -804,7 +895,7 @@ function getPossessionsHTML(player, args){
                         </div>
                     </div>`
                 }else{
-                    if(hasTunnel){
+                    if(hasTunnel >= 1){
                         overlayZ = ""
     
                         propertiesHTML+=`<div class="invcontainer invtunnels">`
@@ -827,10 +918,11 @@ function getPossessionsHTML(player, args){
     
                             propertiesHTML+=`<div class="invtunnel invtunnel${j1} ${cardOwned ? "" : "invunowned" }" onclick="showOverlay({type: '${overlayType}', path: ${cardSource}, loc: '${currentTileGP.loc}'})" ${overlayZ}>${cardMortgaged ? "(" : ""}${tilesList[tunnels[j1]].name}${cardMortgaged ? ")" : ""}</div>`
                         }
-                        propertiesHTML+=`<div class="invtunnelindicator"><img src="assets/tunnel.svg"></div>`
+                        tunnelRents = [25, 50, 100, 200]
+                        propertiesHTML+=`<div class="invtunnelindicator"><div>${hasTunnel}/4</div><img src="assets/tunnel.svg"><div>$${tunnelRents[hasTunnel-1]}</div></div>`
                         propertiesHTML+=`</div>`
                     }
-                    if (hasUtility){
+                    if (hasUtility >= 1){
                         overlayZ = ""
     
                         propertiesHTML+=`<div class="invcontainer invutilities">`
@@ -852,6 +944,9 @@ function getPossessionsHTML(player, args){
                             }
     
                             propertiesHTML+=`<div class="invutility ${cardOwned ? "" : "invunowned" }" onclick="showOverlay({type: '${overlayType}', path: ${cardSource}, loc: '${currentTileGP.loc}'})" ${overlayZ}>${cardMortgaged ? "(" : ""}${currentTileGP.name}${cardMortgaged ? ")" : ""}</div>`
+                            if(j1==0){
+                                propertiesHTML += `<div class="invutilitydivider"><div>${hasUtility}/2</div><div>${hasUtility == 2 ? "10" : "7"}x</div></div>`
+                            }
                         }
                         propertiesHTML+=`</div>`
                     }
@@ -886,14 +981,18 @@ function getPossessionsHTML(player, args){
         
     }
 
-    //hardcoded
-    for(i=0;i<2;i++){
-        if(player.getOutOfJail[i]){
-            cardPaths = ["./assets/chance/chance-template.svg", "./assets/chest/chest-template.svg"]
-            propertiesHTML +=
-            `<div class="cardRow">
-                <img src="${cardPaths[i]}" class="getOutOfJail" onclick="showOverlay({type:'stashedJail',path:'${cardPaths[i]}'})">
-            </div>`
+    if(gameInfo.newinventorystyle){
+        player.getOutOfJail[0] || player.getOutOfJail[1]
+    }else{
+        //hardcoded
+        for(i=0;i<2;i++){
+            if(player.getOutOfJail[i]){
+                cardPaths = ["./assets/chance/chance-template.svg", "./assets/chest/chest-template.svg"]
+                propertiesHTML +=
+                `<div class="cardRow">
+                    <img src="${cardPaths[i]}" class="getOutOfJail" onclick="showOverlay({type:'stashedJail',path:'${cardPaths[i]}'})">
+                </div>`
+            }
         }
     }
     
@@ -937,6 +1036,7 @@ function preloadAllImages(){
     imagePaths.forEach(path => {
         preloadImage(path)
     });
+    document.getElementById("startGameButton").outerHTML = `<div id="startGameButton" class="customButton startButton" onclick="startProcess(1)">Start</div>`
 }
 
 function preloadImage(url){new Image().src=url;}
@@ -968,7 +1068,7 @@ function movePiece(player, position){
 
     newSpot = document.getElementById(newPos)
     console.log(player)
-    newSpot.innerHTML = `<img onclick="showPlayer(${players.indexOf(player)})" src="./assets/pieces/${player.piece}">`
+    newSpot.innerHTML = `<div class="playerToken" onclick="showPlayer(${players.indexOf(player)})" style="background-color: ${player.pieceColor}">${player.playerNum}`
     newSpot.style.rotate = `${randInt(360)}deg`
     newSpot.style.display = "flex"
 
@@ -1099,10 +1199,22 @@ function landOnSpace(space){
                 players[currentPlayer].debts.push({amount: lossAmount, owedTo: -1, taxDescription: lossDescription})
                 clickAction+= `showOverlay({type: "tax", taxAmount: ${lossAmount}, taxDescription: "${lossDescription}"})`
                 break
+            case "goToJail":
+                clickAction += "sendToJail(players[currentPlayer], 'card')"
+                break
+            case "nearestTunnel":
+                //TODO: finish this functionality
+                break
+            case "loss":
+                if(canAfford(players[currentPlayer], currentCard.cardAction.amount)){
+                    clickAction += `players[currentPlayer].money -= ${currentCard.cardAction.amount}`
+                }else{
+                    clickAction += `players[currentPlayer].debts.push({amount: ${currentCard.cardAction.amount}, owedTo: -1, taxDescription: "Chance card: pay ${currentCard.cardAction.amount}."})`
+                }
         }
         drawPossessions(players[currentPlayer])
 
-        showOverlay({type: space.type, path: currentCard.path, buttonText: currentCard.buttonText, isJail: currentCard.cardAction.type == "jail", clickAction: clickAction})
+        showOverlay({type: space.type, buttonText: currentCard.buttonText, isJail: currentCard.cardAction.type == "jail", clickAction: clickAction, cardText: currentCard.cardText})
 
     // }else if(space.type == "chest"){
     //     chestCard = getChest()
@@ -1117,7 +1229,7 @@ function landOnSpace(space){
         // get tax amounts (i think this works)
         //hardcoded
         taxAmount = getTaxAmount(space, players[currentPlayer])
-        taxDescription = (space.taxType == "income" ? `Income Tax: Pay $200 or 10% of your assets ($${taxAmount}).` : "Luxury Tax: Pay $75")
+        taxDescription = (space.taxType == "income" ? `Tuition: Pay $200 or 10% of your assets (lesser value is $${taxAmount}).` : "Pay $75 for your Parking Pass")
         players[currentPlayer].debts.push({amount: taxAmount, owedTo: -1, taxDescription: taxDescription})
         showOverlay({type:"tax", taxAmount: taxAmount, taxDescription: taxDescription})
     }
@@ -1382,11 +1494,12 @@ function initializeGame(){
 function initializePlayers(names){
     for(i=0;i<names.length;i++){
         players.push({
-            name: names[i], 
+            name: names[i].name, 
             position: "c0p0",
             money: 1500, 
             ownedProperties: {set1:[], set2: [],set3:[],set4:[],set5:[],set6:[],set7:[],set8:[],set9:[]}, 
-            piece: `num${i+1}.svg`, 
+            // piece: `num${i+1}.svg`, 
+            pieceColor: gameInfo.iconColorList[names[i].colorIndex].color,
             playing: false, 
             doubles: 0, 
             getOutOfJail: [false, false],
@@ -1396,6 +1509,7 @@ function initializePlayers(names){
             mortgaged: [],
             isInJail: false,
             jailRollAttempts: 0,
+            playerNum: i+1,
         })
     }
 }
@@ -1408,7 +1522,10 @@ function getChance(){
     drawStack("chance")
 
     card = chanceCards.splice(0,1)[0]
-    chanceCards.push(card)
+    if(card.type != "jail"){
+        chanceCards.push(card)
+        console.log("not a jail card")
+    }
     console.log(card)
     return card
 }
@@ -1416,7 +1533,10 @@ function getChance(){
 //TODO: complete this method
 function getChest(){
     topCard = chestCards.splice(0,1)[0]
-    chestCards.push(topCard)
+    if(topCard.type != "jail"){
+        chestCards.push(topCard)
+        console.log("not a jail card")
+    }
     return topCard
 }
 
@@ -1425,7 +1545,7 @@ function nextAction(){
         debt = players[currentPlayer].debts[0]
         if(debt.owedTo == -1){
             console.log(debt.taxDescription)
-            showOverlay({type: "tax", taxAmount: debt.amount, taxDescription: debt.taxDescription})
+            showOverlay({type: "tax", taxAmount: debt.amount, taxDescription: debt.taxDescription, additionalAction: (debt.additionalAction == null ? "" : debt.additionalAction)})
         }else{
             console.log(debt)
             showOverlay({type: "rent", rentAmount: debt.amount, rentText: debt.amount.rentText, recipient: debt.owedTo, property: debt.property})
@@ -1436,12 +1556,14 @@ function nextAction(){
         showOverlay({type: "escapeJail", rollAttempts: players[currentPlayer].jailRollAttempts, hasGetOutOfJail: players[currentPlayer].getOutOfJail[0] || players[currentPlayer].getOutOfJail[1]})
     }else if(players[currentPlayer].playing){
         diceRoll = rollDice()
-        advancePiece(players[currentPlayer], diceRoll.sum)
         if(diceRoll.doubles){
             players[currentPlayer].doubles += 1
         }else{
             players[currentPlayer].doubles = 0
             players[currentPlayer].playing = false
+        }
+        if(players[currentPlayer].doubles < 3){
+            advancePiece(players[currentPlayer], diceRoll.sum)
         }
     }else{
         nextTurn()
@@ -1459,24 +1581,23 @@ function rollForJailEscape(){
     diceRoll = rollDice()
     if(diceRoll.doubles){
         breakOutOfJail(players[currentPlayer])
-        advancePiece(players[currentPlayer], diceRoll.sum)
-        showOverlay({type: "alert", alertMessage: "Rolled doubles! You broke out."})
+        showOverlay({type: "alert", alertMessage: "Rolled doubles! You broke out.", alertButtonAction: `hideCard();advancePiece(players[currentPlayer], ${diceRoll.sum})`})
         players[currentPlayer].jailRollAttempts = 0
     }else{
         showOverlay({type: "alert", alertMessage: `Failed to roll doubles! ${2-players[currentPlayer].jailRollAttempts} rolls remaining.`})
         players[currentPlayer].jailRollAttempts++
     }
     if(players[currentPlayer].jailRollAttempts==3){
-        showOverlay({type: "alert", alertMessage: "Out of rolls! The bank bailed you out, but now you owe them $50.", alertButtonAction: "failedToRollJailDoubles()"})
+        showOverlay({type: "alert", alertMessage: "Out of rolls! The bank bailed you out, but now you owe them $50.", alertButtonAction: `failedToRollJailDoubles(${diceRoll.sum})`})
     }
     players[currentPlayer].playing = false
 }
 
-function failedToRollJailDoubles(){
+function failedToRollJailDoubles(roll){
     players[currentPlayer].jailRollAttempts = 0
-    players[currentPlayer].debts.push({amount: 50, owedTo: -1, taxDescription: "Repay the bank for bailing you out!"})
+    players[currentPlayer].debts.push({amount: 50, owedTo: -1, taxDescription: "Repay the bank for bailing you out!", additionalAction: `advancePiece(players[currentPlayer], ${roll})`})
+    hideCard()
     breakOutOfJail(players[currentPlayer])
-    advancePiece(players[currentPlayer], diceRoll.sum)
 }
 
 function payForJailEscape(){
@@ -1494,8 +1615,11 @@ function payForJailEscape(){
 function useGetOutOfJail(){
     if(players[currentPlayer].getOutOfJail[0]){
         players[currentPlayer].getOutOfJail[0] = false
+        chanceCards.push({buttonText: "stash", cardAction: {type: "jail"}, cardText: "GET OUT OF JAIL FREE. YOU MAY STASH THIS CARD AND SAVE IT FOR LATER."},)
+        //TODO: change this if text gets edited
     }else{
         players[currentPlayer].getOutOfJail[1] = false
+        chanceCards.push({buttonText: "stash", cardAction: {type: "jail"}, cardText: "GET OUT OF JAIL FREE. YOU MAY STASH THIS CARD AND SAVE IT FOR LATER."},)
     }
     breakOutOfJail(players[currentPlayer])
     drawPossessions(players[currentPlayer])
@@ -1520,7 +1644,7 @@ function updateNextActionButton(){
 
 function sendToJail(player, reason){
     jailMessage = ""
-    if(reason == "chance" || reason=="chest"){ jailMessage="Unlucky Pull!" }
+    if(reason == "card"){ jailMessage="Unlucky Pull!" }
     else if(reason == "doubles"){ jailMessage = "Rolled doubles 3 times!" }
     else if(reason == "space"){ jailMessage = `Landed on "Go To Jail"!`}
     showOverlay({type: "alert", alertMessage: `${jailMessage} Go to jail!`})
@@ -1570,8 +1694,6 @@ function bidOnProperty(playerNum, price){
     drawAuctionPrices()
 }
 
-
-//TODO: fix bug if current player wins auction
 function endAuction(){
     players[currentAuction.currentPlayer].money -= currentAuction.currentBid
     addProperty(players[currentAuction.currentPlayer], currentAuction.property)
@@ -1618,9 +1740,6 @@ function auctionProperty(player, location){
     showOverlay({type: "auction"})
 
     //TODO: edge case: if nobody has $5
-    
-    //TODO: implement and fix this method
-    //Groveopoly: error when raise funds button is pressed, then auction button is pressed
 }
 
 function checkSet(location){

@@ -11,7 +11,7 @@
 
 .invtunnels{
     background-color: rgb(225, 225, 225);
-    grid-template-columns: 1.6fr 1fr 1.6fr;
+    grid-template-columns: 1.8fr 1.5fr 1.8fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 
     "invtun0 invtuni invtun1"
@@ -35,10 +35,14 @@
 
 .invtunnelindicator{
     grid-area: invtuni;
+    display: flex;
+    flex-direction: column;
+    border-left: calc(var(--pss)*0.35) solid black;
+    border-right: calc(var(--pss)*0.35) solid black;
 }
 
 .invtunnelindicator img{
-    width: 100%;
+    width: 80%;
 }
 
 .invtunnel:hover{
@@ -144,13 +148,20 @@ div.invmortgaged:hover{
 }
 
 .invutilities{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1.8fr 0.9fr 1.8fr;
     text-align: center;
     align-items: center;
     font-size: calc(var(--pss)*2);
+    background-color: rgb(225, 225, 225);
+}
+.invutilitydivider{
+    width: 100%;
+    border-left: calc(var(--pss)*0.35) solid black;
+    border-right: calc(var(--pss)*0.35) solid black;
 }
 
-.invutilities div:hover{
+.invutility:hover{
     text-decoration: underline;
     cursor: pointer;
 }

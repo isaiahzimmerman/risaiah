@@ -15,27 +15,24 @@ You are assessed for street repair. $40 per house. $115 per hotel
 You have won second prize in a beauty contest. Collect $10
 You inherit $100
 
-get out of jail
 
-+200
-+200
-+100
-+100
-+100
-+50
-+25
-+20
-+10
 
--100
--50
--50
-
-+10 from every player
-
--40 per house 115 per hotel
-
-go to jail
+x move to go
+x +200
+x +100
+x +100
+x +100
+x +45
+x +25
+x +20
+x +10
+x -150
+x -100
+x -50
+x +50 from every player
+x -40 per house 115 per hotel
+x go to jail
+x get out of jail
 
 categories:
 gain
