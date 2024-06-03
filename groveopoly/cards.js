@@ -30,7 +30,7 @@ chanceCards = [
     // -15
     {buttonText: "-15", cardAction: {type: "loss", amount: 15}, cardText: "LOSE $15"},
     // 50 to each player
-    {buttonText: "50 to each player", cardAction: {type: "gain", amount: 0}, cardText: "Pay $50 to each player"},
+    {buttonText: "50 to each player", cardAction: {type: "payEachPlayer", amount: 50}, cardText: "Pay $50 to each player"},
 ]
 
 chestCards = [

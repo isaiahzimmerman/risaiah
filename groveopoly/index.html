@@ -20,16 +20,16 @@
     <!-- header -->
 </head>
 <!-- <body onload="initializeBoard()"> -->
-<body onload="siteLoad()">
+<body class="body" onload="siteLoad()">
     <!-- header -->
-    <!-- <div w3-include-html="/assets/header/header.html"></div> -->
+    <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
     <!-- header -->
     <!-- <h1>Monopoly</h1> -->
     <div class="startScreen" id="startScreen">
         <div class="start0" id="start0">
             <img src="./assets/logo.svg" class="startLogo" alt="">
-            <div id="startGameButton" class="customButton startButton startButtonLoading">Loading</div>
+            <div id="startGameButton" class="customButton startButton startButtonLoading">Loading...</div>
         </div>
         <div class="start1" id="start1">
             <div class="startNames" id="startNames">
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div id="chanceButtons" class="purchaseOverlay">
-            <div class="buttonClickable customButton" id="chanceButton"></div>
+            <div class="buttonClickable customButton chanceButton" id="chanceButton"></div>
         </div>
         <div id="purchaseOverlay" class="purchaseOverlay">
             <div class="buttonClickable customButton" id="purchaseButton">

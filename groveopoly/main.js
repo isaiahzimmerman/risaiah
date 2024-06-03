@@ -29,7 +29,7 @@ function siteLoad(){
 
 function checkAspectRatio(){
     windowDisplayRatio = (window.innerWidth/window.innerHeight)
-    console.log(windowDisplayRatio)
+    // console.log(windowDisplayRatio)
     if(windowDisplayRatio < 1 || windowDisplayRatio > 2 || window.innerWidth < 500 || window.innerHeight < 500){
         if(windowDisplayRatio < 1 || windowDisplayRatio > 2){
             document.getElementById("aspectRatioWarning").style.display = "flex"
@@ -191,7 +191,6 @@ function startProcess(step){
         document.getElementById(`start${i}`).style.display = "none"
         if(step == 1){
             drawStartNames()
-            onclick = iconColorsOnClick
         }
     }
     document.getElementById(`start${step}`).style.display = "flex"
@@ -277,7 +276,7 @@ function moveIconColors(){
 
     iconColorsDiv.style.top = `${(containerBounds.top + containerBounds.bottom)/2 - iconColorsBounds.height/2}px`
     iconColorsDiv.style.left = `${containerBounds.left-iconColorsBounds.width*1.1}px`
-    console.log("moved")
+    // console.log("moved")
 }
 
 function updateColorAvailability(){
@@ -316,13 +315,6 @@ function windowResizedIconColors() {
 function updatePieceColors(){
     for(i=0; i<gameInfo.playerNames.length; i++){
         document.getElementById(`startIcon${i}`).style.backgroundColor = gameInfo.iconColorList[gameInfo.playerNames[i].colorIndex].color
-    }
-}
-
-function iconColorsOnClick(e){
-    box = document.getElementById("iconColorsContainer").getBoundingClientRect()
-    if(box.left < e.clientX && e.clientX < box.right && box.bottom > e.clientY && e.clientY > box.top){
-        console.log(`mouse location = X: ${e.x}, Y: ${e.y}`)
     }
 }
 
@@ -578,7 +570,7 @@ function showOverlay(args){
 
     else if(args.type == "propertyCardPreview")
     {
-        console.log(args.loc)
+        // console.log(args.loc)
         setTimeout(function() {
             document.getElementById("overlay").setAttribute( "onClick", "javascript: hideCard();")
             viewCard(args.path, {showOwner: true, owner: whoOwns(tilesList[args.loc])})
@@ -599,7 +591,7 @@ function showOverlay(args){
         document.getElementById("rentButton").setAttribute( "onClick", `javascript: payRent(${args.rentAmount.rent}, ${args.recipient});`)
         document.getElementById("rentOverlay").style.display = "flex"
         document.getElementById("rentButtons").style.display = "flex"
-        console.log(args)
+        // console.log(args)
     }
 
     else if(args.type == "tax"){
@@ -624,6 +616,7 @@ function showOverlay(args){
     //chance or chest overlay
     else if(args.type =="chance" || args.type=="chest"){
         //TODO: change chance cards so they have different text
+        document.getElementById("chanceOverlayImage").src = (args.type=="chance" ? "assets/chance/chance-template.svg" : "assets/chest/chest-template.svg")
         document.getElementById("chanceDesc").innerHTML = args.cardText
         document.getElementById("chanceInfoImg").innerHTML = `<img src="assets/chance/chance-images/chance-image-template.svg">`
 
@@ -808,7 +801,7 @@ function hideCard(){
 
 function placePlayers(){
     players.forEach(element => {
-        console.log(players.length)
+        // console.log(players.length)
         movePiece(element, "c0")
     });
 }
@@ -983,6 +976,7 @@ function getPossessionsHTML(player, args){
 
     if(gameInfo.newinventorystyle){
         player.getOutOfJail[0] || player.getOutOfJail[1]
+        //TODO: finish this
     }else{
         //hardcoded
         for(i=0;i<2;i++){
@@ -1036,10 +1030,18 @@ function preloadAllImages(){
     imagePaths.forEach(path => {
         preloadImage(path)
     });
-    document.getElementById("startGameButton").outerHTML = `<div id="startGameButton" class="customButton startButton" onclick="startProcess(1)">Start</div>`
+    
+    setTimeout(function() {
+        document.getElementById("startGameButton").outerHTML = `<div id="startGameButton" class="customButton startButton" onclick="startProcess(1)">Start</div>`
+    }, 1500);
+    
+    // console.log("game ready")
 }
 
-function preloadImage(url){new Image().src=url;}
+function preloadImage(url){
+    new Image().src=url;
+    // console.log(url)
+}
 
 function advancePiece(player, spaces){
     currentPos = boardOrder.indexOf(player.position.substring(0,2))
@@ -1067,12 +1069,12 @@ function movePiece(player, position){
     player.position = newPos
 
     newSpot = document.getElementById(newPos)
-    console.log(player)
+    // console.log(player)
     newSpot.innerHTML = `<div class="playerToken" onclick="showPlayer(${players.indexOf(player)})" style="background-color: ${player.pieceColor}">${player.playerNum}`
     newSpot.style.rotate = `${randInt(360)}deg`
     newSpot.style.display = "flex"
 
-    console.log(`moved ${player.name} to ${newPos}`)
+    // console.log(`moved ${player.name} to ${newPos}`)
 
     if(position != "jl"){
         landOnSpace(tilesList[position])
@@ -1098,7 +1100,7 @@ function payRent(price, recipient){
     if(canAfford(players[currentPlayer], price)){
         players[currentPlayer].debts = []
         players[currentPlayer].money -= price
-        console.log(recipient)
+        // console.log(recipient)
         players[recipient].money += price
         hideCard()
         drawPossessions(players[currentPlayer])
@@ -1121,29 +1123,29 @@ function distanceToSpace(player, loc){
 }
 
 function landOnSpace(space){
-    console.log(space.type)
+    // console.log(space.type)
 
     if(space.type == "property" || space.type == "railroad" || space.type == "utility"){
         owner = whoOwns(space)
 
-        console.log(owner)
+        // console.log(owner)
 
         //if property is unowned
         if(owner == -1){
-            console.log("attempting to purchase "+space.loc)
+            // console.log("attempting to purchase "+space.loc)
             propertyPurchase(space)
         }
 
         //if property is owned by self
         else if(owner == currentPlayer){
-            console.log("curr owns this")
+            // console.log("curr owns this")
         }
 
         //if property is owned by someone else
         else{
             if(isMortgaged(space.loc)){
                 //if property is mortgaged no rent is owed
-                console.log("property is mortgaged")
+                // console.log("property is mortgaged")
             }else{
                 rentInfo = getRent(space)
                 players[currentPlayer].debts.push({amount: rentInfo, owedTo: owner, property: space})
@@ -1163,16 +1165,16 @@ function landOnSpace(space){
         
         clickAction = `exitChanceOrChest();`
 
-        console.log(space.type)
-        console.log(currentCard.cardAction.type)
+        // console.log(space.type)
+        // console.log(currentCard.cardAction.type)
 
         switch(currentCard.cardAction.type){
             //gain money
             case "gain":
                 clickAction += `players[currentPlayer].money += ${currentCard.cardAction.amount}`
-                console.log(`players[currentPlayer].money += ${currentCard.cardAction.amount}`)
+                // console.log(`players[currentPlayer].money += ${currentCard.cardAction.amount}`)
                 break
-
+            //get out of jail free
             case "jail":
                 if(space.type == "chance"){
                     clickAction += "addJail(0)"
@@ -1182,45 +1184,55 @@ function landOnSpace(space){
                     throw new Error("How?")
                 }
                 break
-
+            //move to space
             case "move":
-                console.log(`chance action: move to ${currentCard.cardAction.loc}`)
+                // console.log(`chance action: move to ${currentCard.cardAction.loc}`)
                 clickAction += `advancePiece(players[currentPlayer], distanceToSpace(players[currentPlayer], "${currentCard.cardAction.loc}"))`
                 break
-
+            //pay per house and hotel
             case "lossPerHouseAndHotel":
                 ownedHousesAndHotels = getHousesAndHotels(players[currentPlayer])
                 lossAmount = currentCard.cardAction.amounts.house * ownedHousesAndHotels.houses + currentCard.cardAction.amounts.hotel * ownedHousesAndHotels.hotels
 
-                console.log(`chance action: lose per house and hotel. lose ${lossAmount}`)
+                // console.log(`chance action: lose per house and hotel. lose ${lossAmount}`)
 
                 lossDescription = `Taxed $${currentCard.cardAction.amounts.house} per house with ${ownedHousesAndHotels.houses} houses and $${currentCard.cardAction.amounts.hotel} per hotel with ${ownedHousesAndHotels.hotels} hotels.`
                 
                 players[currentPlayer].debts.push({amount: lossAmount, owedTo: -1, taxDescription: lossDescription})
                 clickAction+= `showOverlay({type: "tax", taxAmount: ${lossAmount}, taxDescription: "${lossDescription}"})`
                 break
+            //go to jail
             case "goToJail":
                 clickAction += "sendToJail(players[currentPlayer], 'card')"
                 break
+            //go to nearest tunnel and pay [multiplier]x rent or buy it
             case "nearestTunnel":
                 //TODO: finish this functionality
                 break
+            //pay x dollars
             case "loss":
                 if(canAfford(players[currentPlayer], currentCard.cardAction.amount)){
                     clickAction += `players[currentPlayer].money -= ${currentCard.cardAction.amount}`
                 }else{
                     clickAction += `players[currentPlayer].debts.push({amount: ${currentCard.cardAction.amount}, owedTo: -1, taxDescription: "Chance card: pay ${currentCard.cardAction.amount}."})`
                 }
+                break
+            //pay each player x dollars
+            case "payEachPlayer":
+                totalPrice = payEachPlayerPrice(currentCard.cardAction.amount)
+                if(canAfford(players[currentPlayer]), totalPrice){
+                    clickAction += `players[currentPlayer].money -= ${totalPrice}`
+                    addToAllPlayersExcept(currentPlayer, currentCard.cardAction.amount)
+                }else{
+                    clickAction += `players[currentPlayer].debts.push({amount: ${totalPrice}, owedTo: -1, taxDescription: "Chance card: pay each player ${currentCard.cardAction.amount}.", additionalAction: "addToAllPlayersExcept(${currentPlayer}, ${currentCard.cardAction.amount})"})`
+                }
+                break
+            
         }
         drawPossessions(players[currentPlayer])
 
         showOverlay({type: space.type, buttonText: currentCard.buttonText, isJail: currentCard.cardAction.type == "jail", clickAction: clickAction, cardText: currentCard.cardText})
 
-    // }else if(space.type == "chest"){
-    //     chestCard = getChest()
-    //     console.log(chestCard)
-    //     showOverlay({type: "chest", path: chestCard.path, buttonText: chestCard.buttonText, isJail: chestCard.cardAction.type == "jail"})
-    //     console.log("chance card")
     }else if(space.type == "corner"){
         if(space.cornerType == "goToJail"){
             sendToJail(players[currentPlayer], "space")
@@ -1234,6 +1246,16 @@ function landOnSpace(space){
         showOverlay({type:"tax", taxAmount: taxAmount, taxDescription: taxDescription})
     }
     updateNextActionButton()
+}
+
+function addToAllPlayersExcept(except, amount){
+    players.forEach(function (player, index) {
+        if(index != except){player.money += amount}
+    });
+}
+
+function payEachPlayerPrice(amount){
+    return (players.length - 1) * amount
 }
 
 function addHouses(set, price){
@@ -1396,7 +1418,7 @@ function ownsColorSet(property){
 }
 
 function getRent(tile){
-    console.log(tile)
+    // console.log(tile)
     if(tile.type == "property"){
         let rentText, rentAmount
         if(ownsColorSet(tile)){
@@ -1425,7 +1447,7 @@ function getRent(tile){
             }
         }
         tunnelRents = [25, 50, 100, 200]
-        console.log(tunnelCount+ " tunnels")
+        // console.log(tunnelCount+ " tunnels")
         return {rent: tunnelRents[tunnelCount-1], ownedTunnels: tunnelCount, rentType: "railroad"}
     //TODO: fix utility rent
     }else if(tile.type == "utility"){
@@ -1480,7 +1502,7 @@ function nextTurn(){
 }
 
 function initializeGame(){
-    console.log(gameInfo.playerNames)
+    // console.log(gameInfo.playerNames)
     initializePlayers(gameInfo.playerNames)
     drawPossessions(players[0])
     currentPlayer = 0
@@ -1524,9 +1546,9 @@ function getChance(){
     card = chanceCards.splice(0,1)[0]
     if(card.type != "jail"){
         chanceCards.push(card)
-        console.log("not a jail card")
+        // console.log("not a jail card")
     }
-    console.log(card)
+    // console.log(card)
     return card
 }
 
@@ -1535,7 +1557,7 @@ function getChest(){
     topCard = chestCards.splice(0,1)[0]
     if(topCard.type != "jail"){
         chestCards.push(topCard)
-        console.log("not a jail card")
+        // console.log("not a jail card")
     }
     return topCard
 }
@@ -1544,10 +1566,10 @@ function nextAction(){
     if(players[currentPlayer].debts.length > 0){
         debt = players[currentPlayer].debts[0]
         if(debt.owedTo == -1){
-            console.log(debt.taxDescription)
+            // console.log(debt.taxDescription)
             showOverlay({type: "tax", taxAmount: debt.amount, taxDescription: debt.taxDescription, additionalAction: (debt.additionalAction == null ? "" : debt.additionalAction)})
         }else{
-            console.log(debt)
+            // console.log(debt)
             showOverlay({type: "rent", rentAmount: debt.amount, rentText: debt.amount.rentText, recipient: debt.owedTo, property: debt.property})
         }
     }else if(players[currentPlayer].raisingFunds){
@@ -1747,12 +1769,12 @@ function checkSet(location){
 }
 
 function addProperty(player, location){
-    console.log("adding "+location+" to "+player.name)
+    // console.log("adding "+location+" to "+player.name)
     player.ownedProperties["set"+checkSet(location)].push(location)
 }
 
 function removeProperty(player, location){
-    console.log("removing "+location+" from "+player.name)
+    // console.log("removing "+location+" from "+player.name)
     player.ownedProperties["set"+checkSet(location)].splice(player.ownedProperties["set"+checkSet(location)].indexOf(location), 1)
 }
 

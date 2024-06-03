@@ -48,3 +48,20 @@ function header_draw_back(){
   }
 }
 
+function header_reveal_menu(){
+  document.getElementById("header_container").style.top = "0"
+  document.getElementById("header_container").style.opacity = 1
+  document.getElementById("header_reveal_button").setAttribute("onclick", "header_hide_menu()")
+  for(i=1;i<=3;i++){
+    document.getElementById(`header_menu_line${i}`).innerHTML = `<div></div>`
+  }
+}
+
+function header_hide_menu(){
+  document.getElementById("header_container").style.top = "calc(var(--header-scale)*-6)"
+  document.getElementById("header_container").style.opacity = 0
+  document.getElementById("header_reveal_button").setAttribute("onclick", "header_reveal_menu()")
+  for(i=1;i<=3;i++){
+    document.getElementById(`header_menu_line${i}`).innerHTML = ``
+  }
+}

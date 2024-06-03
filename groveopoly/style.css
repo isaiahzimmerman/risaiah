@@ -2,12 +2,13 @@
     --pss: max(min(.9vh, .9vw), 4px, min(.9vw, 1.1vh));
 }
 
-body{
+.body{
     font-family: isaiahFont;
     background-color: var(--theme-softbg-0);
     /* color: var(--theme-bw-1); */
     overflow: hidden;
     cursor: default;
+    margin-top: unset;
 }
 
 h1{
@@ -162,6 +163,11 @@ h1{
     top: 19%;
     left: 16%;
     rotate: -45deg;
+}
+
+div.chanceButton{
+    width: 15vh;
+    height: unset;
 }
 
 .chestPile{
@@ -804,6 +810,7 @@ div.jailplayers{
     left: 0;
     flex-direction: column;
     overflow-y: scroll;
+    z-index: 11;
 }
 
 .aspectRatioWarning{
