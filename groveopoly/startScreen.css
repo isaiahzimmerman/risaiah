@@ -73,7 +73,7 @@
     margin: 0.5vh;
 }
 
-.startName:hover{
+.startName:not(:has(.startNameInput)):hover{
     text-decoration: underline;
 }
 
@@ -122,6 +122,13 @@
 .cancelIconColors:hover{
     cursor: pointer;
     text-decoration: underline;
+}
+
+.iconColor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .iconColor:hover{
