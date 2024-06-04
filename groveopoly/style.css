@@ -561,7 +561,8 @@ div.jailplayers{
 }
 
 .playerToken{
-    width: 90%;
+    min-width: 90%;
+    min-height: 90%;
     aspect-ratio: 1;
     border-radius: 50%;
     border: calc(var(--pss) * 0.15) black solid;
