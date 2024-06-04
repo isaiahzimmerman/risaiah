@@ -13,6 +13,36 @@ h1{
     grid-template-columns: repeat(7, 1fr);
 }
 
+.credits{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(199, 199, 199);
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.credits div{
+    margin: 10px;
+}
+
+.viewCredits{
+    width: 100%;
+    text-align: center;
+}
+
+.viewCredits:hover{
+    
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .col{
     border: solid 7px blue;
     border-radius: 100%;
@@ -22,6 +52,50 @@ h1{
     justify-content: center;
     align-items: center;
     background-color: var(--theme-softbg-0);
+    pointer-events: auto;
+    
+}
+
+.hole{
+    background-color: transparent;
+    border-color: black;
+    /* clip-path: ; */
+}
+
+.up1, .up2, .up3, .up4, .up5, .up6{
+    left: calc(10%-3px);
+    position: absolute;
+}
+
+.up1{ top: calc((-100% - 14px) * 1 + 10px); }
+.up2{ top: calc((-100% - 14px) * 2 + 10px); }
+.up3{ top: calc((-100% - 14px) * 3 + 10px); }
+.up4{ top: calc((-100% - 14px) * 4 + 10px); }
+.up5{ top: calc((-100% - 14px) * 5 + 10px); }
+.up6{ top: calc((-100% - 14px) * 6 + 10px); }
+
+.inPlace{
+    position: absolute;
+    top:7px;
+    display: flex;
+}
+
+.mainContainer{
+    position: relative;
+}
+
+.main{
+    position: relative;
+    width: fit-content;
+}
+
+.gameBoardMask{
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
 }
 
 .piece{
@@ -29,6 +103,12 @@ h1{
     height: 80%;
     border: solid 3px black;
     border-radius: 100%;
+    position: relative;
+    transition: top 1s cubic-bezier(0.42, 0, 1, 1);
+}
+
+img{
+    position: relative;
 }
 
 .information{

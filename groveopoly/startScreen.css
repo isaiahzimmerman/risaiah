@@ -57,6 +57,10 @@
     margin-left: 2.5vh;
 }
 
+.startName:hover{
+    cursor: pointer;
+}
+
 .startNameInput{
     /* margin: 0.5vh; */
     width: 14vh;
@@ -153,4 +157,5 @@ div.startButtonLoading{
 
 div.startButtonLoading:hover{
     background-color: white;
+    cursor: unset;
 }

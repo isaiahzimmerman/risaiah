@@ -34,36 +34,8 @@ chanceCards = [
 ]
 
 chestCards = [
-    // x move to go
-    {buttonText: "Move", cardAction: {type: "move", loc: "c0"}, cardText: "Move to GO, collect $200."},
-    // x +200
-    {buttonText: "+200", cardAction: {type: "gain", amount: 200}},
-    // x +100
-    {buttonText: "+100", cardAction: {type: "gain", amount: 100}},
-    // x +100
-    {buttonText: "+100", cardAction: {type: "gain", amount: 100}},
-    // x +100
-    {buttonText: "+100", cardAction: {type: "gain", amount: 100}},
-    // x +45
-    {buttonText: "+45", cardAction: {type: "gain", amount: 45}},
-    // x +25
-    {buttonText: "+25", cardAction: {type: "gain", amount: 25}},
-    // x +20
-    {buttonText: "+20", cardAction: {type: "gain", amount: 20}},
-    // x +10
-    {buttonText: "+10", cardAction: {type: "gain", amount: 10}},
-    // x -150
-    {buttonText: "-150", cardAction: {type: "loss", amount: 150}},
-    // x -100
-    {buttonText: "-100", cardAction: {type: "loss", amount: 100}},
-    // x -50
-    {buttonText: "-50", cardAction: {type: "loss", amount: 50}},
-    // x +50 from every player
-    {buttonText: "fix me", cardAction: {type: "gain", amount: 0}, cardText: "fix me pls. cards.js line 61"},
+    
     // x -40 per house 115 per hotel
     {buttonText: "lose money per house and hotel", cardAction: {type: "lossPerHouseAndHotel", amounts: {house:40, hotel: 115}}, cardText: "LOSE $40 PER HOUSE AND $115 PER HOTEL"},
-    // x go to jail
-    {buttonText: "go to jail", cardAction: {type: "goToJail"}, cardText: "Go to jail."},
-    // x get out of jail
-    {buttonText: "stash", cardAction: {type: "jail"}},
+    
 ]

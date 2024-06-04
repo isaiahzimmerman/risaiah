@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connect Four</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
     <!-- header -->
@@ -20,6 +21,13 @@
     <h1>Connect Four</h1>
     <div class="divider"></div>
     <div class="information" id="information">Current Player: <span id="info"></span></div>
-    <div id="main" class="main"></div>
+    <div id="mainContainer" class="mainContainer"></div>
+    <div id="credits" class="credits" onclick="hideCredits()">
+        <div>Sound: Connect 4 by discokingmusic -- <a href="https://freesound.org/s/271387/">https://freesound.org/s/271387/</a> -- License: Attribution 4.0</div>
+        <div>(Click anywhere to exit)</div>
+    </div>
+    <div class="viewCredits" onclick="showCredits()">
+        View Credits
+    </div>
 </body>
 </html>

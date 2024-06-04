@@ -3,11 +3,20 @@ oppPlayer = ['y','#CCAA00','Yellow']
 
 gameOver = false
 
+turnGoing = false
+
 boardState = new Array(7)
 //console.log(boardState)
 
+function preloadImage(url){
+    new Image().src=url;
+    // console.log(url)
+}
+
 function drawBoard(){
-    gameBoard = ""
+    gameBoardMask = `<img src="gameMask.svg" class="gameBoardMask">`
+
+    gameBoard = `<div id="main" class="main">`
     for(i=0; i<6; i++)
     {
         gameBoard += `<div class = "row">`
@@ -32,7 +41,9 @@ function drawBoard(){
         }
         gameBoard += `</div>`
     }
-    document.getElementById("main").innerHTML = gameBoard
+    gameBoard += `${gameBoardMask}</div>`
+
+    document.getElementById("mainContainer").innerHTML = gameBoard
 
     if(!gameOver){
         document.getElementById("info").style.color = currentPlayer[1]
@@ -40,20 +51,37 @@ function drawBoard(){
     }
 }
 
+var fallingSound
+var hitSound
+
 function onLoad()
 {
+    preloadImage("red_piece.svg")
+    preloadImage("yellow_piece.svg")
+    preloadImage("retry.svg")
+
     for(i=0; i<7; i++){
         boardState[i] = new Array(6).fill("")
     }
     drawBoard()
+    fallingSound = new Howl({
+        src: ['connect4_1.mp3']
+    });
+    hitSound = new Howl({
+        src: ['connect4_2.mp3']
+    });
 }
 
 function placePiece(column)
 {
+    if (turnGoing){return}
+    turnGoing = true
     if(gameOver)
     {
         return
     }
+
+    fallTime = 0
 
     //console.log(column)
     try
@@ -62,9 +90,19 @@ function placePiece(column)
         {
             if(boardState[column][i]=="")
             {
+                fallingSound.play()
                 boardState[column][i] = currentPlayer[0]
-                //console.log(`placed in column ${column}`)
-                document.getElementById("information").innerHTML = `Current Player: <span id="info"></span>`
+                console.log(`placed in column ${column}`)
+                document.getElementById(`${i},${column}`).innerHTML=`<img id="piece${i},${column}" class="piece up${i+1}" src="${currentPlayer[0] == "r" ? "red_piece.svg" : "yellow_piece.svg"}">`
+                piece = document.getElementById(`piece${i},${column}`)
+                fallTime = Math.sqrt((i+1)/60)*1000
+                piece.style["transition-duration"] = `${fallTime/1000}s`
+                console.log(piece.style)
+                setTimeout(() => {
+                    piece.classList.toggle("inPlace")
+                    piece.classList.toggle(`up${i+1}`)
+                }, 0);
+                
                 break
             }
             if(i==0){
@@ -89,12 +127,14 @@ function placePiece(column)
             //console.log(document.getElementById("information"))
             document.getElementById("information").innerHTML = `${oppPlayer[2]} has won! <span onclick="newGame()" class="retry"><img src="retry.svg"></span>`
             gameOver = true;
+            turnGoing = false
         }
 
         if(isFull())
         {
             document.getElementById("information").innerHTML = `It's a draw! <span onclick="newGame()" class="retry"><img src="retry.svg"></span>`
             gameOver = true;
+            turnGoing = false
         }
     }
     catch(e)
@@ -102,7 +142,12 @@ function placePiece(column)
         console.log(e)
         document.getElementById("information").innerHTML = `Column is full, try again! Current Player: <span id="info"></span>`
     }
-    drawBoard()
+    //wait .5 s
+    setTimeout(() => {
+        drawBoard()
+        turnGoing = false
+        hitSound.play()
+    }, fallTime);
 }
 
 function checkWin(player)
@@ -164,6 +209,14 @@ function checkWin(player)
     return false
 }
 
+function showCredits(){
+    document.getElementById("credits").style.display="flex"
+}
+
+function hideCredits(){
+    document.getElementById("credits").style.display="none"
+}
+
 function newGame()
 {
     //resets current player
@@ -175,6 +228,7 @@ function newGame()
 
     //allows user input
     gameOver = false
+    turnGoing = false
 
     //makes red first
     currentPlayer = ['r','#801500','Red']

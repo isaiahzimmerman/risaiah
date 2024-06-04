@@ -25,6 +25,7 @@ function shuffle(array, seed) {                // <-- ADDED ARGUMENT
 
 function siteLoad(){
     preloadAllImages(); checkAspectRatio(); onresize = checkAspectRatio
+    ondragstart= function(){return false};
 }
 
 function checkAspectRatio(){
@@ -1196,10 +1197,15 @@ function landOnSpace(space){
 
                 // console.log(`chance action: lose per house and hotel. lose ${lossAmount}`)
 
-                lossDescription = `Taxed $${currentCard.cardAction.amounts.house} per house with ${ownedHousesAndHotels.houses} houses and $${currentCard.cardAction.amounts.hotel} per hotel with ${ownedHousesAndHotels.hotels} hotels.`
+                if(lossAmount > 0){
+                    lossDescription = `Taxed $${currentCard.cardAction.amounts.house} per house with ${ownedHousesAndHotels.houses} house${ownedHousesAndHotels.houses != 1 ? "s" : ""} and $${currentCard.cardAction.amounts.hotel} per hotel with ${ownedHousesAndHotels.hotels} hotel${ownedHousesAndHotels.hotels != 1 ? "s" : ""}.`
                 
-                players[currentPlayer].debts.push({amount: lossAmount, owedTo: -1, taxDescription: lossDescription})
-                clickAction+= `showOverlay({type: "tax", taxAmount: ${lossAmount}, taxDescription: "${lossDescription}"})`
+                    players[currentPlayer].debts.push({amount: lossAmount, owedTo: -1, taxDescription: lossDescription})
+    
+                    clickAction+= `showOverlay({type: "tax", taxAmount: ${lossAmount}, taxDescription: "${lossDescription}"})`
+                }else{
+                    clickAction+= `showOverlay({type: "alert", alertMessage: "No houses or hotels to be taxed!"})`
+                }
                 break
             //go to jail
             case "goToJail":
@@ -1707,7 +1713,19 @@ currentAuction = {
 }
 
 function getBids(currentBid){
-    return [currentBid+5, 10*Math.ceil((currentBid+5)/10), 50*Math.ceil((currentBid+5)/50)]
+    bids = [
+        currentBid+5,
+        10*Math.ceil((currentBid+5)/10),
+        50*Math.ceil((currentBid+5)/50)
+    ]
+    if(bids[1] == bids[0]){
+        bids[1] = 10*Math.ceil((bids[0]+1)/10)
+        bids[2] = 50*Math.ceil((bids[0]+1)/50)
+    }
+    if(bids[2] == bids[1]){
+        bids[2] = 50*Math.ceil((bids[1]+1)/50)
+    }
+    return bids
 }
 
 function bidOnProperty(playerNum, price){
@@ -1729,7 +1747,7 @@ function endAuction(){
 
 function drawAuctionPrices(){
     bidPrices = getBids(currentAuction.currentBid)
-    auctionHTML = ""
+    auctionHTML = `<div class="auctionImageContainer"><img class="auctionImage" src="assets/properties/${currentAuction.property}.svg"><div class="auctionNormalPrice">Normal Price: $${tilesList[currentAuction.property].price}</div></div><div class="auctionContainer">`
     if(!isNaN(currentAuction.currentPlayer)){
         auctionHTML += `<div class="currentHighestBidder">Highest Bidder: ${players[currentAuction.currentPlayer].name} ($${currentAuction.currentBid})</div>`
     }
@@ -1749,6 +1767,7 @@ function drawAuctionPrices(){
     if(!isNaN(currentAuction.currentPlayer)){
         auctionHTML += `<div class="endAuctionContainer"><div class="buttonClickable customButton" onclick="endAuction()">End Auction</div></div>`
     }
+    auctionHTML+=`</div>`
     document.getElementById("auctionOverlay").innerHTML = auctionHTML
 }
 
