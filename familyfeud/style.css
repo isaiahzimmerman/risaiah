@@ -1,0 +1,17 @@
+body{
+    font-family: 'Ubuntu';
+    background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
+}
+
+h1{
+    text-align: center;
+}
+
+.startOptions{
+    display: none;
+}
+
+.viewOption{
+    display: none;
+}

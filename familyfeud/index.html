@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- ably -->
+    <script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
+    <!-- ably -->
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <!-- font -->
+    <!-- header -->
+    <!-- <script src="/assets/header/header.js"></script> -->
+    <!-- <link rel="stylesheet" href="/assets/header/header.css"> -->
+    <!-- header -->
+</head>
+<body>
+    <!-- header -->
+    <!-- <div w3-include-html="/assets/header/header.html"></div> -->
+    <!-- <script>includeHTML()</script> -->
+    <!-- header -->
+    <div id="apiKeyContainer">
+        <h1>Family Feud</h1>
+        <input type="text" id="apiKeyInput" placeholder="api key">
+        <button onclick="registerAPIKey()">submit</button>
+    </div>
+    <div id="startOptions" class="startOptions">
+        <h1>Family Feud</h1>
+        <button onclick="chooseView('controlPanel')">control panel</button>
+        <button onclick="chooseView('familyScoreContainer1')">family score 1</button>
+        <button onclick="chooseView('familyScoreContainer2')">family score 2</button>
+        <button onclick="chooseView('questions')">questions</button>
+    </div>
+    <div class="viewOption" id="controlPanel">
+        control panel
+        <div>family score 1: <span id="cpfamilyScore1">0</span></div>
+        <input type="text" id="cpnewScoreFamily1"><button onclick="updateScoreByID(1, 'cpnewScoreFamily1')">update</button>
+        <div>family score 2: <span id="cpfamilyScore2">0</span></div>
+        <input type="text" id="cpnewScoreFamily2"><button onclick="updateScoreByID(2, 'cpnewScoreFamily2')">update</button>
+    </div>
+    <div class="viewOption" id="familyScoreContainer1">
+        <div class="familyName">family score 1</div>
+        <div class="familyScore" id="familyScore1">0</div>
+    </div>
+    <div class="viewOption" id="familyScoreContainer2">
+        <div>family score 2</div>
+        <div id="familyScore2">0</div>
+    </div>
+    <div class="viewOption" id="questions">
+        questions
+        <div>
+            <div id="question1"></div>
+            <div id="question2"></div>
+            <div id="question3"></div>
+            <div id="question4"></div>
+            <div id="question5"></div>
+            <div id="question6"></div>
+            <div id="question7"></div>
+            <div id="question8"></div>
+        </div>
+    </div>
+</body>
+</html>
