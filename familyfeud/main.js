@@ -51,6 +51,8 @@ async function startAbly(){
         console.log(message.data.property+" : " + message.data.value)
         if(message.data.property == "question"){
             drawQuestion(message.data.value)
+        }else if(message.data.property == "x"){
+            showFFXs(parseInt(message.data.value), 2)
         }else{
             document.getElementById(message.data.property).innerHTML = message.data.value
         }
@@ -164,4 +166,15 @@ function drawQuestion(question){
         }
         document.getElementById(`question${i}`).outerHTML = questionHTML
     };
+}
+
+function showFFXs(amount, seconds){
+    xsHTML = ""
+    for(i=0; i<amount; i++){
+        xsHTML += `<img class="familyFeudX" src="assets/familyFeudX.png" alt="">`
+    }
+    document.getElementById("wrongAnswers").innerHTML = xsHTML
+    setTimeout(() => {
+        document.getElementById("wrongAnswers").innerHTML = ""
+    }, seconds * 1000);
 }
