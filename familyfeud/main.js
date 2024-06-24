@@ -33,6 +33,13 @@ API_KEY = null
 let ably
 let channel
 
+questionPoints = 0
+
+let gameInfo = {
+    familyScore1: 0,
+    familyScore2: 0,
+}
+
 
 async function startAbly(){
     ably = new Ably.Realtime(API_KEY);
@@ -42,7 +49,11 @@ async function startAbly(){
     channel = ably.channels.get("get-started")
     await channel.subscribe("first", (message) => {
         console.log(message.data.property+" : " + message.data.value)
-        document.getElementById(message.data.property).innerHTML = message.data.value
+        if(message.data.property == "question"){
+            drawQuestion(message.data.value)
+        }else{
+            document.getElementById(message.data.property).innerHTML = message.data.value
+        }
     });
 }
 
@@ -50,14 +61,48 @@ async function sendUpdate(property, value){
     await channel.publish("first", {property: property, value: value})
 }
 
+function sendQuestionUpdate(){
+    dropdownChoice = document.getElementById('questionDropdown').value
+    questionPoints = 0
+    if(dropdownChoice != "none"){
+        currentQuestion = questions[document.getElementById('questionDropdown').value]
+        for(i=0; i<currentQuestion.answers.length; i++){
+            currentQuestion.answers[i].answered = document.getElementById(`cpShowAnswerBox${i}`).checked
+            currentQuestion.answers[i].addToScore = document.getElementById(`cpAddToScoreBox${i}`).checked
+            if(document.getElementById(`cpAddToScoreBox${i}`).checked){
+                questionPoints += currentQuestion.answers[i].points
+            }
+        }
+        sendUpdate('question', currentQuestion)
+        sendUpdate('questionsScore', questionPoints)
+        
+    }else{
+        sendUpdate('question', {answers: []})
+        sendUpdate('questionsScore', 0)
+    }
+    sendUpdate('cphypotheticalScore1', ` + ${questionPoints} = ${gameInfo.familyScore1 + questionPoints}`)
+    sendUpdate('cphypotheticalScore2', ` + ${questionPoints} = ${gameInfo.familyScore2 + questionPoints}`)
+}
+
 function chooseView(view){
     document.getElementById("startOptions").style.display = "none"
-    document.getElementById(view).style.display = "unset"
+    document.getElementById(view).style.display = "flex"
+    initializeControlPanel()
+    drawQuestion({answers: []})
+}
+
+function updateNameByID(team, id){
+    sendUpdate(`familyName${team}`, document.getElementById(id).value)
+    sendUpdate(`cpfamilyName${team}`, document.getElementById(id).value)
+    document.getElementById(id).value = ""
 }
 
 function updateScoreByID(team, id){
     sendUpdate(`familyScore${team}`, document.getElementById(id).value)
+    gameInfo[`familyScore${team}`] = parseInt(document.getElementById(id).value)
     sendUpdate(`cpfamilyScore${team}`, document.getElementById(id).value)
+    sendUpdate(`cphypotheticalScore${team}`, ` + ${questionPoints} = ${gameInfo[`familyScore${team}`] + questionPoints}`)
+    
     document.getElementById(id).value = ""
 }
 
@@ -66,8 +111,57 @@ function registerAPIKey(){
     try{
         startAbly()
         document.getElementById("startOptions").style.display = "unset"
-        document.getElementById("apiKeyContainer").style.display = "unset"
+        document.getElementById("apiKeyContainer").style.display = "none"
     }catch (e){
         console.log(e)
     }
+}
+
+function cpupdateQuestion(){
+    cpQuestionHTML = ""
+    questionSelection = document.getElementById("questionDropdown").value
+    if(questionSelection == "none"){
+
+    }else if(questions[questionSelection] == null){
+
+    }else{
+        currentQuestion = questions[questionSelection]
+        currentQuestion.answers.forEach(function(element, index) {
+            cpQuestionHTML += `<div>${element.answer}: ${element.points} points. Show answer? <input type="checkbox" id="cpShowAnswerBox${index}" ${element.answered ? "checked" : ""}> Add to score? <input type="checkbox" id="cpAddToScoreBox${index}" ${element.addToScore != null && element.addToScore == true ? "checked" : ""}></div>`
+        });
+    }
+    document.getElementById("cpQuestion").innerHTML = cpQuestionHTML
+}
+
+function initializeControlPanel(){
+    questionDropdownHTML = "<option value='none'>none</option>"
+    questions.forEach(function(element,index) {
+        questionDropdownHTML += `<option value=${index}>${element.question}</option>`
+    });
+    document.getElementById("questionDropdown").innerHTML = questionDropdownHTML
+    document.getElementById("questionDropdown").onchange = cpupdateQuestion;
+}
+
+function drawQuestion(question){
+    q = 0
+    for(i=1; i<=8; i++){
+        numAnswers = question.answers.length
+        questionHTML = ""
+        if((i<=4 && Math.ceil(numAnswers/2) - (i) < 0) || (i<=8 && i>=5 && Math.floor(numAnswers/2) - (i - 4) < 0)){
+            questionHTML += `<div class="question unansweredQuestion" id="question${i}"></div>`
+        }else 
+        {
+            element = question.answers[q]
+            if(element.answered){
+                questionHTML += `<div class="question answeredQuestion" id="question${i}">
+                    <div class="answeredQuestionTextContainer"><div class="answeredQuestionText">${element.answer}</div></div>
+                    <div class="answeredQuestionPoints">${element.points}</div>
+                </div>`
+            }else{
+                questionHTML += `<div class="question unansweredQuestion" id="question${i}"><div class="unansweredQuestionNum">${q+1}</div></div>`
+            }
+            q++
+        }
+        document.getElementById(`question${i}`).outerHTML = questionHTML
+    };
 }

@@ -8,6 +8,7 @@
     <!-- ably -->
     <script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
     <!-- ably -->
+    <script src="questions.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
     <!-- font -->
@@ -37,32 +38,81 @@
         <button onclick="chooseView('familyScoreContainer2')">family score 2</button>
         <button onclick="chooseView('questions')">questions</button>
     </div>
-    <div class="viewOption" id="controlPanel">
+    <div class="viewOption controlPanel" id="controlPanel">
         control panel
-        <div>family score 1: <span id="cpfamilyScore1">0</span></div>
-        <input type="text" id="cpnewScoreFamily1"><button onclick="updateScoreByID(1, 'cpnewScoreFamily1')">update</button>
-        <div>family score 2: <span id="cpfamilyScore2">0</span></div>
-        <input type="text" id="cpnewScoreFamily2"><button onclick="updateScoreByID(2, 'cpnewScoreFamily2')">update</button>
-    </div>
-    <div class="viewOption" id="familyScoreContainer1">
-        <div class="familyName">family score 1</div>
-        <div class="familyScore" id="familyScore1">0</div>
-    </div>
-    <div class="viewOption" id="familyScoreContainer2">
-        <div>family score 2</div>
-        <div id="familyScore2">0</div>
-    </div>
-    <div class="viewOption" id="questions">
-        questions
+        <div>family score 1: <span id="cpfamilyScore1">0</span><span class="cphypotheticalScore" id="cphypotheticalScore1"></span></div>
         <div>
-            <div id="question1"></div>
-            <div id="question2"></div>
-            <div id="question3"></div>
-            <div id="question4"></div>
-            <div id="question5"></div>
-            <div id="question6"></div>
-            <div id="question7"></div>
-            <div id="question8"></div>
+            <input type="text" id="cpnewScoreFamily1"><button onclick="updateScoreByID(1, 'cpnewScoreFamily1')">update</button>  
+        </div>
+        <div>family score 2: <span id="cpfamilyScore2">0</span><span class="cphypotheticalScore" id="cphypotheticalScore2"></span></div>
+        <div>
+            <input type="text" id="cpnewScoreFamily2"><button onclick="updateScoreByID(2, 'cpnewScoreFamily2')">update</button>
+        </div>
+        <div>family name 1: <span id="cpfamilyName1">0</span></div>
+        <div>
+            <input type="text" id="cpnewNameFamily1"><button onclick="updateNameByID(1, 'cpnewNameFamily1')">update</button>
+        </div>
+        <div>family name 2: <span id="cpfamilyName2">0</span></div>
+        <div>
+            <input type="text" id="cpnewNameFamily2"><button onclick="updateNameByID(2, 'cpnewNameFamily2')">update</button>
+        </div>
+        <label for="questionDropdown">Choose a question:</label>
+        <div>
+            <select name="questionDropdown" id="questionDropdown">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+            <button onclick="sendQuestionUpdate()">update question</button>
+        </div>
+        <div id="cpQuestion">
+        </div>
+    </div>
+    <div class="viewOption familyScoreContainer" id="familyScoreContainer1">
+        <div class="familyScoreBG">
+            <div class="familyText familyName" id="familyName1">FAMILY SCORE 1</div>
+        </div>
+        <div class="familyScoreBG">
+            <div class="familyText familyScore" id="familyScore1">0</div>
+        </div>
+    </div>
+    <div class="viewOption familyScoreContainer" id="familyScoreContainer2">
+        <div class="familyScoreBG">
+            <div class="familyText familyName" id="familyName2">FAMILY SCORE 2</div>
+        </div>
+        <div class="familyScoreBG">
+            <div class="familyText familyScore" id="familyScore2">0</div>
+        </div>
+    </div>
+    <div class="viewOption questions" id="questions">
+        <div class="familyScoreBG questionsScoreContainer">
+            <div class="familyText questionsScore" id="questionsScore">
+                0
+            </div>
+        </div>
+        <div class="questionContainer">
+            <div class="question unansweredQuestion" id="question1">
+                <div class="unansweredQuestionNum">
+                    6
+                </div>
+            </div>
+            <div class="question answeredQuestion" id="question5">
+                <div class="answeredQuestionTextContainer">
+                    <div class="answeredQuestionText">
+                        TEXT ANSWER
+                    </div>
+                </div>
+                <div class="answeredQuestionPoints">
+                    35
+                </div>
+            </div>
+            <div class="question unansweredQuestion" id="question2"></div>
+            <div class="question" id="question6"></div>
+            <div class="question" id="question3"></div>
+            <div class="question" id="question7"></div>
+            <div class="question" id="question4"></div>
+            <div class="question" id="question8"></div>
         </div>
     </div>
 </body>
