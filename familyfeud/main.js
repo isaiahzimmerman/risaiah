@@ -156,7 +156,7 @@ function drawQuestion(question){
             element = question.answers[q]
             if(element.answered){
                 questionHTML += `<div class="question answeredQuestion" id="question${i}">
-                    <div class="answeredQuestionTextContainer"><div class="answeredQuestionText">${element.answer}</div></div>
+                    <div class="answeredQuestionTextContainer"><div class="answeredQuestionText" id="answeredQuestionText${i}">${element.answer}</div></div>
                     <div class="answeredQuestionPoints">${element.points}</div>
                 </div>`
             }else{
@@ -166,6 +166,24 @@ function drawQuestion(question){
         }
         document.getElementById(`question${i}`).outerHTML = questionHTML
     };
+    
+    q=0
+    numAnswers = question.answers.length
+    for(i=1; i<=numAnswers; i++){
+        element = question.answers[q]
+        if(element.answered){
+            aqtbcr = document.getElementById(`answeredQuestionText${i}`).getBoundingClientRect()
+            if(aqtbcr.width/aqtbcr.height > 6.603){
+                document.getElementById(`answeredQuestionText${i}`).style.transform = `scale(${6.603/(aqtbcr.width/aqtbcr.height)}, 1)`
+                document.getElementById(`answeredQuestionText${i}`).style.marginLeft = `${(get1vh() - (1-6.603/(aqtbcr.width/aqtbcr.height))*aqtbcr.width/2)/get1vh()}vh`
+            }
+        }
+        q++
+    };
+}
+
+function get1vh(){
+    return document.getElementById("vh1").getBoundingClientRect().height
 }
 
 function showFFXs(amount, seconds){

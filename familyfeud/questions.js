@@ -8,5 +8,15 @@ questions = [
         {answer: "BIKE", points: 10, answered: false},
         // {answer: "answer 7", points: 10, answered: false},
     ]},
+    {question: "Name a House You Never Want to Be In", answers: [
+        {answer: "HAUNTED HOUSE", points: 27},
+        {answer: "JAIL/BIG HOUSE", points: 11},
+        {answer:"DOGHOUSE", points:8},
+        {answer:"DRUG HOUSE", points:7},
+        {answer:"SMALL HOUSE", points:7},
+        {answer:"GLASS HOUSE", points:6},
+        {answer:"CAT HOUSE", points:5},
+        {answer:"OUTHOUSE LOL THIS IS FUNNY", points:5},
 
+    ]},
 ]

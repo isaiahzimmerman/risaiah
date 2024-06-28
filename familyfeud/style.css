@@ -23,6 +23,7 @@ h1{
 
 .question{
     width: 96%;
+    max-width: 96%;
     height: 80%;
     background-color: antiquewhite;
     border: 0.7vh solid rgb(255, 255, 255);
@@ -68,6 +69,7 @@ h1{
 
 .answeredQuestionText{
     margin-left: 1vh;
+    text-wrap: nowrap;
 }
 
 .answeredQuestionPoints{
@@ -137,10 +139,11 @@ h1{
     width: 120vh;
     height: 50vh;
     grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     border-radius: 2vh;
     border: 1vh solid rgb(255, 239, 114);
     padding: 1vh;
+    overflow: hidden;
 }
 
 .questionsScore{
@@ -172,4 +175,11 @@ h1{
 
 .familyFeudX{
     width: 30%;
+}
+
+.vh1{
+    height: 1vh;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
