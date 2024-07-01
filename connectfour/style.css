@@ -44,7 +44,7 @@ h1{
 }
 
 .col{
-    border: solid 7px blue;
+    border: solid 1vw blue;
     border-radius: 100%;
     height: min(10vw, 90px);
     width: min(10vw, 90px);
@@ -67,12 +67,12 @@ h1{
     position: absolute;
 }
 
-.up1{ top: calc((-100% - 14px) * 1 + 10px); }
-.up2{ top: calc((-100% - 14px) * 2 + 10px); }
+.up1{ top: calc((-100% - 2vw) * 1 + 10px); }
+.up2{ top: calc((-100% - 2vw) * 2 + 10px); }
 .up3{ top: calc((-100% - 14px) * 3 + 10px); }
-.up4{ top: calc((-100% - 14px) * 4 + 10px); }
-.up5{ top: calc((-100% - 14px) * 5 + 10px); }
-.up6{ top: calc((-100% - 14px) * 6 + 10px); }
+.up4{ top: calc((-100% - 2vw) * 4 + 10px); }
+.up5{ top: calc((-100% - 2vw) * 5 + 10px); }
+.up6{ top: calc((-100% - 2vw) * 6 + 10px); }
 
 .inPlace{
     position: absolute;

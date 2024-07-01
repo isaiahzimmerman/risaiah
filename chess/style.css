@@ -8,22 +8,37 @@ h1{
     text-align: center;
 }
 
+.boardContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .piece {
   position: relative;
-  width: 50%;
-  z-index: 9;
+  width: 90%;
+  height: 90%;
+  z-index: 1;
   text-align: center;
   cursor: move;
-  background-color: blue;
-  color: beige;
-  border: 1px solid;
+  /* border: 1px solid; */
+}
+
+img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.pieceImg{
+  width: 100%;
 }
 
 .cell{
   background-color: antiquewhite;
   /* TODO: scaling */
-  width: 8vh;
-  height: 8vh;
+  width: 10vh;
+  height: 10vh;
 }
 
 .cellRow{
@@ -42,15 +57,14 @@ h1{
   aspect-ratio: 1;
   width: fit-content;
   height: fit-content;
-  
 }
 
 .blackPiece{
-  background-color: black;
-  color: white;
+  /* background-color: black; */
+  /* color: white; */
 }
 
 .whitePiece{
-  background-color: #f1f1f1;
-  color: #7e7e7e;
+  /* background-color: #f1f1f1; */
+  /* color: #7e7e7e; */
 }

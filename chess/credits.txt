@@ -1,0 +1,3 @@
+pixel chess pieces: https://dani-maccari.itch.io/pixel-chess
+
+TODO: actually center pieces in spot on board

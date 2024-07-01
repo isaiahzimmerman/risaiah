@@ -8,43 +8,34 @@ function initializeCellGrid(){
       if(i==0){
         if(j==0 || j==7){
           cellGrid[i][j] = {type: "rook", color: "white"}
-          cellGrid[i][j].pos = {x:i,y:j}
         }else if(j==1 || j==6){
           cellGrid[i][j] = {type: "knight", color: "white"}
-          cellGrid[i][j].pos = {x:i,y:j}
         }else if(j==2 || j==5){
           cellGrid[i][j] = {type: "bishop", color: "white"}
-          cellGrid[i][j].pos = {x:i,y:j}
         }else if(j==3){
           cellGrid[i][j] = {type: "king", color: "white"}
-          cellGrid[i][j].pos = {x:i,y:j}
         }else if(j==4){
           cellGrid[i][j] = {type: "queen", color: "white"}
-          cellGrid[i][j].pos = {x:i,y:j}
         }
       }else if(i==1){
         cellGrid[i][j] = {type: "pawn", color: "white"}
-        cellGrid[i][j].pos = {x:i,y:j}
       }else if(i==6){
         cellGrid[i][j] = {type: "pawn", color: "black"}
-        cellGrid[i][j].pos = {x:i,y:j}
       }else if(i==7){
         if(j==0 || j==7){
           cellGrid[i][j] = {type: "rook", color: "black"}
-          cellGrid[i][j].pos = {x:i,y:j}
         }else if(j==1 || j==6){
           cellGrid[i][j] = {type: "knight", color: "black"}
-          cellGrid[i][j].pos = {x:i,y:j}
         }else if(j==2 || j==5){
           cellGrid[i][j] = {type: "bishop", color: "black"}
-          cellGrid[i][j].pos = {x:i,y:j}
         }else if(j==3){
           cellGrid[i][j] = {type: "king", color: "black"}
-          cellGrid[i][j].pos = {x:i,y:j}
         }else if(j==4){
           cellGrid[i][j] = {type: "queen", color: "black"}
-          cellGrid[i][j].pos = {x:i,y:j}
         }
+      }
+      if(cellGrid[i][j] !=null){
+        cellGrid[i][j].pos = {x:j,y:i}
       }
     }
   }
@@ -61,7 +52,7 @@ function drawBoard(){
       currentPiece = cellGrid[i][j]
 
       if(currentPiece != null){
-          boardHTML+= `<div id="piece${i*8+j}" class="piece ${currentPiece.color}Piece">${currentPiece.type}</div>` 
+          boardHTML+= `<div id="piece${i*8+j}" class="piece ${currentPiece.color}Piece"><img class="pieceImg" src="assets/pieces/${currentPiece.color}/${currentPiece.type}.png"></div>` 
       }
 
       boardHTML += `</div>`
@@ -97,25 +88,20 @@ function updateBoard(){
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-  if (document.getElementById(elmnt.id + "header")) {
-    /* if present, the header is where you move the DIV from:*/
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
-    /* otherwise, move the DIV from anywhere inside the DIV:*/
-    elmnt.onmousedown = dragMouseDown;
-  }
+  elmnt.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
     e = e || window.event;
     e.preventDefault();
     // get the mouse cursor position at startup:
-    elmntBounds = elmnt.getBoundingClientRect()
-    startingCell = getClosestCell({x: elmntBounds.x, y: elmntBounds.y})
+    
     pos3 = e.clientX;
     pos4 = e.clientY;
     document.onmouseup = closeDragElement;
     // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
+    elmnt.style.zIndex = "2"
+    console.log(elmnt.style)
   }
 
   function elementDrag(e) {
@@ -124,11 +110,7 @@ function dragElement(elmnt) {
     // calculate the new cursor position:
     pos1 = e.clientX - pos3;
     pos2 = e.clientY - pos4;
-    // set the element's new position:
-    // console.log(elmnt)
-
-    //objective position of cell top = o
-    //pos - o
+    
     elmnt.style.top = (pos2) + "px";
     elmnt.style.left = (pos1) + "px";
   }
@@ -139,10 +121,14 @@ function dragElement(elmnt) {
     document.onmousemove = null;
 
     elmntBounds = elmnt.getBoundingClientRect()
-    closestCell = getClosestCell({x: elmntBounds.x, y: elmntBounds.y})
-    cellGrid[closestCell.y][closestCell.x] = cellGrid[startingCell.y][startingCell.x]
-    cellGrid[startingCell.y][startingCell.x] = null
-    drawBoard()
+    closestCell = getClosestCell(getCenter(elmntBounds))
+    startingCell = getClosestCell({x: pos3, y: pos4})
+
+    if(closestCell!=null){
+      attemptMove(cellGrid[startingCell.y][startingCell.x], closestCell)
+    }else{
+      attemptMove(cellGrid[startingCell.y][startingCell.x], startingCell)
+    }
   }
 }
 
@@ -161,6 +147,25 @@ function getClosestCell(pos /* obj */){
       }
     }
   }
+}
+
+function getPiece(pos){
+  return cellGrid[pos.y][pos.x]
+}
+
+function copyPiece(piece){
+  return {type: piece.type, color: piece.color, pos: {x: piece.x, y: piece.y}}
+}
+
+function attemptMove(piece, destination){
+  startingCell = {x: piece.pos.x, y: piece.pos.y}
+
+  movedPiece = copyPiece(piece)
+  movedPiece.pos = {x: destination.x, y: destination.y}
+
+  cellGrid[startingCell.y][startingCell.x] = null
+  cellGrid[destination.y][destination.x] = movedPiece
+  drawBoard()
 }
 
 //^ from https://www.w3schools.com/howto/howto_js_draggable.asp
