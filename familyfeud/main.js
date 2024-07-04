@@ -38,7 +38,11 @@ questionPoints = 0
 let gameInfo = {
     familyScore1: 0,
     familyScore2: 0,
+    view: null,
 }
+
+var wrongSound
+var rightSound
 
 
 async function startAbly(){
@@ -52,10 +56,26 @@ async function startAbly(){
         if(message.data.property == "question"){
             drawQuestion(message.data.value)
         }else if(message.data.property == "x"){
-            showFFXs(parseInt(message.data.value), 2)
+            if(gameInfo.view=="questions"){
+                showFFXs(parseInt(message.data.value), 1)
+            }
+        }else if(message.data.property=="sound"){
+            if(gameInfo.view=="questions"){
+                if(message.data.value=="right"){
+                    console.log("rigjt")
+                    rightSound.play()
+                }
+            }
         }else{
             document.getElementById(message.data.property).innerHTML = message.data.value
         }
+    });
+
+    rightSound = new Howl({
+        src: ['assets/right.mp3']
+    });
+    wrongSound = new Howl({
+        src: ['assets/wrong.mp3']
     });
 }
 
@@ -78,6 +98,12 @@ function sendQuestionUpdate(){
         sendUpdate('question', currentQuestion)
         sendUpdate('questionsScore', questionPoints)
         
+        if(document.getElementById("playRightAnswerSound").checked){
+            sendUpdate('sound', 'right')
+
+            document.getElementById("playRightAnswerSound").outerHTML = `<input type="checkbox" name="playRightAnswerSound" id="playRightAnswerSound">`
+        }
+        
     }else{
         sendUpdate('question', {answers: []})
         sendUpdate('questionsScore', 0)
@@ -91,6 +117,7 @@ function chooseView(view){
     document.getElementById(view).style.display = "flex"
     initializeControlPanel()
     drawQuestion({answers: []})
+    gameInfo.view = view
 }
 
 function updateNameByID(team, id){
@@ -192,6 +219,7 @@ function showFFXs(amount, seconds){
         xsHTML += `<img class="familyFeudX" src="assets/familyFeudX.png" alt="">`
     }
     document.getElementById("wrongAnswers").innerHTML = xsHTML
+    wrongSound.play()
     setTimeout(() => {
         document.getElementById("wrongAnswers").innerHTML = ""
     }, seconds * 1000);

@@ -8,6 +8,9 @@
     <!-- ably -->
     <script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
     <!-- ably -->
+    <!-- howler -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+    <!-- howler -->
     <script src="questions.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -64,6 +67,8 @@
                 <option value="mercedes">Mercedes</option>
                 <option value="audi">Audi</option>
             </select>
+            <label for="playRightAnswerSound">Play 'Correct Answer' Sound?</label>
+            <input type="checkbox" name="playRightAnswerSound" id="playRightAnswerSound">
             <button onclick="sendQuestionUpdate()">update question</button>
         </div>
         <div id="cpQuestion">
