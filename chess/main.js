@@ -1,4 +1,5 @@
 cellGrid=[]
+boardSize = {x: 8, y: 8}
 
 function initializeCellGrid(){
   for(i=0;i<8;i++){
@@ -45,10 +46,12 @@ function initializeCellGrid(){
 function drawBoard(){
   //TODO: make this whole system better
   boardHTML = ""
+  highlightHTML = ""
   for(i=0;i<8;i++){
     boardHTML += `<div class="cellRow">`
+    highlightHTML+=`<div class="highlightRow">`
     for(j=0;j<8;j++){
-      boardHTML += `<div class="cell ${(i+j)%2==1 ? "blackCell" : "whiteCell"}" id="cell${i}_${j}">`
+      boardHTML += `<div class="cell ${(i+j)%2==1 ? "blackCell" : "whiteCell"}" id="cell${j}_${i}">`
       currentPiece = cellGrid[i][j]
 
       if(currentPiece != null){
@@ -56,10 +59,13 @@ function drawBoard(){
       }
 
       boardHTML += `</div>`
+      highlightHTML+=`<div class="highlight" id="highlight${j}_${i}"></div>`
     }
     boardHTML += `</div>`
+    highlightHTML += `</div>`
   }
   document.getElementById("board").innerHTML=boardHTML
+  document.getElementById("highlights").innerHTML=highlightHTML
 
   for(i=0;i<8;i++){
     for(j=0;j<8;j++){
@@ -102,6 +108,14 @@ function dragElement(elmnt) {
     document.onmousemove = elementDrag;
     elmnt.style.zIndex = "2"
     console.log(elmnt.style)
+    startingCell = getClosestCell({x: pos3, y: pos4})
+
+
+    // console.log(getValidMoves(cellGrid[startingCell.y][startingCell.x]))
+    highlightMoves(getValidMoves(cellGrid[startingCell.y][startingCell.x]))
+
+    // highlightMoves(getValidMoves(cellGrid[startingCell.y][startingCell.x])) 
+    //TODO: add back
   }
 
   function elementDrag(e) {
@@ -166,6 +180,86 @@ function attemptMove(piece, destination){
   cellGrid[startingCell.y][startingCell.x] = null
   cellGrid[destination.y][destination.x] = movedPiece
   drawBoard()
+}
+
+function inBounds(pos){
+  return (0 <= pos.x && pos.x <= boardSize.x && 0 <= pos.y && pos.y <= boardSize.y)
+}
+
+function isBlocked(pos){
+  if(cellGrid[pos.y][pos.x] == null){return false}
+  return cellGrid[pos.y][pos.x].color
+}
+
+function getMovesInOneDimension(dimension, distance){
+  
+}
+
+function getValidMovesFromPattern(piece, pattern){
+  vmfp = []
+  if(pattern.type == "horizontal"){
+    for(i = -1*pattern.distance; i<=pattern.distance; i++){
+      vmfp.push({x: piece.pos.x + i, y: piece.pos.y})
+    }
+  }else if(pattern.type == "vertical"){
+    for(i = -1*pattern.distance; i<=pattern.distance; i++){
+      vmfp.push({x: piece.pos.x, y: piece.pos.y + i})
+    }
+  }else if(pattern.type == "vertical+"){
+    if(piece.color=="white"){
+      for(i = 0; i<=pattern.distance; i++){
+        vmfp.push({x: piece.pos.x, y: piece.pos.y + i})
+      }
+    }else{
+      for(i = -1*pattern.distance; i<=0; i++){
+        vmfp.push({x: piece.pos.x, y: piece.pos.y + i})
+      }
+    }
+  }
+  return vmfp
+  //still need to test validity of moves
+}
+
+function mergeMoves(moves1, moves2){
+  moves2.forEach(element => {
+    if(!(moves1.indexOf(element) >= 0)){
+      moves1.push(element)
+    }
+  });
+
+  return moves1
+}
+
+function getValidMoves(piece){
+  x = piece.pos.x
+  y = piece.pos.y
+  if(piece.type=="king"){
+    movePatterns = [
+      {type: "horizontal", distance: 1, jumps: false, canTake: true},
+      {type: "vertical", distance: 1, jumps: false, canTake: true},
+      {type: "diagonal+", distance: 1, jumps: false, canTake: true},
+      {type: "diagonal-", distance: 1, jumps: false, canTake: true},
+    ]
+  }
+  else if(piece.type=="pawn"){
+    movePatterns = [
+      {type: "vertical+", distance: 1, jumps: false, canTake: false},
+      {type: "diagonal+", distance: 1, jumps: false, canTake: true},
+    ]
+  }
+  validMoves = []
+    for(h=0; h<movePatterns.length; h++){
+      vmfp = getValidMovesFromPattern(piece, movePatterns[h])
+      validMoves = mergeMoves(validMoves, vmfp)
+    }
+    return(validMoves)
+}
+
+function highlightMoves(moves){
+  moves.forEach(element => {
+    console.log(`highlight${element.x}_${element.y}`)
+    document.getElementById(`highlight${element.x}_${element.y}`).style.backgroundColor = 'green'
+  });
 }
 
 //^ from https://www.w3schools.com/howto/howto_js_draggable.asp

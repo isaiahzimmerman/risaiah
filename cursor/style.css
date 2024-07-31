@@ -1,0 +1,118 @@
+:root{
+    --pss: clamp(6px, 1vw, 9px);
+}
+
+@font-face {
+    font-family: firaCode;
+    src: url("/assets/fonts/FiraCode-VariableFont_wght.ttf");
+    font-optical-sizing: auto;
+    font-weight: 425;
+    font-style: normal;
+}
+
+html{
+    cursor: none;
+    height: 100%;
+    width: 100%;
+    /* user-select: none; */
+}
+
+body{
+    font-family: firaCode;
+    background-color: black;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: min(100%, unset);
+    margin: 0;
+}
+
+h1{
+    /* text-align: center; */
+    margin: calc(var(--pss) * 3) 0;
+    font-size: calc(var(--pss) * 5);
+}
+
+p{
+    /* text-align: center; */
+    margin: calc(var(--pss) * 3) 0;
+    font-size: calc(var(--pss) * 3);
+}
+
+.cursor{
+    width: 20px;
+    height: 20px;
+    /* background-color: rgba(215, 215, 215, 0.342); */
+    /* background-color: rgba(0, 30, 182, 0.454); */
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    position: fixed;
+    transition: width 0.3s cubic-bezier(0.075, 0.82, 0.165, 1), height 0.3s cubic-bezier(0.075, 0.82, 0.165, 1), border-radius 0.3s, background-color 0.3s;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.test1{
+    border: 1px solid black;
+    font-size: xx-large;
+    display: flex;
+    width: fit-content;
+    margin: 10%
+}
+
+#content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* max-width: calc(var(--pss) * 130); */
+    margin: 0 auto;
+    width: calc(100vw- var(--pss) * 6);
+    /* background-color: aquamarine; */
+}
+
+.section{
+    margin: calc(var(--pss) * 4);
+}
+
+.site{
+    /* border: calc(var(--pss) * 0.5) solid white; */
+    font-size: xx-large;
+    display: flex;
+    min-width: calc(var(--pss) * 30);
+    width: calc(var(--pss) * 30);
+    margin: calc(var(--pss) * 0.5);
+    aspect-ratio: 1.1;
+    background-color: rgb(23, 24, 27);
+
+    overflow: hidden;
+    /* display: flex; */
+    /* justify-content: center; */
+    border-radius: calc(var(--pss) * 0.5);
+    transition: translate 0.3s cubic-bezier(.32,1.2,.58,.84), border-color 0.1s;
+
+    flex: 1;
+}
+
+a{
+    cursor: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    width: 100%;
+}
+
+.intro{
+    margin-top: calc(var(--pss) * 12);
+}

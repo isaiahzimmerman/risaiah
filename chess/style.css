@@ -20,7 +20,9 @@ h1{
   height: 90%;
   z-index: 1;
   text-align: center;
-  cursor: move;
+  cursor: pointer;
+  top: 5%;
+  left: 5%;
   /* border: 1px solid; */
 }
 
@@ -34,14 +36,13 @@ img {
   width: 100%;
 }
 
-.cell{
-  background-color: antiquewhite;
+.cell, .highlight{
   /* TODO: scaling */
   width: 10vh;
   height: 10vh;
 }
 
-.cellRow{
+.cellRow, .highlightRow{
   display: flex;
 }
 
@@ -53,10 +54,18 @@ img {
   background-color: #f1f1f1;
 }
 
-.board{
+.board, .highlights{
   aspect-ratio: 1;
   width: fit-content;
   height: fit-content;
+}
+
+.highlights{
+  position: absolute;
+}
+
+.highlight{
+  opacity: 0.2;
 }
 
 .blackPiece{
