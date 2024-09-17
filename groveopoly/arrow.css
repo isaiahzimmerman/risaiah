@@ -1,0 +1,60 @@
+.arrowCorner, .arrowLine, .arrowStart{
+    background-color: red;
+
+}
+
+.arrowCorner, .arrowLine{
+    height: calc(var(--pss)*1.5);
+    width: calc(var(--pss)*1.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.arrowCorner{
+    border-radius: 100%;
+}
+
+.arrowStart{
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* border-radius: 100%; */
+}
+
+.arrowEnd{
+    height: calc(var(--pss)*3);
+    width: calc(var(--pss)*3);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.arrowEndUp{
+    rotate: 90deg;
+}
+
+.arrowEndRight{
+    rotate: 180deg;
+}
+
+.arrowEndDown{
+    rotate: 270deg;
+}
+
+.arrowEndPoint{
+    height: 100%;
+    width: 100%;
+}
+
+.arrowLine{
+}
+
+.arrowContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.2;
+}

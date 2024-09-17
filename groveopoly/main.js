@@ -23,9 +23,20 @@ function shuffle(array, seed) {                // <-- ADDED ARGUMENT
     return array;
 }
 
+function runWhenSiteLoads(){
+    try{
+        header_draw_additional_button("Settings", {type: "onclick", onclick: "showOverlay({type: 'settings'}); header_hide_menu()"});
+    }catch(error){
+        setTimeout(runWhenSiteLoads, 100);
+    }
+}
+
 function siteLoad(){
     preloadAllImages(); checkAspectRatio(); onresize = checkAspectRatio
     ondragstart= function(){return false};
+    drawSettings()
+    runWhenSiteLoads()
+    // showOverlay({type: "settings"})
 }
 
 function checkAspectRatio(){
@@ -176,6 +187,7 @@ gameInfo = {
     newHouseState: null,
     //changes from old mode to bob mode
     newinventorystyle: true,
+    showArrow: false,
 }
 
 // source: https://stackoverflow.com/a/35803660
@@ -241,11 +253,14 @@ function removeStartName(num){
     gameInfo.playerNames.splice(num,1)
     if(num==gameInfo.editingIconColor){
         hideIconColors()
+        drawStartNames()
     }else{
-        gameInfo.editingIconColor--
+        if(num < gameInfo.editingIconColor){
+            gameInfo.editingIconColor--
+        }
+        drawStartNames()
         moveIconColors()
     }
-    drawStartNames()
 }
 
 function editStartName(playerNum){
@@ -549,6 +564,7 @@ function showOverlay(args){
     document.getElementById("escapeJailButtons").style.display = "none"
     document.getElementById("useGetOutOfJail").style.display = "none"
 
+    document.getElementById("settingsOverlay").style.display = "none"
 
     document.getElementById("overlay").setAttribute( "onClick", "" )
 
@@ -619,8 +635,13 @@ function showOverlay(args){
         //TODO: change chance cards so they have different text
         document.getElementById("chanceOverlayImage").src = (args.type=="chance" ? "assets/chance/chance-template.svg" : "assets/chest/chest-template.svg")
         document.getElementById("chanceDesc").innerHTML = args.cardText
-        document.getElementById("chanceInfoImg").innerHTML = `<img src="assets/chance/chance-images/chance-image-template.svg">`
 
+        if(args.cardImg != null){
+            document.getElementById("chanceInfoImg").innerHTML = `<img src="assets/cards/card-images/${args.cardImg}">`
+        }else{
+            document.getElementById("chanceInfoImg").innerHTML = `<img src="assets/cards/card-images/chance-image-template.svg">`
+        }
+        
         if(args.type=="chance"){
             document.getElementById("chanceButton").setAttribute( "onClick", (args.isJail ? "javascript: addJail(0)" : "exitChanceOrChest()"))
         }else if(args.type == "chest"){
@@ -701,6 +722,11 @@ function showOverlay(args){
         if(args.hasGetOutOfJail){
             document.getElementById("useGetOutOfJail").style.display = "flex"
         }
+    }
+
+    else if(args.type == "settings"){
+        updateSettings()
+        document.getElementById("settingsOverlay").style.display = "flex"
     }
 
     document.getElementById("overlay").style.display = "flex"
@@ -1058,6 +1084,13 @@ function advancePiece(player, spaces){
 
 function movePiece(player, position){
     document.getElementById(player.position).style.display = "none"
+
+    pos1 = player.position.substring(0,2)
+    if(pos1 == "jl"){pos1 = "c1"}
+    pos2 = position
+    if(gameInfo.showArrow && pos1 != pos2){
+        drawArrow(boardOrder.indexOf(pos1), boardOrder.indexOf(pos2))
+    }
 
     openSpaces = [0,1,2,3,4,5,6,7,8]
     for(i=0;i<players.length;i++){
@@ -1677,6 +1710,7 @@ function sendToJail(player, reason){
     else if(reason == "space"){ jailMessage = `Landed on "Go To Jail"!`}
     showOverlay({type: "alert", alertMessage: `${jailMessage} Go to jail!`})
     movePiece(player, "jl")
+    hideArrow()
     player.isInJail = true
 }
 

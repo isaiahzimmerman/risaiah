@@ -9,11 +9,15 @@
     <script src="trade.js"></script>
     <script src="assets/imagePaths.js"></script>
     <script src="cards.js"></script>
+    <script src="arrow.js"></script>
+    <script src="settings.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="startScreen.css">
     <link rel="stylesheet" href="trade.css">
     <link rel="stylesheet" href="buyHouses.css">
     <link rel="stylesheet" href="propertyinventory.css">
+    <link rel="stylesheet" href="arrow.css">
+    <link rel="stylesheet" href="settings.css">
     <!-- header -->
     <script src="/assets/header/header.js"></script>
     <link rel="stylesheet" href="/assets/header/header.css">
@@ -23,7 +27,7 @@
 <body class="body" onload="siteLoad()">
     <!-- header -->
     <div w3-include-html="/assets/header/header.html"></div>
-    <script>includeHTML()</script>
+    <script>includeHTML();</script>
     <!-- header -->
     <!-- <h1>Monopoly</h1> -->
     <div class="startScreen" id="startScreen">
@@ -63,6 +67,10 @@
                 <img src="./assets/dice/dice1.svg" class="die" id="die1">
                 <img src="./assets/dice/dice1.svg" class="die" id="die2">
                 <img src="./assets/dice/dice1.svg" class="die" id="die3">
+            </div>
+            <div id="arrowContainer" class="arrowContainer">
+                <div id="arrowTest"></div>
+                <div id="arrowTest1"></div>
             </div>
         </div>
     </div>
@@ -154,6 +162,17 @@
             </div>
             <div class="buttonClickable customButton" onclick="rollForJailEscape()">
                 <div>Roll for Doubles</div>
+            </div>
+        </div>
+        <div class="settingsOverlay" id="settingsOverlay">
+            <div class="settingsPreferenceContainer" id="settingsPreferenceContainer">
+                <div class="settingsItem">
+                    <span class="settingsLabel">Show Movement Arrow</span>
+                    <input class="settingsSwitch" type="checkbox" id="">
+                </div>
+            </div>
+            <div class="settingsCloseButton" onclick="closeSettings()">
+                X
             </div>
         </div>
     </div>
