@@ -221,6 +221,8 @@ Know this, my beloved brothers: let every person be quick to hear, slow to speak
 But be doers of the word, and not hearers only, deceiving yourselves. For if anyone is a hearer of the word and not a doer, he is like a man who looks intently at his natural face in a mirror. For he looks at himself and goes away and at once forgets what he was like. But the one who looks into the perfect law, the law of liberty, and perseveres, being no hearer who forgets but a doer who acts, he will be blessed in his doing.
             
 If anyone thinks he is religious and does not bridle his tongue but deceives his heart, this person's religion is worthless. Religion that is pure and undefiled before God the Father is this: to visit orphans and widows in their affliction, and to keep oneself unstained from the world.`
+        break
+
         case "Romans8.txt":
             newText = `There is therefore now no condemnation for those who are in Christ Jesus. For the law of the Spirit of life has set you free in Christ Jesus from the law of sin and death. For God has done what the law, weakened by the flesh, could not do. By sending his own Son in the likeness of sinful flesh and for sin, he condemned sin in the flesh, in order that the righteous requirement of the law might be fulfilled in us, who walk not according to the flesh but according to the Spirit. For those who live according to the flesh set their minds on the things of the flesh, but those who live according to the Spirit set their minds on the things of the Spirit. For to set the mind on the flesh is death, but to set the mind on the Spirit is life and peace. For the mind that is set on the flesh is hostile to God, for it does not submit to God's law; indeed, it cannot. Those who are in the flesh cannot please God.
 
@@ -237,6 +239,23 @@ What then shall we say to these things? If God is for us, who can be against us?
 “For your sake we are being killed all the day long; we are regarded as sheep to be slaughtered.”
 
 No, in all these things we are more than conquerors through him who loved us. For I am sure that neither death nor life, nor angels nor rulers, nor things present nor things to come, nor powers, nor height nor depth, nor anything else in all creation, will be able to separate us from the love of God in Christ Jesus our Lord.`
+            break
+        
+        case '2Cor5:17.txt':
+            newText = "Therefore, if anyone is in Christ, he is a new creation. The old has passed away; behold, the new has come."
+            break
+        
+        case 'Gal2:20.txt':
+            newText = "I have been crucified with Christ. It is no longer I who live, but Christ who lives in me. And the life I now live in the flesh I live by faith in the Son of God, who loved me and gave himself for me."
+            break
+        
+        case 'Rom12:1.txt':
+            newText = "I appeal to you therefore, brothers, by the mercies of God, to present your bodies as a living sacrifice, holy and acceptable to God, which is your spiritual worship."
+            break
+
+        case 'John14:21.txt':
+            newText = "Whoever has my commandments and keeps them, he it is who loves me. And he who loves me will be loved by my Father, and I will love him and manifest myself to him."
+            break
     }
     document.getElementById("toMemorize").value = newText;
     document.getElementById("toMemorize2").value = newText
