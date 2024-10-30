@@ -1,0 +1,52 @@
+:root{
+    --pss: min(1vw, 0.5rem)
+}
+
+body{
+    font-family: isaiahFont;
+    background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
+}
+
+h1{
+    text-align: center;
+    font-size: calc(var(--pss) * 4.5);
+    margin-bottom: 0;
+}
+
+p{
+    margin: 0;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.spell_check_container{
+    width: calc(var(--pss) * 65);
+    margin: 0 auto;
+}
+
+#textInput{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    font-size: calc(var(--pss) * 6);
+    font-family: isaiahFont;
+    padding: calc(var(--pss) * 2);
+}
+
+#possibleWords{
+    font-size: calc(var(--pss) * 4.5);
+}
+
+#output{
+    font-size: calc(var(--pss) * 3);
+}
+
+#infoText{
+    width: 100%;
+    text-align: center;
+    font-size: calc(var(--pss) * 3);
+    font-style: italic;
+    margin-bottom: calc(var(--pss) * 3);
+    cursor: unset;
+}
