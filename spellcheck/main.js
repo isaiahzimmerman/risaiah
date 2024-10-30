@@ -5,7 +5,8 @@ function getLetterIndex(letter){
 class SpellingNode {
     constructor(letter){
         this.value = letter;
-        this.children = new Array(26).fill(null);
+        this.children = {}
+        // new Array(26).fill(null);
         this.correctWord = false;
     }
 
@@ -18,11 +19,11 @@ class SpellingNode {
     }
 
     addChild(letter){
-        let num = getLetterIndex(letter);
-        if(this.children[num] != null){
+        // let num = getLetterIndex(letter);
+        if(this.children[letter] != null){
             return false;
         }
-        this.children[num] = new SpellingNode(letter);
+        this.children[letter] = new SpellingNode(letter);
         return true;
     }
 
@@ -31,7 +32,7 @@ class SpellingNode {
     }
 
     getChildAt(val){
-        return this.children[getLetterIndex(val)];
+        return this.children[val];
     }
 
     getValue(){
@@ -84,6 +85,7 @@ class SpellingTrie {
         let currNode = this.root;
         let letters = subWord.split("");
 
+        // console.log(currNode)
         for(let j=0; j<letters.length; j++){
             if(currNode==null){break;}
             let letter = letters[j]
@@ -96,15 +98,16 @@ class SpellingTrie {
         document.getElementById("output").appendChild(this.fragment)
     }
 
-    printWordsHelper(subWord, c, amountRemaining){
+    printWordsHelper(subWord, c){
         if(c==null){return;}
         if(this.amountRemaining<=0){return}
+        // console.log(c)
         if(c.getCorrect()){
             let p = document.createElement("p");
             let currWord = (subWord+c.getValue()).toLowerCase();
             p.textContent = currWord;
             p.onclick = function(){
-                console.log(`https://www.oed.com/search/dictionary/?scope=Entries&q=${currWord}`)
+                // console.log(`https://www.oed.com/search/dictionary/?scope=Entries&q=${currWord}`)
                 window.open(`https://www.oed.com/search/dictionary/?scope=Entries&q=${currWord}`, '_blank');
             }
             this.fragment.appendChild(p);
@@ -112,9 +115,13 @@ class SpellingTrie {
         }
         let chils = c.getChildren();
 
-        chils.forEach(chil => {
-            this.printWordsHelper(subWord+c.getValue(), chil);
-        });
+        // chils.forEach(chil => {
+        //     this.printWordsHelper(subWord+c.getValue(), chil);
+        // });
+        for (const chil in chils) {
+            // console.log(chils[chil])
+            this.printWordsHelper(subWord+c.getValue(), chils[chil]);
+        }
     }
 }
 
@@ -124,7 +131,11 @@ function textFieldUpdate(){
     if(myTrie.checkWord(inputText)){
         document.getElementById('textInput').style.color = "green"
     }else{
-        document.getElementById('textInput').style.color = "red"
+        if(inputText == ""){
+            document.getElementById('textInput').style.color = "black"
+        }else{
+            document.getElementById('textInput').style.color = "red"
+        }
     }
     myTrie.printWordsAfter(inputText, 100)
 }

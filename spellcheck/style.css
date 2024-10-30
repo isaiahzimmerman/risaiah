@@ -32,6 +32,7 @@ p{
     font-size: calc(var(--pss) * 6);
     font-family: isaiahFont;
     padding: calc(var(--pss) * 2);
+    margin: calc(var(--pss) * 3) 0;
 }
 
 #possibleWords{
@@ -47,6 +48,5 @@ p{
     text-align: center;
     font-size: calc(var(--pss) * 3);
     font-style: italic;
-    margin-bottom: calc(var(--pss) * 3);
     cursor: unset;
 }
