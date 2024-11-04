@@ -36,7 +36,7 @@ document.addEventListener('mousemove', function(event){
         if(cursorInfo.touching==null)
         {
             changeCursorShape(hoverText.parentNode.nodeName)
-            document.getElementById("cursor").style.backgroundColor = "rgba(0, 30, 182, 0.854)";
+            document.getElementById("cursor").style.backgroundColor = "rgba(47, 92, 255, 0.71)";
             document.getElementById("cursor").style.translate = "4px 0";
         }
         // console.log("blue")
@@ -47,6 +47,15 @@ document.addEventListener('mousemove', function(event){
         document.getElementById("cursor").style.translate = "0 0";
     }
 });
+function jiggleMouse(){
+    mouseMoveEvent = new MouseEvent('mousemove', {
+        bubbles: true,
+        cancelable: true,
+        clientX: cursorInfo.mousePos.x+10,
+        clientY: cursorInfo.mousePos.y+10
+    });
+    document.dispatchEvent(mouseMoveEvent);
+}
 
 function resetMovablesPositions(){
     clickableBounds.forEach(element => {
@@ -54,8 +63,8 @@ function resetMovablesPositions(){
             document.getElementById(element.id).style.translate = "0 0"
             // document.getElementById(element.id).style.borderColor = "white"
         }
-
     });
+    jiggleMouse()
 }
 
 function moveCursorTowardMouse(){
@@ -167,10 +176,10 @@ function changeCursorShape(size){
     height = "20px"
     switch(size){
         case "P":
-            height = "35px"
+            height = "calc(var(--pss) * 4)"
             break;
         case "H1":
-            height = "50px"
+            height = "calc(var(--pss) * 5.5)"
             break;
     }
     cursorInfo.size.w = "4px"

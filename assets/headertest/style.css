@@ -1,5 +1,6 @@
 body{
     background-color: var(--theme-softbg-0);
+    font-family: isaiahFont;
 }
 
 .titleText {

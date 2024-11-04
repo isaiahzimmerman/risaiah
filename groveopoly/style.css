@@ -240,6 +240,7 @@ div.chanceButton{
     overflow: hidden;
     grid-auto-flow: row;
     border: calc(var(--pss)*0.5) solid black;
+    border-radius: calc(var(--pss)*0.5);
     grid-template-areas:
         "c2 t0 t1 t2 t3 t4 t5 t6 t7 t8 c3"
         "l8 em em em em em em em em em r0"
@@ -565,7 +566,7 @@ div.jailplayers{
     min-height: 90%;
     aspect-ratio: 1;
     border-radius: 50%;
-    border: calc(var(--pss) * 0.15) black solid;
+    border: calc(var(--pss) * 0.15) solid;
     transition: filter 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
     font-size: calc(var(--pss) * 1.5);
     display: flex;
@@ -575,7 +576,7 @@ div.jailplayers{
 }
 
 .playerToken:hover{
-    filter: drop-shadow(0 0 calc(var(--pss) * 0.45) #2727ff);
+    filter: drop-shadow(0 0 calc(var(--pss) * 0.45));
     cursor: pointer;
     /* box-shadow:calc(var(--pss)*.2) calc(var(--pss)*.2) calc(var(--pss)*.2) black; */
 }

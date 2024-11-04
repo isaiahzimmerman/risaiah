@@ -12,16 +12,26 @@
     <link rel="stylesheet" href="/assets/header/header.css">
     <!-- header -->
 </head>
-<body onload="initializeGame()">
+<body>
     <!-- header -->
     <div w3-include-html="/assets/header/header.html"></div>
     <script>includeHTML()</script>
     <!-- header -->
-    <h1>Jank Chess</h1>
-    <p>Turn: <span id="turn"></span></p>
-    <div class="boardContainer">
-        <div class="board" id="board"></div>
-        <div class="highlights" id="highlights"></div>
+    <h1>Site Title</h1>
+    <div id="treeContainer" class="treeContainer">
+        <div class="treeNode">
+            <div class="value">5</div>
+            <div class="children">
+                <div class="treeNode">
+                    <div class="value">4</div>
+                </div>
+                <div class="treeNode">
+                    <div class="value">6</div>
+                </div>
+            </div>
+        </div>
+        
     </div>
+    
 </body>
 </html>

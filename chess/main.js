@@ -1,5 +1,6 @@
 cellGrid=[]
 boardSize = {x: 8, y: 8}
+whiteMove = true
 
 function initializeCellGrid(){
   for(i=0;i<8;i++){
@@ -103,16 +104,19 @@ function dragElement(elmnt) {
     
     pos3 = e.clientX;
     pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-    elmnt.style.zIndex = "2"
-    console.log(elmnt.style)
     startingCell = getClosestCell({x: pos3, y: pos4})
+
+    if(cellGrid[startingCell.y][startingCell.x].color == "white" && whiteMove || cellGrid[startingCell.y][startingCell.x].color == "black" && !whiteMove){
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+      elmnt.style.zIndex = "2"
+      highlightMoves(getValidMoves(cellGrid[startingCell.y][startingCell.x]))
+    }
 
 
     // console.log(getValidMoves(cellGrid[startingCell.y][startingCell.x]))
-    highlightMoves(getValidMoves(cellGrid[startingCell.y][startingCell.x]))
+    
 
     // highlightMoves(getValidMoves(cellGrid[startingCell.y][startingCell.x])) 
     //TODO: add back
@@ -135,14 +139,13 @@ function dragElement(elmnt) {
     document.onmousemove = null;
 
     elmntBounds = elmnt.getBoundingClientRect()
-    closestCell = getClosestCell(getCenter(elmntBounds))
+    var closestCell = getClosestCell(getCenter(elmntBounds))
     startingCell = getClosestCell({x: pos3, y: pos4})
 
-    if(closestCell!=null){
+    // console.log(closestCell, startingCell)
+    // if(closestCell.x != startingCell.x && closestCell.y != startingCell.y){
       attemptMove(cellGrid[startingCell.y][startingCell.x], closestCell)
-    }else{
-      attemptMove(cellGrid[startingCell.y][startingCell.x], startingCell)
-    }
+    // }
   }
 }
 
@@ -174,16 +177,26 @@ function copyPiece(piece){
 function attemptMove(piece, destination){
   startingCell = {x: piece.pos.x, y: piece.pos.y}
 
+  console.log((startingCell.x == destination.x && startingCell.y == destination.y))
+  if(startingCell.x != destination.x || startingCell.y != destination.y)
+    whiteMove = !whiteMove
+
   movedPiece = copyPiece(piece)
   movedPiece.pos = {x: destination.x, y: destination.y}
 
   cellGrid[startingCell.y][startingCell.x] = null
   cellGrid[destination.y][destination.x] = movedPiece
+  
+  if(whiteMove){
+    document.getElementById("turn").innerHTML = "white"
+  }else{
+    document.getElementById("turn").innerHTML = "black"
+  }
   drawBoard()
 }
 
 function inBounds(pos){
-  return (0 <= pos.x && pos.x <= boardSize.x && 0 <= pos.y && pos.y <= boardSize.y)
+  return (0 <= pos.x && pos.x < boardSize.x && 0 <= pos.y && pos.y < boardSize.y)
 }
 
 function isBlocked(pos){
@@ -198,26 +211,224 @@ function getMovesInOneDimension(dimension, distance){
 function getValidMovesFromPattern(piece, pattern){
   vmfp = []
   if(pattern.type == "horizontal"){
-    for(i = -1*pattern.distance; i<=pattern.distance; i++){
-      vmfp.push({x: piece.pos.x + i, y: piece.pos.y})
+    for(i = 1; i<=pattern.distance; i++){
+      newPos = {x: piece.pos.x + i, y: piece.pos.y}
+      if(!inBounds(newPos)){break}
+      blocked = isBlocked(newPos)
+
+      if(blocked){
+        if(
+          (blocked == "white" && pattern.canTake && piece.color == "black") ||
+          (blocked == "black" && pattern.canTake && piece.color == "white")
+        ){
+          vmfp.push(newPos)
+        }
+        break
+      }
+      if(inBounds(newPos))
+        vmfp.push(newPos)
+    }
+    for(i = -1; i>= -pattern.distance; i--){
+      newPos = {x: piece.pos.x + i, y: piece.pos.y}
+      if(!inBounds(newPos)){break}
+      blocked = isBlocked(newPos)
+
+      if(blocked){
+        if(
+          (blocked == "white" && pattern.canTake && piece.color == "black") ||
+          (blocked == "black" && pattern.canTake && piece.color == "white")
+        ){
+          vmfp.push(newPos)
+        }
+        break
+      }
+      if(inBounds(newPos))
+        vmfp.push(newPos)
     }
   }else if(pattern.type == "vertical"){
-    for(i = -1*pattern.distance; i<=pattern.distance; i++){
-      vmfp.push({x: piece.pos.x, y: piece.pos.y + i})
+    for(i = -1; i>= -pattern.distance; i--){
+      newPos = {x: piece.pos.x, y: piece.pos.y + i}
+      if(!inBounds(newPos)){break}
+      blocked = isBlocked(newPos)
+
+      if(blocked){
+        if(
+          (blocked == "white" && pattern.canTake && piece.color == "black") ||
+          (blocked == "black" && pattern.canTake && piece.color == "white")
+        ){
+          vmfp.push(newPos)
+        }
+        break
+      }
+      if(inBounds(newPos))
+        vmfp.push(newPos)
+    }
+    for(i = 1; i<= pattern.distance; i++){
+      newPos = {x: piece.pos.x, y: piece.pos.y + i}
+      if(!inBounds(newPos)){break}
+      blocked = isBlocked(newPos)
+
+      if(blocked){
+        if(
+          (blocked == "white" && pattern.canTake && piece.color == "black") ||
+          (blocked == "black" && pattern.canTake && piece.color == "white")
+        ){
+          vmfp.push(newPos)
+        }
+        break
+      }
+      if(inBounds(newPos))
+        vmfp.push(newPos)
     }
   }else if(pattern.type == "vertical+"){
     if(piece.color=="white"){
-      for(i = 0; i<=pattern.distance; i++){
-        vmfp.push({x: piece.pos.x, y: piece.pos.y + i})
+      for(i = 1; i <= pattern.distance; i++){
+        newPos = {x: piece.pos.x, y: piece.pos.y + i}
+        if(!inBounds(newPos)){break}
+        blocked = isBlocked(newPos)
+  
+        if(blocked){
+          if(
+            (blocked == "white" && pattern.canTake && piece.color == "black") ||
+            (blocked == "black" && pattern.canTake && piece.color == "white")
+          ){
+            vmfp.push(newPos)
+          }
+          break
+        }
+        if(inBounds(newPos))
+          vmfp.push(newPos)
       }
     }else{
-      for(i = -1*pattern.distance; i<=0; i++){
-        vmfp.push({x: piece.pos.x, y: piece.pos.y + i})
+      for(i = 1; i <= pattern.distance; i++){
+        newPos = {x: piece.pos.x, y: piece.pos.y - i}
+        if(!inBounds(newPos)){break}
+        blocked = isBlocked(newPos)
+  
+        if(blocked){
+          if(
+            (blocked == "white" && pattern.canTake && piece.color == "black") ||
+            (blocked == "black" && pattern.canTake && piece.color == "white")
+          ){
+            vmfp.push(newPos)
+          }
+          break
+        }
+        if(inBounds(newPos))
+          vmfp.push(newPos)
       }
+      
+    }
+  }else if(pattern.type == "diagonal"){
+    for(i = 1; i <= pattern.distance; i++){
+      newPos = {x: piece.pos.x + i, y: piece.pos.y + i}
+      if(!inBounds(newPos)){break}
+      blocked = isBlocked(newPos)
+
+      if(blocked){
+        if(
+          (blocked == "white" && pattern.canTake && piece.color == "black") ||
+          (blocked == "black" && pattern.canTake && piece.color == "white")
+        ){
+          vmfp.push(newPos)
+        }
+        break
+      }
+      if(inBounds(newPos))
+        vmfp.push(newPos)
+    }
+    for(i = 1; i <= pattern.distance; i++){
+      newPos = {x: piece.pos.x - i, y: piece.pos.y + i}
+      if(!inBounds(newPos)){break}
+      blocked = isBlocked(newPos)
+
+      if(blocked){
+        if(
+          (blocked == "white" && pattern.canTake && piece.color == "black") ||
+          (blocked == "black" && pattern.canTake && piece.color == "white")
+        ){
+          vmfp.push(newPos)
+        }
+        break
+      }
+      if(inBounds(newPos))
+        vmfp.push(newPos)
+    }
+    for(i = 1; i <= pattern.distance; i++){
+      newPos = {x: piece.pos.x + i, y: piece.pos.y - i}
+      if(!inBounds(newPos)){break}
+      blocked = isBlocked(newPos)
+
+      if(blocked){
+        if(
+          (blocked == "white" && pattern.canTake && piece.color == "black") ||
+          (blocked == "black" && pattern.canTake && piece.color == "white")
+        ){
+          vmfp.push(newPos)
+        }
+        break
+      }
+      if(inBounds(newPos))
+        vmfp.push(newPos)
+    }
+    for(i = 1; i <= pattern.distance; i++){
+      newPos = {x: piece.pos.x - i, y: piece.pos.y - i}
+      if(!inBounds(newPos)){break}
+      blocked = isBlocked(newPos)
+
+      if(blocked){
+        if(
+          (blocked == "white" && pattern.canTake && piece.color == "black") ||
+          (blocked == "black" && pattern.canTake && piece.color == "white")
+        ){
+          vmfp.push(newPos)
+        }
+        break
+      }
+      if(inBounds(newPos))
+        vmfp.push(newPos)
+    }
+  }else if(pattern.type == "diagonal+"){
+    for(i = 1; i <= pattern.distance; i++){
+      newPos = {x: piece.pos.x + 1, y: piece.pos.y + (piece.color =="black" ? i : -i)}
+      if(!inBounds(newPos)){break}
+      var blocked = isBlocked(newPos)
+      if(!blocked && pattern.mustTake){break}
+      if(blocked){
+        if(
+          (blocked == "white" && pattern.canTake && piece.color == "black") ||
+          (blocked == "black" && pattern.canTake && piece.color == "white")
+        ){
+          vmfp.push(newPos)
+        }
+        break
+      }
+      if(inBounds(newPos))
+        vmfp.push(newPos)
+    }
+    for(i = 1; i <= pattern.distance; i++){
+      newPos = {x: piece.pos.x - 1, y: piece.pos.y + (piece.color =="black" ? i : -i)}
+      if(!inBounds(newPos)){break}
+      var blocked = isBlocked(newPos)
+      if(!blocked && pattern.mustTake){break}
+
+      if(blocked){
+        if(
+          (blocked == "white" && pattern.canTake && piece.color == "black") ||
+          (blocked == "black" && pattern.canTake && piece.color == "white")
+        ){
+          vmfp.push(newPos)
+        }
+        break
+      }
+      if(inBounds(newPos))
+        vmfp.push(newPos)
     }
   }
   return vmfp
   //still need to test validity of moves
+  //todo: remove highlight from cell of piece
+  //todo: remove out of bounds elements
 }
 
 function mergeMoves(moves1, moves2){
@@ -235,18 +446,40 @@ function getValidMoves(piece){
   y = piece.pos.y
   if(piece.type=="king"){
     movePatterns = [
-      {type: "horizontal", distance: 1, jumps: false, canTake: true},
-      {type: "vertical", distance: 1, jumps: false, canTake: true},
-      {type: "diagonal+", distance: 1, jumps: false, canTake: true},
-      {type: "diagonal-", distance: 1, jumps: false, canTake: true},
+      {type: "horizontal", distance: 1, jumps: false, canTake: true, mustTake: false},
+      {type: "vertical", distance: 1, jumps: false, canTake: true, mustTake: false},
+      {type: "diagonal", distance: 1, jumps: false, canTake: true, mustTake: false},
     ]
   }
   else if(piece.type=="pawn"){
+    if(piece.color=="black" && piece.pos.y==6 || piece.color=="white" && piece.pos.y==1){
+      movePatterns = [
+        {type: "vertical+", distance: 2, jumps: false, canTake: false, mustTake: false},
+        {type: "diagonal+", distance: 1, jumps: false, canTake: true, mustTake: true},
+      ]
+    }else{
+      movePatterns = [
+        {type: "vertical+", distance: 1, jumps: false, canTake: false, mustTake: false},
+        {type: "diagonal+", distance: 1, jumps: false, canTake: true, mustTake: true},
+      ]
+    }
+  }else if(piece.type=="rook"){
     movePatterns = [
-      {type: "vertical+", distance: 1, jumps: false, canTake: false},
-      {type: "diagonal+", distance: 1, jumps: false, canTake: true},
+      {type: "vertical", distance: 7, jumps: false, canTake: true, mustTake: false},
+      {type: "horizontal", distance: 7, jumps: false, canTake: true, mustTake: false},
+    ]
+  }else if(piece.type=="bishop"){
+    movePatterns = [
+      {type: "diagonal", distance: 7, jumps: false, canTake: true, mustTake: false}
+    ]
+  }else if(piece.type=="queen"){
+    movePatterns = [
+      {type: "vertical", distance: 7, jumps: false, canTake: true, mustTake: false},
+      {type: "horizontal", distance: 7, jumps: false, canTake: true, mustTake: false},
+      {type: "diagonal", distance: 7, jumps: false, canTake: true, mustTake: false}
     ]
   }
+
   validMoves = []
     for(h=0; h<movePatterns.length; h++){
       vmfp = getValidMovesFromPattern(piece, movePatterns[h])

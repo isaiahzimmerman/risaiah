@@ -1,3 +1,12 @@
+:root{
+    --pss: min(1vw, 0.6rem)
+}
+
+.gameContainer{
+    width: calc(var(--pss) * 100);
+    margin: 0 auto;
+}
+
 body {
     background-color: var(--theme-softbg-0);
     color: var(--theme-bw-1);
@@ -5,7 +14,7 @@ body {
 
 .level {
     float:left;
-    font-size: 50px;
+    font-size: calc(var(--pss) * 6);
     
 }
 
@@ -14,26 +23,29 @@ body {
 }
 
 .score {
-    font-size: 50px;
+    font-size: calc(var(--pss) * 6);
+
     text-align: center;
 }
 
 .puzzle {
-    font-size:  125px;
+    font-size: calc(var(--pss) * 15);
+
     text-align: center;
     padding-top: 5%
     
 }
 
 .juzb {
-    padding-left: 30%
+    padding-left: 30%;
+    height: fit-content;
 }
 
 .child {
     text-align: center;
     width: 15%;
     float: left;
-    font-size: 100px;
+    font-size: calc(var(--pss) * 15);
 }
 
 p {
@@ -43,7 +55,7 @@ p {
 
 .highScore {
     float: right;
-    font-size: 50px;
+    font-size: calc(var(--pss) * 6);
 }
 
 button{
@@ -69,5 +81,5 @@ button{
     text-align: center;
     width: 16.6%;
     float: left;
-    font-size: 65px;
+    font-size: calc(var(--pss) * 6);
 }

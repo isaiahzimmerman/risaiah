@@ -65,3 +65,17 @@ function header_hide_menu(){
     document.getElementById(`header_menu_line${i}`).innerHTML = ``
   }
 }
+
+function header_draw_additional_button(text, action){
+  clickAction = ""
+  if(action.type == "href"){
+    clickAction = `href="${action.href}"`
+  }else if(action.type == "onclick"){
+    clickAction = `onclick="${action.onclick}"`
+  }
+
+  document.getElementById('header_container').innerHTML+=
+    `<div class="header_element">
+      <a ${clickAction}>${text}</a>
+    </div>`
+}

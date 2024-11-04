@@ -156,22 +156,22 @@ function randomRotations(spread, amount){
 
 gameInfo = {
     iconColorList: [
-        {color: "#D50000", taken: false},
-        {color: "#FF5252", taken: false},
-        {color: "#FF6138", taken: false},
-        {color: "#FA9600", taken: false},
-        {color: "#FFBE00", taken: false},
-        {color: "#FFDE20", taken: false},
-        {color: "#BEDB39", taken: false},
-        {color: "#A8C545", taken: false},
-        {color: "#43A047", taken: false},
-        {color: "#289976", taken: false},
-        {color: "#04756F", taken: false},
-        {color: "#00305A", taken: false},
-        {color: "#2962FF", taken: false},
-        {color: "#9575CD", taken: false},
-        {color: "#360259", taken: false},
-        {color: "#9C27B0", taken: false},
+        {color: "#D50000", secondary: "#ffcccc", taken: false},
+        {color: "#FF5252", secondary: "#4d0000", taken: false},
+        {color: "#FF6138", secondary: "#4d0f00", taken: false},
+        {color: "#FA9600", secondary: "#4d2e00", taken: false},
+        {color: "#FFBE00", secondary: "#4d3900", taken: false},
+        {color: "#FFDE20", secondary: "#4d4100", taken: false},
+        {color: "#BEDB39", secondary: "#37410c", taken: false},
+        {color: "#A8C545", secondary: "#313a12", taken: false},
+        {color: "#43A047", secondary: "#173618", taken: false},
+        {color: "#289976", secondary: "#103d2f", taken: false},
+        {color: "#04756F", secondary: "#034a46", taken: false},
+        {color: "#00305A", secondary: "#b3dbff", taken: false},
+        {color: "#2962FF", secondary: "#ccdaff", taken: false},
+        {color: "#9575CD", secondary: "#211438", taken: false},
+        {color: "#360259", secondary: "#e0b4fd", taken: false},
+        {color: "#9C27B0", secondary: "#f1d5f6", taken: false},
     ],
     playerNames: [
         {name: "Player 1", newName: null, editing: false, colorIndex: 0},
@@ -213,7 +213,7 @@ function drawStartNames(){
     startNamesHTML = ""
     numPlayers = gameInfo.playerNames.length
     for(j=0; j<numPlayers; j++){
-        startNamesHTML += `<div class="startNameContainer" id="startNameContainer${j}"><div class="startIcon" id="startIcon${j}" onclick="showIconColors(${j})" style="background-color: ${gameInfo.iconColorList[gameInfo.playerNames[j].colorIndex].color}">${j+1}</div><div class="startName" id="startName${j}" onclick="editStartName(${j})">${gameInfo.playerNames[j].name}</div></div>`
+        startNamesHTML += `<div class="startNameContainer" id="startNameContainer${j}"><div class="startIcon" id="startIcon${j}" onclick="showIconColors(${j})" style="background-color: ${gameInfo.iconColorList[gameInfo.playerNames[j].colorIndex].color}; color: ${gameInfo.iconColorList[gameInfo.playerNames[j].colorIndex].secondary}">${j+1}</div><div class="startName" id="startName${j}" onclick="editStartName(${j})">${gameInfo.playerNames[j].name}</div></div>`
     }
     if(numPlayers <= 7){
         startNamesHTML += `<img src="./assets/gui/add.svg" id="addNameButton" class="startNameButton buttonClickable" onclick="addStartName()">`
@@ -331,6 +331,7 @@ function windowResizedIconColors() {
 function updatePieceColors(){
     for(i=0; i<gameInfo.playerNames.length; i++){
         document.getElementById(`startIcon${i}`).style.backgroundColor = gameInfo.iconColorList[gameInfo.playerNames[i].colorIndex].color
+        document.getElementById(`startIcon${i}`).style.color = gameInfo.iconColorList[gameInfo.playerNames[i].colorIndex].secondary
     }
 }
 
@@ -965,7 +966,7 @@ function getPossessionsHTML(player, args){
     
                             propertiesHTML+=`<div class="invutility ${cardOwned ? "" : "invunowned" }" onclick="showOverlay({type: '${overlayType}', path: ${cardSource}, loc: '${currentTileGP.loc}'})" ${overlayZ}>${cardMortgaged ? "(" : ""}${currentTileGP.name}${cardMortgaged ? ")" : ""}</div>`
                             if(j1==0){
-                                propertiesHTML += `<div class="invutilitydivider"><div>${hasUtility}/2</div><div>${hasUtility == 2 ? "10" : "7"}x</div></div>`
+                                propertiesHTML += `<div class="invutilitydivider"><div>${hasUtility}/2</div><div>${hasUtility == 2 ? "10" : "4"}x</div></div>`
                             }
                         }
                         propertiesHTML+=`</div>`
@@ -1104,7 +1105,7 @@ function movePiece(player, position){
 
     newSpot = document.getElementById(newPos)
     // console.log(player)
-    newSpot.innerHTML = `<div class="playerToken" onclick="showPlayer(${players.indexOf(player)})" style="background-color: ${player.pieceColor}">${player.playerNum}`
+    newSpot.innerHTML = `<div class="playerToken" onclick="showPlayer(${players.indexOf(player)})" style="background-color: ${player.pieceColor}; color: ${player.pieceSecondary}">${player.playerNum}</div>`
     newSpot.style.rotate = `${randInt(360)}deg`
     newSpot.style.display = "flex"
 
@@ -1561,6 +1562,7 @@ function initializePlayers(names){
             ownedProperties: {set1:[], set2: [],set3:[],set4:[],set5:[],set6:[],set7:[],set8:[],set9:[]}, 
             // piece: `num${i+1}.svg`, 
             pieceColor: gameInfo.iconColorList[names[i].colorIndex].color,
+            pieceSecondary: gameInfo.iconColorList[names[i].colorIndex].secondary,
             playing: false, 
             doubles: 0, 
             getOutOfJail: [false, false],

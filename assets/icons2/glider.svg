@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
-   version="1.2"
-   viewBox="0 0 1280 1280"
-   width="1280"
-   height="1280"
+   width="220mm"
+   height="200mm"
+   viewBox="0 0 220 200"
+   version="1.1"
    id="svg1"
-   sodipodi:docname="glider.svg"
    inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="template - Copy (3) - Copy - Copy.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs1" />
   <sodipodi:namedview
      id="namedview1"
      pagecolor="#ffffff"
@@ -20,66 +20,49 @@
      borderopacity="1.0"
      inkscape:showpageshadow="2"
      inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
+     inkscape:pagecheckerboard="true"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.5926707"
-     inkscape:cx="774.46042"
-     inkscape:cy="739.87123"
-     inkscape:window-width="2400"
-     inkscape:window-height="1494"
-     inkscape:window-x="-11"
-     inkscape:window-y="-11"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg1" />
-  <title
-     id="title1">xsquared-svg</title>
-  <style
-     id="style1">&#10;		.s0 { fill: #f2deba } &#10; .s1 { fill: #3A8891 } &#10;	</style>
+     inkscape:document-units="mm"
+     inkscape:zoom="0.54208404"
+     inkscape:cx="413.22006"
+     inkscape:cy="485.16463"
+     inkscape:window-width="1649"
+     inkscape:window-height="1157"
+     inkscape:window-x="727"
+     inkscape:window-y="128"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
   <g
-     id="2">
-    <path
-       id="Path 0"
-       class="s0"
-       d="m637 0.2c17.9-0.1 38.8 0.3 46.5 0.8 7.7 0.5 20.5 1.7 28.5 2.6 8 0.8 23.7 3.1 35 5 11.3 1.9 27.5 5 36 7 8.5 2 21.1 5.1 28 7 6.9 1.9 20.8 6.2 31 9.5 10.2 3.4 26.4 9.3 36 13.1 9.6 3.9 24.7 10.4 33.5 14.5 8.8 4 22.8 11 31 15.5 8.3 4.5 20.6 11.5 27.5 15.6 6.9 4.1 19.3 12 27.5 17.6 8.3 5.5 20.6 14.3 27.5 19.5 6.9 5.2 18.8 14.7 26.5 21.1 7.7 6.5 20.5 17.9 28.5 25.4 8 7.5 20.1 19.6 26.9 26.9 6.7 7.2 17.6 19.5 24.1 27.2 6.5 7.7 16.1 19.8 21.5 27 5.4 7.1 14.8 20.6 21 30 6.2 9.4 13.9 21.5 17.2 27 3.3 5.5 9.5 16.5 13.8 24.5 4.3 8 10.5 20.1 13.8 27 3.2 6.9 8.3 18.4 11.4 25.5 3 7.1 8.3 20.6 11.8 30 3.4 9.4 8.6 24.6 11.4 34 2.8 9.4 6.4 22.4 8 29 1.7 6.6 4.1 17.2 5.5 23.5 1.4 6.3 3.6 18.3 5 26.5 1.4 8.3 3.4 22.6 4.5 32 1.1 9.4 2.5 24.6 3.2 34 0.7 10.8 1 29.9 0.6 52.5-0.3 19.5-1 40.2-1.6 46-0.6 5.8-2 17.7-3.2 26.5-1.1 8.8-3.5 24.3-5.4 34.5-1.9 10.2-5.7 27.7-8.6 39-2.8 11.3-8.3 30.2-12.1 42-3.9 11.8-10.1 29.1-13.9 38.5-3.7 9.4-10 24-13.9 32.5-3.9 8.5-11 22.7-15.7 31.5-4.8 8.8-12.4 22.3-17.1 30-4.7 7.7-12.8 20.3-18 28-5.2 7.7-13.6 19.4-18.5 26-5 6.6-12.2 15.8-16.1 20.5-3.9 4.7-11.6 13.7-17.2 20-5.5 6.3-16.1 17.5-23.5 24.9-7.4 7.4-18.8 18.4-25.4 24.4-6.6 6-19.4 16.9-28.5 24.2-9.1 7.2-21.5 16.7-27.5 21-6 4.4-17.3 12-25 17-7.7 5.1-20.3 12.8-28 17.2-7.7 4.4-19.6 11-26.5 14.6-6.9 3.6-19.7 9.8-28.5 13.8-8.8 3.9-23.2 10-32 13.4-8.8 3.5-24.5 9.1-35 12.5-10.5 3.4-25.8 7.9-34 10.1-8.3 2.1-20.2 5-26.5 6.4-6.3 1.4-19.1 3.9-28.5 5.5-9.4 1.6-22.6 3.6-29.5 4.4-6.9 0.9-17.2 2.1-23 2.7-5.8 0.5-26.3 1.3-45.5 1.6-22.1 0.3-41.5 0.1-52.5-0.6-9.6-0.7-23.8-1.9-31.5-2.7-7.7-0.9-23.2-3.1-34.5-5-11.3-1.9-27.5-5-36-7-8.5-2-21.1-5.1-28-7-6.9-1.9-20.8-6.2-31-9.5-10.2-3.4-26.4-9.3-36-13.1-9.6-3.9-24.7-10.4-33.5-14.5-8.8-4-22.8-11-31-15.5-8.3-4.5-20.6-11.5-27.5-15.6-6.9-4.1-19.3-12-27.5-17.6-8.3-5.5-20.6-14.3-27.5-19.5-6.9-5.2-18.8-14.7-26.5-21.1-7.7-6.5-20.8-18.1-29-25.9-8.3-7.7-20.3-19.8-26.8-26.8-6.6-7.1-17.2-19.1-23.7-26.8-6.5-7.7-16.1-19.8-21.5-27-5.4-7.1-14.8-20.6-21-30-6.2-9.4-13.9-21.5-17.2-27-3.3-5.5-9.5-16.5-13.8-24.5-4.3-8-10.5-20.1-13.8-27-3.2-6.9-8.4-18.4-11.4-25.5-3-7.1-8.4-20.9-11.9-30.5-3.6-9.6-8.7-24.9-11.4-34-2.7-9.1-6.3-21.9-7.9-28.5-1.7-6.6-4.1-17.2-5.5-23.5-1.4-6.3-3.6-18.2-5-26.5-1.4-8.2-3.4-22.6-4.5-32-1.1-9.4-2.5-23.6-3-31.7-0.6-8.2-1.1-28.2-1.1-44.5 0-16.4 0.5-36.1 1-43.8 0.6-7.7 1.7-20.1 2.6-27.5 0.8-7.4 2.8-21.8 4.5-32 1.6-10.2 4.5-25.7 6.5-34.5 1.9-8.8 4.7-20.3 6-25.5 1.4-5.2 4.6-16.2 7.1-24.5 2.5-8.2 6.4-19.9 8.5-26 2.2-6.1 6.6-17.5 9.8-25.5 3.2-8 8.6-20.6 12-28 3.4-7.4 9.6-20 13.7-28 4.2-8 10.8-19.9 14.6-26.5 3.8-6.6 11.2-18.5 16.5-26.5 5.2-8 13.3-19.9 18.1-26.5 4.7-6.6 12.2-16.5 16.5-22 4.4-5.5 10.9-13.4 14.4-17.5 3.6-4.1 12.4-14 19.8-22 7.3-8 20.8-21.5 30.1-30.1 9.2-8.6 20.4-18.7 24.8-22.4 4.4-3.7 12.7-10.5 18.5-15 5.8-4.5 16.1-12.2 23-17.2 6.9-4.9 18.4-12.7 25.5-17.3 7.1-4.6 20-12.4 28.5-17.3 8.5-4.9 24.1-13.1 34.5-18.2 10.4-5.1 25.1-11.9 32.5-15 7.4-3.1 18.2-7.5 24-9.7 5.8-2.2 16.6-6 24-8.5 7.4-2.4 20.5-6.4 29-8.8 8.5-2.4 22.7-6 31.5-8 8.8-2 25-5.2 36-7 11-1.8 26.7-4.1 35-5 8.2-0.9 19.7-2 25.5-2.4 5.8-0.5 25.1-0.9 43-0.9z" />
-  </g>
-  <g
-     id="g1"
-     class="s1"
-     transform="matrix(0,-2.3807355,2.3807355,0,-628.10231,1997.5514)">
-    <rect
-       style="stroke:#ffffff;stroke-width:0;stroke-dasharray:none;paint-order:stroke fill markers"
-       id="rect1"
-       width="80"
-       height="80"
-       x="450"
-       y="425" />
-    <rect
-       style="stroke:#ffffff;stroke-width:0;stroke-dasharray:none;paint-order:stroke fill markers"
-       id="rect1-9"
-       width="80"
-       height="80"
-       x="450"
-       y="505" />
-    <rect
-       style="stroke:#ffffff;stroke-width:0;stroke-dasharray:none;paint-order:stroke fill markers"
-       id="rect1-0"
-       width="80"
-       height="80"
-       x="530"
-       y="585" />
-    <rect
-       style="stroke:#ffffff;stroke-width:0;stroke-dasharray:none;paint-order:stroke fill markers"
-       id="rect1-5"
-       width="80"
-       height="80"
-       x="530"
-       y="425" />
-    <rect
-       style="stroke:#ffffff;stroke-width:0;stroke-dasharray:none;paint-order:stroke fill markers"
-       id="rect1-5-7"
-       width="80"
-       height="80"
-       x="610"
-       y="425" />
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:23.4735px;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264582"
+       x="13.520986"
+       y="31.332655"
+       id="text1"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.4735px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, @wght=500';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 500;fill:#ffffff;stroke-width:0.264582"
+         x="13.520986"
+         y="31.332655"
+         id="tspan2">Conway's Game</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.4735px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, @wght=500';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 500;fill:#ffffff;stroke-width:0.264582"
+         x="13.520986"
+         y="61.443455"
+         id="tspan1">of Life</tspan></text>
+    <g
+       id="g2"
+       class="s1"
+       transform="matrix(0,-0.41026465,0.41026465,0,-118.68497,358.65173)"
+       style="fill:#ffffff;stroke-width:1.53536">
+      <path
+         id="rect1"
+         style="stroke:#ffffff;stroke-width:0;stroke-dasharray:none;paint-order:stroke fill markers;fill:#ffffff"
+         d="M 690.00007,425.00028 H 610 529.99994 449.99988 v 80.00006 80.00006 h 80.00006 V 505.00034 H 610 690.00007 Z M 529.99994,585.0004 v 79.99924 H 610 V 585.0004 Z" />
+    </g>
   </g>
 </svg>
