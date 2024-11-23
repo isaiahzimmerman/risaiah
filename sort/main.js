@@ -198,3 +198,7 @@ function stopSort(){
 window.addEventListener("resize", function(){
     this.document.getElementById("graph_display").style.height = `${window.innerHeight - document.getElementById("options").getBoundingClientRect().bottom - 10}px`
 })
+
+window.addEventListener("load", function(){
+    window.dispatchEvent(new Event('resize'));
+})
