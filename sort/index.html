@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- header -->
+    <script src="/assets/header/header.js"></script>
+    <link rel="stylesheet" href="/assets/header/header.css">
+    <!-- header -->
+</head>
+<body>
+    <!-- header -->
+    <div w3-include-html="/assets/header/header.html"></div>
+    <script>includeHTML()</script>
+    <!-- header -->
+    <h1>Sorting Visualizer</h1>
+    <div id="options">
+        <div id="timer">0s</div>
+        <select name="" id="sorting_method">
+            <option value="bubble">Bubble Sort</option>
+            <option value="quick">QuickSort</option>
+        </select>
+        <div>sort <input type="text" style="width:40px" id="elementsToSort"> elements</div>
+        <button onclick="startSort()">start</button>
+        <button onclick="stopSort()">stop</button>
+    </div>
+    <div class="graph_display" id="graph_display">
+        
+    </div>
+</body>
+</html>

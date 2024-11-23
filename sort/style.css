@@ -1,0 +1,23 @@
+body{
+    font-family: isaiahFont;
+    background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
+    /* height: 100vh; */
+}
+
+h1{
+    text-align: center;
+}
+
+.graph_display{
+    height: 650px;
+    width: 100%;
+    /* background-color: aquamarine; */
+    display: flex;
+    align-items: baseline;
+}
+
+.graph_bar{
+    background-color: black;
+    flex: 1;
+}
