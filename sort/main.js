@@ -39,7 +39,14 @@ async function time(){
     while(timing){
         await wait(50)
         timeSince = (new Date().getTime() - startTime)/1000
-        document.getElementById("timer").innerHTML = `${Math.floor(timeSince / 3600)}h ${Math.floor(timeSince / 60) % 60}m ${(timeSince % 60).toFixed(2)}s`
+        let timeDisp = ""
+        let hrs = Math.floor(timeSince / 3600)
+        if(hrs>0){timeDisp += `${hrs}h `}
+        let mins = Math.floor(timeSince / 60) % 60
+        if(hrs>0 || mins>0){timeDisp += `${mins}m `}
+        let secs = (timeSince % 60).toFixed(2)
+        timeDisp += `${secs}s `
+        document.getElementById("timer").innerHTML = timeDisp
     }   
 }
 

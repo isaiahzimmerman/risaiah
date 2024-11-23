@@ -1,5 +1,6 @@
 var siteList = [
     {title: 'Groveopoly', path: '/groveopoly/', icon: ['/assets/icons/groveopoly.svg', '/assets/icons/darkgroveopoly.svg'], author: ['isaiah']},
+    {title: 'Sorting Visualization', path: '/sort/', icon: ['/assets/icons/sorting.svg', '/assets/icons/darksorting.svg'], author: ['isaiah', 'ryan']},
     {title: 'Solitaire', path: '/solitaire/', icon: ['/assets/icons/joker.svg', '/assets/icons/darkjoker.svg'], author: ['isaiah', 'ryan']},
     {title: 'Connect Four', path: '/connectfour/', icon: ['/assets/icons/connectfour.svg', '/assets/icons/darkconnectfour.svg'], author: ['isaiah']},
     {title: "Conway's Game of Life", path: '/gameoflife/', icon: ['/assets/icons/glider.svg', '/assets/icons/darkglider.svg'], author: ['isaiah']},
