@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet">
+    <!-- font -->
+
+    <script src="intro.js"></script>
+    <script src="main.js"></script>
+
+    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <div class="sidebar">
+            <button id="color_theme_selector" onclick="cycleTheme()">Cycle</button>
+            <div class="sidebar_content">
+                <div class="sidebar_element">
+                    <div class="sidebar_site">Home</div>
+                    <div class="sidebar_key">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="main_content">
+            <div class="name_container">
+                <h1><span id="first_name">Isaiah</span> <span id="last_name">Zimmerman</span></h1>
+                <div onclick="showAndPlayIntro()"><img src="assets/replay.svg" alt="" id="replay_intro"></div>
+            </div>
+
+            <h2 class="section_header">Experience</h2>
+            <div class="section experience" id="experience"></div>
+
+            <div class="projects_header_container">
+                <h2 class="section_header">Projects</h2>
+                <img id="projects_filter" src="assets/filter.svg" onclick="toggleProjectsFilters()" alt="">
+            </div>
+            <div class="section">
+                <div class="projects_filter_tags" id="projects_filter_tags">
+                    <div id="projects_filter_tags_inner"></div>
+                </div>
+                <div>
+                    Project
+                </div>
+            </div>
+
+            <h2 class="section_header">Education</h2>
+            <div class="section">
+                
+            </div>
+        </div>
+    </div>
+    <div class="temp_intro_bg" id="temp_intro_bg"></div>
+    <div class="intro_animation" id="intro_animation">
+        <div><span id="intro_hello">Hello</span> <span><img src="assets/hand.png" id="intro_hand" alt=""></span></div>
+        <div><span id="intro_im">I'm</span> <span id="intro_first">Isaiah</span></div>
+        <div id="intro_last">Zimmerman</div>
+    </div>
+</body>
+</html>
