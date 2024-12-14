@@ -61,7 +61,6 @@ function copyArray(input){
 function drawArrayStatus(array){
     graph = document.getElementById("graph_display")
     array.heightFactor = 1/Math.max(...array.content)
-    let i = 0
     graph.innerHTML = ""
     array.content.forEach(function (element, i){
         newBar = document.createElement("div")
@@ -87,6 +86,41 @@ function updateHeight(array, pos){
 }
 
 let sorting = false;
+
+function randInt(ceiling){
+    return Math.floor(Math.random() * ceiling)
+}
+
+async function bogoSort(array){
+    sorting=true
+    copy = {
+        content: copyArray(array.content),
+        heightFactor: array.heightFactor
+    }
+
+    drawArrayStatus(copy)
+    let size = copy.content.length
+    while(true){
+        await swapAndDraw(copy, randInt(size), randInt(size))
+        if(await checkArrayAscending(copy.content)){
+            break
+        }
+        if(!sorting){break}
+    }
+    sorting = false
+    timing = false
+}
+
+async function checkArrayAscending(array){
+    let current = array[0]
+    for(let i=0; i<array.length; i++){
+        if(array[i] < current){
+            return false
+        }
+        current = array[i]
+    }
+    return true
+}
 
 async function bubbleSort(array){
     sorting=true
@@ -177,6 +211,9 @@ function sortUsing(type){
             break
         case "quick":
             quickSort(unsorted)
+            break
+        case "bogo":
+            bogoSort(unsorted)
             break
     }
 }
