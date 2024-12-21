@@ -5,6 +5,11 @@ tradeInfo = {
 }
 
 function startTrade(playerNum1, playerNum2){
+    tradeInfo = {
+        playerNums: [NaN, NaN],
+        offers: {properties:[null, null], money: [0, 0]},
+        accepted: [false, false],
+    }
     hideCard()
     document.getElementById("tradeOverlay").style.display = "flex"
 
@@ -66,12 +71,12 @@ function selectTradeCard(playerNum, cardNum, loc){
     
     if(!cardSelected){
         //add selected card
-        console.log(`selected player ${playerNum} card ${cardNum}`)
+        // console.log(`selected player ${playerNum} card ${cardNum} location ${loc}`)
         document.getElementById(`tradeCardOverlay${playerNum},${cardNum}`).style.display = "flex"
         tradeInfo.offers.properties[getPlayerNum(playerNum)].push(loc)
     }else{
         //remove selected card
-        console.log(`unselected player ${playerNum} card ${cardNum}`)
+        // console.log(`unselected player ${playerNum} card ${cardNum} location ${loc}`)
         document.getElementById(`tradeCardOverlay${playerNum},${cardNum}`).style.display = "none"
         removeFromArray(tradeInfo.offers.properties[getPlayerNum(playerNum)], loc)
     }
@@ -123,10 +128,10 @@ function getTradePossessionsHTML(playerNum){
     player = players[playerNum]
 
     cardNum = 0
-    for(i=1;i<10;i++){
+    for(let i=1;i<10;i++){
         amountInSet = player.ownedProperties[`set${i}`].length
         if(amountInSet!=0){
-            for(j=0;j<amountInSet;j++){
+            for(let j=0;j<amountInSet;j++){
                 tile = tilesList[player.ownedProperties[`set${i}`][j]]
                 cardSource = `'./assets/properties/${player.ownedProperties[`set${i}`][j]}.svg'`
                 
@@ -145,6 +150,23 @@ function getTradePossessionsHTML(playerNum){
                 }
                 cardNum ++
             }
+        }
+    }
+    for(let k=0;k<2;k++){
+        if(player.getOutOfJail[k]){
+            let cardPaths = ["./assets/chance/chance-template.svg", "./assets/chest/chest-template.svg"]
+            propertiesHTML +=
+            `<div class="trade_jail_card" onclick="selectTradeCard(${playerNum},${cardNum}, 'jl${k}')">
+                <div class="chanceOverlay" style="display: flex; z-index: 5">
+                    <img  src="${cardPaths[k]}" class="chanceOverlayImage">
+                    <div class="chanceInfo" id="chanceInfo">
+                        <div class="chanceDesc" id="chanceDesc">GET OUT OF JAIL FREE. YOU MAY STASH THIS CARD AND SAVE IT FOR LATER.</div>
+                        <div class="chanceInfoImg" id="chanceInfoImg"><img src="assets/cards/card-images/happy.png"></div>
+                    </div>
+                </div>
+                <div class="tradeCardOverlay" id="tradeCardOverlay${playerNum},${cardNum}"><img src="./assets/gui/check.svg">
+            </div></div>`
+            cardNum ++
         }
     }
 
@@ -176,19 +198,54 @@ function getTradePlayerHTML(playerNum){
 //args = {offer0, offer1}
 //offerN = {playerNum: num, money: amount, properties: [locations]}
 function exchangeProperties(args){
+    let player1Offer = ""
+    let player2Offer = ""
+
     for(i=0; i<2; i++){
-        currentPlayerNum = args["offer"+i].playerNum
-        otherPlayer = (i==0 ? 1 : 0)
-        otherPlayerNum = args["offer"+otherPlayer].playerNum
+        let currentPlayerNum = args["offer"+i].playerNum
+        let otherPlayer = (i==0 ? 1 : 0)
+        let otherPlayerNum = args["offer"+otherPlayer].playerNum
 
         for(j=0; j<args["offer"+otherPlayer].properties.length; j++){
             offeredProperty = args["offer"+otherPlayer].properties[j]
 
-            addProperty(players[currentPlayerNum], offeredProperty)
+            if(i==0){
+                if(j == args["offer"+otherPlayer].properties.length - 1){
+                    if(args["offer"+otherPlayer].properties.length > 1 || args["offer"+otherPlayer].properties.length > 0 && args["offer"+otherPlayer].money > 0)
+                        player2Offer += " and "
+                }else{
+                    player2Offer += ", "
+                }
+                
+                if(offeredProperty.substring(0,2) == "jl"){
+                    player2Offer += "A Get out of Jail Free Card"
+                }else{
+                    player2Offer += getName(tilesList[offeredProperty])
+                }
+            }else{
+                if(j == args["offer"+otherPlayer].properties.length - 1){
+                    if(args["offer"+otherPlayer].properties.length > 1 || args["offer"+otherPlayer].properties.length > 0 && args["offer"+otherPlayer].money > 0)
+                        player1Offer += " and "
+                }else{
+                    player1Offer += ", "
+                }
 
-            //if property is mortgaged
-            if(players[otherPlayerNum].mortgaged.indexOf(offeredProperty) >= 0){
-                players[currentPlayerNum].mortgaged.push(offeredProperty)
+                if(offeredProperty.substring(0,2) == "jl"){
+                    player1Offer += "a Get out of Jail Free Card"
+                }else{
+                    player1Offer += getName(tilesList[offeredProperty])
+                }
+            }
+
+            if(offeredProperty.substring(0,2) == "jl"){
+                players[currentPlayerNum].getOutOfJail[parseInt(offeredProperty.substring(2,3))] = true
+            }else{
+                addProperty(players[currentPlayerNum], offeredProperty)
+
+                //if property is mortgaged
+                if(players[otherPlayerNum].mortgaged.indexOf(offeredProperty) >= 0){
+                    players[currentPlayerNum].mortgaged.push(offeredProperty)
+                }
             }
         }
     }
@@ -200,17 +257,25 @@ function exchangeProperties(args){
         for(j=0; j<args["offer"+i].properties.length; j++){
             offeredProperty = args["offer"+i].properties[j]
 
-            removeProperty(players[currentPlayerNum], offeredProperty)
+            if(offeredProperty.substring(0,2) == "jl"){
+                players[currentPlayerNum].getOutOfJail[parseInt(offeredProperty.substring(2,3))] = false
+            }else{
+                removeProperty(players[currentPlayerNum], offeredProperty)
 
-            //if property is mortgaged
-            if(players[currentPlayerNum].mortgaged.indexOf(offeredProperty) >= 0){
-                removeFromArray(players[currentPlayerNum].mortgaged, offeredProperty)
+                //if property is mortgaged
+                if(players[currentPlayerNum].mortgaged.indexOf(offeredProperty) >= 0){
+                    removeFromArray(players[currentPlayerNum].mortgaged, offeredProperty)
+                }
             }
         }
     }
 
     players[args.offer0.playerNum].money += args.offer1.money - args.offer0.money
     players[args.offer1.playerNum].money += args.offer0.money - args.offer1.money
+
+    chat.log(
+        `${players[args.offer0.playerNum].name} traded ${args.offer0.money == 0 ? "" : `$${args.offer0.money}`}${player1Offer}${args.offer0.money == 0 && args["offer0"].properties.length == 0 ? "nothing" : ""} to ${players[args.offer1.playerNum].name} for ${args.offer1.money == 0 ? "" : `$${args.offer1.money}`}${player2Offer}${args.offer1.money == 0 && args["offer1"].properties.length == 0 ? "nothing" : ""}.`
+    )
 
     drawPossessions(players[currentPlayer])
 }

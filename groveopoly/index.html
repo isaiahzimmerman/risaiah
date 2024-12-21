@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="propertyinventory.css">
     <link rel="stylesheet" href="arrow.css">
     <link rel="stylesheet" href="settings.css">
+    <link rel="stylesheet" href="actionlog.css">
     <!-- header -->
     <script src="/assets/header/header.js"></script>
     <link rel="stylesheet" href="/assets/header/header.css">
@@ -195,10 +196,14 @@
             <div id="player2Trade" class="playerTrade player2Trade"></div>
         </div>
     </div>
+    <div class="action_log_container" id="action_log_container" onclick="chat.hide()">
+        <div class="action_log" id="action_log">
+        </div>
+    </div>
     <div class="windowSizeWarning" id="windowSizeWarning">
         <div class="aspectRatioWarning windowWarning" id="aspectRatioWarning">
             <img class="windowWarningIcon" src="assets/warning.svg" alt="" srcset="">
-            Aspect ratio is too extreme! Please adjust your viewing window so it is between 1:1 and 2:1.
+            Aspect ratio is too extreme! Please adjust your viewing window so it is between 1:1 and 5:2.
         </div>
         <div class="minimumResolutionWarning windowWarning" id="minimumResolutionWarning">
             <img class="windowWarningIcon" src="assets/warning.svg" alt="" srcset="">

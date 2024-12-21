@@ -19,8 +19,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 5%;
-    width: 90%;
+    width: 75%;
     height: 90%;
+    justify-self: center;
 }
 
 .playerTrade{
@@ -125,7 +126,8 @@
 }
 
 .tradeCardOverlay img{
-    width: 70%;
+    max-width: 70%;
+    max-height: 70%;
 }
 
 .exitTradeButton:hover{
@@ -134,4 +136,14 @@
 
 .acceptTradeButton:hover{
     background-color: white;
+}
+
+.trade_jail_card{
+    position: relative;
+    width: 30%;
+    min-width: 30%;
+    margin: 0 auto;
+    margin-bottom: 1.5vw;
+    height: 6.5vw;
+    cursor: pointer;
 }

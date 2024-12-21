@@ -165,3 +165,36 @@ div.invmortgaged:hover{
     text-decoration: underline;
     cursor: pointer;
 }
+
+.jail_invcontainer{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: calc(var(--pss)*4.5);
+    border: calc(var(--pss)*0.35) solid black;
+    padding: 9%;
+    margin: 3% 3.5%;
+    font-size: calc(var(--pss)*2.5);
+    text-align: center;
+    background: repeating-linear-gradient(
+        90deg,
+        black,
+        black calc(var(--pss) * 2.2),
+        white calc(var(--pss) * 2.2),
+        white calc(var(--pss) * 4.4)
+    );
+  }
+
+.jail_invcontainer span{
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.trade_jail_card .chanceOverlay{
+    width: 100%;
+    height: 100%;
+    box-shadow: calc(var(--pss)*.2) calc(var(--pss)*.2) calc(var(--pss)*.2) black;
+}
+
+.trade_jail_card .chanceOverlay .chanceDesc{
+    font-size: 0.35vw;
+}

@@ -882,12 +882,12 @@ div.jailplayers{
     min-height: 15vmax;
     margin: 1vmax;
     align-items: center;
-    font-size: 5vmax;
+    font-size: 3vmax;
     border: 1vmax solid black;
     padding: 1vmax;
 }
 
 .windowWarningIcon{
-    height: 10vmax;
+    height: 7vmax;
     margin-right: 2vmax;
 }

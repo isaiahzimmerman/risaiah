@@ -26,6 +26,7 @@ function shuffle(array, seed) {                // <-- ADDED ARGUMENT
 function runWhenSiteLoads(){
     try{
         header_draw_additional_button("Settings", {type: "onclick", onclick: "showOverlay({type: 'settings'}); header_hide_menu()"});
+        header_draw_additional_button("Log", {type: "onclick", onclick: "chat.toggleVisibility(); header_hide_menu()"});
     }catch(error){
         setTimeout(runWhenSiteLoads, 100);
     }
@@ -42,8 +43,8 @@ function siteLoad(){
 function checkAspectRatio(){
     windowDisplayRatio = (window.innerWidth/window.innerHeight)
     // console.log(windowDisplayRatio)
-    if(windowDisplayRatio < 1 || windowDisplayRatio > 2 || window.innerWidth < 500 || window.innerHeight < 500){
-        if(windowDisplayRatio < 1 || windowDisplayRatio > 2){
+    if(windowDisplayRatio < 1 || windowDisplayRatio > 2.5 || window.innerWidth < 500 || window.innerHeight < 500){
+        if(windowDisplayRatio < 1 || windowDisplayRatio > 2.5){
             document.getElementById("aspectRatioWarning").style.display = "flex"
         }else{
             document.getElementById("aspectRatioWarning").style.display = "none"
@@ -627,15 +628,16 @@ function showOverlay(args){
 
     else if(args.type == "stashedJail"){
         document.getElementById("overlay").setAttribute( "onClick", "javascript: hideCard();")
-        document.getElementById("chanceOverlayImage").src = args.path
-        document.getElementById("chanceOverlay").style.display = "flex"
+        showOverlay({type: args.typeNum == 0 ? "chance" : "chest", cardText: "GET OUT OF JAIL FREE. YOU MAY STASH THIS CARD AND SAVE IT FOR LATER.", cardImg: "happy.png", isStashedJail: true})
     }
 
     //chance or chest overlay
     else if(args.type =="chance" || args.type=="chest"){
+        document.getElementById("overlay").setAttribute("onClick", "")
         //TODO: change chance cards so they have different text
         document.getElementById("chanceOverlayImage").src = (args.type=="chance" ? "assets/chance/chance-template.svg" : "assets/chest/chest-template.svg")
-        document.getElementById("chanceDesc").innerHTML = args.cardText
+    
+        document.getElementById("chanceDesc").innerHTML = args.cardText ? args.cardText.toUpperCase() : "ERROR: no text written!"
 
         if(args.cardImg != null){
             document.getElementById("chanceInfoImg").innerHTML = `<img src="assets/cards/card-images/${args.cardImg}">`
@@ -649,10 +651,14 @@ function showOverlay(args){
             document.getElementById("chanceButton").setAttribute( "onClick", (args.isJail ? "javascript: addJail(1)" : "exitChanceOrChest()"))
         }
         
-        document.getElementById("chanceButton").setAttribute( "onClick", (args.isJail ? "javascript: addJail(0)" : args.clickAction + ";drawPossessions(players[currentPlayer])"))
+        if(args.isStashedJail){
+            document.getElementById("overlay").setAttribute("onClick", "javascript: hideCard()")
+        }else{
+            document.getElementById("chanceButton").setAttribute( "onClick", (args.isJail ? "javascript: addJail(0)" : args.clickAction + ";drawPossessions(players[currentPlayer])"))
 
-        document.getElementById("chanceButton").innerHTML = args.buttonText
-        document.getElementById("chanceButtons").style.display = "flex"
+            document.getElementById("chanceButton").innerHTML = args.buttonText
+            document.getElementById("chanceButtons").style.display = "flex"
+        }
         document.getElementById("chanceOverlay").style.display = "flex"
     }
 
@@ -868,17 +874,17 @@ function getPossessionsHTML(player, args){
     propertiesHTML = ""
     playerNum = players.indexOf(player)
 
-    for(i3=1;i3<10;i3++){
-        amountInSet = player.ownedProperties[`set${i3}`].length
+    for(let i3=1;i3<10;i3++){
+        let amountInSet = player.ownedProperties[`set${i3}`].length
 
         if(gameInfo.newinventorystyle){        
-            hasTunnel = (whoOwns(tilesList["b4"])==playerNum? 1 : 0) + (whoOwns(tilesList["l4"])==playerNum? 1 : 0) +(whoOwns(tilesList["t4"])==playerNum? 1 : 0)+ (whoOwns(tilesList["r4"]) ==playerNum? 1 : 0)
+            let hasTunnel = (whoOwns(tilesList["b4"])==playerNum? 1 : 0) + (whoOwns(tilesList["l4"])==playerNum? 1 : 0) +(whoOwns(tilesList["t4"])==playerNum? 1 : 0)+ (whoOwns(tilesList["r4"]) ==playerNum? 1 : 0)
             hasUtility = (whoOwns(tilesList["l1"])==playerNum ? 1 : 0) + (whoOwns(tilesList["t7"])==playerNum ? 1 : 0)
             if(amountInSet != 0){
                 if(i3 != 9){
                     propertiesHTML+=`<div class="invcontainer invset${i3}"><div class="invproperties">`
 
-                    overlayZ = ""
+                    let overlayZ = ""
 
                     for(j1=0;j1<propertySets[i3-1].length;j1++){
                         currentTileGP = tilesList[propertySets[i3-1][j1]]
@@ -906,7 +912,7 @@ function getPossessionsHTML(player, args){
 
                     propertiesHTML += `</div>`
 
-                    houseColor = 0
+                    let houseColor = 0
                     if(ownsColorSet(tilesList[propertySets[i3-1][0]]) && !hasMortgagedInSet(i3)){
                         houseColor = i3
                     }
@@ -1003,16 +1009,16 @@ function getPossessionsHTML(player, args){
     }
 
     if(gameInfo.newinventorystyle){
-        player.getOutOfJail[0] || player.getOutOfJail[1]
-        //TODO: finish this
+        if(player.getOutOfJail[0] || player.getOutOfJail[1])
+            propertiesHTML += `<div class="jail_invcontainer"><span>Get out of Jail Free Cards: ${player.getOutOfJail[0] ? 1 : 0 + player.getOutOfJail[1] ? 1 : 0}</span></div>`
     }else{
         //hardcoded
         for(i=0;i<2;i++){
             if(player.getOutOfJail[i]){
-                cardPaths = ["./assets/chance/chance-template.svg", "./assets/chest/chest-template.svg"]
+                let cardPaths = ["./assets/chance/chance-template.svg", "./assets/chest/chest-template.svg"]
                 propertiesHTML +=
                 `<div class="cardRow">
-                    <img src="${cardPaths[i]}" class="getOutOfJail" onclick="showOverlay({type:'stashedJail',path:'${cardPaths[i]}'})">
+                    <img src="${cardPaths[i]}" class="getOutOfJail" onclick="showOverlay({type:'stashedJail', typeNum: ${i}})">
                 </div>`
             }
         }
@@ -1271,7 +1277,7 @@ function landOnSpace(space){
         }
         drawPossessions(players[currentPlayer])
 
-        showOverlay({type: space.type, buttonText: currentCard.buttonText, isJail: currentCard.cardAction.type == "jail", clickAction: clickAction, cardText: currentCard.cardText})
+        showOverlay({type: space.type, buttonText: currentCard.buttonText, isJail: currentCard.cardAction.type == "jail", clickAction: clickAction, cardText: currentCard.cardText, cardImg: currentCard.cardImg})
 
     }else if(space.type == "corner"){
         if(space.cornerType == "goToJail"){
@@ -1734,11 +1740,16 @@ function purchaseProperty(player, location){
         player.savingForProperty = null
         player.raisingFunds = false
         addProperty(player, location)
+        chat.log(`${player.name} purchased ${getName(tilesList[location])}.`)
     }else{
         window.alert("not enough money!")
     }
     drawPossessions(player)
     updateNextActionButton()
+}
+
+function getName(tile){
+    return tile.type=="property" ? tile.location : tile.name
 }
 
 currentAuction = {
@@ -1834,3 +1845,55 @@ function removeProperty(player, location){
 }
 
 //TODO: lose condition
+
+function pad(num, size) {
+    num = num.toString();
+    while (num.length < size) num = "0" + num;
+    return num;
+}
+
+const chat = {
+    log: function(message){
+        let currentTime = new Date()
+
+        let newMessage = document.createElement("div")
+
+        let newMessageTime = document.createElement("span")
+        newMessageTime.classList.add("action_log_time")
+        newMessageTime.innerText = `${currentTime.getMonth()}/${currentTime.getDate()}/${pad(currentTime.getFullYear() % 100, 2)} ${pad(currentTime.getHours(), 2)}:${pad(currentTime.getMinutes(), 2)}:${pad(currentTime.getSeconds(), 2)} - `
+
+        let newMessageText = document.createElement("span")
+        newMessageText.classList.add("action_log_message")
+        newMessageText.innerText = message
+
+        newMessage.appendChild(newMessageTime)
+        newMessage.appendChild(newMessageText)
+
+        let action_log = document.getElementById("action_log")
+        action_log.appendChild(newMessage)
+    },
+    hide: function(){
+        let action_log = document.getElementById("action_log_container")
+        action_log.style.opacity = "0"
+        action_log.style.pointerEvents = "none"
+        this.hidden = true
+    },
+    show: function(){
+        let action_log = document.getElementById("action_log_container")
+        action_log.style.opacity = "1"
+        action_log.style.pointerEvents = "all"
+
+        let action_log_inner = document.getElementById("action_log")
+        action_log_inner.scrollTo(0, action_log_inner.scrollHeight)
+
+        this.hidden = false
+    },
+    toggleVisibility(){
+        if(this.hidden){
+            this.show()
+        }else{
+            this.hide()
+        }
+    },
+    hidden: true
+}

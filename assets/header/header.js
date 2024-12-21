@@ -55,6 +55,7 @@ function header_reveal_menu(){
   for(i=1;i<=3;i++){
     document.getElementById(`header_menu_line${i}`).innerHTML = `<div></div>`
   }
+  document.getElementById("header_container").style.pointerEvents = "all"
 }
 
 function header_hide_menu(){
@@ -64,6 +65,7 @@ function header_hide_menu(){
   for(i=1;i<=3;i++){
     document.getElementById(`header_menu_line${i}`).innerHTML = ``
   }
+  document.getElementById("header_container").style.pointerEvents = "none"
 }
 
 function header_draw_additional_button(text, action){
