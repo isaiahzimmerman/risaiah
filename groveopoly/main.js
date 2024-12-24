@@ -188,7 +188,7 @@ gameInfo = {
     newHouseState: null,
     //changes from old mode to bob mode
     newinventorystyle: true,
-    showArrow: false,
+    showArrow: true,
 }
 
 // source: https://stackoverflow.com/a/35803660
@@ -513,9 +513,14 @@ function getRepayment(space){
     return Math.round(1.1 * getMortgage(space))
 }
 
+function canMortgage(playerNum, location){
+    let numHousesAndHotels = getHousesAndHotelsInSet(players[playerNum], tilesList[location].set)
+    
+    return (numHousesAndHotels.houses + numHousesAndHotels.hotels == 0)
+}
+
 function mortgageCard(playerNum, location){
-    numHousesAndHotels = getHousesAndHotelsInSet(players[playerNum], tilesList[location].set)
-    if(numHousesAndHotels.houses > 0 || numHousesAndHotels.hotels > 0){
+    if(canMortgage(playerNum, location)){
         showOverlay({type: "alert", alertMessage: "Sell houses and hotels in color set before attempting to mortgage!"})
     }else{
         players[playerNum].mortgaged.push(location)
@@ -1591,7 +1596,7 @@ function getChance(){
     drawStack("chance")
 
     card = chanceCards.splice(0,1)[0]
-    if(card.type != "jail"){
+    if(card.cardAction.type != "jail"){
         chanceCards.push(card)
         // console.log("not a jail card")
     }
@@ -1601,8 +1606,13 @@ function getChance(){
 
 //TODO: complete this method
 function getChest(){
+    gameInfo.chestRotations.splice(0,1)
+    gameInfo.chestRotations.push(randomRotation(gameInfo.spread))
+
+    drawStack("chest")
+
     topCard = chestCards.splice(0,1)[0]
-    if(topCard.type != "jail"){
+    if(topCard.cardAction.type != "jail"){
         chestCards.push(topCard)
         // console.log("not a jail card")
     }

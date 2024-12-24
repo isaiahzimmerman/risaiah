@@ -346,7 +346,7 @@ div.chanceButton{
 
 .auctionName{
     background-color: white;
-    width: 16vh;
+    width: 25vh;
     height: 8vh;
     display: flex;
     flex-direction: column;
@@ -361,7 +361,7 @@ div.chanceButton{
 
 .currentHighestBidder{
     background-color: white;
-    width: 50vh;
+    width: 59vh;
     height: 6vh;
     display: flex;
     justify-content: center;

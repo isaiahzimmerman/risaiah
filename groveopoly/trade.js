@@ -123,35 +123,49 @@ function removeFromArray(array, value){
 }
 
 function getTradePossessionsHTML(playerNum){
-    propertiesHTML = ""
+    let propertiesHTML = ""
 
-    player = players[playerNum]
+    let player = players[playerNum]
+    let showHouseWarning = false
 
     cardNum = 0
     for(let i=1;i<10;i++){
         amountInSet = player.ownedProperties[`set${i}`].length
         if(amountInSet!=0){
             for(let j=0;j<amountInSet;j++){
-                tile = tilesList[player.ownedProperties[`set${i}`][j]]
-                cardSource = `'./assets/properties/${player.ownedProperties[`set${i}`][j]}.svg'`
+                let tileLoc = player.ownedProperties[`set${i}`][j]
+                let tile = tilesList[tileLoc]
+
+                if(canMortgage(playerNum, tileLoc))
+                {
+                    console.log(`${player.name} can mortgage ${getName(tile)}`)
+                    cardSource = `'./assets/properties/${player.ownedProperties[`set${i}`][j]}.svg'`
                 
-                overlayZ = `style = "z-index: 5"`
-                overlayType = "propertyCardPreview"
-                
-                //TODO: consolidate
-                if(player.mortgaged.indexOf(tile.loc) >= 0){
-                    propertiesHTML += `<div class="mortgagedCard propertyCard" onclick="selectTradeCard(${playerNum},${cardNum}, '${tile.loc}')" ${overlayZ}>${(tile.type=="property" ? tile.location : tile.name)} (Mortgaged)
-                    <div class="tradeCardOverlay" id="tradeCardOverlay${playerNum},${cardNum}"><img src="./assets/gui/check.svg"></div>
-                    </div>`
+                    overlayZ = `style = "z-index: 5"`
+                    overlayType = "propertyCardPreview"
+                    
+                    //TODO: consolidate
+                    if(player.mortgaged.indexOf(tile.loc) >= 0){
+                        propertiesHTML += `<div class="mortgagedCard propertyCard" onclick="selectTradeCard(${playerNum},${cardNum}, '${tile.loc}')" ${overlayZ}>${(tile.type=="property" ? tile.location : tile.name)} (Mortgaged)
+                        <div class="tradeCardOverlay" id="tradeCardOverlay${playerNum},${cardNum}"><img src="./assets/gui/check.svg"></div>
+                        </div>`
+                    }else{
+                        propertiesHTML += `<div class="propertyCard" onclick="selectTradeCard(${playerNum},${cardNum}, '${tile.loc}')">
+                        <img class="propertyCardImg" ${overlayZ} src=${cardSource}>
+                        <div class="tradeCardOverlay"  id="tradeCardOverlay${playerNum},${cardNum}"><img src="./assets/gui/check.svg"></div></div>`
+                    }
+                    cardNum ++
                 }else{
-                    propertiesHTML += `<div class="propertyCard" onclick="selectTradeCard(${playerNum},${cardNum}, '${tile.loc}')">
-                    <img class="propertyCardImg" ${overlayZ} src=${cardSource}>
-                    <div class="tradeCardOverlay"  id="tradeCardOverlay${playerNum},${cardNum}"><img src="./assets/gui/check.svg"></div></div>`
+                    console.log(`${player.name} cannot mortgage ${getName(tile)}`)
+                    showHouseWarning = true
                 }
-                cardNum ++
             }
         }
     }
+
+    if(showHouseWarning)
+        propertiesHTML = "<span style='font-size: 2vw'>Warning: you must sell all houses/hotels on properties before attempting to trade them.</span>" + propertiesHTML
+
     for(let k=0;k<2;k++){
         if(player.getOutOfJail[k]){
             let cardPaths = ["./assets/chance/chance-template.svg", "./assets/chest/chest-template.svg"]

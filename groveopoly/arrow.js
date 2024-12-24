@@ -24,12 +24,15 @@ function drawLine(indexFrom, indexTo, idFrom, idTo){
     boxFrom = document.getElementById(idFrom).getBoundingClientRect()
     boxTo = document.getElementById(idTo).getBoundingClientRect()
 
+    console.log(horizontal?"horizontal":"vertical")
+
     if(horizontal){
         lineHeight = document.getElementById(`arrowLine${indexFrom}`).getBoundingClientRect().height
 
         document.getElementById(`arrowLine${indexFrom}`).style.width = Math.abs((boxTo.left - boxFrom.left + boxTo.right - boxFrom.right)/2)+"px"
         document.getElementById(`arrowLine${indexFrom}`).style.left = Math.min(boxFrom.left + boxFrom.width/2, boxTo.left + boxTo.width/2)+"px"
         document.getElementById(`arrowLine${indexFrom}`).style.top = (boxFrom.top + boxFrom.height/2 - lineHeight/2) + "px"
+
     }else{
         lineWidth = document.getElementById(`arrowLine${indexFrom}`).getBoundingClientRect().width
 
@@ -89,7 +92,8 @@ function drawArrow(startIndex, endIndex){
 
     placeInTile(document.getElementById(`arrowStart`), startIndex)
     for(i=0; i<arrowCorners; i++){
-        cornerIndex = Math.ceil(startIndex / 10 + i)*10 % 40
+        //I think adding the 0.1 fixed arrows not working when moving from 0 (start) by over 10 spaces
+        cornerIndex = Math.ceil(startIndex / 10 + i + 0.1)*10 % 40
         placeInTile(document.getElementById(`arrowCorner${i}`), cornerIndex)
     }
     placeInTile(document.getElementById(`arrowEnd`), endIndex%40)

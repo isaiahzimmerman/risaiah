@@ -1,6 +1,6 @@
 .arrowCorner, .arrowLine, .arrowStart{
     background-color: red;
-
+    pointer-events: none;
 }
 
 .arrowCorner, .arrowLine{
@@ -57,4 +57,5 @@
     top: 0;
     left: 0;
     opacity: 0.2;
+    pointer-events: none;
 }
