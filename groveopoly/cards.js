@@ -10,9 +10,9 @@ chanceCards = [
     // move to reading Railroad
     {buttonText: "Move", cardAction: {type: "move", loc: "b4"}, cardText: "Advance to Crawford Tunnel.", cardImg: "happy.png"},
     // move to nearest Railroad, pay 2x rent
-    {buttonText: "Move", cardAction: {type: "move", loc: 0}, cardText: "MOVE TO THE NEAREST TUNNEL. IF OWNED, PAY THE OWNER DOUBLE THE RENT. IF UNOWNED, YOU MAY PURCHASE IT FROM THE BANK.", cardImg: "ferocious.png"},
+    {buttonText: "Move", cardAction: {type: "nearestTunnel", multiplier: 2}, cardText: "MOVE TO THE NEAREST TUNNEL. IF OWNED, PAY THE OWNER DOUBLE THE RENT. IF UNOWNED, YOU MAY PURCHASE IT FROM THE BANK.", cardImg: "ferocious.png"},
     // move to nearest Railroad, pay 2x rent
-    {buttonText: "move to nearest tunnel", cardAction: {type: "move", loc: 0}, cardText: "MOVE TO THE NEAREST TUNNEL. IF OWNED, PAY THE OWNER DOUBLE THE RENT. IF UNOWNED, YOU MAY PURCHASE IT FROM THE BANK.", cardImg: "ferocious.png"},
+    {buttonText: "move to nearest tunnel", cardAction: {type: "nearestTunnel", multiplier: 2}, cardText: "MOVE TO THE NEAREST TUNNEL. IF OWNED, PAY THE OWNER DOUBLE THE RENT. IF UNOWNED, YOU MAY PURCHASE IT FROM THE BANK.", cardImg: "ferocious.png"},
     // move to nearest utility, pay 10x multiplier
     {buttonText: "nearest utility", cardAction: {type: "gain", amount: 0}, cardText: "MOVE TO THE NEAREST UTILITY AND PAY 10 TIMES A DICE ROLL.", cardImg: "ferocious.png"},
     // move back 3 Spaces
@@ -59,7 +59,7 @@ chestCards = [
     // x -50
     {buttonText: "-50", cardAction: {type: "loss", amount: 50}, cardText:"You forgot to defrost your fridge over break and got fined!", cardImg: "ferocious.png"},
     // x +50 from every player
-    {buttonText: "fix me", cardAction: {type: "gain", amount: 0}, cardText: "fix me pls. cards.js line 61", cardImg: "happy.png"},
+    {buttonText: "Collect", cardAction: {type: "gainFromEveryPlayer", amount: 50}, cardText: "You told everyone that BYOM has a cover charge. Collect $50 from each player!", cardImg: "happy.png"},
     // x -40 per house 115 per hotel
     {buttonText: "lose money per house and hotel", cardAction: {type: "lossPerHouseAndHotel", amounts: {house:40, hotel: 115}}, cardText: "LOSE $40 PER HOUSE AND $115 PER HOTEL", cardImg: "ferocious.png"},
     // x go to jail

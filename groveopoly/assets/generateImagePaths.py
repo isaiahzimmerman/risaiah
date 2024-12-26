@@ -2,7 +2,7 @@ import os
 
 filePaths = []
 
-baseDir = "C://Users//ZIMMERMANIT23//OneDrive - Grove City College//Documents//GitHub//risaiah//groveopoly"
+baseDir = os.getcwd() + "//groveopoly"
 
 f = open(baseDir+"//assets//imagePaths.js", "w")
 
@@ -23,4 +23,3 @@ def writeAllImages(prefix):
 writeAllImages(baseDir)
 
 f.write("]")
-

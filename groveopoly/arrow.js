@@ -13,7 +13,7 @@ function placeInTile(element, index){
 }
 
 function drawLine(indexFrom, indexTo, idFrom, idTo){
-    console.log(indexFrom, idFrom, idTo)
+    // console.log(indexFrom, idFrom, idTo)
     document.getElementById("arrowContainer").innerHTML += `<div class="arrowLine" id="arrowLine${indexFrom}"></div>`
 
     horizontal = true
@@ -24,7 +24,7 @@ function drawLine(indexFrom, indexTo, idFrom, idTo){
     boxFrom = document.getElementById(idFrom).getBoundingClientRect()
     boxTo = document.getElementById(idTo).getBoundingClientRect()
 
-    console.log(horizontal?"horizontal":"vertical")
+    // console.log(horizontal?"horizontal":"vertical")
 
     if(horizontal){
         lineHeight = document.getElementById(`arrowLine${indexFrom}`).getBoundingClientRect().height
@@ -101,7 +101,7 @@ function drawArrow(startIndex, endIndex){
     for(i=0; i<arrowItems.length - 1; i++){
         drawLine(arrowItems[i].index, arrowItems[i+1].index, getArrowNodeId(arrowItems[i]), getArrowNodeId(arrowItems[i+1]))
     }
-    console.log(arrowItems)
+    // console.log(arrowItems)
 
     currentArrow = {start: startIndex, end: endIndex}
 }

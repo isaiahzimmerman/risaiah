@@ -605,9 +605,18 @@ function showOverlay(args){
         if(args.rentAmount.rentType == "property"){
             document.getElementById("rentOverlay").innerText = `${args.property.location} is owned by ${players[args.recipient].name}. Rent${args.rentAmount.rentText} is $${args.rentAmount.rent}.`
         }else if(args.rentAmount.rentType == "railroad"){
-            document.getElementById("rentOverlay").innerText = `${args.property.name} is owned by ${players[args.recipient].name}. Rent with ${args.rentAmount.ownedTunnels} tunnel${(args.rentAmount.ownedTunnels > 1) ? "s" : ""} is $${args.rentAmount.rent}.`
+            let nextTunnelMultiplier = args.rentAmount.nextTunnelMultiplier
+
+            let rentMultiplied = ``
+            if(!isNaN(nextTunnelMultiplier)){
+                rentMultiplied = `, after being multiplied by ${nextTunnelMultiplier} by the chance card,`
+            }
+
+            document.getElementById("rentOverlay").innerText = `${args.property.name} is owned by ${players[args.recipient].name}. Rent with ${args.rentAmount.ownedTunnels} tunnel${(args.rentAmount.ownedTunnels > 1) ? "s" : ""}${rentMultiplied} is $${args.rentAmount.rent}.`
         }else if(args.rentAmount.rentType == "utility"){
             document.getElementById("rentOverlay").innerText = `${args.property.name} is owned by ${players[args.recipient].name}. Rent with ${args.rentAmount.rentText} is ${args.rentAmount.multiplier} times a dice roll (rolled ${args.rentAmount.diceRoll}), which is $${args.rentAmount.rent}.`
+        }else if(args.rentAmount.rentType == "card"){
+            document.getElementById("rentOverlay").innerText = args.rentAmount.rentText
         }else{
             throw new Error("rent type not recognized")
         }
@@ -1142,9 +1151,26 @@ function propertyPurchase(space){
     showOverlay({type:"property", path: "./assets/properties/"+space.loc+".svg", price: space.price})
 }
 
+function removeDebt(price, recipient){
+    let debts = players[currentPlayer].debts
+    debts.forEach(function(element, index) {
+        if(element.owedTo == recipient){
+            if(recipient == -1){
+                if(element.amount == price){
+                    return debts.splice(index, 1)
+                }
+            }else{
+                if(element.amount.rent == price){
+                    return debts.splice(index, 1)
+                }
+            }
+        }
+    });
+}
+
 function payRent(price, recipient){
     if(canAfford(players[currentPlayer], price)){
-        players[currentPlayer].debts = []
+        removeDebt(price, recipient)
         players[currentPlayer].money -= price
         // console.log(recipient)
         players[recipient].money += price
@@ -1155,7 +1181,7 @@ function payRent(price, recipient){
 
 function payTax(amount){
     if(canAfford(players[currentPlayer], amount)){
-        players[currentPlayer].debts = []
+        removeDebt(amount, -1)
         players[currentPlayer].money -= amount
         hideCard()
         drawPossessions(players[currentPlayer])
@@ -1185,6 +1211,7 @@ function landOnSpace(space){
         //if property is owned by self
         else if(owner == currentPlayer){
             // console.log("curr owns this")
+            //TODO popup
         }
 
         //if property is owned by someone else
@@ -1193,11 +1220,19 @@ function landOnSpace(space){
                 //if property is mortgaged no rent is owed
                 // console.log("property is mortgaged")
             }else{
-                rentInfo = getRent(space)
+                let rentInfo = getRent(space)
+                let nextTunnelMultiplier = players[currentPlayer].nextTunnelMultiplier
+
+                if(!isNaN(nextTunnelMultiplier)){
+                    rentInfo.rent = nextTunnelMultiplier * rentInfo.rent
+                    rentInfo.nextTunnelMultiplier = nextTunnelMultiplier
+                }
+
                 players[currentPlayer].debts.push({amount: rentInfo, owedTo: owner, property: space})
                 showOverlay({type: "rent", rentAmount: rentInfo, recipient: owner, property: space})
             }
         }
+        nextTunnelMultiplier = NaN
 
     }else if(space.type == "chance" || space.type == "chest"){
         let currentCard
@@ -1258,7 +1293,32 @@ function landOnSpace(space){
                 break
             //go to nearest tunnel and pay [multiplier]x rent or buy it
             case "nearestTunnel":
-                //TODO: finish this functionality
+                let spaceIndex = boardOrder.indexOf(space.loc)
+                let closestTunnel
+                //between last and first tunnel
+                if(spaceIndex > 35 || spaceIndex < 5){
+                    closestTunnel = "b4"
+                }
+                //between first and second tunnel
+                else if(spaceIndex > 5 && spaceIndex < 15){
+                    closestTunnel = "l4"
+                }
+                //between second and third tunnel
+                else if(spaceIndex > 15 && spaceIndex < 25){
+                    closestTunnel = "t4"
+                }
+                //between third and last tunnel
+                else if(spaceIndex > 25 && spaceIndex < 35){
+                    closestTunnel = "r4"
+                }
+                //and this should always return some value
+                else{
+                    console.error(space, currentCard)
+                }
+
+                let player = players[currentPlayer]
+                player.nextTunnelMultiplier = currentCard.cardAction.multiplier
+                clickAction += `movePiece(players[currentPlayer], '${closestTunnel}')`
                 break
             //pay x dollars
             case "loss":
@@ -1278,7 +1338,33 @@ function landOnSpace(space){
                     clickAction += `players[currentPlayer].debts.push({amount: ${totalPrice}, owedTo: -1, taxDescription: "Chance card: pay each player ${currentCard.cardAction.amount}.", additionalAction: "addToAllPlayersExcept(${currentPlayer}, ${currentCard.cardAction.amount})"})`
                 }
                 break
-            
+            //gain x dollars from every player
+            case "gainFromEveryPlayer":{
+                let currPlayer = players[currentPlayer]
+                players.forEach(function(element, index){
+                    //make sure this isn't the current player
+                    if(element != currPlayer){
+                        //easy case, if player can afford
+                        if(canAfford(element, currentCard.cardAction.amount)){
+                            clickAction += `players[${index}].money -= ${currentCard.cardAction.amount};`
+                            clickAction += `players[${currentPlayer}].money += ${currentCard.cardAction.amount};`
+                        }
+                        //if player can't afford
+                        else{
+                            element.debts.push({
+                                amount: 
+                                {
+                                    rent: currentCard.cardAction.amount,
+                                    rentText: `You owe ${currPlayer.name} $${currentCard.cardAction.amount} from their Chest card!`,
+                                    rentType: "card"
+                                },
+                                owedTo: currentPlayer
+                            })
+                        }
+                    }
+                });
+                break
+            }
         }
         drawPossessions(players[currentPlayer])
 
@@ -1738,9 +1824,7 @@ function breakOutOfJail(player){
 }
 
 function canAfford(player, price){
-    if(player.money >= price){
-        return true
-    }
+    return player.money >= price
 }
 
 function purchaseProperty(player, location){
