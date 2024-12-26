@@ -1,3 +1,4 @@
 TODO: end turn on triple doubles
 TODO: add robust chat logging
 TODO: work on blurriness with rotation
+TODO: money texture

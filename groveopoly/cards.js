@@ -39,7 +39,7 @@ chestCards = [
     // x +200
     {buttonText: "+200", cardAction: {type: "gain", amount: 200}, cardText: "You made the dean's list! Gain $200 in scholarship.", cardImg: "happy.png"},
     // x +100
-    {buttonText: "+100", cardAction: {type: "gain", amount: 100}, cardText:"You flipped everything in Campo's lost and found on Ebay and made $150!", cardImg: "happy.png"},
+    {buttonText: "+100", cardAction: {type: "gain", amount: 100}, cardText:"You flipped everything in Campo's lost and found on Ebay and made $100!", cardImg: "happy.png"},
     // x +100
     {buttonText: "+100", cardAction: {type: "gain", amount: 100}, cardText:"You charged $100 to a freshman for the Healthful Living cheat sheet!", cardImg: "happy.png"},
     // x +100

@@ -520,7 +520,7 @@ function canMortgage(playerNum, location){
 }
 
 function mortgageCard(playerNum, location){
-    if(canMortgage(playerNum, location)){
+    if(!canMortgage(playerNum, location)){
         showOverlay({type: "alert", alertMessage: "Sell houses and hotels in color set before attempting to mortgage!"})
     }else{
         players[playerNum].mortgaged.push(location)
@@ -1747,7 +1747,6 @@ function rollForJailEscape(){
     if(diceRoll.doubles){
         breakOutOfJail(players[currentPlayer])
         showOverlay({type: "alert", alertMessage: "Rolled doubles! You broke out.", alertButtonAction: `hideCard();advancePiece(players[currentPlayer], ${diceRoll.sum})`})
-        players[currentPlayer].jailRollAttempts = 0
     }else{
         showOverlay({type: "alert", alertMessage: `Failed to roll doubles! ${2-players[currentPlayer].jailRollAttempts} rolls remaining.`})
         players[currentPlayer].jailRollAttempts++
@@ -1759,7 +1758,6 @@ function rollForJailEscape(){
 }
 
 function failedToRollJailDoubles(roll){
-    players[currentPlayer].jailRollAttempts = 0
     players[currentPlayer].debts.push({amount: 50, owedTo: -1, taxDescription: "Repay the bank for bailing you out!", additionalAction: `advancePiece(players[currentPlayer], ${roll})`})
     hideCard()
     breakOutOfJail(players[currentPlayer])
@@ -1821,6 +1819,7 @@ function sendToJail(player, reason){
 function breakOutOfJail(player){
     movePiece(player, "c1")
     player.isInJail = false
+    player.jailRollAttempts = 0
 }
 
 function canAfford(player, price){
