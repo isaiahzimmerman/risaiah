@@ -16,7 +16,7 @@ chanceCards = [
     // move to nearest utility, pay 10x multiplier
     {buttonText: "nearest utility", cardAction: {type: "gain", amount: 0}, cardText: "MOVE TO THE NEAREST UTILITY AND PAY 10 TIMES A DICE ROLL.", cardImg: "ferocious.png"},
     // move back 3 Spaces
-    {buttonText: "back 3 spaces", cardAction: {type: "m", amount: 0}, cardText: "MOVE BACK 3 SPACES", cardImg: "ferocious.png"},
+    {buttonText: "back 3 spaces", cardAction: {type: "moveBack", distance: 3}, cardText: "MOVE BACK 3 SPACES", cardImg: "ferocious.png"},
     // +50
     {buttonText: "+50", cardAction: {type: "gain", amount: 50}, cardText: "You didn't donate to the senior gift. Gain $50.", cardImg: "happy.png"},
     // +150

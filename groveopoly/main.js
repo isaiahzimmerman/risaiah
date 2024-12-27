@@ -1232,7 +1232,7 @@ function landOnSpace(space){
                 showOverlay({type: "rent", rentAmount: rentInfo, recipient: owner, property: space})
             }
         }
-        nextTunnelMultiplier = NaN
+        players[currentPlayer].nextTunnelMultiplier = NaN
 
     }else if(space.type == "chance" || space.type == "chest"){
         let currentCard
@@ -1363,6 +1363,13 @@ function landOnSpace(space){
                         }
                     }
                 });
+                break
+            }
+            //move back x spaces. this would probably break with too high of move back values or if chance spots moved
+            case "moveBack":{
+                console.log(boardOrder.indexOf(space.loc))
+                let currLoc = boardOrder.indexOf(space.loc)
+                clickAction += `movePiece(players[${currentPlayer}], boardOrder[${currLoc- currentCard.cardAction.distance}]);hideArrow();`
                 break
             }
         }
@@ -1814,6 +1821,7 @@ function sendToJail(player, reason){
     movePiece(player, "jl")
     hideArrow()
     player.isInJail = true
+    player.playing = false
 }
 
 function breakOutOfJail(player){

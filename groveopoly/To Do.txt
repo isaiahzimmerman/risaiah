@@ -2,3 +2,7 @@ TODO: end turn on triple doubles
 TODO: add robust chat logging
 TODO: work on blurriness with rotation
 TODO: money texture
+TODO: nearest utility
+TODO: always end turn upon going to jail (done - make sure this is proper behavior)
+TODO: tax per house and hotel should display total cost in message body
+TODO: make sure chance get out of jail card has picture associated
