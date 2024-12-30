@@ -1,0 +1,31 @@
+body{
+    font-family: isaiahFont;
+    background-color: var(--theme-softbg-0);
+    color: var(--theme-bw-1);
+}
+
+h1{
+    text-align: center;
+}
+
+#site_container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cube_container{
+    background-color: antiquewhite;
+    height: 70vmin;
+    width: 70vmin;
+}
+
+#cube_canvas{
+    height: 100%;
+    width: 100%;
+}
