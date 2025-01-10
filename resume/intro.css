@@ -20,6 +20,11 @@
     transition: font-size 2s, top 2s, left 2s, opacity 1s;
     opacity: 0;
 }
+
+#intro_hello, #intro_hand, #intro_im{
+    font-weight: 400;
+}
+
 .temp_intro_bg{
     position: absolute;
     top: 0;
