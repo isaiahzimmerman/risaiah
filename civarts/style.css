@@ -1,0 +1,38 @@
+#image_container{
+    width: 400px;
+    aspect-ratio: 1;
+}
+
+#image_container canvas{
+    width: 100%;
+}
+
+.reveal_button{
+    width: 100px;
+}
+
+.reveal_container{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+#full_image_container{
+    width: 400px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#images_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#full_image{
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+}
