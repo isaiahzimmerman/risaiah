@@ -120,10 +120,18 @@ const artworks = [
         srcs: ['laocoon.jpg']
     },
 
-    //13
+    //13a
     {
-        title: "Durham Cathedral",
-        year: "AD 1093-1128"
+        title: "Durham Cathedral (Nave)",
+        year: "AD 1093-1128",
+        srcs: ['durham_nave.jpg']
+    },
+
+    //13b
+    {
+        title: "Durham Cathedral (West Front)",
+        year: "AD 1093-1128",
+        srcs: ['durham_west_front.jpg']
     },
 
     //14
@@ -135,7 +143,8 @@ const artworks = [
 
     //15
     {
-        title: "Annunciation",
+        title: "The Annunciation from a Swabian gospel manuscript",
+        year: "c. 1150",
         srcs: ['annunciation_gensbach.jpg']
     },
 
@@ -149,26 +158,37 @@ const artworks = [
     {
         title: "Tournai Cathedral",
         location: "Belgium",
-        year: "1171-1213"
+        year: "1171-1213",
+        srcs: ['tournai.jpg']
     },
 
     //18
     {
         title: "Facade of the Church of St-Trophime",
         year: "c. 1180",
-        location: "Arles"
+        location: "Arles",
+        srcs: ['trophime.jpg']
     },
 
-    //19
+    //19a
     {
         title: "Porch of the North Transept of Chartres Cathedral",
-        year: "1194"
+        year: "1194",
+        srcs: ['chartres_north_transept.jpg']
+    },
+
+    //19b
+    {
+        title: "Porch of the North Transept of Chartres Cathedral (Detail)",
+        year: "1194",
+        srcs: ['chartres_north_transept_detail.jpg']
     },
 
     //20
     {
         title: "Annunciation from the Infancy of Christ Window, Chartres Cathedral",
-        year: "mid-12th century"
+        year: "mid-12th century",
+        srcs: ['chartres_annunciation.jpg']
     },
 
     //21
@@ -188,7 +208,8 @@ const artworks = [
     {
         title: "St George",
         artist: "Donatello",
-        year: "c. 1415-16"
+        year: "c. 1415-16",
+        srcs: ['saint_george.jpg']
     },
 
     //24
@@ -215,91 +236,120 @@ const artworks = [
     //27
     {
         title: "St. James on the Way to His Execution",
-        artist: "Andrea Mandegna",
-        year: "c. 1455"
+        artist: "Andrea Mantegna",
+        year: "c. 1455",
+        srcs: ['james_execution.jpg']
     },
 
     //28
     {
         title: "Constantine's Dream",
         artist: "Pierro della Francesca",
-        year: "c. 1460"
+        year: "c. 1460",
+        srcs: ['constantine.jpg']
     },
 
     //29
     {
         title: "The Last Supper",
         artist: "Leonardo da Vinci",
-        year: "1495-98"
+        year: "1495-98",
+        srcs: ['last_supper.jpg']
     },
 
     //30
     {
         title: "Mona Lisa",
         artist: "Leonardo da Vinci",
-        year: "c. 1502"
+        year: "c. 1502",
+        srcs: ['mona_lisa.jpg']
     },
 
     //31
     {
         title: "Virgin in the Meadow",
         artist: "Raphael",
-        year: "1505-6"
+        year: "1505-6",
+        srcs: ['virgin_in_the_meadow.jpg']
     },
 
     //32
     {
         title: "Ceiling of the Sistine Chapel",
         artist: "Michelangelo",
-        year: "1508-12"
+        year: "1508-12",
+        srcs: ['sistine_ceiling.jpg']
     },
 
     //33
     {
         title: "The Nymph Galatea",
         artist: "Raphael",
-        year: "c. 1512-14"
+        year: "c. 1512-14",
+        srcs: ['galatea.jpg']
     },
 
-    //34
+    //34a
     {
-        title: "Ghent Altarpiece",
+        title: "Ghent Altarpiece (Open)",
         artist: "Jan van Eyck",
-        year: "1432"
+        year: "1432",
+        srcs: ['ghent_open.jpg']
+    },
+
+    //34b
+    {
+        title: "Ghent Altarpiece (Closed)",
+        artist: "Jan van Eyck",
+        year: "1432",
+        srcs: ['ghent_closed.jpg']
     },
 
     //35
     {
         title: "The Descent from the Cross",
         artist: "Rogier van der Weyden",
-        year: "c. 1435"
+        year: "c. 1435",
+        srcs: ['descent.jpg']
     },
 
     //36
     {
         title: "The Nativity",
         artist: "Albrecht Durer",
-        year: "1504"
+        year: "1504",
+        srcs: ['durer_nativity.jpg']
     },
 
     //37
     {
         title: "Adam and Eve",
         artist: "Albrecht Durer",
-        year: "1504"
+        year: "1504",
+        srcs: ['durer_adam_and_eve.jpg']
     },
 
-    //38
+    //38a
+    {
+        title: "Isenheim Altarpiece - The Crucifixion",
+        artist: "Matthias Grunewald",
+        year: "1515",
+        srcs: ['isenheim_crucifixion.jpg']
+    },
+
+    //38b
     {
         title: "Isenheim Altarpiece",
         artist: "Matthias Grunewald",
-        year: "1515"
+        year: "1515",
+        srcs: ['isenheim_resurrection.jpg']
     },
 
     //39
     {
         title: "Danube Landscape",
         artist: "Albrecht Altdorfer",
-        year: "c. 1526-28"
+        year: "c. 1526-28",
+        srcs: ['danube.jpg']
     },
 ]

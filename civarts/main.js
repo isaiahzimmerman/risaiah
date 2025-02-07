@@ -147,4 +147,4 @@ function clearAttributeFromCurrent(id){
 let currIndex
 let currentWork
 
-const artworkAttributes = ['title', 'artist', 'dimensions', 'year', 'era', 'medium']
+const artworkAttributes = ['title', 'artist', 'dimensions', 'year', 'era', 'medium', 'location']
