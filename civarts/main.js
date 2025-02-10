@@ -52,6 +52,8 @@ document.addEventListener("DOMContentLoaded", function(){
     artworkAttributes.forEach(element => {
         document.getElementById('artwork_attributes_container').innerHTML += `<div class="reveal_container"><button class="reveal_button" onclick="writeAttributeFromCurrent('${element}')">reveal ${element}</button><span>${element}: <span id="${element}"></span></span></div>`
     });
+
+    hideLoading()
     
     newWork()
 })
@@ -69,9 +71,18 @@ const Orientation = {
     PORTRAIT: 1
 }
 
+function showLoading(){
+    document.getElementById("loading").style.display = "block"
+}
+
+function hideLoading(){
+    document.getElementById("loading").style.display = "none"
+}
+
 function generateZoomedImage(imageSrc, imgZoomLevel){
     const imgElement = document.createElement("img");
     imgElement.src = imageSrc;
+    showLoading()
     imgElement.onload = function(){
         console.log("loaded")
         let orientation = Orientation.LANDSCAPE;
@@ -81,7 +92,7 @@ function generateZoomedImage(imageSrc, imgZoomLevel){
 
         imgZoomLevel = imgZoomLevel ? imgZoomLevel : 10
         let imgSize;
-        if(orientation = Orientation.LANDSCAPE){
+        if(orientation == Orientation.LANDSCAPE){
             imgSize = imgElement.height / imgZoomLevel;
         }else{
             imgSize = imgElement.width / imgZoomLevel;
@@ -105,6 +116,8 @@ function generateZoomedImage(imageSrc, imgZoomLevel){
 
         ctx.drawImage(imgElement, xPos, yPos);
         document.getElementById("image_container").replaceChildren(canvas)
+
+        hideLoading()
     }
 }
 

@@ -194,14 +194,16 @@ const artworks = [
     //21
     {
         title: "Amiens Cathedral",
-        year: "c. 1218-47"
+        year: "c. 1218-47",
+        srcs: ['amiens.jpg']
     },
 
     //22
     {
         title: "Sainte-Chapelle",
         location: "Paris",
-        year: "1248"
+        year: "1248",
+        srcs: ['sainte_chapelle.jpg']
     },
 
     //23
@@ -216,21 +218,32 @@ const artworks = [
     {
         title: "Holy Trinity",
         artist: "Masaccio",
-        year: "c. 1425-28"
+        year: "c. 1425-28",
+        srcs: ['masaccio_trinity.jpg']
     },
 
     //25
     {
         title: "Dome of Florence Cathedral",
         artist: "Brunelleschi",
-        year: "c. 1420-36"
+        year: "c. 1420-36",
+        srcs: ['florence_dome.jpg']
     },
 
-    //26
+    //26a
     {
-        title: "Pazzi Chapel",
+        title: "Pazzi Chapel (Exterior)",
         artist: "Brunelleschi",
-        year: "c. 1430"
+        year: "c. 1430",
+        srcs: ['pazzi_exterior.jpg']
+    },
+
+    //26b
+    {
+        title: "Pazzi Chapel (Interior)",
+        artist: "Brunelleschi",
+        year: "c. 1430",
+        srcs: ['pazzi_interior.jpg']
     },
 
     //27
