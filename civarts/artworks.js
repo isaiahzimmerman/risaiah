@@ -5,7 +5,7 @@ const artworks = [
         srcs: ['dipylon.jpg'],
         year: "c. 700 BC",
         dimensions: "height 61in",
-        era: "Archaic (??)",
+        era: "Archaic",
         medium: "Pottery"
     },
 
@@ -14,7 +14,7 @@ const artworks = [
         title: "The Brothers Cleobis and Biton",
         artist: "Polymedes of Argos",
         year: "c. 615-590 BC",
-        era: "Classical?? I think Archaic",
+        era: "Archaic",
         dimensions: "heights 86 and 85 in",
         srcs: ['brothers.jpg'],
     },
@@ -25,7 +25,7 @@ const artworks = [
         year: "c. 540 BC",
         artist: "signed by Exekias",
         dimensions: "height 24 in",
-        era: "End of Archaic, moving into Classical",
+        era: "End of Archaic, moving towards Classical",
         srcs: ['ajax.jpg'],
         medium: "Pottery"
     },
@@ -42,8 +42,8 @@ const artworks = [
 
     //5
     {
-        title: "Hercules Carrying the Heavens",
-        medium: "Marble Metope from the Temple of Zeus at Olympia",
+        title: "Hercules Carrying the Heavens from the Temple of Zeus at Olympia",
+        medium: "Marble Metope",
         year: "470-460 BC",
         era: "Classical",
         srcs: ['hercules.jpg']
@@ -56,7 +56,8 @@ const artworks = [
         year: "450 BC",
         dimensions: "height 61 in",
         srcs: ['discobolos.jpg'],
-        medium: "Roman marble copy, original in bronze"
+        medium: "Roman marble copy, original in bronze",
+        era: "Classical"
     },
 
     //7
@@ -68,7 +69,8 @@ const artworks = [
         notes: [
             "Built under Pericles after the Acropolis was set on fire by the Persians",
         ],
-        srcs: ['parthenon.jpg']
+        srcs: ['parthenon.jpg'],
+        era: "Classical"
     },
 
     //8 Two Details from the Ionic Frieze of the Parthenon
@@ -77,7 +79,8 @@ const artworks = [
         title: "Charioteer (Detail from the Ionic Frieze of the Parthenon)",
         location: "Athens",
         year: "c. 440 BC",
-        srcs: ['charioteer_parthenon.jpg']
+        srcs: ['charioteer_parthenon.jpg'],
+        era: "Classical"
     },
 
     //8b
@@ -85,7 +88,8 @@ const artworks = [
         title: "Horse and horseman (Detail from the Ionic Frieze of the Parthenon)",
         location: "Athens",
         year: "c. 440 BC",
-        srcs: ['horseman_parthenon.jpg']
+        srcs: ['horseman_parthenon.jpg'],
+        era: "Classical"
     },
 
     //9
@@ -102,7 +106,8 @@ const artworks = [
         title: "Erectheion",
         location: "Athens",
         year: "c. 420-405 BC",
-        srcs: ['erectheion.jpg']
+        srcs: ['erectheion.jpg'],
+        era: "Classical"
     },
 
     //11
@@ -110,48 +115,57 @@ const artworks = [
         title: "Hermes with the Young Dionysus",
         artist: "Praxiteles",
         year: "c. 340 BC",
-        srcs: ['hermes_dionysus.jpg']
+        srcs: ['hermes_dionysus.jpg'],
+        era: "Hellenistic"
     },
 
     //12
     {
         title: "Laocoon Group",
         year: "c. 175-50 BC",
-        srcs: ['laocoon.jpg']
+        srcs: ['laocoon.jpg'],
+        era: "Hellenistic"
     },
 
     //13a
     {
         title: "Durham Cathedral (Nave)",
         year: "AD 1093-1128",
-        srcs: ['durham_nave.jpg']
+        srcs: ['durham_nave.jpg'],
+        era: "Romanesque"
     },
 
     //13b
     {
         title: "Durham Cathedral (West Front)",
         year: "AD 1093-1128",
-        srcs: ['durham_west_front.jpg']
+        srcs: ['durham_west_front.jpg'],
+        era: "Romanesque"
     },
 
     //14
     {
         title: "October from a Calendar Manuscript in the Wurttembergische Landesbibliotheck",
         year: "c. 1137-47 AD",
-        srcs: ['october.jpg']
+        srcs: ['october.jpg'],
+        era: "Romanesque"
     },
 
     //15
     {
-        title: "The Annunciation from a Swabian gospel manuscript",
+        title: "The Annunciation from the Gengenbach Gospel Book",
         year: "c. 1150",
-        srcs: ['annunciation_gensbach.jpg']
+        srcs: ['annunciation_gensbach.jpg'],
+        era: "Romanesque"
     },
 
     //16
     {
         title: "Benedictine Church of Murbach",
-        srcs: ['murbach.jpg']
+        year: "c. AD 1160",
+        location: "Alsace",
+        srcs: ['murbach.jpg'],
+        era: "Romanesque"
     },
 
     //17
@@ -159,7 +173,8 @@ const artworks = [
         title: "Tournai Cathedral",
         location: "Belgium",
         year: "1171-1213",
-        srcs: ['tournai.jpg']
+        srcs: ['tournai.jpg'],
+        era: "Romanesque"
     },
 
     //18
@@ -167,35 +182,40 @@ const artworks = [
         title: "Facade of the Church of St-Trophime",
         year: "c. 1180",
         location: "Arles",
-        srcs: ['trophime.jpg']
+        srcs: ['trophime.jpg'],
+        era: "Romanesque"
     },
 
     //19a
     {
         title: "Porch of the North Transept of Chartres Cathedral",
         year: "1194",
-        srcs: ['chartres_north_transept.jpg']
+        srcs: ['chartres_north_transept.jpg'],
+        era: "Gothic"
     },
 
     //19b
     {
         title: "Porch of the North Transept of Chartres Cathedral (Detail)",
         year: "1194",
-        srcs: ['chartres_north_transept_detail.jpg']
+        srcs: ['chartres_north_transept_detail.jpg'],
+        era: "Gothic"
     },
 
     //20
     {
         title: "Annunciation from the Infancy of Christ Window, Chartres Cathedral",
         year: "mid-12th century",
-        srcs: ['chartres_annunciation.jpg']
+        srcs: ['chartres_annunciation.jpg'],
+        era: "Gothic"
     },
 
     //21
     {
         title: "Amiens Cathedral",
         year: "c. 1218-47",
-        srcs: ['amiens.jpg']
+        srcs: ['amiens.jpg'],
+        era: "Gothic"
     },
 
     //22
@@ -203,7 +223,8 @@ const artworks = [
         title: "Sainte-Chapelle",
         location: "Paris",
         year: "1248",
-        srcs: ['sainte_chapelle.jpg']
+        srcs: ['sainte_chapelle.jpg'],
+        era: "Gothic"
     },
 
     //23
@@ -211,7 +232,8 @@ const artworks = [
         title: "St George",
         artist: "Donatello",
         year: "c. 1415-16",
-        srcs: ['saint_george.jpg']
+        srcs: ['saint_george.jpg'],
+        era: "Renaissance"
     },
 
     //24
@@ -219,7 +241,8 @@ const artworks = [
         title: "Holy Trinity",
         artist: "Masaccio",
         year: "c. 1425-28",
-        srcs: ['masaccio_trinity.jpg']
+        srcs: ['masaccio_trinity.jpg'],
+        era: "Renaissance"
     },
 
     //25
@@ -227,7 +250,8 @@ const artworks = [
         title: "Dome of Florence Cathedral",
         artist: "Brunelleschi",
         year: "c. 1420-36",
-        srcs: ['florence_dome.jpg']
+        srcs: ['florence_dome.jpg'],
+        era: "Renaissance"
     },
 
     //26a
@@ -235,7 +259,8 @@ const artworks = [
         title: "Pazzi Chapel (Exterior)",
         artist: "Brunelleschi",
         year: "c. 1430",
-        srcs: ['pazzi_exterior.jpg']
+        srcs: ['pazzi_exterior.jpg'],
+        era: "Renaissance"
     },
 
     //26b
@@ -243,7 +268,8 @@ const artworks = [
         title: "Pazzi Chapel (Interior)",
         artist: "Brunelleschi",
         year: "c. 1430",
-        srcs: ['pazzi_interior.jpg']
+        srcs: ['pazzi_interior.jpg'],
+        era: "Renaissance"
     },
 
     //27
@@ -251,7 +277,8 @@ const artworks = [
         title: "St. James on the Way to His Execution",
         artist: "Andrea Mantegna",
         year: "c. 1455",
-        srcs: ['james_execution.jpg']
+        srcs: ['james_execution.jpg'],
+        era: "Renaissance"
     },
 
     //28
@@ -259,7 +286,8 @@ const artworks = [
         title: "Constantine's Dream",
         artist: "Pierro della Francesca",
         year: "c. 1460",
-        srcs: ['constantine.jpg']
+        srcs: ['constantine.jpg'],
+        era: "Renaissance"
     },
 
     //29
@@ -267,7 +295,8 @@ const artworks = [
         title: "The Last Supper",
         artist: "Leonardo da Vinci",
         year: "1495-98",
-        srcs: ['last_supper.jpg']
+        srcs: ['last_supper.jpg'],
+        era: "Renaissance"
     },
 
     //30
@@ -275,7 +304,8 @@ const artworks = [
         title: "Mona Lisa",
         artist: "Leonardo da Vinci",
         year: "c. 1502",
-        srcs: ['mona_lisa.jpg']
+        srcs: ['mona_lisa.jpg'],
+        era: "Renaissance"
     },
 
     //31
@@ -283,7 +313,8 @@ const artworks = [
         title: "Virgin in the Meadow",
         artist: "Raphael",
         year: "1505-6",
-        srcs: ['virgin_in_the_meadow.jpg']
+        srcs: ['virgin_in_the_meadow.jpg'],
+        era: "Renaissance"
     },
 
     //32
@@ -291,7 +322,8 @@ const artworks = [
         title: "Ceiling of the Sistine Chapel",
         artist: "Michelangelo",
         year: "1508-12",
-        srcs: ['sistine_ceiling.jpg']
+        srcs: ['sistine_ceiling.jpg'],
+        era: "Renaissance"
     },
 
     //33
@@ -299,7 +331,8 @@ const artworks = [
         title: "The Nymph Galatea",
         artist: "Raphael",
         year: "c. 1512-14",
-        srcs: ['galatea.jpg']
+        srcs: ['galatea.jpg'],
+        era: "Renaissance"
     },
 
     //34a
@@ -307,7 +340,8 @@ const artworks = [
         title: "Ghent Altarpiece (Open)",
         artist: "Jan van Eyck",
         year: "1432",
-        srcs: ['ghent_open.jpg']
+        srcs: ['ghent_open.jpg'],
+        era: "Northern Renaissance"
     },
 
     //34b
@@ -315,7 +349,8 @@ const artworks = [
         title: "Ghent Altarpiece (Closed)",
         artist: "Jan van Eyck",
         year: "1432",
-        srcs: ['ghent_closed.jpg']
+        srcs: ['ghent_closed.jpg'],
+        era: "Northern Renaissance"
     },
 
     //35
@@ -323,7 +358,8 @@ const artworks = [
         title: "The Descent from the Cross",
         artist: "Rogier van der Weyden",
         year: "c. 1435",
-        srcs: ['descent.jpg']
+        srcs: ['descent.jpg'],
+        era: "Northern Renaissance"
     },
 
     //36
@@ -331,7 +367,8 @@ const artworks = [
         title: "The Nativity",
         artist: "Albrecht Durer",
         year: "1504",
-        srcs: ['durer_nativity.jpg']
+        srcs: ['durer_nativity.jpg'],
+        era: "Northern Renaissance"
     },
 
     //37
@@ -339,7 +376,8 @@ const artworks = [
         title: "Adam and Eve",
         artist: "Albrecht Durer",
         year: "1504",
-        srcs: ['durer_adam_and_eve.jpg']
+        srcs: ['durer_adam_and_eve.jpg'],
+        era: "Northern Renaissance"
     },
 
     //38a
@@ -347,7 +385,8 @@ const artworks = [
         title: "Isenheim Altarpiece - The Crucifixion",
         artist: "Matthias Grunewald",
         year: "1515",
-        srcs: ['isenheim_crucifixion.jpg']
+        srcs: ['isenheim_crucifixion.jpg'],
+        era: "Northern Renaissance"
     },
 
     //38b
@@ -355,7 +394,8 @@ const artworks = [
         title: "Isenheim Altarpiece",
         artist: "Matthias Grunewald",
         year: "1515",
-        srcs: ['isenheim_resurrection.jpg']
+        srcs: ['isenheim_resurrection.jpg'],
+        era: "Northern Renaissance"
     },
 
     //39
@@ -363,6 +403,7 @@ const artworks = [
         title: "Danube Landscape",
         artist: "Albrecht Altdorfer",
         year: "c. 1526-28",
-        srcs: ['danube.jpg']
+        srcs: ['danube.jpg'],
+        era: "Northern Renaissance"
     },
 ]
