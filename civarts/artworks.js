@@ -177,12 +177,21 @@ const artworks = [
         era: "Romanesque"
     },
 
-    //18
+    //18a
     {
         title: "Facade of the Church of St-Trophime",
         year: "c. 1180",
         location: "Arles",
         srcs: ['trophime.jpg'],
+        era: "Romanesque"
+    },
+
+    //18b
+    {
+        title: "Facade of the Church of St-Trophime (Detail)",
+        year: "c. 1180",
+        location: "Arles",
+        srcs: ['trophime_detail.jpg'],
         era: "Romanesque"
     },
 
