@@ -391,7 +391,7 @@ const artworks = [
 
     //38b
     {
-        title: "Isenheim Altarpiece",
+        title: "Isenheim Altarpiece - The Resurrection",
         artist: "Matthias Grunewald",
         year: "1515",
         srcs: ['isenheim_resurrection.jpg'],
