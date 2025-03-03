@@ -74,7 +74,7 @@
   /* top: calc(var(--header-scale)*-6); */
   opacity: 0;
   /* left: calc(10% - var(--header-scale)); */
-  display: flex;
+  display: none;
   width: calc(90% - var(--header-scale)*5);
   background-color: var(--theme-color-0);
   border: calc(var(--header-scale)*0.25) solid var(--theme-color-2);
