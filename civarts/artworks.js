@@ -125,8 +125,8 @@ const artworks = [
     {
         title: "Las Meninas",
         srcs: ['las_meninas.jpg'],
-        year: "",
-        dimensions: "1656",
+        year: "1656",
+        dimensions: "",
         era: "Baroque",
         medium: "",
         artist: "Velazquez"
