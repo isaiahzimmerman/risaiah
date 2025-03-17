@@ -25,7 +25,7 @@ const artworks = [
     //42
     {
         title: "The Water-Seller of Seville",
-        srcs: ['waterseller'],
+        srcs: ['waterseller.jpg'],
         year: "c. 1619-1620",
         dimensions: "",
         era: "Baroque",
