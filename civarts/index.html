@@ -4,28 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+    <script src="tags.js"></script>
     <script src="artworks.js"></script>
     <script src="main.js"></script>
+    <script src="music.js"></script>
+    <script src="musicMain.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- <img src="ulysses.jpg" alt=""> -->
-    <div id="images_container">
-        <div id="image_container" class="image_container">
+    <!-- <div id="artwork_container"> -->
+        <div id="filters">
 
         </div>
-        <div id="full_image_container">
-            <img id="full_image" src="" alt="">
         </div>
-    </div>
-    <button onclick="newWork()">new work</button>
-    <button onclick="rezoomImage(15)">rezoom (1/15)</button>
-    <button onclick="rezoomImage(10)">rezoom (1/10)</button>
-    <button onclick="rezoomImage(5)">rezoom (1/5)</button>
-    <button onclick="showFullImage()">reveal full image</button>
-    <div id="loading">Loading...</div>
-    <div id="artwork_attributes_container">
-        
-    </div>
+        <div id="images_container">
+            <div id="image_container" class="image_container">
+    
+            </div>
+            <div id="full_image_container">
+                <img id="full_image" src="" alt="">
+            </div>
+        </div>
+        <button onclick="newWork()">new work</button>
+        <span id="music_buttons">
+            <button onclick="playMusic()">play music</button>
+        </span>
+        <span id="artwork_buttons">
+            <button onclick="rezoomImage(15)">rezoom (1/15)</button>
+            <button onclick="rezoomImage(10)">rezoom (1/10)</button>
+            <button onclick="rezoomImage(5)">rezoom (1/5)</button>
+            <button onclick="showFullImage()">reveal full image</button>
+        </span>
+        <div id="loading">Loading...</div>
+        <div id="artwork_attributes_container">
+            
+        </div>
+        <div id="music_timeline_container">
+            <canvas id="music_timeline" height="100" width="500"></canvas>
+        </div>
+    <!-- </div> -->
 </body>
 </html>

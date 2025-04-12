@@ -36,3 +36,15 @@
     max-width: 100%;
     max-height: 100%;
 }
+
+#music_timeline_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#music_timeline{
+    width: 100%;
+    aspect-ratio: 5;
+    max-width: 750px;
+}
