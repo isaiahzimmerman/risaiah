@@ -87,7 +87,103 @@ const music = [
         ],
     },
 
-    //Naxos 1
+    //Naxos 9
+    {
+        src: "mozart_figaro_2_aria.mp3",
+        artist: "Mozart",
+        work: "Le Nozze di Figaro",
+        act: "2",
+        scene: `Aria (Cavatina), "Porgi, amor"`,
+        tags: [
+            tags.CLASSICAL,
+            tags.EXAM3,
+        ],
+        year: "1786",
+    },
+
+    //Naxos 10
+    {
+        src: "mozart_figaro_2_finale_1.mp3",
+        artist: "Mozart",
+        work: "Le Nozze di Figaro",
+        act: "2",
+        scene: `Finale, "Esci, ormai"`,
+        tags: [
+            tags.CLASSICAL,
+            tags.EXAM3,
+        ],
+        year: "1786",
+    },
+
+    //Naxos 11
+    {
+        src: "mozart_figaro_2_finale_2.mp3",
+        artist: "Mozart",
+        work: "Le Nozze di Figaro",
+        act: "2",
+        scene: `Finale, "Signore, di fuori"`,
+        tags: [
+            tags.CLASSICAL,
+            tags.EXAM3,
+        ],
+        year: "1786",
+    },
+
+    //Naxos 12
+    {
+        src: "mozart_figaro_1_overture.mp3",
+        artist: "Mozart",
+        work: "Le Nozze di Figaro",
+        act: "1",
+        scene: "Overture (Sinfonia)",
+        tags: [
+            tags.CLASSICAL,
+            tags.EXAM3,
+        ],
+        year: "1786",
+    },
+
+    //Naxos 13
+    {
+        src: "mozart_figaro_1_aria_ballare.mp3",
+        artist: "Mozart",
+        work: "Le Nozze di Figaro",
+        act: "1",
+        scene: `Aria (Cavatina), "Se vuol ballare, signor contino"`,
+        tags: [
+            tags.CLASSICAL,
+            tags.EXAM3,
+        ],
+        year: "1786",
+    },
+
+    //Naxos 14
+    {
+        src: "mozart_figaro_1_aria_non.mp3",
+        artist: "Mozart",
+        work: "Le Nozze di Figaro",
+        act: "1",
+        scene: `Aria, "Non piu andrai"`,
+        tags: [
+            tags.CLASSICAL,
+            tags.EXAM3,
+        ],
+        year: "1786",
+    },
+
+    //Naxos 15
+    {
+        src: "mozart_figaro_4_finale.mp3",
+        artist: "Mozart",
+        work: "Le Nozze di Figaro",
+        act: "4",
+        scene: `Finale, "Gente, gente, all'armi, all'armi"`,
+        tags: [
+            tags.CLASSICAL,
+            tags.EXAM3,
+        ],
+        year: "1786",
+    },
 
     //Naxos 16
     {

@@ -121,6 +121,24 @@ document.addEventListener("DOMContentLoaded", function(){
     refreshMusicAndArt()
 
     hideLoading()
+
+    const timeline = document.getElementById("music_timeline");
+
+    timeline.addEventListener('mousemove', function (e) {
+        const rectBounds = canvas.getBoundingClientRect();
+        const x = e.clientX - rectBounds.left;
+        const y = e.clientY - rectBounds.top;
+    
+        if (
+            x >= rect.x && x <= rect.x + rect.width &&
+            y >= rect.y && y <= rect.y + rect.height
+        ) {
+            canvas.style.cursor = 'pointer';
+            console.log('Hovering over rectangle!');
+        } else {
+            canvas.style.cursor = 'default';
+        }
+    });
 })
 
 function getTransparency(imageSrc){
@@ -380,4 +398,4 @@ async function playMusic(){
 let currIndex
 let currentWork
 
-const artworkAttributes = ['title', 'artist', 'dimensions', 'year', 'era', 'medium', 'location', "work", "movement", "timeline"]
+const artworkAttributes = ['title', 'artist', 'dimensions', 'year', 'era', 'medium', 'location', "work", "movement",  'act', 'scene',"timeline",]

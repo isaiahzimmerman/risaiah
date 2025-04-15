@@ -670,7 +670,7 @@ const artworks = [
     //62
     {
         title: "Monticello",
-        srcs: [''],
+        srcs: ['jefferson_monticello.jpg'],
         year: "1796-1806",
         dimensions: "",
         era: "",
@@ -698,7 +698,7 @@ const artworks = [
     //64
     {
         title: "Landscape in the Silesian Mountains",
-        srcs: [''],
+        srcs: ['friedrich_silesian_mountains.jpg'],
         year: "c. 1815-1820",
         dimensions: "",
         era: "",
