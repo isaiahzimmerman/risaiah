@@ -48,3 +48,15 @@
     aspect-ratio: 5;
     max-width: 750px;
 }
+
+#fullscreen_image_container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    display: none;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.532);
+}

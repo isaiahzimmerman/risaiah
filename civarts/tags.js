@@ -7,4 +7,11 @@ const tags = {
     CLASSICAL: 'Classical',
     MUSIC: 'Music',
     ARTWORK: 'Artwork',
+    ROMANTIC_MODERN: "Romantic/Modern",
 }
+
+const tagStructure = [
+    [tags.EXAM1, tags.EXAM2, tags.EXAM3, tags.FINAL],
+    [tags.BAROQUE, tags.CLASSICAL, tags.ROMANTIC_MODERN],
+    [tags.MUSIC, tags.ARTWORK]
+]

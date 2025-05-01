@@ -8,6 +8,7 @@ const music = [
             tags.CLASSICAL
         ],
         // movement: "",
+        year: "1725"
     },
     
     //Naxos 2
@@ -19,6 +20,7 @@ const music = [
         tags: [
             tags.CLASSICAL
         ],
+        year: "1788"
     },
 
     //Naxos 3
@@ -30,6 +32,7 @@ const music = [
         tags: [
             tags.CLASSICAL
         ],
+        year: "1787"
     },
 
     //Naxos 4
@@ -41,6 +44,7 @@ const music = [
         tags: [
             tags.CLASSICAL
         ],
+        year: "1787"
     },
 
     //Naxos 5
@@ -52,6 +56,7 @@ const music = [
         tags: [
             tags.CLASSICAL
         ],
+        year: "1787"
     },
 
     //Naxos 6
@@ -63,6 +68,7 @@ const music = [
         tags: [
             tags.CLASSICAL
         ],
+        year: "1787"
     },
 
     //Naxos 7
@@ -74,6 +80,7 @@ const music = [
         tags: [
             tags.CLASSICAL
         ],
+        year: "1784"
     },
 
     //Naxos 8
@@ -85,6 +92,7 @@ const music = [
         tags: [
             tags.CLASSICAL
         ],
+        year: "1772"
     },
 
     //Naxos 9
@@ -191,6 +199,7 @@ const music = [
         artist: "Beethoven",
         work: "5th Symphony",
         movement: "I (First)",
+        year: "1808",
         tags: [
             tags.CLASSICAL,
             tags.EXAM3,
@@ -203,6 +212,7 @@ const music = [
         artist: "Beethoven",
         work: "5th Symphony",
         movement: "II (Second)",
+        year: "1808",
         tags: [
             tags.CLASSICAL,
             tags.EXAM3,
@@ -215,6 +225,7 @@ const music = [
         artist: "Beethoven",
         work: "5th Symphony",
         movement: "III (Third)",
+        year: "1808",
         tags: [
             tags.CLASSICAL,
             tags.EXAM3,
@@ -227,9 +238,46 @@ const music = [
         artist: "Beethoven",
         work: "5th Symphony",
         movement: "IV (Fourth)",
+        year: "1808",
         tags: [
             tags.CLASSICAL,
             tags.EXAM3,
+        ],
+    },
+    
+    //Naxos 20
+    {
+        src: "sibelius_reverie.mp3",
+        artist: "Jean Sibelius",
+        work: "Reverie, Op. 58, No. 1",
+        year: "1909",
+        tags: [
+            tags.ROMANTIC_MODERN,
+            tags.FINAL,
+        ],
+    },
+
+    //Naxos 21
+    {
+        src: "ives_concord.mp3",
+        artist: "Charles Ives",
+        work: `Piano Sonata No. 2, Concord, Masachusetts, mvt. 3, "The Alcotts"`,
+        year: "1916-1917",
+        tags: [
+            tags.ROMANTIC_MODERN,
+            tags.FINAL,
+        ],
+    },
+
+    //Naxos 22
+    {
+        src: "borenstein_will.mp3",
+        artist: "Nimrod Borenstein",
+        work: "If you will it, it is no dream",
+        year: "2012",
+        tags: [
+            tags.ROMANTIC_MODERN,
+            tags.FINAL,
         ],
     },
 ]

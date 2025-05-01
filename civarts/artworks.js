@@ -458,7 +458,7 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Rubens"
+        artist: "Peter Paul Rubens"
     },
 
     //44
@@ -469,7 +469,7 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Rubens"
+        artist: "Peter Paul Rubens"
     },
     
     //45
@@ -615,9 +615,7 @@ const artworks = [
         artist: "Watteau"
     },
 
-    //58 - Vivaldi, Spring Concerto movement 1 (1725)
-
-    //59a
+    //58a
     {
         title: "Melk Monastery (exterior)",
         srcs: ['melk_exterior.jpg'],
@@ -628,7 +626,7 @@ const artworks = [
         artist: ""
     },
 
-    //59b
+    //58b
     {
         title: "Melk Monastery (sanctuary)",
         srcs: ['melk_interior.jpg'],
@@ -639,7 +637,7 @@ const artworks = [
         artist: ""
     },
 
-    //60
+    //59
     {
         title: "Marat Assassinated",
         srcs: ['david_marat.jpg'],
@@ -653,7 +651,7 @@ const artworks = [
         ]
     },
 
-    //61
+    //60
     {
         title: "The Ancient of Days",
         srcs: ['blake_ancient.jpg'],
@@ -667,7 +665,7 @@ const artworks = [
         ]
     },
 
-    //62
+    //61
     {
         title: "Monticello",
         srcs: ['jefferson_monticello.jpg'],
@@ -681,7 +679,7 @@ const artworks = [
         ]
     },
 
-    //63
+    //62
     {
         title: "The Giant",
         srcs: ['goya_giant.jpg'],
@@ -695,7 +693,7 @@ const artworks = [
         ]
     },
 
-    //64
+    //63
     {
         title: "Landscape in the Silesian Mountains",
         srcs: ['friedrich_silesian_mountains.jpg'],
@@ -709,7 +707,7 @@ const artworks = [
         ]
     },
 
-    //65
+    //64
     {
         title: "The Haywain",
         srcs: ['constable_haywain.jpg'],
@@ -723,7 +721,7 @@ const artworks = [
         ]
     },
 
-    //66
+    //65
     {
         title: "Arab Cavalry Practicing a Charge",
         srcs: ['delacroix_arab_cavalry.jpg'],
@@ -737,7 +735,7 @@ const artworks = [
         ]
     },
 
-    //67
+    //66
     {
         title: "Steamer in a Snowstorm",
         srcs: ['turner_snowstorm.jpg'],
@@ -751,7 +749,7 @@ const artworks = [
         ]
     },
 
-    //68
+    //67
     {
         title: "The Balcony",
         srcs: ['manet_balcony.jpg'],
@@ -765,7 +763,7 @@ const artworks = [
         ]
     },
 
-    //69
+    //68
     {
         title: "Dance at the Moulin de la Galette",
         srcs: ['renoir_galette.jpg'],
@@ -779,7 +777,7 @@ const artworks = [
         ]
     },
 
-    //70
+    //69
     {
         title: "Gare St.-Lazare",
         srcs: ['monet_gare.jpg'],
@@ -793,7 +791,7 @@ const artworks = [
         ]
     },
 
-    //71
+    //70
     {
         title: "Still Life with Fruit Dish",
         srcs: ['cezanne_fruit.jpg'],
@@ -807,7 +805,7 @@ const artworks = [
         ]
     },
 
-    //72
+    //71
     {
         title: "Madame Cezanne",
         srcs: ['cezanne_madame.jpg'],
@@ -821,9 +819,9 @@ const artworks = [
         ]
     },
 
-    //73
+    //72
     {
-        title: "Wheatfield with Cypresses",
+        title: "Cornfield with Cypresses",
         srcs: ['van_gogh_wheatfield.jpg'],
         year: "1889",
         dimensions: "",
@@ -835,7 +833,7 @@ const artworks = [
         ]
     },
 
-    //74
+    //73
     {
         title: "The Artist's Room in Arles",
         srcs: ['van_gogh_bedroom.jpg'],
@@ -849,7 +847,7 @@ const artworks = [
         ]
     },
 
-    //75
+    //74
     {
         title: "Mountains in Provence",
         srcs: ['cezanne_provence.jpg'],
@@ -860,6 +858,146 @@ const artworks = [
         artist: "Cezanne",
         tags: [
             tags.EXAM3,
+        ]
+    },
+
+    //75
+    {
+        title: "Violin and Grapes",
+        srcs: ['picasso_violin.jpg'],
+        year: "1912",
+        dimensions: "",
+        era: "",
+        medium: "",
+        artist: "Picasso",
+        tags: [
+            tags.FINAL,
+        ]
+    },
+
+    //76
+    {
+        title: "L.H.O.O.Q.",
+        srcs: ['duchamp_lhooq.jpg'],
+        year: "1919",
+        dimensions: "",
+        era: "",
+        medium: "",
+        artist: "Marcel Duchamp",
+        tags: [
+            tags.FINAL,
+        ]
+    },
+
+    //77
+    {
+        title: "Apparition of Face and Fruit-Bowl on a Beach",
+        srcs: ['dali_apparition.jpg'],
+        year: "1938",
+        dimensions: "",
+        era: "",
+        medium: "",
+        artist: "Dali",
+        tags: [
+            tags.FINAL,
+        ]
+    },
+
+    //78
+    {
+        title: "The Cellist",
+        srcs: ['chagall_cellist.jpg'],
+        year: "1939",
+        dimensions: "",
+        era: "",
+        medium: "",
+        artist: "Marc Chagall",
+        tags: [
+            tags.FINAL,
+        ]
+    },
+
+    //79
+    {
+        title: "One: Number 31, 1950",
+        srcs: ['pollock_one_31.jpg'],
+        year: "1950",
+        dimensions: "",
+        era: "",
+        medium: "",
+        artist: "Jackson Pollock",
+        tags: [
+            tags.FINAL,
+        ]
+    },
+
+    //80
+    {
+        title: "Elegy to the Spanish Republic #34",
+        srcs: ['motherwell_spanish.jpg'],
+        year: "1953-1954",
+        dimensions: "",
+        era: "",
+        medium: "",
+        artist: "Robert Motherwell",
+        tags: [
+            tags.FINAL,
+        ]
+    },
+
+    //81
+    {
+        title: "The Bay",
+        srcs: ['frankenthaler_bay.jpg'],
+        year: "1963",
+        dimensions: "",
+        era: "",
+        medium: "",
+        artist: "Helen Frankenthaler",
+        tags: [
+            tags.FINAL,
+        ]
+    },
+
+    //82
+    {
+        title: "Clothespin",
+        srcs: ['oldenburg_clothespin.jpg'],
+        year: "1976",
+        dimensions: "",
+        era: "",
+        medium: "",
+        artist: "Claes Oldenburg",
+        tags: [
+            tags.FINAL,
+        ]
+    },
+
+    //83
+    {
+        title: "The Tranquility of Solitude: for George Dyer",
+        srcs: ['hirst_tranquility.jpg'],
+        year: "2006",
+        dimensions: "",
+        era: "",
+        medium: "",
+        artist: "Damien Hirst",
+        tags: [
+            tags.FINAL,
+        ]
+    },
+
+    //84
+    {
+        title: "Serpentine",
+        srcs: ['marsch_serpentine.jpg'],
+        year: "2022",
+        dimensions: "",
+        era: "",
+        medium: "",
+        artist: "Elisabeth Marsch Craton",
+        tags: [
+            tags.FINAL,
         ]
     },
 ]

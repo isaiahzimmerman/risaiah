@@ -70,6 +70,32 @@ function checkOverlap(arr1, arr2){
     return false
 }
 
+function arrayIntersection(arr1, arr2){
+    let out = []
+
+    for(const item of arr1){
+        if(!out.includes(item) && arr2.includes(item)){
+            out.push(item)
+        }
+    }
+
+    return out
+}
+
+function filterWithTags(element){
+    for(tagCategory of tagStructure){
+        const checkedInCategory = arrayIntersection(tagCategory, tagsChecked)
+
+        if(checkedInCategory.length >= 1){
+            if(!checkOverlap(checkedInCategory, element.tags)){
+                return false
+            }
+        }
+    }
+
+    return true
+}
+
 function refreshMusicAndArt(){
     updateTagsChecked()
 
@@ -85,7 +111,7 @@ function refreshMusicAndArt(){
             element.tags = [tags.ARTWORK]
         }
 
-        if((element.tags && checkOverlap(tagsChecked, element.tags)) || tagsChecked.length == 0){
+        if(filterWithTags(element)){
             musicAndArt.push(element)
         }
     })
@@ -102,8 +128,7 @@ function refreshMusicAndArt(){
 
         // console.log(element)
 
-        
-        if((element.tags && checkOverlap(tagsChecked, element.tags)) || tagsChecked.length == 0){
+        if(filterWithTags(element)){
             musicAndArt.push(element)
         }
     })
@@ -139,7 +164,19 @@ document.addEventListener("DOMContentLoaded", function(){
             canvas.style.cursor = 'default';
         }
     });
+
+    document.getElementById("full_image_container").addEventListener("click", fullscreenImage)
+    document.getElementById("fullscreen_image_container").addEventListener("click", hideFullscreenImage)
 })
+
+function fullscreenImage(){
+    document.getElementById("fullscreen_image").src = `./images/${currentWork.srcs[0]}`
+    document.getElementById("fullscreen_image_container").style.display = "flex"
+}
+
+function hideFullscreenImage(){
+    document.getElementById("fullscreen_image_container").style.display = "none"
+}
 
 function getTransparency(imageSrc){
     const imgElement = document.createElement("img");
