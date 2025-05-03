@@ -54,7 +54,7 @@ function updateTagsChecked(){
     tagsChecked = []
 
     for(const tag in tags){
-        if(document.getElementById(tag).checked){
+        if(document.getElementById(tag) && document.getElementById(tag).checked){
             tagsChecked.push(tags[tag])
         }
     }
@@ -302,22 +302,26 @@ function newWork(){
 function createFilters(){
     const filtersDiv = document.getElementById('filters')
 
-    for(tag in tags){
-        const tagContainer = document.createElement('span')
-
-        const tagName = document.createElement('span')
-        tagName.innerText = tags[tag]
-
-        const tagCheckbox = document.createElement('input')
-        tagCheckbox.id = tag
-        tagCheckbox.type = 'checkbox'
-        tagCheckbox.addEventListener('change', refreshMusicAndArt)
-
-        tagContainer.appendChild(tagName)
-        tagContainer.appendChild(tagCheckbox)
-
-        filtersDiv.appendChild(tagContainer)
-    };
+    for(tagCategory of tagStructure){
+        const categoryDiv = document.createElement("div")
+        for(tag of tagCategory){
+            const tagContainer = document.createElement('span')
+    
+            const tagName = document.createElement('span')
+            tagName.innerText = tag
+    
+            const tagCheckbox = document.createElement('input')
+            tagCheckbox.id = tagsInverse[tag]
+            tagCheckbox.type = 'checkbox'
+            tagCheckbox.addEventListener('change', refreshMusicAndArt)
+    
+            tagContainer.appendChild(tagName)
+            tagContainer.appendChild(tagCheckbox)
+    
+            categoryDiv.appendChild(tagContainer)
+        };
+        filtersDiv.appendChild(categoryDiv)
+    }
 }
 
 function clearMusicTimeline(){

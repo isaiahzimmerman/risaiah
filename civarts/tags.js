@@ -10,8 +10,18 @@ const tags = {
     ROMANTIC_MODERN: "Romantic/Modern",
 }
 
+function getTagsInverse(){
+    const output = {}
+    for(tag in tags){
+        output[tags[tag]] = tag
+    }
+    return output
+}
+
+const tagsInverse = getTagsInverse()
+
 const tagStructure = [
     [tags.EXAM1, tags.EXAM2, tags.EXAM3, tags.FINAL],
-    [tags.BAROQUE, tags.CLASSICAL, tags.ROMANTIC_MODERN],
+    // [tags.BAROQUE, tags.CLASSICAL, tags.ROMANTIC_MODERN],
     [tags.MUSIC, tags.ARTWORK]
 ]
