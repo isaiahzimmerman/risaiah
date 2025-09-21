@@ -269,12 +269,14 @@ function hideMusicComponents(){
     document.getElementById("music_buttons").style.display = "none"
 }
 
+let currentWorkIndex = 0
+
 function newWork(){
     hideFullImage()
     clearMusicTimeline()
     Howler.stop()
 
-    currentWork = musicAndArt[Math.floor(Math.random() * musicAndArt.length)]
+    currentWork = musicAndArt[(currentWorkIndex++)%musicAndArt.length]
 
     document.getElementById('artwork_attributes_container').innerHTML = ""
 
