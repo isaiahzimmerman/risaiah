@@ -96,6 +96,31 @@ function filterWithTags(element){
     return true
 }
 
+function mulberry32(a) {
+    let t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+}
+
+function shuffle(array, seed) {                // <-- ADDED ARGUMENT
+    var m = array.length, t, i;
+    // seed *= 10
+    // While there remain elements to shuffle…
+    while (m) {
+  
+      // Pick a remaining element…
+      i = Math.floor(mulberry32(((seed/365)*2**32)>>>0) * m--);        // <-- MODIFIED LINE
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+      ++seed                                     // <-- ADDED LINE
+    }
+  
+    return array;
+}
+
 function refreshMusicAndArt(){
     updateTagsChecked()
 
@@ -132,6 +157,8 @@ function refreshMusicAndArt(){
             musicAndArt.push(element)
         }
     })
+
+    shuffle(musicAndArt, Math.random()*100)
 
     newWork()
 }
