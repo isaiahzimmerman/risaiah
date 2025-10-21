@@ -44,7 +44,7 @@ function checkImageTransparency (image) {
     });
 };
 
-const songPlaytime = 10
+let songPlaytime = 20
 
 let musicAndArt = []
 
@@ -144,6 +144,13 @@ function refreshMusicAndArt(){
     music.forEach(function(element){
         element.type = "music"
         element.timeline = "yes"
+
+        if(element.mmn_src){
+            element.mmn = "yes"
+
+            window.mmn.loadMMNFromServer(`mmn/json/${element.mmn_src}`)
+        }
+
         if(element.tags){
             if(!element.tags.includes(tags.MUSIC))
                 element.tags.push(tags.MUSIC)
@@ -168,6 +175,20 @@ document.addEventListener("DOMContentLoaded", function(){
     // const joe = document.createElement("img")
     // joe.src = "images/ulysses.jpg"
 
+    document.getElementById("play_length").textContent = document.getElementById("play_length_slider").value
+
+    document.getElementById("play_length_slider").addEventListener("input", () => {
+        document.getElementById("play_length").textContent = document.getElementById("play_length_slider").value
+
+        songPlaytime = document.getElementById("play_length_slider").value
+
+        if(document.getElementById("music_timeline").style.display != "none"){
+            drawMusicTimeline()
+        }
+    })
+
+    initMMN()
+
     createFilters()
 
     refreshMusicAndArt()
@@ -175,26 +196,72 @@ document.addEventListener("DOMContentLoaded", function(){
     hideLoading()
 
     const timeline = document.getElementById("music_timeline");
-
-    timeline.addEventListener('mousemove', function (e) {
-        const rectBounds = canvas.getBoundingClientRect();
-        const x = e.clientX - rectBounds.left;
-        const y = e.clientY - rectBounds.top;
+    // // timeline.addEventListener('mousemove', function (e) {
+    // //     return
+    // //     const rectBounds = canvas.getBoundingClientRect();
+    // //     const x = e.clientX - rectBounds.left;
+    // //     const y = e.clientY - rectBounds.top;
     
-        if (
-            x >= rect.x && x <= rect.x + rect.width &&
-            y >= rect.y && y <= rect.y + rect.height
-        ) {
-            canvas.style.cursor = 'pointer';
-            console.log('Hovering over rectangle!');
-        } else {
-            canvas.style.cursor = 'default';
-        }
-    });
+    // //     if (
+    // //         x >= rect.x && x <= rect.x + rect.width &&
+    // //         y >= rect.y && y <= rect.y + rect.height
+    // //     ) {
+    // //         canvas.style.cursor = 'pointer';
+    // //         console.log('Hovering over rectangle!');
+    // //     } else {
+    // //         canvas.style.cursor = 'default';
+    // //     }
+    // // });
 
     document.getElementById("full_image_container").addEventListener("click", fullscreenImage)
     document.getElementById("fullscreen_image_container").addEventListener("click", hideFullscreenImage)
 })
+
+function initMMN(){
+    hideMMN()
+
+    mmnDiv = document.getElementById('mmn_div')
+    window.mmn = new MunsonMusicNotation(mmnDiv)
+
+    window.mmn.config.showBlanks = false
+
+    window.mmn.pieceBody = [
+        {type: window.mmn.Element_Types.DIVIDER},
+        {
+            type: window.mmn.Element_Types.SECTION,
+            title: `"Exposition"`,
+            parts: [
+                {label: "1", key: "f#", times: ["0:00"]},
+                {label: "1", key: "A", times: ["0:00"]},
+                {label: "1", key: "A", times: ["0:00", "0:00"]},
+                {label: "cl", key: "c#", times: ["0:00"]},
+            ]
+        },
+        {type: window.mmn.Element_Types.DIVIDER},
+        {
+            type: window.mmn.Element_Types.SECTION,
+            title: `Development`,
+            parts: [
+                {label: "1", key: "A", times: ["0:00"]},
+                {key: "tr", times: ["0:00"]},
+                {label: "?", key: "D", times: ["0:00"]},
+                {label: "cl", key: "c#", times: ["0:00"]},
+            ]
+        },
+        {type: window.mmn.Element_Types.DIVIDER},
+        {
+            type: window.mmn.Element_Types.SECTION,
+            title: `Recapitulation`,
+            parts: [
+                {label: "1", key: "f#", times: ["0:00"]},
+                {label: "cl", key: "f#", times: ["0:00"]},
+            ]
+        },
+        {type: window.mmn.Element_Types.DIVIDER},
+    ]
+
+    window.mmn.updateElement()
+}
 
 function fullscreenImage(){
     document.getElementById("fullscreen_image").src = `./images/${currentWork.srcs[0]}`
@@ -301,6 +368,7 @@ let currentWorkIndex = 0
 function newWork(){
     hideFullImage()
     clearMusicTimeline()
+    hideMMN()
     Howler.stop()
 
     currentWork = musicAndArt[(currentWorkIndex++)%musicAndArt.length]
@@ -374,7 +442,7 @@ function drawMusicTimeline(){
 
     const ctx = canvas.getContext("2d");
 
-    const rectLength = (songPlaytime / currentWork.songLength) * 480
+    const rectLength = (Math.min(songPlaytime, currentWork.songLength - currentWork.startTime) / currentWork.songLength) * 480
     const rectStart = (currentWork.startTime / currentWork.songLength) * 480
 
     ctx.beginPath();
@@ -398,7 +466,15 @@ function drawMusicTimeline(){
     ctx.fillText(getTime(currentWork.startTime), rectStart, 50); // (text, x, y)
 
     ctx.fillStyle = "red"; // Fill color
-    ctx.fillRect(rectStart, 20, rectLength, 10); // (x, y, width, height)
+    ctx.fillRect(rectStart+10, 20, rectLength, 10); // (x, y, width, height)
+}
+
+function drawMMN(){
+    document.getElementById("mmn_div_container").style.display = "flex"
+}
+
+function hideMMN(){
+    document.getElementById("mmn_div_container").style.display = "none"
 }
 
 function rezoomImage(imgZoomLevel){
@@ -409,6 +485,8 @@ function writeAttributeFromCurrent(id){
     if(currentWork[id]){
         if(id=='timeline'){
             drawMusicTimeline()
+        }else if(id == 'mmn'){
+            drawMMN()
         }else{
             document.getElementById(id).innerText = currentWork[id]
         }
@@ -462,10 +540,10 @@ async function playMusic(){
     // Stop playback after (endTime - startTime) milliseconds
     setTimeout(() => {
       sound.pause();
-    }, (duration) * 1000);
+    }, (Math.min(duration, songLength - currentWork.startTime)) * 1000);
 }
 
 let currIndex
 let currentWork
 
-const artworkAttributes = ['title', 'artist', 'dimensions', 'year', 'era', 'medium', 'location', "work", "movement",  'act', 'scene',"timeline",]
+const artworkAttributes = ['title', 'artist', 'dimensions', 'year', 'era', 'medium', 'location', "work", "movement",  'act', 'scene', "timeline", "mmn"]

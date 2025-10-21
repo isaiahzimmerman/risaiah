@@ -4,11 +4,19 @@ function padWithZeroes(number, length=2) {
     return String(number).padStart(length, '0');
 }
 
+const EMPTY = "__EMPTY__"
+
 class MunsonMusicNotation {
     constructor(HTMLElement = null){
         this.pieceBody = []
         this.HTMLElement = HTMLElement
         this.editable = true
+
+        document.addEventListener("click", () => {
+            if(document.activeElement == document.body){
+                this.updateElement()
+            }
+        })
     }
 
     Element_Types = {
@@ -16,6 +24,11 @@ class MunsonMusicNotation {
         OPEN_REPEAT: "OPEN_REPEAT",
         CLOSE_REPEAT: "CLOSE_REPEAT",
         SECTION: "SECTION",
+    }
+
+    config = {
+        showBlanks: true,
+        editable: false
     }
 
     getJSON(){
@@ -44,6 +57,41 @@ class MunsonMusicNotation {
         }
     }
 
+    isOnlyWhitespace = str => /^\s*$/.test(str);
+
+    makeEditable(element, object, key){
+        element.contentEditable = "true"
+        element.addEventListener("input", () => {
+            object[key] = element.innerText.replace("\n", "")
+
+            if(this.isOnlyWhitespace(object[key])){
+                object[key] = EMPTY
+            }
+        })
+    }
+
+    makeTimesEditable(element, object, key){
+        element.contentEditable = "true"
+        element.addEventListener("input", () => {
+            object[key] = element.innerText.trim().split("\n")
+
+            const allWhitespace = object[key].every(val => this.isOnlyWhitespace(val));
+
+            if (allWhitespace){
+                object[key] = EMPTY
+            }
+            console.log(object[key])
+
+            if(object[key] == ""){
+                object[key] = EMPTY
+            }
+        })
+    }
+
+    getBlank(){
+        return (this.config.showBlanks ? "_" : "")
+    }
+
     getElementHTML(e) {
         const container = document.createElement("div")
         container.classList.add("mmn_section_container")
@@ -61,29 +109,35 @@ class MunsonMusicNotation {
 
             const titleLayer = document.createElement("div")
             titleLayer.classList.add("mmn_title_layer")
-            titleLayer.innerText = e.title
+            titleLayer.innerText = e.title && e.title != EMPTY ? e.title : this.getBlank()
+            if(this.config.editable){ this.makeEditable(titleLayer, e, "title") }
 
             const lower = document.createElement("div")
             lower.classList.add("mmn_section_lower")
 
             for(const part of e.parts){
-                console.log(part)
+                // // console.log(part)
 
                 const partDiv = document.createElement("div")
                 partDiv.classList.add("mmn_part")
 
                 const labelDiv = document.createElement("div")
-                labelDiv.innerText = part.label ? part.label : ""
+                labelDiv.innerText = part.label && part.label != EMPTY ? part.label : this.getBlank()
                 labelDiv.classList.add("mmn_part_label")
-
+                if(this.config.editable){ this.makeEditable(labelDiv, part, "label") }
+                
                 const keyDiv = document.createElement("div")
-                keyDiv.innerText = part.key ? part.key : ""
+                keyDiv.innerText = part.key && part.key != EMPTY ? part.key : this.getBlank()
                 keyDiv.classList.add("mmn_part_key")
-
+                if(this.config.editable){ this.makeEditable(keyDiv, part, "key") }
+                
                 const timesDiv = document.createElement("div")
                 timesDiv.classList.add("mmn_part_times")
-
+                timesDiv.innerText = part.times && part.times != EMPTY ? part.times.join("\n") : this.getBlank()
+                if(this.config.editable){ this.makeTimesEditable(timesDiv, part, "times") }
+            
                 for(const time of part.times){
+                    break
                     const timeDiv = document.createElement("div")
                     timeDiv.innerText = time
 
@@ -125,44 +179,38 @@ class MunsonMusicNotation {
 
         this.HTMLElement.appendChild(musicContainer)
     }
+
+    loadFromJSONFile(inputElement) {
+        inputElement.addEventListener("change", (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    this.pieceBody = JSON.parse(e.target.result);
+                    this.updateElement();
+                } catch (err) {
+                    console.error("Failed to load JSON:", err);
+                }
+            };
+            reader.readAsText(file);
+        });
+    }
+
+    async loadMMNFromServer(filePath) {
+        try {
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+            const data = await response.json();
+
+            this.pieceBody = data;
+            window.mmn.updateElement();
+
+            console.log("Loaded MMN JSON from:", filePath, data);
+        } catch (err) {
+            console.error("Failed to load JSON:", err);
+        }
+    }
 }
-
-document.addEventListener("DOMContentLoaded", function(){
-    const outlineDiv = document.getElementById("mmn_main")
-
-    window.mmn = new MunsonMusicNotation(outlineDiv);
-    window.mmn.pieceBody = [
-        {type: window.mmn.Element_Types.DIVIDER},
-        {
-            type: window.mmn.Element_Types.SECTION,
-            title: `"Exposition"`,
-            parts: [
-                {label: "1", key: "f#", times: ["0:00"]},
-                {label: "1", key: "A", times: ["0:00"]},
-                {label: "1", key: "A", times: ["0:00", "0:00"]},
-                {label: "cl", key: "c#", times: ["0:00"]},
-            ]
-        },
-        {type: window.mmn.Element_Types.DIVIDER},
-        {
-            type: window.mmn.Element_Types.SECTION,
-            title: `Development`,
-            parts: [
-                {label: "1", key: "A", times: ["0:00"]},
-                {key: "tr", times: ["0:00"]},
-                {label: "?", key: "D", times: ["0:00"]},
-                {label: "cl", key: "c#", times: ["0:00"]},
-            ]
-        },
-        {type: window.mmn.Element_Types.DIVIDER},
-        {
-            type: window.mmn.Element_Types.SECTION,
-            title: `Recapitulation`,
-            parts: [
-                {label: "1", key: "f#", times: ["0:00"]},
-                {label: "cl", key: "f#", times: ["0:00"]},
-            ]
-        },
-    ]
-    window.mmn.updateElement()
-})

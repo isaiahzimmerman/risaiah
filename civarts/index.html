@@ -7,16 +7,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <script src="tags.js"></script>
     <script src="artworks.js"></script>
+    <script src="mmn/mmn.js"></script>
     <script src="main.js"></script>
     <script src="music.js"></script>
     <script src="musicMain.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mmn/mmn.css">
 </head>
 <body>
     <!-- <img src="ulysses.jpg" alt=""> -->
     <!-- <div id="artwork_container"> -->
         <div id="filters"></div>
+        <div>
+            <div>
+                <label for="play_length_slider">Music Play Time:</label>
+                <span><span id="play_length">20</span> seconds</span>
+            </div>
+            <div>
+                <input 
+                type="range" 
+                id="play_length_slider" 
+                min="10" 
+                max="30" 
+                step="1" 
+                value="20"
+                />
+            </div>
         </div>
+        
+        <!-- </div> -->
         <div id="images_container">
             <div id="image_container" class="image_container">
     
@@ -41,6 +60,9 @@
         </div>
         <div id="music_timeline_container">
             <canvas id="music_timeline" height="100" width="500"></canvas>
+        </div>
+        <div id="mmn_div_container">
+            <div id="mmn_div"></div>
         </div>
         <div id="fullscreen_image_container">
             <img src="" alt="" id="fullscreen_image">

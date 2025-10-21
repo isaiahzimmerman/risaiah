@@ -1,0 +1,77 @@
+[
+  {
+    "type": "DIVIDER"
+  },
+  {
+    "type": "SECTION",
+    "title": "Exposition",
+    "parts": [
+      {
+        "label": "1",
+        "key": "C",
+        "times": "__EMPTY__"
+      },
+      {
+        "label": "tr",
+        "key": "↝",
+        "times": "__EMPTY__"
+      },
+      {
+        "label": "2",
+        "key": "G",
+        "times": "__EMPTY__"
+      },
+      {
+        "label": "cl",
+        "key": "G",
+        "times": "__EMPTY__"
+      }
+    ]
+  },
+  {
+    "type": "DIVIDER"
+  },
+  {
+    "type": "SECTION",
+    "title": "Development",
+    "parts": [
+      {
+        "label": "__EMPTY__",
+        "key": "↝",
+        "times": "__EMPTY__"
+      }
+    ]
+  },
+  {
+    "type": "DIVIDER"
+  },
+  {
+    "type": "SECTION",
+    "title": "Recapitulation",
+    "parts": [
+      {
+        "label": "1",
+        "key": "C",
+        "times": "__EMPTY__"
+      },
+      {
+        "label": "[tr]",
+        "key": "↝",
+        "times": "__EMPTY__"
+      },
+      {
+        "label": "2",
+        "key": "C",
+        "times": "__EMPTY__"
+      },
+      {
+        "label": "cl",
+        "key": "C",
+        "times": "__EMPTY__"
+      }
+    ]
+  },
+  {
+    "type": "DIVIDER"
+  }
+]

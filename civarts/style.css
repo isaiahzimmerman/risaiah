@@ -67,3 +67,12 @@
     max-height: 100vh;
     object-fit: contain;
 }
+
+#mmn_div{
+    width: fit-content;
+}
+
+#mmn_div_container{
+    display: flex;
+    justify-content: center;
+}
