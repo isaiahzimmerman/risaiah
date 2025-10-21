@@ -562,7 +562,7 @@ const artworks = [
     {
         title: "David and Absalom",
         srcs: ['david_absalom.jpg'],
-        year: "",
+        year: "1642",
         dimensions: "",
         era: "Baroque",
         medium: "",
