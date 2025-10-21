@@ -5,7 +5,8 @@ const music = [
         artist: "Vivaldi",
         work: "The Four Seasons - Spring",
         tags: [
-            tags.CLASSICAL
+            tags.CLASSICAL,
+            tags.EXAM2
         ],
         // movement: "",
         year: "1725"
@@ -18,7 +19,8 @@ const music = [
         work: "90th Symphony",
         movement: "I (First)",
         tags: [
-            tags.CLASSICAL
+            tags.CLASSICAL,
+            tags.EXAM2
         ],
         year: "1788"
     },
@@ -30,7 +32,8 @@ const music = [
         work: "88th Symphony",
         movement: "I (First)",
         tags: [
-            tags.CLASSICAL
+            tags.CLASSICAL,
+            tags.EXAM2
         ],
         year: "1787"
     },
@@ -42,7 +45,8 @@ const music = [
         work: "88th Symphony",
         movement: "II (Second)",
         tags: [
-            tags.CLASSICAL
+            tags.CLASSICAL,
+            tags.EXAM2
         ],
         year: "1787"
     },
@@ -54,7 +58,8 @@ const music = [
         work: "88th Symphony",
         movement: "III (Third)",
         tags: [
-            tags.CLASSICAL
+            tags.CLASSICAL,
+            tags.EXAM2
         ],
         year: "1787"
     },
@@ -66,7 +71,8 @@ const music = [
         work: "88th Symphony",
         movement: "IV (Fourth)",
         tags: [
-            tags.CLASSICAL
+            tags.CLASSICAL,
+            tags.EXAM2
         ],
         year: "1787"
     },
@@ -78,7 +84,8 @@ const music = [
         work: "80th Symphony",
         movement: "I (First)",
         tags: [
-            tags.CLASSICAL
+            tags.CLASSICAL,
+            tags.EXAM2
         ],
         year: "1784"
     },
@@ -90,7 +97,8 @@ const music = [
         work: "45th Symphony",
         movement: "I (First)",
         tags: [
-            tags.CLASSICAL
+            tags.CLASSICAL,
+            tags.EXAM2
         ],
         year: "1772"
     },

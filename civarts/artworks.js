@@ -471,6 +471,7 @@ const artworks = [
         era: "Baroque",
         medium: "",
         artist: "Caravaggio",
+        tags: [tags.EXAM2]
     },
 
     //41
@@ -481,8 +482,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Hals"
-
+        artist: "Hals",
+        tags: [tags.EXAM2]
     },
 
     //42
@@ -493,7 +494,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Velazquez"
+        artist: "Velazquez",
+        tags: [tags.EXAM2]
     },
 
     //43
@@ -504,7 +506,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Peter Paul Rubens"
+        artist: "Peter Paul Rubens",
+        tags: [tags.EXAM2]
     },
 
     //44
@@ -515,7 +518,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Peter Paul Rubens"
+        artist: "Peter Paul Rubens",
+        tags: [tags.EXAM2]
     },
     
     //45
@@ -526,7 +530,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Anthony van Dyck"
+        artist: "Anthony van Dyck",
+        tags: [tags.EXAM2]
     },
 
     //46
@@ -537,7 +542,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Poussin"
+        artist: "Poussin",
+        tags: [tags.EXAM2]
     },
 
     //47
@@ -548,7 +554,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Goyen"
+        artist: "Goyen",
+        tags: [tags.EXAM2]
     },
 
     //48
@@ -559,7 +566,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Rembrandt"
+        artist: "Rembrandt",
+        tags: [tags.EXAM2]
     },
 
     //49
@@ -570,7 +578,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Kalf"
+        artist: "Kalf",
+        tags: [tags.EXAM2]
     },
 
     //50
@@ -581,7 +590,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Rembrandt"
+        artist: "Rembrandt",
+        tags: [tags.EXAM2]
     },
 
     //51
@@ -592,7 +602,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Velazquez"
+        artist: "Velazquez",
+        tags: [tags.EXAM2]
     },
 
     //52
@@ -603,7 +614,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Rembrandt"
+        artist: "Rembrandt",
+        tags: [tags.EXAM2]
     },
 
     //53
@@ -614,7 +626,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Velazquez"
+        artist: "Velazquez",
+        tags: [tags.EXAM2]
     },
 
     //54
@@ -625,7 +638,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Vermeer"
+        artist: "Vermeer",
+        tags: [tags.EXAM2]
     },
 
     //55
@@ -636,7 +650,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Jacob van Ruisdael"
+        artist: "Jacob van Ruisdael",
+        tags: [tags.EXAM2]
     },
 
     //56
@@ -647,7 +662,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: ""
+        artist: "",
+        tags: [tags.EXAM2]
     },
 
     //57
@@ -658,7 +674,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: "Watteau"
+        artist: "Watteau",
+        tags: [tags.EXAM2]
     },
 
     //58a
@@ -669,7 +686,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: ""
+        artist: "",
+        tags: [tags.EXAM2]
     },
 
     //58b
@@ -680,7 +698,8 @@ const artworks = [
         dimensions: "",
         era: "Baroque",
         medium: "",
-        artist: ""
+        artist: "",
+        tags: [tags.EXAM2]
     },
 
     //59
