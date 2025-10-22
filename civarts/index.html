@@ -19,6 +19,7 @@
 <body>
     <!-- <img src="ulysses.jpg" alt=""> -->
     <!-- <div id="artwork_container"> -->
+        <h1>Civ Arts Study Tool</h1>
         <div id="filters"></div>
         <div>
             <div>
@@ -69,6 +70,12 @@
         <div id="fullscreen_image_container">
             <img src="" alt="" id="fullscreen_image">
         </div>
+        <h2>Leave a message:</h2>
+        <form action="https://api.web3forms.com/submit" method="POST" id="feedback_form">
+            <input type="hidden" name="access_key" value="cf5a3d74-a43c-4614-b6c2-d01955ec5108">
+            <textarea name="message" required placeholder="Suggestions, comments, corrections, etc." style="width: 400px; height: 17px"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
     <!-- </div> -->
 </body>
 </html>
