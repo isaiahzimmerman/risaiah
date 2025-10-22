@@ -170,10 +170,18 @@ function refreshMusicAndArt(){
     newWork()
 }
 
+async function preloadAllImages(){
+    window.imgs = []
+    artworks.forEach((artwork) => {
+        const temp = document.createElement("img")
+        temp.src = `images/${artwork.srcs[0]}`
+        window.imgs.push(temp)
+    })
+    console.log("images preloaded")
+}
+
 document.addEventListener("DOMContentLoaded", function(){
-    //this is good for preloading images
-    // const joe = document.createElement("img")
-    // joe.src = "images/ulysses.jpg"
+    // this is good for preloading images
 
     document.getElementById("play_length").textContent = document.getElementById("play_length_slider").value
 
@@ -215,6 +223,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     document.getElementById("full_image_container").addEventListener("click", fullscreenImage)
     document.getElementById("fullscreen_image_container").addEventListener("click", hideFullscreenImage)
+
+    preloadAllImages()
 })
 
 function initMMN(){
