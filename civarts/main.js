@@ -181,7 +181,25 @@ async function preloadAllImages(){
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-    // this is good for preloading images
+    window.timelineContainer = document.createElement("div")
+    window.timelineContainer.id = "music_timeline_container"
+
+    window.timeline = document.createElement("canvas")
+    window.timeline.id = "music_timeline"
+    window.timeline.height = "100"
+    window.timeline.width = "500"
+
+    window.timelineContainer.appendChild(window.timeline)
+
+    window.mmnDivContainer = document.createElement("div")
+    window.mmnDivContainer.id = "mmn_div_container"
+
+    window.mmnDiv = document.createElement("div")
+    window.mmnDiv.id = "mmn_div"
+
+    window.mmnDivContainer.appendChild(window.mmnDiv)
+
+    document.body.appendChild(window.mmnDivContainer)
 
     document.getElementById("play_length").textContent = document.getElementById("play_length_slider").value
 
@@ -190,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
         songPlaytime = document.getElementById("play_length_slider").value
 
-        if(document.getElementById("music_timeline").style.display != "none"){
+        if(window.timeline.style.display != "none"){
             drawMusicTimeline()
         }
     })
@@ -202,24 +220,6 @@ document.addEventListener("DOMContentLoaded", function(){
     refreshMusicAndArt()
 
     hideLoading()
-
-    const timeline = document.getElementById("music_timeline");
-    // // timeline.addEventListener('mousemove', function (e) {
-    // //     return
-    // //     const rectBounds = canvas.getBoundingClientRect();
-    // //     const x = e.clientX - rectBounds.left;
-    // //     const y = e.clientY - rectBounds.top;
-    
-    // //     if (
-    // //         x >= rect.x && x <= rect.x + rect.width &&
-    // //         y >= rect.y && y <= rect.y + rect.height
-    // //     ) {
-    // //         canvas.style.cursor = 'pointer';
-    // //         console.log('Hovering over rectangle!');
-    // //     } else {
-    // //         canvas.style.cursor = 'default';
-    // //     }
-    // // });
 
     document.getElementById("full_image_container").addEventListener("click", fullscreenImage)
     document.getElementById("fullscreen_image_container").addEventListener("click", hideFullscreenImage)
@@ -387,7 +387,40 @@ function newWork(){
 
     artworkAttributes.forEach(element => {
         if(currentWork[element]){
-            document.getElementById('artwork_attributes_container').innerHTML += `<div class="reveal_container"><button class="reveal_button" onclick="writeAttributeFromCurrent('${element}')">reveal ${element}</button><span>${element}: <span id="${element}"></span></span></div>`
+            const attributeContainer = document.createElement("div")
+            attributeContainer.id = `reveal_attr_${element}`
+
+            const revealContainer = document.createElement("div")
+            revealContainer.classList.add("reveal_container")
+
+            const revealButton = document.createElement("button")
+            revealButton.classList.add("reveal_button")
+            revealButton.onclick = () => {writeAttributeFromCurrent(element)}
+            revealButton.innerText = `reveal ${element}`
+            revealContainer.appendChild(revealButton)
+
+            const revealedAttribute = document.createElement("span")
+
+            const revealedAttributeName = document.createElement("span")
+            revealedAttributeName.innerText = `${element}: `
+
+            const revealedAttributeValue = document.createElement("span")
+            revealedAttributeValue.id = element
+
+            revealedAttribute.appendChild(revealedAttributeName)
+            revealedAttribute.appendChild(revealedAttributeValue)
+
+            revealContainer.appendChild(revealedAttribute)
+
+            attributeContainer.appendChild(revealContainer)
+
+            if(element == "timeline"){
+                attributeContainer.appendChild(window.timelineContainer)
+            }else if(element == "mmn"){
+                attributeContainer.appendChild(window.mmnDivContainer)
+            }
+
+            document.getElementById('artwork_attributes_container').appendChild(attributeContainer)
         }
     });
 
@@ -432,7 +465,7 @@ function createFilters(){
 }
 
 function clearMusicTimeline(){
-    const canvas = document.getElementById("music_timeline");
+    const canvas = window.timeline;
     canvas.style.display = 'none'
 
     const ctx = canvas.getContext("2d");
@@ -447,7 +480,7 @@ function getTime(seconds){
 function drawMusicTimeline(){
     clearMusicTimeline()
 
-    const canvas = document.getElementById("music_timeline");
+    const canvas = window.timeline;
     canvas.style.display = 'block'
 
     const ctx = canvas.getContext("2d");
