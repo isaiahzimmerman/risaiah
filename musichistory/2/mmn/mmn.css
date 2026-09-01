@@ -1,0 +1,60 @@
+.mmn_piece_container{
+    display: flex;
+}
+
+.mmn_divider{
+    width: 2px;
+    height: 50px;
+    background-color: black;
+}
+
+.mmn_vertical_container{
+    /* background-color: gray; */
+    /* height: 150px; */
+    /* width: 150px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mmn_title_layer{
+    height: 13px;
+    margin: 0 5px;
+    font-size: small;
+}
+
+.mmn_section_lower{
+    display: flex;
+}
+
+.mmn_part{
+    display: flex;
+    flex-direction: column;
+    margin: 4px;
+    align-items: center;
+}
+
+.mmn_part_label, .mmn_part_key{
+    height: 18px;
+}
+
+.mmn_part_times{
+    font-size: x-small;
+}
+
+.mmn_section_container:hover{
+    outline: 1px solid black;
+    cursor: pointer;
+}
+
+#mmn_centering{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+}

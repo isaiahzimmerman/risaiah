@@ -1,0 +1,88 @@
+body{
+    padding-bottom: 150px;
+}
+
+#image_container{
+    width: 600px;
+    aspect-ratio: 1;
+}
+
+#image_container canvas{
+    width: 100%;
+}
+
+.reveal_button{
+    width: 100px;
+}
+
+.reveal_container{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+#full_image_container{
+    width: 600px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#images_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#full_image{
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#music_timeline_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#music_timeline{
+    width: 100%;
+    aspect-ratio: 5;
+    max-width: 750px;
+}
+
+#fullscreen_image_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.532);
+    z-index: 1000;
+}
+
+#fullscreen_image {
+    max-width: 100vw;
+    max-height: 100vh;
+    object-fit: contain;
+}
+
+#mmn_div{
+    width: fit-content;
+}
+
+#mmn_div_container{
+    display: flex;
+    justify-content: center;
+}
+
+#feedback_form{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
