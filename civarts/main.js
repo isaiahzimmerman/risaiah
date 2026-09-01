@@ -165,6 +165,20 @@ function refreshMusicAndArt(){
         }
     })
 
+    if(musicAndArt.length == 0){
+        console.error("No music or art fits those tags!")
+        document.getElementById("no_matches_error").style.display = "block"
+
+        hideFullImage()
+        clearMusicTimeline()
+        hideMMN()
+        Howler.stop()
+        hideImageComponents()
+        hideMusicComponents()
+        document.getElementById('artwork_attributes_container').innerHTML = ""
+        return
+    }
+
     shuffle(musicAndArt, Math.random()*100)
 
     newWork()
@@ -384,6 +398,8 @@ function newWork(){
     currentWork = musicAndArt[(currentWorkIndex++)%musicAndArt.length]
 
     document.getElementById('artwork_attributes_container').innerHTML = ""
+
+    document.getElementById("no_matches_error").style.display = "none"
 
     artworkAttributes.forEach(element => {
         if(currentWork[element]){
