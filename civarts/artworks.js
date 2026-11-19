@@ -886,7 +886,7 @@ const artworks = [
 
     //72
     {
-        title: "Cornfield with Cypresses",
+        title: "Cornfield (Wheatfield) with Cypresses",
         srcs: ['van_gogh_wheatfield.jpg'],
         year: "1889",
         dimensions: "",
